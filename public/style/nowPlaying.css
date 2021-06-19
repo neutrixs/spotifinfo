@@ -22,6 +22,8 @@
 }
 #mainPicture{
     width: 20em;
+    box-shadow: 0 0.5em 1em #000;
+    cursor: pointer;
 }
 #mainInfoHolder{
     display: inline-block;

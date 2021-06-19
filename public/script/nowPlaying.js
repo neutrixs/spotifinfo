@@ -1,0 +1,3 @@
+getNowPlaying = async function(){
+    fetch()
+}

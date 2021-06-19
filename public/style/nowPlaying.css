@@ -1,0 +1,38 @@
+#holder{
+    margin-left: 10em;
+    margin-right: 10em;
+    width: fit-content;
+    min-width: 24.5em;
+}
+.margin0{
+    margin:0;
+}
+#nowPlaying{
+    padding: 1.5em;
+    padding-bottom: 0;
+}
+#nowPlayingStatus{
+    font-size: 2em;
+    font-weight: bold;
+    line-height: 1em;
+}
+#mainPictureHold{
+    display: inline-block;
+    margin-right: 1.5em;
+}
+#mainPicture{
+    width: 20em;
+}
+#mainInfoHolder{
+    display: inline-block;
+    vertical-align: top;
+}
+#mainTitle{
+    font-size: 1.5em;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 0;
+}
+#mainArtist{
+    margin-top: 0.5em;
+}

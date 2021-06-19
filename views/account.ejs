@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Spotifinfo</title>
+        <link rel="stylesheet" href="/style/base.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&amp;display=swap" rel="stylesheet">
+        <script src="/script/jquery.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <%if(isLoggedOut){%>
+            <script>isLoggedOut = true</script>
+        <%}else{%>
+            <script>isLoggedOut = false</script>
+        <%}%>
+    </head>
+    <body>
+        <div id="nav">
+            <a class="page page_lft lh1" href="../"><span>Home</span></a>
+
+            <a class="page lh1" href="/top_tracks"><span>Top Tracks/Artists</span></a>
+            <div id="profile_h">
+                <img id="profile">
+                <svg id="dropdown" viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg"><g><path fill="white" d="m121.3,34.6c-1.6-1.6-4.2-1.6-5.8,0l-51,51.1-51.1-51.1c-1.6-1.6-4.2-1.6-5.8,0-1.6,1.6-1.6,4.2 0,5.8l53.9,53.9c0.8,0.8 1.8,1.2 2.9,1.2 1,0 2.1-0.4 2.9-1.2l53.9-53.9c1.7-1.6 1.7-4.2 0.1-5.8z"></path></g></svg>
+            </div>
+
+            <div id="dropdown_options" class="none">
+                <a href="/account" id="account" class="pointer">Account</a>
+                <div class="divide1"></div>
+                <a id="logout" class="pointer">Logout</a>
+                <div class="divide1"></div>
+                <div id="theme" class="pointer">
+                    <span>Dark mode</span>
+                    <svg id="theme_check" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z" fill="white"/></svg>
+                </div>
+            </div>
+        </div>
+
+        <script src="/script/base.js"></script>
+    </body>
+</html>

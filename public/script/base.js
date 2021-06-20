@@ -1,4 +1,11 @@
 currentFetch = false
+
+const sleep = async function(ms){
+    return new Promise((a,b)=>{
+        setTimeout(a,ms)
+    })
+}
+
 const getToken = async function(){
     if(currentFetch) return
     currentFetch = true
@@ -28,12 +35,21 @@ const getProfile = async function(){
     if(res.error){
         if(res.error.status == 401 || res.error.status == 400){
             await getToken()
+            await sleep(1000)
             await getProfile()
         }
         return
     }
 
-    $('#profile').attr('src',res.images[0].url)
+    let profilePic
+    if(res.images[0]){
+        profilePic = res.images[0].url
+    }
+    else{
+        profilePic = '/img/user.png'
+    }
+
+    $('#profile').attr('src',profilePic)
 }
 
 isDropdownOpened = false

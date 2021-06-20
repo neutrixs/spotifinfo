@@ -1,11 +1,15 @@
-#holder{
+.holder{
     margin-left: 10em;
     margin-right: 10em;
     width: fit-content;
     min-width: 24.5em;
 }
 .margin0{
-    margin:0;
+    margin-left :0;
+    margin-right: 0;
+}
+.ts300ms{
+    transition: 300ms ease-out;
 }
 #nowPlaying{
     padding: 1.5em;
@@ -24,6 +28,7 @@
     width: 20em;
     box-shadow: 0 0.5em 1em #000;
     cursor: pointer;
+    display: block;
 }
 #mainInfoHolder{
     display: inline-block;

@@ -11,10 +11,13 @@ getNowPlaying = async function(){
     if(res.error){
         if(res.error.status == 400 || res.error.status == 401){
             await getToken()
+            await sleep(1000)
             await getNowPlaying()
             return
         }
     }
+
+    nowPlayingProgress = [res.progress_ms,res.item.duration_ms,res.is_playing]
 
     $('#nowPlayingStatus').html(res.is_playing?'Now Playing:':'Last Played Song:')
 
@@ -53,7 +56,34 @@ getNowPlaying = async function(){
         }
     }
     $('#mainArtist').html(artist)
+
+    temp = ''
+    for(i=0;i<res.item.artists.length;i++){
+        temp += `artist${i}url = '${res.item.artists[i].external_urls.spotify}';$('#mainArtist${i}').off().on('click',()=>{if(isMobile()){location.href = artist${i}url}else{window.open(artist${i}url)}})\n`;
+    }
+    eval(temp)
+
+    $('#nowPlaying').removeClass('none')
 }
 
 getNowPlaying()
 nowPlayingInterval = setInterval(getNowPlaying,2000)
+
+let nowPlayingProgressInterval = setInterval(()=>{
+    nowPlayingProgress[0]+=100
+
+    if(nowPlayingProgress[1] && nowPlayingProgress[2]){
+        let current = nowPlayingProgress[0]
+        let total = nowPlayingProgress[1]
+
+        let totalMinute = Math.floor(total/60000)
+        let totalSecond = (Math.floor(total/1000)%60).toString()
+        totalSecond = (totalSecond<10?'0':'')+totalSecond
+
+        let currentMinute = Math.floor(current/60000)
+        let currentSecond = (Math.floor(current/1000)%60).toString()
+        currentSecond = (currentSecond<10?'0':'')+currentSecond
+
+        $('#mainProgress').html(currentMinute+':'+currentSecond+' / '+totalMinute+':'+totalSecond)
+    }
+},100)

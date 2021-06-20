@@ -1,5 +1,5 @@
 let nowPlayingProgress = []
-getNowPlaying = async function(){
+const getNowPlaying = async function(){
     let res = await fetch('https://api.spotify.com/v1/me/player/currently-playing',{
         method:'GET',
         headers:{
@@ -13,8 +13,17 @@ getNowPlaying = async function(){
             await getToken()
             await sleep(1000)
             await getNowPlaying()
-            return
         }
+        return
+    }
+
+    if(res.item == null){
+        $('#nowPlaying').addClass('none')
+        return
+    }
+
+    if(res.item.name !== he.decode($('#mainTitle').html())){
+        getRecentlyPlayed()
     }
 
     nowPlayingProgress = [res.progress_ms,res.item.duration_ms,res.is_playing]

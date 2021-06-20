@@ -1,12 +1,13 @@
 .holder{
     margin-left: 10em;
     margin-right: 10em;
-    width: fit-content;
+    width: calc(100% - 20em);
     min-width: 24.5em;
 }
 .margin0{
     margin-left :0;
     margin-right: 0;
+    width: 100%;
 }
 .ts300ms{
     transition: 300ms ease-out;
@@ -42,4 +43,58 @@
 }
 #mainArtist{
     margin-top: 0.5em;
+}
+
+
+
+
+
+
+#recentlyPlayed{
+    padding: 1.5em;
+    padding-bottom: 0;
+}
+#titleRecentlyPlayed{
+    font-size: 2em;
+    font-weight: bold;
+    line-height: 1em;
+}
+.listRecentlyPlayed{
+    width: 100%;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+.recentlyPlayedImageHolder{
+    margin-right: 1em;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+}
+.recentlyPlayedImage{
+    width: 3em;
+    display: block;
+}
+.recentlyPlayedInfoHolder{
+    display: inline-block;
+    vertical-align: middle;
+    overflow: hidden;
+    cursor: pointer;
+    width: fit-content;
+    max-width: calc(100% - 4.3em);
+}
+.recentlyPlayedSongName{
+    margin: 0;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+    width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.recentlyPlayedArtistName{
+    margin: 0;
+    width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }

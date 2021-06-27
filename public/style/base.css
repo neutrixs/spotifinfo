@@ -5,6 +5,20 @@ body{
     color: white;
     background-color: #202020;
 }
+.holder{
+    margin-left: 10em;
+    margin-right: 10em;
+    width: calc(100% - 20em);
+    min-width: 24.5em;
+}
+.margin0{
+    margin-left :0;
+    margin-right: 0;
+    width: 100%;
+}
+.ts300ms{
+    transition: 300ms ease-out;
+}
 .body_l{
     color: black;
     background-color: white;

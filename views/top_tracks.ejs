@@ -37,7 +37,7 @@
                 </div>
             </div>
         </div>
-        <div id="holder" class="holder">
+        <div id="holder" class="holder none">
             <div id="top">
                 <p id="typeName">Top Tracks:</p>
                 <div id="typeSelector">
@@ -49,7 +49,7 @@
                     <div id="timeSelector1" class="timeSelector">6 Months</div>
                     <div id="timeSelector2" class="timeSelector">1 Month</div>
                 </div>
-                <div id="listTrack" class="none">
+                <div id="listTrack">
                     <div id="listTrack0">
                         <div id="listTrack0N0" class="list">
                             <div class="listNumber">1</div>
@@ -62,26 +62,39 @@
                             </div>
                         </div>
                     </div>
-                    <div id="listTrack1"></div>
-                    <div id="listTrack2"></div>
+                    <div id="listTrack1" class="none"></div>
+                    <div id="listTrack2" class="none"></div>
                 </div>
-                <div id="listArtist">
+                <div id="listArtist" class="none">
                     <div id="listArtist0">
                         <div id="listArtist0N0" class="list">
                             <div class="listNumber">1</div>
                             <div id="listArtist0N0ProfileHolder" class="listArtistProfileHolder">
                                 <img id="listArtist0N0Profile" class="listArtistProfile" src="https://spotifinfo.neutrix-web.xyz/img/kinghd.png">
                             </div>
+                            <div id="listArtist0N0InfoHolder" class="listArtistInfoHolder">
+                                <p id="listArtist0N0Info" class="listArtistInfo">TETSESTSE</p>
+                            </div>
+                        </div>
+                        <div id="listArtist0N1" class="list">
+                            <div class="listNumber">2</div>
+                            <div id="listArtist0N1ProfileHolder" class="listArtistProfileHolder">
+                                <img id="listArtist0N1Profile" class="listArtistProfile" src="https://spotifinfo.neutrix-web.xyz/img/kinghd.png">
+                            </div>
+                            <div id="listArtist0N1InfoHolder" class="listArtistInfoHolder">
+                                <p id="listArtist0N1Info" class="listArtistInfo">TETSESTSE</p>
+                            </div>
                         </div>
                     </div>
-                    <div id="listArtist1"></div>
-                    <div id="listArtist2"></div>
+                    <div id="listArtist1" class="none"></div>
+                    <div id="listArtist2" class="none"></div>
                 </div>
             </div>
         </div>
 
         <script src="/script/base.js"></script>
         <script src="/script/top/mobileDesktop.js"></script>
+        <script src="/script/top/getTop.js"></script>
         <script>
             const isMobile = function() {
                 let check = false;

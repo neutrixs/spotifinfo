@@ -1,4 +1,5 @@
 let nowPlayingProgress = []
+let nowPlayingStack = 0
 const getNowPlaying = async function(){
     let res = await fetch('https://api.spotify.com/v1/me/player/currently-playing',{
         method:'GET',
@@ -12,10 +13,12 @@ const getNowPlaying = async function(){
         if(res.error.status == 400 || res.error.status == 401){
             await getToken()
             await sleep(1000)
-            await getNowPlaying()
+            nowPlayingStack++
+            if(nowPlayingStack<10) await getNowPlaying();
         }
         return
     }
+    nowPlayingStack=0
 
     if(res.item == null){
         $('#nowPlaying').addClass('none')

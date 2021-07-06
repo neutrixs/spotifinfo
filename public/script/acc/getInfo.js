@@ -14,7 +14,7 @@ const getAccountInfo = async function(){
             await getToken()
             await sleep(1000)
             accountInfoStack++
-            if(accountInfoStack<20) await getAccountInfo();
+            if(accountInfoStack<10) await getAccountInfo();
         }
         return
     }

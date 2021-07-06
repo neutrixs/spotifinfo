@@ -74,10 +74,10 @@ const getNowPlaying = async function(){
 
     $('#nowPlaying').removeClass('none')
 }
-
-getNowPlaying()
-nowPlayingInterval = setInterval(getNowPlaying,2000)
-
+if(!isLoggedOut){
+    getNowPlaying()
+    nowPlayingInterval = setInterval(getNowPlaying,2000)
+}
 let nowPlayingProgressInterval = setInterval(()=>{
     nowPlayingProgress[0]+=100
 

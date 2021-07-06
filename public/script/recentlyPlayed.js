@@ -37,4 +37,4 @@ const getRecentlyPlayed = async function(){
 
     $('#recentlyPlayed').removeClass('none')
 }
-getRecentlyPlayed()
+if(!isLoggedOut)getRecentlyPlayed();

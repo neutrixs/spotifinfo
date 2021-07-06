@@ -20,6 +20,7 @@ const getToken = async function(){
     res = await res.json()
 
     if(res.relogback){
+        logOut(false)
         return
     }
     window.localStorage['token'] = res.data.token
@@ -56,6 +57,18 @@ const getProfile = async function(){
 
     $('#profile').attr('src',profilePic)
 }
+const logOut = function(self) {
+    delete window.localStorage['token']
+    delete window.localStorage['validuntil']
+    delete window.localStorage['force']
+    document.cookie.split(";").forEach(function(c) {
+        document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+    });
+    if(self){
+        window.localStorage['force'] = true
+    }
+    window.location.replace('/')
+}
 
 isDropdownOpened = false
 const dropdown = function(){
@@ -79,6 +92,10 @@ $('#profile_h').click(function(){
 
 $('#dropdown_options').click(function(){
     isDropdownLocked = true
+})
+
+$('#logout').click(function(){
+    logOut(true)
 })
 
 $(window).click(function(){

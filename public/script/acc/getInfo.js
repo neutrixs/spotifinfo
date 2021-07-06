@@ -1,4 +1,3 @@
-let accountInfoStack = 0
 const getAccountInfo = async function(){
     let res = await fetch('https://api.spotify.com/v1/me',{
         method:'GET',
@@ -12,9 +11,7 @@ const getAccountInfo = async function(){
     if(res.error){
         if(res.error.status == 401 || res.error.status == 400){
             await getToken()
-            await sleep(1000)
-            accountInfoStack++
-            if(accountInfoStack<10) await getAccountInfo();
+            await getAccountInfo();
         }
         return
     }

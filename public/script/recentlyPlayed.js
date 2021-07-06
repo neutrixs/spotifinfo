@@ -1,4 +1,3 @@
-let recentlyPlayedStack = 0
 const getRecentlyPlayed = async function(){
     let res = await fetch('https://api.spotify.com/v1/me/player/recently-played?limit=50',{
         method:'GET',
@@ -11,9 +10,7 @@ const getRecentlyPlayed = async function(){
     if(res.error){
         if(res.error.status == 401 || res.error.status == 400){
             await getToken()
-            await sleep(1000)
-            recentlyPlayedStack++
-            if(recentlyPlayedStack<10) await getRecentlyPlayed();
+            await getRecentlyPlayed();
         }
         return
     }

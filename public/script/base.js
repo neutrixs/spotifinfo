@@ -7,7 +7,12 @@ const sleep = async function(ms){
 }
 
 const getToken = async function(){
-    if(currentFetch) return
+    if(currentFetch){
+        for(;currentFetch;){
+            await sleep(100)
+        }
+        return
+    }
     currentFetch = true
 
     let res

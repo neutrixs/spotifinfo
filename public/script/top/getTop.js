@@ -1,6 +1,3 @@
-let topTracksStack = [0,0,0]
-let topArtistsStack = [0,0,0]
-
 const getTopTracks = async function(type){
     if(type>2) return
 
@@ -17,9 +14,7 @@ const getTopTracks = async function(type){
     if(res.error){
         if(res.error.status == 401 || res.error.status == 400){
             await getToken()
-            await sleep(1000)
-            topTracksStack[type]++
-            if(topTracksStack[type]<10)await getTopTracks(type);
+            await getTopTracks(type);
         }
         return
     }
@@ -64,9 +59,7 @@ const getTopArtists = async function(type){
     if(res.error){
         if(res.error.status == 401 || res.error.status == 400){
             await getToken()
-            await sleep(1000)
-            topArtistsStack[type]++
-            if(topArtistsStack[type]<10)await getTopTracks(type)
+            await getTopTracks(type)
         }
         return
     }

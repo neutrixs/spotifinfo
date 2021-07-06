@@ -1,0 +1,25 @@
+#accounth{
+    padding: 1.5em;
+}
+#title{
+    font-size: 2em;
+    font-weight: bold;
+    line-height: 1em;
+}
+#profilePic{
+    display: block;
+    width: 20em;
+    box-shadow: 0 0.5em 1em #000;
+}
+#accountName{
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+.listAccountInfo{
+    margin-top: 0.5em;
+    margin-bottom: 0;
+}
+.copy{
+    user-select: all;
+}

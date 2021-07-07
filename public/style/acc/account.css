@@ -9,7 +9,7 @@
 #profilePic{
     display: block;
     width: 20em;
-    box-shadow: 0 0.5em 1em #000;
+    box-shadow: 0 0.2em 0.4em rgb(0,0,0,0.6);
 }
 #accountName{
     font-size: 2em;

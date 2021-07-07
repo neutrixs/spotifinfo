@@ -48,6 +48,7 @@ app.get(/^\//,(req,res)=>{
             require('./dynamic/gettoken')(req,res,db,data)
         return
     }
+    res.status(404).render('404.ejs',{url:req.url})
 })
 
 app.listen(process.env.PORT || 80,()=>{

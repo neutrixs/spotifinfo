@@ -18,7 +18,12 @@ app.get(/^\//,(req,res)=>{
 
     switch(req.path){
         case '/':
-            res.render('index.ejs',{isLoggedOut:isLoggedOut})
+            if(isLoggedOut){
+                res.render('indexOut.ejs',{isLoggedOut:isLoggedOut})
+            }
+            else{
+                res.render('index.ejs',{isLoggedOut:isLoggedOut})
+            }
         return
         case '/account':
             if(isLoggedOut){

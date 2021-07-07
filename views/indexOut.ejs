@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Spotifinfo</title>
+        <link rel="stylesheet" href="/style/base.css">
+        <link rel="stylesheet" href="/style/baseOut.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&amp;display=swap" rel="stylesheet">
+        <script src="/script/jquery.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <%if(isLoggedOut){%>
+            <script>isLoggedOut = true</script>
+        <%}else{%>
+            <script>isLoggedOut = false</script>
+        <%}%>
+    </head>
+    <body>
+        <div id="nav" class="nav">
+            <a class="page page_lft lh1" href="../"><span>Home</span></a>
+
+            <a id="profile_h" href="/login">
+                <img id="profile" src="img/spotify_logo.png">
+                <span class="lh1">Login</span>
+            </a>
+        </div>
+        <div id="holder" class="holder none">
+            <div id="main">
+                <div id="logoHolder">
+                    <img id="logo" src="/img/kinghd.png">
+                </div>
+                <div id="infoHolder">
+                    <p id="infoTitle">Stats for king™</p>
+                    <p class="infoText">What you can do with this:</p>
+                    <ul>
+                        <li class="infoText">See your now playing</li>
+                        <li class="infoText">See your listening history</li>
+                        <li class="infoText">Info about your Spotify account</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            if(window.localStorage['force'] == 'true'){
+                $('#profile_h').attr('href','/login?force=true')
+            }
+            if(window.localStorage['dark'] == 'false'){
+                $('#profile').attr('src','/img/Spotify_Icon_RGB_Black.png')
+            }
+        </script>
+        <script src="/script/mobileDesktop.js"></script>
+        <script src="/script/themeOut.js"></script>
+        <script src="/script/base.js"></script>
+    </body>
+</html>

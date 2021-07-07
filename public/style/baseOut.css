@@ -1,0 +1,22 @@
+#main{
+    padding: 1.5em;
+}
+#logoHolder{
+    display: inline-block;
+    margin-right: 1.5em;
+}
+#logo{
+    width: 20em;
+    display: block;
+}
+#infoHolder{
+    display: inline-block;
+    vertical-align: top;
+}
+#infoTitle{
+    font-size: 2em;
+    font-weight: bold;
+}
+.infoText{
+    font-size: 2em;
+}

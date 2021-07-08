@@ -14,12 +14,16 @@
 }
 #nowPlaying{
     padding: 1.5em;
-    padding-bottom: 0;
+    margin-top: 1.5em;
+    border-radius: 1em;
+    background-color: rgb(62, 66, 59);
+    box-shadow: 0 0.2em 0.4em rgb(0,0,0,0.6);
 }
 #nowPlayingStatus{
     font-size: 2em;
     font-weight: bold;
     line-height: 1em;
+    margin-top: 0;
 }
 #mainPictureHold{
     display: inline-block;
@@ -53,6 +57,7 @@
 #recentlyPlayed{
     padding: 1.5em;
     padding-bottom: 0;
+    padding-top: 0;
 }
 #titleRecentlyPlayed{
     font-size: 2em;

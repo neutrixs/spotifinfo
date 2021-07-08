@@ -4,13 +4,11 @@ const colour = new ColorThief()
 let img = document.getElementById('mainPicture')
 img.crossOrigin = 'Anonymous'
 img.addEventListener('load',function(){
-    let palette = colour.getPalette(img,2)
-    let darkest = darkestPalette(palette)
-
-    paletteDark = palette[darkest[0]]
-    paletteLight = palette[darkest[1]].join(',')
+    paletteDark = colour.getColor(img)
+    paletteLight = colour.getColor(img)
 
     checkDarkPalette(paletteDark)
+    checkLightPalette(paletteLight)
 
     setPalette()
 })
@@ -42,5 +40,19 @@ const checkDarkPalette = function(paletteDarkk){
         }
 
         paletteDark = paletteDark2.join(',')
+    }
+}
+
+const checkLightPalette = function(paletteLightt){
+    let paletteLight2 = paletteLightt
+
+    if(paletteLightt.sort((a,b)=>{return a-b})[0] < 128){
+        let divideBy = 255 / paletteLightt[2]
+
+        for(i=0;i<paletteLight2.length;i++){
+            paletteLight2[i]= Math.floor(paletteLight2[i]*divideBy)
+        }
+
+        paletteLight = paletteLight2.join(',')
     }
 }

@@ -12,12 +12,18 @@
 .ts300ms{
     transition: 300ms ease-out;
 }
-#nowPlaying{
+.nowPlaying{
     padding: 1.5em;
     margin-top: 1.5em;
     border-radius: 1em;
+    transition: 500ms;
     background-color: rgb(62, 66, 59);
     box-shadow: 0 0.2em 0.4em rgb(0,0,0,0.6);
+}
+.nowPlayingMobile{
+    margin-top: 0;
+    padding-top: 3em;
+    border-radius: 0;
 }
 #nowPlayingStatus{
     font-size: 2em;

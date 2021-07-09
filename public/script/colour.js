@@ -17,18 +17,6 @@ const setPalette = function(){
     $('#nowPlaying').css('background-color',`rgb(${window.localStorage['dark']=='false'?paletteLight:paletteDark})`)
 }
 
-const darkestPalette = function(palette){
-    for(i=0;i<palette.length;i++){
-        palette[i].sort(function(a,b){return a-b})
-    }
-    if(palette[0][palette[0].length-1] < palette[1][palette[1].length-1]){
-        return [0,1]
-    }
-    else {
-        return [1,0]
-    }
-}
-
 const checkDarkPalette = function(paletteDarkk){
     paletteDarkk = paletteDarkk.split(',')
     let paletteDark2 = [...paletteDarkk]

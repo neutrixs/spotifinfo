@@ -24,6 +24,7 @@ const getNowPlaying = async function(){
 
     if(res.item.name !== he.decode($('#mainTitle').html())){
         getRecentlyPlayed()
+        $('#mainPicture').attr('src',res.item.album.images[0].url)
     }
 
     nowPlayingProgress = [res.progress_ms,res.item.duration_ms,res.is_playing]
@@ -35,8 +36,7 @@ const getNowPlaying = async function(){
     }
     $('#nowPlaying').removeClass('none')
 
-    $('#mainPicture').attr('src',res.item.album.images[0].url)
-    .off()
+    $('#mainPicture').off()
     .on('click',function(){
         if(isMobile()){
             location.href = res.item.album.external_urls.spotify

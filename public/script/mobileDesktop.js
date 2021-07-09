@@ -1,8 +1,10 @@
 const mobile = function(){
     $('#holder').addClass('margin0')
+    $('#nowPlaying').addClass('nowPlayingMobile')
 }
 const desktop = function(){
     $('#holder').removeClass('margin0')
+    $('#nowPlaying').removeClass('nowPlayingMobile')
 }
 
 let changeAt = 44.5

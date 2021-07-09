@@ -42,6 +42,15 @@ const checkDarkPalette = function(paletteDarkk){
 
         paletteDark = paletteDark2.join(',')
     }
+    else if(paletteDarkk.sort((a,b)=>{return a-b})[2] < 32){
+        let divideBy = 32 / paletteDarkk[2]
+
+        for(i=0;i<paletteDark2.length;i++){
+            paletteDark2[i] = Math.floor(paletteDark2[i]*divideBy)
+        }
+
+        paletteDark = paletteDark2.join(',')
+    }
 }
 
 const checkLightPalette = function(paletteLightt){

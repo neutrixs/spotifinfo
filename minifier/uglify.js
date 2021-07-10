@@ -1,7 +1,7 @@
 const fs = require('fs')
 const uglify = require('uglify-js')
 const dir = ['./public/script','./public/script/top','./public/script/acc']
-const mangleEval = ['./public/script/nowPlaying.js']
+const mangleEval = ['./public/script/nowPlaying.js','./public/script/recentlyPlayed.js','./public/script/top/getTop.js']
 let shouldMangleEval,mangleOption;
 
 for(const currentDir of dir){

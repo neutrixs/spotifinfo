@@ -27,6 +27,7 @@ const themeChange = function(){
 
         window.localStorage['dark'] = false
     }
+    setPalette()
 }
 
 const themeForce = function(){
@@ -40,6 +41,7 @@ const themeForce = function(){
     for(i=0;i<a.length;i++){
         a[i].classList.add('aLight')
     }
+    setPalette()
 }
 
 if(window.localStorage['dark'] == 'false'){

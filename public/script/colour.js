@@ -60,4 +60,3 @@
         setTimeout(setPalette,10)
     })
 })()
-

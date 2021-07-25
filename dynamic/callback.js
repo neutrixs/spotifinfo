@@ -51,7 +51,9 @@ async function callback(req,res,db,data){
     }
     await db.collection('database').doc('stateNuname').set(database)
 
-    res.cookie('uname',uname).cookie('state',req.query.state).redirect('/')
+    let expires = new Date(99999999999999)
+
+    res.cookie('uname',uname,{expires}).cookie('state',req.query.state,{expires}).redirect('/')
 }
 
 module.exports = callback

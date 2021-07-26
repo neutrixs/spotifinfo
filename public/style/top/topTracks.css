@@ -77,10 +77,13 @@
     display: inline-block;
     vertical-align: middle;
     cursor: pointer;
+    width: 3em;
+    height: 3em;
 }
 .listTrackAlbum{
     width: 3em;
     user-select: none;
+    display: block;
 }
 .listTrackInfoHolder{
     width: fit-content;

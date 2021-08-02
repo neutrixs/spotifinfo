@@ -19,10 +19,10 @@ app.get(/^\//,(req,res)=>{
     switch(req.path){
         case '/':
             if(isLoggedOut){
-                res.render('indexOut.ejs',{isLoggedOut:isLoggedOut})
+                res.render('indexOut.ejs',{isLoggedOut:isLoggedOut,useMinify:true})
             }
             else{
-                res.render('index.ejs',{isLoggedOut:isLoggedOut})
+                res.render('index.ejs',{isLoggedOut:isLoggedOut,useMinify:true})
             }
         return
         case '/account':
@@ -30,13 +30,13 @@ app.get(/^\//,(req,res)=>{
                 res.redirect('/')
                 return
             }
-            res.render('account.ejs',{isLoggedOut:isLoggedOut})
+            res.render('account.ejs',{isLoggedOut:isLoggedOut,useMinify:true})
         return
         case '/top_tracks':
             if(isLoggedOut){
                 res.redirect('/')
             }
-            res.render('top_tracks.ejs',{isLoggedOut:isLoggedOut})
+            res.render('top_tracks.ejs',{isLoggedOut:isLoggedOut,useMinify:true})
         return
         case '/login':
             require('./dynamic/login')(req,res,data,isLoggedOut)

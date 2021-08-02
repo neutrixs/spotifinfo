@@ -62,11 +62,19 @@
             </div>
         </div>
 
-        <script src="/script/base.js"></script>
-        <script src="/script/top/mobileDesktop.js"></script>
-        <script src="/script/top/getTop.js"></script>
-        <script src="/script/top/topScript.js"></script>
-        <script src="/script/top/theme.js"></script>
+        <%if(!useMinify){%>
+            <script src="/script/base.js"></script>
+            <script src="/script/top/mobileDesktop.js"></script>
+            <script src="/script/top/getTop.js"></script>
+            <script src="/script/top/topScript.js"></script>
+            <script src="/script/top/theme.js"></script>
+        <%}else{%>
+            <script src="/script_minify/base.js"></script>
+            <script src="/script_minify/top/mobileDesktop.js"></script>
+            <script src="/script_minify/top/getTop.js"></script>
+            <script src="/script_minify/top/topScript.js"></script>
+            <script src="/script_minify/top/theme.js"></script>
+        <%}%>
         <script>
             const isMobile = function() {
                 let check = false;

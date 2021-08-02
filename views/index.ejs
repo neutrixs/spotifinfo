@@ -76,12 +76,21 @@
                 return check;
             };
         </script>
-        <script src="/script/mobileDesktop.js"></script>
-        <script src="/script/nowPlaying.js"></script>
-        <script src="/script/recentlyPlayed.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
-        <script src="/script/colour.js"></script>
-        <script src="/script/theme.js"></script>
-        <script src="/script/base.js"></script>
+        <%if(!useMinify){%>
+            <script src="/script/mobileDesktop.js"></script>
+            <script src="/script/nowPlaying.js"></script>
+            <script src="/script/recentlyPlayed.js"></script>
+            <script src="/script/colour.js"></script>
+            <script src="/script/theme.js"></script>
+            <script src="/script/base.js"></script>
+        <%}else{%>
+            <script src="/script_minify/mobileDesktop.js"></script>
+            <script src="/script_minify/nowPlaying.js"></script>
+            <script src="/script_minify/recentlyPlayed.js"></script>
+            <script src="/script_minify/colour.js"></script>
+            <script src="/script_minify/theme.js"></script>
+            <script src="/script_minify/base.js"></script>
+        <%}%>
     </body>
 </html>

@@ -47,9 +47,16 @@
             </div>
         </div>
 
-        <script src="/script/base.js"></script>
-        <script src="/script/acc/mobileDesktop.js"></script>
-        <script src="/script/acc/getInfo.js"></script>
-        <script src="/script/acc/theme.js"></script>
+        <%if(!useMinify){%>
+            <script src="/script/base.js"></script>
+            <script src="/script/acc/mobileDesktop.js"></script>
+            <script src="/script/acc/getInfo.js"></script>
+            <script src="/script/acc/theme.js"></script>
+        <%}else{%>
+            <script src="/script_minify/base.js"></script>
+            <script src="/script_minify/acc/mobileDesktop.js"></script>
+            <script src="/script_minify/acc/getInfo.js"></script>
+            <script src="/script_minify/acc/theme.js"></script>
+        <%}%>
     </body>
 </html>

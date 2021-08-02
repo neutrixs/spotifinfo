@@ -49,8 +49,14 @@
                 $('#profile').attr('src','/img/Spotify_Icon_RGB_Black.png')
             }
         </script>
-        <script src="/script/mobileDesktop.js"></script>
-        <script src="/script/themeOut.js"></script>
-        <script src="/script/base.js"></script>
+        <%if(!useMinify){%>
+            <script src="/script/mobileDesktop.js"></script>
+            <script src="/script/themeOut.js"></script>
+            <script src="/script/base.js"></script>
+        <%}else{%>
+            <script src="/script_minify/mobileDesktop.js"></script>
+            <script src="/script_minify/themeOut.js"></script>
+            <script src="/script_minify/base.js"></script>
+        <%}%>
     </body>
 </html>

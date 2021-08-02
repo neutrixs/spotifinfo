@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-const cors = require('cors');
 const cookie_parser = require('cookie-parser');
 const data = require('./config_for_self');
 const admin = require('firebase-admin');
@@ -9,7 +8,7 @@ admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
 });
 const db = admin.firestore();
-app.use(express.static(__dirname+'/public')).use(cookie_parser()).use(cors())
+app.use(express.static(__dirname+'/public')).use(cookie_parser())
 app.set('view engine','ejs')
 
 app.get(/^\//,(req,res)=>{

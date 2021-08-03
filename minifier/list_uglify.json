@@ -1,0 +1,28 @@
+{
+    "index":[
+        "./public/script/mobileDesktop.js",
+        "./public/script/nowPlaying.js",
+        "./public/script/recentlyPlayed.js",
+        "./public/script/colour.js",
+        "./public/script/theme.js",
+        "./public/script/base.js"
+    ],
+    "indexOut":[
+        "./public/script/mobileDesktop.js",
+        "./public/script/themeOut.js",
+        "./public/script/base.js"
+    ],
+    "top_tracks":[
+        "./public/script/base.js",
+        "./public/script/top/mobileDesktop.js",
+        "./public/script/top/getTop.js",
+        "./public/script/top/topScript.js",
+        "./public/script/top/theme.js"
+    ],
+    "account":[
+        "./public/script/base.js",
+        "./public/script/acc/mobileDesktop.js",
+        "./public/script/acc/getInfo.js",
+        "./public/script/acc/theme.js"
+    ]
+}

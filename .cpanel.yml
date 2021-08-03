@@ -1,0 +1,4 @@
+---
+deployment:
+  tasks:
+    - cloudlinux-selector restart --json --interpreter nodejs --user neutrixw --app-root repositories/spotifinfo

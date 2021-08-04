@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono');
 .holder{
     margin-left: 10em;
     margin-right: 10em;
@@ -52,6 +53,9 @@
 }
 #mainArtist{
     margin-top: 0.5em;
+}
+#mainProgress{
+    font-family: 'JetBrains Mono', monospace;
 }
 
 

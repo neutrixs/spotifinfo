@@ -4,7 +4,7 @@
   "description": "",
   "main": "server_for_self.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node ./server_for_self_test.js",
     "uglify": "node ./minifier/uglify.js",
     "minify": "node ./minifier/minify.js"
   },

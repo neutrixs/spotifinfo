@@ -10,9 +10,9 @@ if($(window).width() / parseFloat($("body").css("font-size")) < changeAt) mobile
 $('#holder').removeClass('none').addClass('ts300ms')
 
 window.onresize = function(){
-    width = this.innerWidth;
+    let width = this.innerWidth;
     
-    emWidth = $(window).width() / parseFloat($("body").css("font-size"))
+    let emWidth = $(window).width() / parseFloat($("body").css("font-size"))
     if(emWidth < changeAt){
         mobile()
     }

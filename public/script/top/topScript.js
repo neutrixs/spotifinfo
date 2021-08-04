@@ -1,5 +1,5 @@
-typeSelected = 0
-timeSelected = 0
+let typeSelected = 0
+let timeSelected = 0
 
 const changeType = function(type){
     let isAddLight = false

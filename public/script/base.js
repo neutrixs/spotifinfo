@@ -1,4 +1,4 @@
-currentFetch = false
+let currentFetch = false
 
 const sleep = async function(ms){
     return new Promise((a,b)=>{
@@ -70,7 +70,7 @@ const logOut = function(self) {
     window.location.replace('/')
 }
 
-isDropdownOpened = false
+let isDropdownOpened = false
 const dropdown = function(){
     if(isDropdownOpened){
         $('#dropdown').removeClass('r180')
@@ -84,7 +84,7 @@ const dropdown = function(){
     }
 }
 
-isDropdownLocked = false
+let isDropdownLocked = false
 $('#profile_h').click(function(){
     isDropdownLocked = true
     dropdown()

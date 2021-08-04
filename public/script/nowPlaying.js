@@ -16,7 +16,7 @@
             }
             return
         }
-        nowPlayingStack=0
+        let nowPlayingStack=0
     
         if(res.item == null){
             $('#nowPlaying').addClass('none')
@@ -67,7 +67,7 @@
         }
         $('#mainArtist').html(artist)
     
-        temp = ''
+        let temp = ''
         for(i=0;i<res.item.artists.length;i++){
             temp += `artist${i}url = '${res.item.artists[i].external_urls.spotify}';$('#mainArtist${i}').off().on('click',()=>{if(isMobile()){location.href = artist${i}url}else{window.open(artist${i}url)}})\n`;
         }
@@ -77,7 +77,7 @@
     }
     if(!isLoggedOut){
         getNowPlaying()
-        nowPlayingInterval = setInterval(getNowPlaying,2000)
+        let nowPlayingInterval = setInterval(getNowPlaying,2000)
     }
     let nowPlayingProgressInterval = setInterval(()=>{
         nowPlayingProgress[0]+=100

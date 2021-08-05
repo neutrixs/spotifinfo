@@ -1,4 +1,6 @@
 ---
 deployment:
   tasks:
-    - cloudlinux-selector restart --json --interpreter nodejs --user neutrixw --app-root repositories/spotifinfo
+    - export DEPLOYPATH=/home/neutrixw/spotifinfo.neutrix-web.xyz
+    - /bin/cp -r * $DEPLOYPATH
+    - cloudlinux-selector restart --json --interpreter nodejs --user neutrixw --app-root spotifinfo.neutrix-web.xyz

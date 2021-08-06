@@ -76,7 +76,7 @@ const getTopTracks = async function(type){
         topEach[appendChild](albumHolder)
         topEach[appendChild](infoHolder)
 
-        document.getElementById(`listTrack${type}`).appendChild(topEach)
+        document.getElementById(`listTrack${type}`)[appendChild](topEach)
     }
 
     for(i=0;i<res[items].length;i++){
@@ -126,10 +126,6 @@ const getTopArtists = async function(type){
         return
     }
     
-    /*for(i=0;i<res.items.length;i++){
-        temp+=`<div id="listArtist${type}N${i}" class="list"><div class="listNumber">${i+1}</div><div id="listArtist${type}N${i}ProfileHolder" class="listArtistProfileHolder"><img id="listArtist${type}N${i}Profile" class="listArtistProfile" src="${res.items[i].images[1].url}"></div><div id="listArtist${type}N${i}InfoHolder" class="listArtistInfoHolder"><p id="listArtist${type}N${i}Info" class="listArtistInfo">${res.items[i].name}</p></div></div>`
-    }
-    $(`#listArtist${type}`).html(temp)*/
     document.getElementById(`listArtist${type}`).innerHTML = ''
 
     for(i=0;i<res[items].length;i++){

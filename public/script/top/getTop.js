@@ -1,4 +1,8 @@
 const getTopTracks = async function(type){
+    let createElement = 'createElement' // best for minifier, but doesn't make it hard to code either
+    let setAttribute = 'setAttribute'
+    let items = 'items'
+    let appendChild = 'appendChild'   
     if(type>2) return
 
     let res,term,temp
@@ -19,22 +23,62 @@ const getTopTracks = async function(type){
         return
     }
 
-    temp = ''
+    document.getElementById(`listTrack${type}`).innerHTML=''
 
-    for(i=0;i<res.items.length;i++){
-        temp+=`<div id="listTrack${type}N${i}" class="list"><div class="listNumber">${i+1}</div><div id="listTrack${type}N${i}AlbumHolder" class="listTrackAlbumHolder"><img id="listTrack${type}N${i}Album" class="listTrackAlbum" src="${res.items[i].album.images[1].url}"></div><div id="listTrack${type}N${i}InfoHolder" class="listTrackInfoHolder"><div class="listTrackTitle">${res.items[i].name}</div><div class="listTrackArtist">`
-        
-        for(j=0;j<res.items[i].artists.length;j++){
-            temp+=res.items[i].artists[j].name
+    for(i=0;i<res[items].length;i++){
+        let topEach = document[createElement]('div')
 
-            if(j!==res.items[i].artists.length-1){
-                temp+=', '
+        topEach[setAttribute]('id',`listTrack${type}N${i}`)
+        topEach[setAttribute]('class','list')
+
+        let listNumber = document[createElement]('div')
+
+        listNumber[setAttribute]('class','listNumber')
+        listNumber.innerHTML = i+1
+
+        let albumHolder = document[createElement]('div')
+
+        albumHolder[setAttribute]('id',`listTrack${type}N${i}AlbumHolder`)
+        albumHolder[setAttribute]('class','listTrackAlbumHolder')
+
+        let albumImg = document[createElement]('img')
+
+        albumImg[setAttribute]('id',`listTrack${type}N${i}Album`)
+        albumImg[setAttribute]('class','listTrackAlbum')
+        albumImg[setAttribute]('src',res[items][i].album.images[1].url)
+
+        let infoHolder = document[createElement]('div')
+
+        infoHolder[setAttribute]('id',`listTrack${type}N${i}InfoHolder`)
+        infoHolder[setAttribute]('class','listTrackInfoHolder')
+
+        let trackTitle = document[createElement]('div')
+
+        trackTitle[setAttribute]('class','listTrackTitle')
+        trackTitle.innerHTML = res[items][i].name
+
+        let trackArtist = document[createElement]('div')
+
+        for(j=0;j<res[items][i].artists.length;j++){
+            trackArtist.innerHTML+=res[items][i].artists[j].name
+
+            if(j!= res[items][i].artists.length-1){
+                trackArtist.innerHTML+=', '
             }
         }
-        temp+='</div></div></div>'
+
+        infoHolder[appendChild](trackTitle)
+        infoHolder[appendChild](trackArtist)
+
+        albumHolder[appendChild](albumImg)
+
+        topEach[appendChild](listNumber)
+        topEach[appendChild](albumHolder)
+        topEach[appendChild](infoHolder)
+
+        document.getElementById(`listTrack${type}`).appendChild(topEach)
     }
 
-    $(`#listTrack${type}`).html(temp)
     temp = ''
 
     for(i=0;i<res.items.length;i++){

@@ -79,11 +79,26 @@ const getRecentlyPlayed = async function(){
         listHolder[appendChild](recentlyPlayedEach,listHolder.childNodes[0])
     }
 
-    let temp = ''
     for(i=0;i<res[items].length;i++){
-        temp+=`$('#recentlyPlayed${i}InfoHolder').off().on('click',()=>{url = '${res[items][i][track].external_urls.spotify}';if(isMobile()){location.href = url}else{window.open(url)}});$('#recentlyPlayed${i}ImageHolder').off().on('click',()=>{url = '${res[items][i][track].album.external_urls.spotify}';if(isMobile()){location.href = url}else{window.open(url)}})\n`
+        $(`#recentlyPlayed${i}InfoHolder`).off().on('click',{res:{...res},i:i},(event)=>{
+            let url = event.data.res[items][event.data.i][track].external_urls.spotify
+            if(isMobile()){
+                location.href = url
+            }
+            else{
+                window.open(url)
+            }
+        })
+        $(`#recentlyPlayed${i}ImageHolder`).off().on('click',{res:{...res},i:i},(event)=>{
+            let url = event.data.res[items][event.data.i][track].album.external_urls.spotify
+            if(isMobile()){
+                location.href = url
+            }
+            else{
+                window.open(url)
+            }
+        })
     }
-    eval(temp)
 
     $('#recentlyPlayed').removeClass('none')
 }

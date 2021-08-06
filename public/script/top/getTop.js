@@ -102,6 +102,10 @@ const getTopTracks = async function(type){
 }
 
 const getTopArtists = async function(type){
+    let createElement = 'createElement' // best for minifier, but doesn't make it hard to code either
+    let setAttribute = 'setAttribute'
+    let items = 'items'
+    let appendChild = 'appendChild'  
     if(type>2) return
 
     let res,term,temp
@@ -121,13 +125,55 @@ const getTopArtists = async function(type){
         }
         return
     }
-
-    temp = ''
     
-    for(i=0;i<res.items.length;i++){
+    /*for(i=0;i<res.items.length;i++){
         temp+=`<div id="listArtist${type}N${i}" class="list"><div class="listNumber">${i+1}</div><div id="listArtist${type}N${i}ProfileHolder" class="listArtistProfileHolder"><img id="listArtist${type}N${i}Profile" class="listArtistProfile" src="${res.items[i].images[1].url}"></div><div id="listArtist${type}N${i}InfoHolder" class="listArtistInfoHolder"><p id="listArtist${type}N${i}Info" class="listArtistInfo">${res.items[i].name}</p></div></div>`
     }
-    $(`#listArtist${type}`).html(temp)
+    $(`#listArtist${type}`).html(temp)*/
+    document.getElementById(`listArtist${type}`).innerHTML = ''
+
+    for(i=0;i<res[items].length;i++){
+        let artistEach = document[createElement]('div')
+
+        artistEach[setAttribute]('id',`listArtist${type}N${i}`)
+        artistEach[setAttribute]('class','list')
+
+        let listNumber = document[createElement]('div')
+
+        listNumber[setAttribute]('class','listNumber')
+        listNumber.innerHTML = i+1
+
+        let profileHolder = document[createElement]('div')
+
+        profileHolder[setAttribute]('id',`listArtist${type}N${i}ProfileHolder`)
+        profileHolder[setAttribute]('class','listArtistProfileHolder')
+
+        let profile = document[createElement]('img')
+
+        profile[setAttribute]('id',`listArtist${type}N${i}Profile`)
+        profile[setAttribute]('class',`listArtistProfile`)
+        profile[setAttribute]('src',res[items][i].images[1].url)
+
+        let infoHolder = document[createElement]('div')
+
+        infoHolder[setAttribute]('id',`listArtist${type}N${i}InfoHolder`)
+        infoHolder[setAttribute]('class','listArtistInfoHolder')
+
+        let artistName = document[createElement]('p')
+
+        artistName[setAttribute]('id',`listArtist${type}N${i}Info`)
+        artistName[setAttribute]('class','listArtistInfo')
+        artistName.innerHTML = res[items][i].name
+
+        profileHolder[appendChild](profile)
+        infoHolder[appendChild](artistName)
+        artistEach[appendChild](listNumber)
+        artistEach[appendChild](profileHolder)
+        artistEach[appendChild](infoHolder)
+
+        document.getElementById(`listArtist${type}`)[appendChild](artistEach)
+    }
+
     temp = ''
 
     for(i=0;i<res.items.length;i++){

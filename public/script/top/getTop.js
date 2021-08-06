@@ -174,12 +174,27 @@ const getTopArtists = async function(type){
         document.getElementById(`listArtist${type}`)[appendChild](artistEach)
     }
 
-    temp = ''
+    for(i=0;i<res[items].length;i++){
+        $(`#listArtist${type}N${i}ProfileHolder`).off().on('click',{res,i},function(event){
+            let url = event.data.res.items[event.data.i].external_urls.spotify
+            if(isMobile()){
+                location.href = url
+            }
+            else{
+                window.open(url)
+            }
+        })
+        $(`#listArtist${type}N${i}InfoHolder`).off().on('click',{res,i},function(event){
+            let url = event.data.res.items[event.data.i].external_urls.spotify
+            if(isMobile()){
+                location.href = url
+            }
+            else{
+                window.open(url)
+            }
+        })
 
-    for(i=0;i<res.items.length;i++){
-        temp+=`$('#listArtist${type}N${i}ProfileHolder').off().on('click',()=>{url = '${res.items[i].external_urls.spotify}';if(isMobile()){location.href = url}else{window.open(url)}});$('#listArtist${type}N${i}InfoHolder').off().on('click',()=>{url = '${res.items[i].external_urls.spotify}';if(isMobile()){location.href = url}else{window.open(url)}})\n`
     }
-    eval(temp)
 }
 
 getTopTracks(0)

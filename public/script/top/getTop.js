@@ -79,12 +79,26 @@ const getTopTracks = async function(type){
         document.getElementById(`listTrack${type}`).appendChild(topEach)
     }
 
-    temp = ''
-
-    for(i=0;i<res.items.length;i++){
-        temp+=`$('#listTrack${type}N${i}AlbumHolder').off().on('click',()=>{url = '${res.items[i].album.external_urls.spotify}';if(isMobile()){location.href = url}else{window.open(url)}});$('#listTrack${type}N${i}InfoHolder').off().on('click',()=>{url = '${res.items[i].external_urls.spotify}';if(isMobile()){location.href = url}else{window.open(url)}})\n`
+    for(i=0;i<res[items].length;i++){
+        $(`#listTrack${type}N${i}AlbumHolder`).off().on('click',{res,i},function(event){
+            let url = event.data.res.items[event.data.i].album.external_urls.spotify
+            if(isMobile()){
+                location.href = url
+            }
+            else{
+                window.open(url)
+            }
+        })
+        $(`#listTrack${type}N${i}InfoHolder`).off().on('click',{res,i},function(event){
+            let url = event.data.res.items[event.data.i].external_urls.spotify
+            if(isMobile()){
+                location.href = url
+            }
+            else{
+                window.open(url)
+            }
+        })
     }
-    eval(temp)
 }
 
 const getTopArtists = async function(type){

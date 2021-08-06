@@ -1,3 +1,9 @@
+let createElement = 'createElement' // best for minifier, but doesn't make it hard to code either
+let setAttribute = 'setAttribute'
+let items = 'items'
+let track = 'track'
+let appendChild = 'appendChild'
+
 const getRecentlyPlayed = async function(){
     let res = await fetch('https://api.spotify.com/v1/me/player/recently-played?limit=50',{
         method:'GET',
@@ -17,10 +23,7 @@ const getRecentlyPlayed = async function(){
 
     $('#recentlyPlayedListHolder').html('')
 
-    for(i=0;i<res.items.length;i++){
-        let createElement = 'createElement' // best for minifier, but doesn't make it hard to code either
-        let setAttribute = 'setAttribute'
-
+    for(i=0;i<res[items].length;i++){
         let recentlyPlayedEach = document[createElement]('div')
         
         recentlyPlayedEach[setAttribute]('id','RecentlyPlayed'+i)
@@ -34,7 +37,7 @@ const getRecentlyPlayed = async function(){
         let recentlyPlayedImage = document[createElement]('img')
             
         recentlyPlayedImage[setAttribute]('class','recentlyPlayedImage')
-        recentlyPlayedImage[setAttribute]('src',res.items[i].track.album.images[1].url)
+        recentlyPlayedImage[setAttribute]('src',res[items][i][track].album.images[1].url)
 
         let recentlyPlayedInfoHolder = document[createElement]('div')
         
@@ -44,41 +47,41 @@ const getRecentlyPlayed = async function(){
         let recentlyPlayedSongName = document[createElement]('p')
         
         recentlyPlayedSongName[setAttribute]('class','recentlyPlayedSongName')
-        recentlyPlayedSongName.innerHTML = res.items[i].track.name
+        recentlyPlayedSongName.innerHTML = res[items][i][track].name
         
         let recentlyPlayedArtistName = document[createElement]('p')
             
         recentlyPlayedArtistName[setAttribute]('class','recentlyPlayedArtistName')
         
-        for(j=0;j<res.items[i].track.artists.length;j++){
+        for(j=0;j<res[items][i][track].artists.length;j++){
             let each = document[createElement]('span')
                 
             each[setAttribute]('id','recent'+i+'artist'+j)
-            each.innerHTML = res.items[i].track.artists[j].name
+            each.innerHTML = res[items][i][track].artists[j].name
 
-            recentlyPlayedArtistName.appendChild(each)
+            recentlyPlayedArtistName[appendChild](each)
 
-            if(j!= res.items[i].track.artists.length-1){
+            if(j!= res[items][i][track].artists.length-1){
                 let each = document[createElement]('span')
                 each.innerHTML = ', '
 
-                recentlyPlayedArtistName.appendChild(each)
+                recentlyPlayedArtistName[appendChild](each)
             }
         }
 
-        recentlyPlayedInfoHolder.appendChild(recentlyPlayedSongName)
-        recentlyPlayedInfoHolder.appendChild(recentlyPlayedArtistName)
-        recentlyPlayedImageHolder.appendChild(recentlyPlayedImage)
-        recentlyPlayedEach.appendChild(recentlyPlayedImageHolder)
-        recentlyPlayedEach.appendChild(recentlyPlayedInfoHolder)
+        recentlyPlayedInfoHolder[appendChild](recentlyPlayedSongName)
+        recentlyPlayedInfoHolder[appendChild](recentlyPlayedArtistName)
+        recentlyPlayedImageHolder[appendChild](recentlyPlayedImage)
+        recentlyPlayedEach[appendChild](recentlyPlayedImageHolder)
+        recentlyPlayedEach[appendChild](recentlyPlayedInfoHolder)
 
         let listHolder = document.getElementById('recentlyPlayedListHolder')
-        listHolder.appendChild(recentlyPlayedEach,listHolder.childNodes[0])
+        listHolder[appendChild](recentlyPlayedEach,listHolder.childNodes[0])
     }
 
     let temp = ''
-    for(i=0;i<res.items.length;i++){
-        temp+=`$('#recentlyPlayed${i}InfoHolder').off().on('click',()=>{url = '${res.items[i].track.external_urls.spotify}';if(isMobile()){location.href = url}else{window.open(url)}});$('#recentlyPlayed${i}ImageHolder').off().on('click',()=>{url = '${res.items[i].track.album.external_urls.spotify}';if(isMobile()){location.href = url}else{window.open(url)}})\n`
+    for(i=0;i<res[items].length;i++){
+        temp+=`$('#recentlyPlayed${i}InfoHolder').off().on('click',()=>{url = '${res[items][i][track].external_urls.spotify}';if(isMobile()){location.href = url}else{window.open(url)}});$('#recentlyPlayed${i}ImageHolder').off().on('click',()=>{url = '${res[items][i][track].album.external_urls.spotify}';if(isMobile()){location.href = url}else{window.open(url)}})\n`
     }
     eval(temp)
 

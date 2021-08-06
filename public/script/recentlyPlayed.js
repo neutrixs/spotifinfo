@@ -76,7 +76,7 @@ const getRecentlyPlayed = async function(){
         recentlyPlayedEach[appendChild](recentlyPlayedInfoHolder)
 
         let listHolder = document.getElementById('recentlyPlayedListHolder')
-        listHolder[appendChild](recentlyPlayedEach,listHolder.childNodes[0])
+        listHolder[appendChild](recentlyPlayedEach)
     }
 
     for(i=0;i<res[items].length;i++){

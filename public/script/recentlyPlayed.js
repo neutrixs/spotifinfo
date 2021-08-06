@@ -1,10 +1,10 @@
-let createElement = 'createElement' // best for minifier, but doesn't make it hard to code either
-let setAttribute = 'setAttribute'
-let items = 'items'
-let track = 'track'
-let appendChild = 'appendChild'
-
 const getRecentlyPlayed = async function(){
+    let createElement = 'createElement' // best for minifier, but doesn't make it hard to code either
+    let setAttribute = 'setAttribute'
+    let items = 'items'
+    let track = 'track'
+    let appendChild = 'appendChild'    
+
     let res = await fetch('https://api.spotify.com/v1/me/player/recently-played?limit=50',{
         method:'GET',
         headers:{
@@ -81,7 +81,7 @@ const getRecentlyPlayed = async function(){
 
     for(i=0;i<res[items].length;i++){
         $(`#recentlyPlayed${i}InfoHolder`).off().on('click',{res:{...res},i:i},(event)=>{
-            let url = event.data.res[items][event.data.i][track].external_urls.spotify
+            let url = event.data.res.items[event.data.i].track.external_urls.spotify
             if(isMobile()){
                 location.href = url
             }
@@ -90,7 +90,7 @@ const getRecentlyPlayed = async function(){
             }
         })
         $(`#recentlyPlayed${i}ImageHolder`).off().on('click',{res:{...res},i:i},(event)=>{
-            let url = event.data.res[items][event.data.i][track].album.external_urls.spotify
+            let url = event.data.res.items[event.data.i].track.album.external_urls.spotify
             if(isMobile()){
                 location.href = url
             }

@@ -121,6 +121,7 @@
     object-fit: cover;
     border-radius: 1.5em;
     user-select: none;
+    display:block;
 }
 .listArtistInfoHolder{
     display: inline-block;
@@ -136,4 +137,5 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
+    line-height: 1em;
 }

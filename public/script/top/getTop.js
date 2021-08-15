@@ -60,6 +60,8 @@
 
             let trackArtist = document[createElement]('div')
 
+            trackArtist[setAttribute]('class','listTrackArtist')
+
             for(j=0;j<res[items][i].artists.length;j++){
                 trackArtist.innerHTML+=res[items][i].artists[j].name
 

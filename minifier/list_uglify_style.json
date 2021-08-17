@@ -1,0 +1,18 @@
+{
+    "index":[
+        "./public/style/base.css",
+        "./public/style/nowPlaying.css"
+    ],
+    "indexOut":[
+        "./public/style/base.css",
+        "./public/style/baseOut.css"
+    ],
+    "top_tracks":[
+        "./public/style/base.css",
+        "./public/style/top/topTracks.css"
+    ],
+    "account":[
+        "./public/style/base.css",
+        "./public/style/acc/account.css"
+    ]
+}

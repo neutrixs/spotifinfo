@@ -1,8 +1,8 @@
 :root{
     --background-dark: #202020;
-    --navbar-dark: #505050;
+    --navbar-dark: #202020;
     --background-light: #FFFFFF;
-    --navbar-light: #e1e1e1;
+    --navbar-light: #FFFFFF;
 }
 body{
     margin:0;

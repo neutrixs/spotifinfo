@@ -2,12 +2,16 @@
 <html>
     <head>
         <title>Spotifinfo</title>
-        <link rel="stylesheet" href="/style/base.css">
-        <link rel="stylesheet" href="/style/top/topTracks.css?1629010154365">
+        <%if(!useMinify){%>
+            <link rel="stylesheet" href="/style/base.css">
+            <link rel="stylesheet" href="/style/top/topTracks.css?1629010154365">
+            <script src="/script/jquery.js"></script>
+        <%}else{%>
+            <link rel="stylesheet" href="/style_minify/top_tracks.css"
+        <%}%>
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet"> 
         <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&amp;display=swap" rel="stylesheet">
-        <script src="/script/jquery.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
         <%if(isLoggedOut){%>
@@ -69,7 +73,7 @@
             <script src="/script/top/topScript.js"></script>
             <script src="/script/top/theme.js"></script>
         <%}else{%>
-            <script src="/script_minify/top_tracks.js?1629011041699"></script>
+            <script src="/script_minify/top_tracks.js?1629187829293"></script>
         <%}%>
         <script>
             const isMobile = function() {

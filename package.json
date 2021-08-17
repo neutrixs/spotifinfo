@@ -5,14 +5,13 @@
   "main": "server_for_self.js",
   "scripts": {
     "test": "node ./server_for_self_test.js",
-    "uglify": "node ./minifier/uglify.js",
-    "minify": "node ./minifier/minify.js"
+    "uglify": "node ./minifier/uglify.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "babel-minify": "^0.5.1",
+    "clean-css": "^5.1.5",
     "cookie-parser": "^1.4.5",
     "ejs": "^3.1.6",
     "express": "^4.17.1",

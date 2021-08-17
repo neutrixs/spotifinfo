@@ -2,11 +2,15 @@
 <html>
     <head>
         <title>Spotifinfo</title>
-        <link rel="stylesheet" href="/style/base.css">
-        <link rel="stylesheet" href="/style/acc/account.css">
+        <%if(!useMinify){%>
+            <link rel="stylesheet" href="/style/base.css">
+            <link rel="stylesheet" href="/style/acc/account.css">
+            <script src="/script/jquery.js"></script>
+        <%}else{%>
+            <link rel="stylesheet" href="/style_minify/account.css"
+        <%}%>
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&amp;display=swap" rel="stylesheet">
-        <script src="/script/jquery.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
         <%if(isLoggedOut){%>
@@ -53,7 +57,7 @@
             <script src="/script/acc/getInfo.js"></script>
             <script src="/script/acc/theme.js"></script>
         <%}else{%>
-            <script src="/script_minify/account.js"></script>
+            <script src="/script_minify/account.js?1629187829293"></script>
         <%}%>
     </body>
 </html>

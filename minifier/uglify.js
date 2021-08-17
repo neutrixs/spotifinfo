@@ -26,6 +26,8 @@ for(let bundle in listUglifyStyle){
             styles:fs.readFileSync(file,{encoding:'utf-8'})
         }
     }
-    let res = new clean().minify(fileData)
+    let res = new clean({
+        level:2
+    }).minify(fileData)
     fs.writeFileSync('./public/style_minify/'+bundle+'.css',res.styles)
 }

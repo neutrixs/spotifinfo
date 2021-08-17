@@ -34,6 +34,8 @@
 #mainPictureHold{
     display: inline-block;
     margin-right: 1.5em;
+    width: 20em;
+    height: 20em;
 }
 #mainPicture{
     width: 20em;

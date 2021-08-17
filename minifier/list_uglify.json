@@ -1,5 +1,7 @@
 {
     "index":[
+        "./public/script/jquery.js",
+        "./public/script/he.js",
         "./public/script/mobileDesktop.js",
         "./public/script/nowPlaying.js",
         "./public/script/recentlyPlayed.js",
@@ -8,11 +10,13 @@
         "./public/script/base.js"
     ],
     "indexOut":[
+        "./public/script/jquery.js",
         "./public/script/mobileDesktop.js",
         "./public/script/themeOut.js",
         "./public/script/base.js"
     ],
     "top_tracks":[
+        "./public/script/jquery.js",
         "./public/script/base.js",
         "./public/script/top/mobileDesktop.js",
         "./public/script/top/getTop.js",
@@ -20,6 +24,7 @@
         "./public/script/top/theme.js"
     ],
     "account":[
+        "./public/script/jquery.js",
         "./public/script/base.js",
         "./public/script/acc/mobileDesktop.js",
         "./public/script/acc/getInfo.js",

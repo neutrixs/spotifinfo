@@ -2,7 +2,7 @@ const themeChange = function(){
     if(window.localStorage['dark'] == 'false'){
         $('body')[0].classList.remove('bodyLight')
         $('#nav').removeClass('navLight')
-        $('#dropdown_options').removeClass('dropdown_optionsLight')
+        $('#dropdown_options').removeClass('dropdown_optionsLight2')
         $('#dropdown').html($('#dropdown').html().replace('black','white'))
         $('#theme_check').removeClass('none')
 
@@ -16,7 +16,7 @@ const themeChange = function(){
     else{
         $('body')[0].classList.add('bodyLight')
         $('#nav').addClass('navLight')
-        $('#dropdown_options').addClass('dropdown_optionsLight')
+        $('#dropdown_options').addClass('dropdown_optionsLight2')
         $('#dropdown').html($('#dropdown').html().replace('white','black'))
         $('#theme_check').addClass('none')
 
@@ -32,7 +32,7 @@ const themeChange = function(){
 const themeForce = function(){
     $('body')[0].classList.add('bodyLight')
     $('#nav').addClass('navLight')
-    $('#dropdown_options').addClass('dropdown_optionsLight')
+    $('#dropdown_options').addClass('dropdown_optionsLight2')
     $('#dropdown').html($('#dropdown').html().replace('white','black'))
     $('#theme_check').addClass('none')
 

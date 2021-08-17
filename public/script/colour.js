@@ -10,7 +10,7 @@
         checkDarkPalette(palette[0])
         checkLightPalette(palette[1])
     
-        setPalette()
+        applyPalette((window.localStorage['dark']=='false'?palette[1]:palette[0]).split(','))
     })
     
     const setPalette = function(){
@@ -56,7 +56,47 @@
         }
     }
 
+    const hexToRGB = function(hex, alpha) {
+        var r = parseInt(hex.slice(1, 3), 16),
+            g = parseInt(hex.slice(3, 5), 16),
+            b = parseInt(hex.slice(5, 7), 16);
+    
+        if (alpha) {
+            return [r,g,b,alpha];
+        } else {
+            return [r,g,b]
+        }
+    }
+    
+    const applyPalette = function(palette){
+        let nowPlayingHeight = $('#nowPlaying').outerHeight()
+        let currentScroll = window.scrollY
+        let alpha
+        console.log(currentScroll)
+        console.log(nowPlayingHeight)
+
+        if(currentScroll >= nowPlayingHeight){
+            alpha = 0
+        }
+        else{
+            alpha = 1 - currentScroll / nowPlayingHeight
+        }
+
+        let rgbaBackground = `rgba(${palette[0]},${palette[1]},${palette[2]},${alpha})`
+
+        $('#bodyOverlayBackground').css('background-color',rgbaBackground)
+        $('#navOverlayBackground').css('background-color',rgbaBackground)
+        $('#dropdown_options3').css('background-color',rgbaBackground)
+    }
+
+    document.addEventListener('scroll',function(e){
+        console.log('hello?')
+        if(palette) applyPalette((window.localStorage['dark']=='false'?palette[1]:palette[0]).split(','))
+    })
+
     $('#theme').on('click',function(){
-        setTimeout(setPalette,10)
+        setTimeout(function(){
+            if(palette) applyPalette((window.localStorage['dark']=='false'?palette[1]:palette[0]).split(','))
+        },10)
     })
 })()

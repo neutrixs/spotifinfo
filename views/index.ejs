@@ -2,8 +2,12 @@
 <html>
     <head>
         <title>Spotifinfo</title>
-        <link rel="stylesheet" href="/style/base.css">
-        <link rel="stylesheet" href="/style/nowPlaying.css">
+        <%if(!useMinify){%>
+            <link rel="stylesheet" href="/style/base.css">
+            <link rel="stylesheet" href="/style/nowPlaying.css">
+        <%}else{%>
+            <link rel="stylesheet" href="/style_minify/index.css"
+        <%}%>
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&amp;display=swap" rel="stylesheet">
         <script src="/script/jquery.js"></script>

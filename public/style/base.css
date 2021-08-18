@@ -1,13 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+:root{
+    --font-light:#202020;
+    --font-dark:#DFDFDF;
+}
 body{
     margin:0;
     user-select: none;
     font-family: 'Inter',sans-serif;
-    color: white;
+    color: var(--font-dark);
     background-color: #202020;
 }
 .bodyLight{
-    color: black;
+    color: var(--font-light);
     background-color: #FFFFFF;
 }
 .holder{
@@ -29,11 +33,11 @@ body{
     background-color: white;
 }
 a{
-    color: white;
+    color: var(--font-dark);
     text-decoration: none;
 }
 .aLight{
-    color: black;
+    color: var(--font-light);
 }
 .lh1{
     line-height: 1em;

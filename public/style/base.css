@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 :root{
+    --background-dark: #202020;
+    --navbar-dark: #202020;
+    --background-light: #FFFFFF;
+    --navbar-light: #FFFFFF;
     --font-light:#202020;
     --font-dark:#DFDFDF;
 }
@@ -8,11 +12,11 @@ body{
     user-select: none;
     font-family: 'Inter',sans-serif;
     color: var(--font-dark);
-    background-color: #202020;
+    background-color: var(--background-dark);
 }
 .bodyLight{
     color: var(--font-light);
-    background-color: #FFFFFF;
+    background-color: var(--background-light);
 }
 .holder{
     margin-left: 10em;
@@ -55,11 +59,11 @@ a{
     padding-top: 0;
     width: 100%;
     min-width: 24.5em;
-    background-color: #505050;
+    background-color: var(--navbar-dark);
     box-shadow: 0 0.1em 0.2em rgb(0,0,0,0.6);
 }
 .navLight{
-    background-color: #e1e1e1;
+    background-color: var(--navbar-light);
 }
 .page{
     margin-right: 2em;
@@ -96,13 +100,13 @@ a{
     position: fixed;
     top: 4.5em;
     right: 1.5em;
-    background-color: #505050;
+    background-color: var(--navbar-dark);
     padding: 1em;
     border-radius: 0.5em;
     box-shadow: 0.1em 0.1em 0.2em rgb(0,0,0,0.6);
 }
 .dropdown_optionsLight{
-    background-color: #e1e1e1;
+    background-color: var(--navbar-light);
 }
 
 .divide1{

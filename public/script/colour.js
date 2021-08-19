@@ -9,6 +9,8 @@
     
         checkDarkPalette(palette[0])
         checkLightPalette(palette[1])
+        palette[0] += ', 0.5'
+        palette[1] += ', 0.5'
     
         setPalette()
     })

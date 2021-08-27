@@ -1,5 +1,6 @@
 const { default: fetch } = require('node-fetch')
 const querystring = require('querystring')
+const fs = require('fs')
 const relogback = {
     success:false,
     data:null,
@@ -7,13 +8,21 @@ const relogback = {
 }
 
 async function gettoken(req,res,db,data){
-    let database = await db.collection('database').doc('stateNuname').get()
-    if(database._fieldsProto !== undefined){
-        database = database.data()
+    let database
+    if(data.firestore){
+        database = await db.collection('database').doc('stateNuname').get()
+        if(database._fieldsProto !== undefined){
+            database = database.data()
+        }
+        else{
+            database = {}
+        }
     }
     else{
-        database = {}
+        database = fs.readFileSync('./db/data.json',{encoding:'utf-8'})
+        database = JSON.parse(database)
     }
+
     if(!req.cookies.state || !req.cookies.uname){
         res.json(relogback)
         return

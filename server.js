@@ -8,6 +8,9 @@ admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
 });
 const db = admin.firestore();
+
+require('./checkDB')()
+
 app.use(cookie_parser())
 app.set('view engine','ejs')
 

@@ -1,5 +1,6 @@
 const fetch = require('node-fetch')
 const querystring = require('querystring')
+const fs = require('fs')
 async function callback(req,res,db,data){
     if(req.query.error){
         res.redirect('/')
@@ -37,19 +38,32 @@ async function callback(req,res,db,data){
     uname = await uname.json()
     uname = uname.id
 
-    let database = await db.collection('database').doc('stateNuname').get()
-    if(database._fieldsProto == undefined){
-        database = {}
+    let database
+    if(data.firestore){
+        database = await db.collection('database').doc('stateNuname').get()
+        if(database._fieldsProto == undefined){
+            database = {}
+        }
+        else{
+            database = database.data()
+        }
     }
     else{
-        database = database.data()
+        database = fs.readFileSync('./db/data.json',{encoding:'utf-8'})
+        database = JSON.parse(database)
     }
+
     database[req.query.state] = {
         id:uname,
         refresh_token:refresh_token,
         dateadded:new Date()-0
     }
-    await db.collection('database').doc('stateNuname').set(database)
+    if(data.firestore){
+        await db.collection('database').doc('stateNuname').set(database)
+    }
+    else{
+        fs.writeFileSync('./db/data.json',JSON.stringify(database))
+    }
 
     let expires = new Date(99999999999999)
 

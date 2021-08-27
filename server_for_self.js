@@ -52,6 +52,9 @@ app.get(/^\//,(req,res)=>{
     }
     res.status(404).render('404.ejs',{url:req.url})
 })
+app.post('/getdata',(req,res)=>{
+    require('./dynamic/getdata')(req,res,data)
+})
 
 app.listen(process.env.PORT || 80,()=>{
     console.log('running!')

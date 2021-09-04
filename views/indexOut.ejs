@@ -43,6 +43,13 @@
             </div>
         </div>
 
+        <%if(!useMinify){%>
+            <script src="/script/mobileDesktop.js"></script>
+            <script src="/script/themeOut.js"></script>
+            <script src="/script/base.js"></script>
+        <%}else{%>
+            <script src="/script_minify/indexOut.js?1629187829293"></script>
+        <%}%>
         <script>
             if(window.localStorage['force'] == 'true'){
                 $('#profile_h').attr('href','/login?force=true')
@@ -51,12 +58,5 @@
                 $('#profile').attr('src','/img/Spotify_Icon_RGB_Black.png')
             }
         </script>
-        <%if(!useMinify){%>
-            <script src="/script/mobileDesktop.js"></script>
-            <script src="/script/themeOut.js"></script>
-            <script src="/script/base.js"></script>
-        <%}else{%>
-            <script src="/script_minify/indexOut.js?1629187829293"></script>
-        <%}%>
     </body>
 </html>

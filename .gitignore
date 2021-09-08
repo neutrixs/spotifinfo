@@ -77,3 +77,5 @@ typings/
 package-lock.json
 
 db/data.json
+ssh/id_rsa
+ssh/id_rsa.pub

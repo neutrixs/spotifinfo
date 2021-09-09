@@ -67,11 +67,16 @@
         }
         $('#mainArtist').html(artist)
     
-        let temp = ''
         for(i=0;i<res.item.artists.length;i++){
-            temp += `artist${i}url = '${res.item.artists[i].external_urls.spotify}';$('#mainArtist${i}').off().on('click',()=>{if(isMobile()){location.href = artist${i}url}else{window.open(artist${i}url)}})\n`;
+            $(`#mainArtist${i}`).off().on('click',{url:res.item.artists[i].external_urls.spotify},function(e){
+                if(isMobile()){
+                    location.href = e.data.url
+                }
+                else{
+                    window.open(e.data.url)
+                }
+            })
         }
-        eval(temp)
     
         $('#nowPlaying').removeClass('none')
     }

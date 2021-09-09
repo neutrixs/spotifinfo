@@ -2,6 +2,7 @@
     "index":[
         "./public/script/jquery.js",
         "./public/script/he.js",
+        "./public/script/isMobile.js",
         "./public/script/mobileDesktop.js",
         "./public/script/nowPlaying.js",
         "./public/script/recentlyPlayed.js",
@@ -17,6 +18,7 @@
     ],
     "top_tracks":[
         "./public/script/jquery.js",
+        "./public/script/isMobile.js",
         "./public/script/base.js",
         "./public/script/top/mobileDesktop.js",
         "./public/script/top/getTop.js",

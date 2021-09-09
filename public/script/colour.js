@@ -48,15 +48,14 @@
         paletteLight = paletteLight.split(',')
         let paletteLight2 = [...paletteLight]
     
-        if(paletteLight.sort((a,b)=>{return a-b})[2] < 255){
-            let divideBy = 255 / paletteLight[2]
-    
-            for(i=0;i<paletteLight2.length;i++){
-                paletteLight2[i]= Math.floor(paletteLight2[i]*divideBy)
-            }
-    
-            palette[1] = paletteLight2.join(',')
+        paletteLight.sort((a,b)=>{return a-b})
+        let divideBy = 225 / paletteLight[2]
+
+        for(i=0;i<paletteLight2.length;i++){
+            paletteLight2[i]= Math.floor(paletteLight2[i]*divideBy)
         }
+
+        palette[1] = paletteLight2.join(',')
     }
 
     const halfOpacity = function(arr,dark){

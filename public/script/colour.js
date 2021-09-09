@@ -58,42 +58,6 @@
         palette[1] = paletteLight2.join(',')
     }
 
-    const halfOpacity = function(arr,dark){
-        let baseBackground
-        let style = getComputedStyle(document.body)
-        let res = []
-
-        arr = arr.split(',')
-
-        if(dark){
-            baseBackground = style.getPropertyValue('--background-dark')
-        }
-        else{
-            baseBackground = style.getPropertyValue('--background-light')
-        }
-
-        baseBackground = hexToRGB(baseBackground)
-
-        for(i=0;i<3;i++){
-            arr[i] = parseInt(arr[i])
-            res[i] = Math.floor( ( arr[i] + baseBackground[i] ) / 2 )
-        }
-
-        return res.join(',')
-    }
-
-    const hexToRGB = function(hex){
-        hex = hex.replace('#','')
-
-        hex = parseInt(hex,16)
-
-        let red = Math.floor(hex / 256**2)
-        let green = Math.floor(hex % 256**2 / 256)
-        let blue = hex % 256**2 % 256
-
-        return [red, green, blue]
-    }
-
     $('#theme').on('click',function(){
         setTimeout(setPalette,10)
     })

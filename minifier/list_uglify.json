@@ -6,6 +6,7 @@
         "./public/script/mobileDesktop.js",
         "./public/script/nowPlaying.js",
         "./public/script/recentlyPlayed.js",
+        "./public/script/colourModule.js",
         "./public/script/colour.js",
         "./public/script/theme.js",
         "./public/script/base.js"

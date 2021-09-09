@@ -50,6 +50,18 @@ const RGBToHSV = function(arr) {
     };
 }
 
+const indexMostSaturated = function(list){
+    
+    for( i=0; i < list.length; i++ ){
+        list[i] = { ...RGBToHSV( list[i] ) }
+        list[i]['indexNo'] = i
+    }
+
+    list.sort( (a,b) => { return b.s-a.s } )
+
+    return list[0].indexNo
+}
+
 const halfOpacity = function(arr,dark){
     let baseBackground
     let style = getComputedStyle(document.body)

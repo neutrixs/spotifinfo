@@ -4,7 +4,9 @@
     let img = document.getElementById('mainPicture')
     img.crossOrigin = 'Anonymous'
     img.addEventListener('load',function(){
-        let currentPalette = (colour.getPalette(img,5)[2]).join(',')
+        let currentPalette = colour.getPalette(img,5)
+        let indexNo = indexMostSaturated([...currentPalette])
+        currentPalette = currentPalette[indexNo].join(',')
         palette = [currentPalette,currentPalette]
     
         checkDarkPalette(palette[0])

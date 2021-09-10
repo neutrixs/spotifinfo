@@ -1,4 +1,9 @@
 let currentFetch = false
+let useProxy = false
+if(window.localStorage.proxy){
+    useProxy = JSON.parse(window.localStorage.proxy) === true
+}
+console.log(useProxy)
 
 const sleep = async function(ms){
     return new Promise((a,b)=>{
@@ -29,8 +34,10 @@ const getToken = async function(){
     currentFetch = false
 }
 const getProfile = async function(){
-    let res
-    res = await fetch('https://api.spotify.com/v1/me',{
+    let res, baseURL, url
+    baseURL = 'https://api.spotify.com/v1/me'
+    url = useProxy ? '/proxy?url='+encodeURIComponent(baseURL) : baseURL
+    res = await fetch(url,{
         method:'GET',
         headers:{
             'Authorization':window.localStorage['token']

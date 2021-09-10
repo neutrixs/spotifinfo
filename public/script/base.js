@@ -58,7 +58,9 @@ const getProfile = async function(){
 
     let profilePic
     if(res.images[0]){
-        profilePic = res.images[0].url
+        baseURL = res.images[0].url
+        url = useProxy ? baseProxy+EUC(baseURL) : baseURL
+        profilePic = url
     }
     else{
         profilePic = '/img/user.png'

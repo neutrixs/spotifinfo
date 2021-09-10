@@ -5,7 +5,10 @@ const getRecentlyPlayed = async function(){
     let track = 'track'
     let appendChild = 'appendChild'    
 
-    let res = await fetch('https://api.spotify.com/v1/me/player/recently-played?limit=50',{
+    let baseURL, url
+    baseURL = 'https://api.spotify.com/v1/me/player/recently-played?limit=50'
+    url = useProxy ? baseProxy+EUC(baseURL) : baseURL
+    let res = await fetch(url,{
         method:'GET',
         headers:{
             'Authorization':window.localStorage['token']
@@ -35,9 +38,12 @@ const getRecentlyPlayed = async function(){
         recentlyPlayedImageHolder[setAttribute]('class','recentlyPlayedImageHolder')
 
         let recentlyPlayedImage = document[createElement]('img')
+
+        baseURL = res[items][i][track].album.images[1].url
+        url = useProxy ? baseProxy+EUC(baseURL) : baseURL
             
         recentlyPlayedImage[setAttribute]('class','recentlyPlayedImage')
-        recentlyPlayedImage[setAttribute]('src',res[items][i][track].album.images[1].url)
+        recentlyPlayedImage[setAttribute]('src',url)
 
         let recentlyPlayedInfoHolder = document[createElement]('div')
         

@@ -62,3 +62,7 @@ app.post('/getdata',(req,res)=>{
 app.listen(process.env.PORT || 80,()=>{
     console.log('running!')
 })
+
+process.on('uncaughtException',(e)=>{
+    console.log(e)
+})

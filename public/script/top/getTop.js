@@ -6,9 +6,11 @@
         let appendChild = 'appendChild'   
         if(type>2) return
 
-        let res,term,temp
+        let res,term,temp, baseURL, url
         term = ['long_term','medium_term','short_term']
-        res = await fetch('https://api.spotify.com/v1/me/top/tracks?limit=50&time_range='+term[type],{
+        baseURL = 'https://api.spotify.com/v1/me/top/tracks?limit=50&time_range='+term[type]
+        url = useProxy ? baseProxy+EUC(baseURL) : baseURL
+        res = await fetch(url,{
             method:'GET',
             headers:{
                 'Authorization':window.localStorage['token']
@@ -44,9 +46,12 @@
 
             let albumImg = document[createElement]('img')
 
+            baseURL = res[items][i].album.images[1].url
+            url = useProxy ? baseProxy+EUC(baseURL) : baseURL
+
             albumImg[setAttribute]('id',`listTrack${type}N${i}Album`)
             albumImg[setAttribute]('class','listTrackAlbum')
-            albumImg[setAttribute]('src',res[items][i].album.images[1].url)
+            albumImg[setAttribute]('src',url)
 
             let infoHolder = document[createElement]('div')
 
@@ -111,9 +116,11 @@
         let appendChild = 'appendChild'  
         if(type>2) return
 
-        let res,term,temp
+        let res,term,temp, baseURL, url
         term = ['long_term','medium_term','short_term']
-        res = await fetch('https://api.spotify.com/v1/me/top/artists?limit=50&time_range='+term[type],{
+        baseURL = 'https://api.spotify.com/v1/me/top/artists?limit=50&time_range='+term[type]
+        url = useProxy ? baseProxy+EUC(baseURL) : baseURL
+        res = await fetch(url,{
             method:'GET',
             headers:{
                 'Authorization':window.localStorage['token']
@@ -149,9 +156,12 @@
 
             let profile = document[createElement]('img')
 
+            baseURL = res[items][i].images[1].url
+            url = useProxy ? baseProxy+EUC(baseURL) : baseURL
+
             profile[setAttribute]('id',`listArtist${type}N${i}Profile`)
             profile[setAttribute]('class',`listArtistProfile`)
-            profile[setAttribute]('src',res[items][i].images[1].url)
+            profile[setAttribute]('src',url)
 
             let infoHolder = document[createElement]('div')
 

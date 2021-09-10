@@ -1,5 +1,6 @@
 const https = require('https')
 const http = require('http')
+const fs = require('fs')
 
 function badRequest(res){
     res.status(400).end()
@@ -11,6 +12,10 @@ function proxy(req,res){
     if(!url.startsWith('https://') && !url.startsWith('http://')) return badRequest(res)
 
     let protocol = url.startsWith('https://') ? https : http
+    let domain = url.replace('http://','').replace('https://','').split('/')[0]
+    let allowList = JSON.parse(fs.readFileSync('./dynamic/proxy/allow.json'))
+
+    if(!allowList.includes(domain)) return badRequest(res)
 
     delete req.headers.cookie
     delete req.headers.host

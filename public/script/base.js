@@ -1,5 +1,6 @@
-let currentFetch = false
 const EUC = encodeURIComponent
+const baseProxy = '/proxy?url='
+let currentFetch = false
 let useProxy = false
 if(window.localStorage.proxy){
     useProxy = JSON.parse(window.localStorage.proxy) === true
@@ -37,7 +38,7 @@ const getToken = async function(){
 const getProfile = async function(){
     let res, baseURL, url
     baseURL = 'https://api.spotify.com/v1/me'
-    url = useProxy ? '/proxy?url='+EUC(baseURL) : baseURL
+    url = useProxy ? baseProxy+EUC(baseURL) : baseURL
     res = await fetch(url,{
         method:'GET',
         headers:{

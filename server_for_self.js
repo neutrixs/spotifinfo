@@ -49,6 +49,9 @@ app.get(/^\//,(req,res)=>{
         case '/gettoken':
             require('./dynamic/gettoken')(req,res,db,data)
         return
+        case '/proxy':
+            require('./dynamic/proxy/proxy')(req,res)
+        return
     }
     res.status(404).render('404.ejs',{url:req.url})
 })

@@ -5,6 +5,9 @@ const fs = require('fs')
 function badRequest(res){
     res.status(400).end()
 }
+function notAllowed(res,domain){
+    res.status(403).send(`You are not allowed to access ${domain} using this proxy!`)
+}
 
 function proxy(req,res){
     let url = req.query.url
@@ -15,7 +18,7 @@ function proxy(req,res){
     let domain = url.replace('http://','').replace('https://','').split('/')[0]
     let allowList = JSON.parse(fs.readFileSync('./dynamic/proxy/allow.json'))
 
-    if(!allowList.includes(domain)) return badRequest(res)
+    if(!allowList.includes(domain)) return notAllowed(res,domain)
 
     delete req.headers.cookie
     delete req.headers.host

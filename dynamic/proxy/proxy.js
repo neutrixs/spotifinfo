@@ -3,3 +3,4 @@ const http = require('http')
 function proxy(req,res){
     
 }
+module.exports = proxy

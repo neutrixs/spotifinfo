@@ -11,7 +11,7 @@ let changeAt = 44.5
 if($(window).width() / parseFloat($("body").css("font-size")) < changeAt) mobile();
 $('#holder').removeClass('none').addClass('ts300ms')
 
-window.onresize = function(){
+const mobileDesktopSizeHandler = function(){
     let width = this.innerWidth;
     
     let emWidth = $(window).width() / parseFloat($("body").css("font-size"))

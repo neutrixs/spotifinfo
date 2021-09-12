@@ -9,7 +9,8 @@
         "./public/script/recentlyPlayed.js",
         "./public/script/colourModule.js",
         "./public/script/colour.js",
-        "./public/script/theme.js"
+        "./public/script/theme.js",
+        "./public/script/window.onresize.js"
     ],
     "indexOut":[
         "./public/script/jquery.js",

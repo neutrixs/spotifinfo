@@ -45,6 +45,9 @@
     display: inline-block;
     vertical-align: top;
 }
+.mainInfoHolderSide{
+    max-width: calc(100% - 21.5em);
+}
 #mainTitle{
     font-size: 1.5em;
     font-weight: bold;

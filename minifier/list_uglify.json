@@ -17,7 +17,8 @@
         "./public/script/jquery.js",
         "./public/script/mobileDesktop.js",
         "./public/script/themeOut.js",
-        "./public/script/base.js"
+        "./public/script/base.js",
+        "./public/script/window.onresize.out.js"
     ],
     "top_tracks":[
         "./public/script/jquery.js",

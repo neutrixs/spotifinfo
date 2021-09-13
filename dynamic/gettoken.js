@@ -1,5 +1,5 @@
 const { default: fetch } = require('node-fetch')
-const querystring = require('node:querystring')
+const querystring = require('querystring')
 const fs = require('fs')
 const checkReCAPTCHA = require('./checkReCAPTCHA')
 const relogback = {

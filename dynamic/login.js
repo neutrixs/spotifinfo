@@ -1,4 +1,4 @@
-const querystring = require('node:querystring')
+const querystring = require('querystring')
 const checkReCAPTCHA = require('./checkReCAPTCHA')
 function generateState(length){
     let possible = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789`~!@#$%^&*()-_=+'

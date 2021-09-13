@@ -65,6 +65,11 @@ const themeForce = function(){
     for(i=0;i<selected.length;i++){
         selected[i].classList.replace('selected','selectedLight')
     }
+
+    let badge = $('#recaptchaBrandingHolder a')
+    for(i=0;i<badge.length;i++){
+        badge[i].classList.add('rcBLight')
+    }
 }
 
 if(window.localStorage['dark'] == 'false'){

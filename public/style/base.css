@@ -123,7 +123,7 @@ a{
     padding: 1.5em;
     padding-top: 0;
 }
-#recaptchaBrandingHolder a{
+.rcB{
     color: hsl(220,100%,75%);
     text-decoration: underline;
 }

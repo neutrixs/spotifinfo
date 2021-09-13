@@ -11,6 +11,11 @@ const themeChange = function(){
             a[i].classList.remove('aLight')
         }
 
+        let badge = $('#recaptchaBrandingHolder a')
+        for(i=0;i<badge.length;i++){
+            badge[i].classList.remove('rcBLight')
+        }
+
         window.localStorage['dark'] = true
     }
     else{
@@ -23,6 +28,11 @@ const themeChange = function(){
         let a = $('a')
         for(i=0;i<a.length;i++){
             a[i].classList.add('aLight')
+        }
+
+        let badge = $('#recaptchaBrandingHolder a')
+        for(i=0;i<badge.length;i++){
+            badge[i].classList.add('rcBLight')
         }
 
         window.localStorage['dark'] = false
@@ -39,6 +49,11 @@ const themeForce = function(){
     let a = $('a')
     for(i=0;i<a.length;i++){
         a[i].classList.add('aLight')
+    }
+
+    let badge = $('#recaptchaBrandingHolder a')
+    for(i=0;i<badge.length;i++){
+        badge[i].classList.add('rcBLight')
     }
 }
 

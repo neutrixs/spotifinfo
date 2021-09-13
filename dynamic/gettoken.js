@@ -1,6 +1,7 @@
 const { default: fetch } = require('node-fetch')
-const querystring = require('querystring')
+const querystring = require('node:querystring')
 const fs = require('fs')
+const checkReCAPTCHA = require('./checkReCAPTCHA')
 const relogback = {
     success:false,
     data:null,
@@ -8,6 +9,19 @@ const relogback = {
 }
 
 async function gettoken(req,res,db,data){
+
+    if(!req.query.reCAPTCHAToken) return res.status(400).send('Bad Request')
+
+    const captchaCheck = await checkReCAPTCHA(req.query.reCAPTCHAToken,req)
+    if(captchaCheck == null){
+        res.status(400).send('Bad Request')
+        return
+    }
+    if(captchaCheck < 0.5){ //reCAPTCHA score
+        res.status(403).send('Forbidden')
+        return
+    }
+
     let database
     if(data.firestore){
         database = await db.collection('database').doc('stateNuname').get()

@@ -22,18 +22,22 @@ const getToken = async function(){
     }
     currentFetch = true
 
-    let res
-    res = await fetch('/gettoken')
-    res = await res.json()
+    grecaptcha.ready(async function(){
+        const token = await grecaptcha.execute('6Ld9VmMcAAAAAK48XrvY1T8vcjjNBHN4tkRipg5C',{action:'submit'})
 
-    if(res.relogback){
-        logOut(false)
-        return
-    }
-    window.localStorage['token'] = res.data.token
-    window.localStorage['validuntil'] = res.data.validuntil
+        let res
+        res = await fetch('/gettoken?reCAPTCHAToken='+encodeURIComponent(token))
+        res = await res.json()
 
-    currentFetch = false
+        if(res.relogback){
+            logOut(false)
+            return
+        }
+        window.localStorage['token'] = res.data.token
+        window.localStorage['validuntil'] = res.data.validuntil
+
+        currentFetch = false
+    })
 }
 const getProfile = async function(){
     let res, baseURL, url

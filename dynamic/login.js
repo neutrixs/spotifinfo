@@ -1,4 +1,6 @@
 const querystring = require('node:querystring')
+const fetch = require('node-fetch')
+const fs = require('fs')
 function generateState(length){
     let possible = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789`~!@#$%^&*()-_=+'
     let state = ''
@@ -10,11 +12,47 @@ function generateState(length){
     return state
 }
 
-function login(req,res,data,isLoggedOut){
+async function checkReCAPTCHA(token,req){
+    const options = {
+        secret: fs.readFileSync('SECRET/reCAPTCHASecret.txt',{encoding:'utf-8'}),
+        response:token,
+        remoteip:req.ip
+    }
+    const encodedQuery = querystring.encode(options)
+    
+    let validation = await fetch('https://www.google.com/recaptcha/api/siteverify',{
+        method: 'POST',
+        body:encodedQuery,
+        headers:{
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
+    })
+    validation = await validation.json()
+
+    if(!validation.success){
+        return null
+    }
+    return validation.score
+}
+
+async function login(req,res,data,isLoggedOut){
     if(!isLoggedOut){
         res.redirect('/')
         return
     }
+
+    if(!req.query.reCAPTCHAToken) return res.status(400).send('Bad Request')
+
+    const captchaCheck = checkReCAPTCHA(req.query.reCAPTCHAToken,req)
+    if(captchaCheck == null){
+        res.status(400).send('Bad Request')
+        return
+    }
+    if(captchaCheck < 0.5){ //reCAPTCHA score
+        res.status(403).send('Forbidden')
+        return
+    }
+
     let state = generateState(16)
 
     let query = querystring.encode({

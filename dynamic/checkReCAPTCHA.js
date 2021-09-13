@@ -1,6 +1,6 @@
 const fetch = require('node-fetch')
 const fs = require('fs')
-const querystring = require('node:querystring')
+const querystring = require('querystring')
 async function checkReCAPTCHA(token,req){
     const options = {
         secret: fs.readFileSync('SECRET/reCAPTCHASecret.txt',{encoding:'utf-8'}),

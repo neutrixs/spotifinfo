@@ -119,3 +119,14 @@ a{
     float: right;
     margin-left: 0.5em;
 }
+#recaptchaBrandingHolder{
+    padding: 1.5em;
+    padding-top: 0;
+}
+#recaptchaBrandingHolder a{
+    color: hsl(220,100%,75%);
+    text-decoration: underline;
+}
+.rcBLight{
+    color: hsl(220,100%,50%)
+}

@@ -1,4 +1,4 @@
-const querystring = require('querystring')
+const querystring = require('node:querystring')
 function generateState(length){
     let possible = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789`~!@#$%^&*()-_=+'
     let state = ''

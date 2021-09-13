@@ -15,6 +15,7 @@
     ],
     "indexOut":[
         "./public/script/jquery.js",
+        "./public/script/loggedOut/login.js",
         "./public/script/mobileDesktop.js",
         "./public/script/themeOut.js",
         "./public/script/base.js",

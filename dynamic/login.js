@@ -1,6 +1,5 @@
 const querystring = require('node:querystring')
-const fetch = require('node-fetch')
-const fs = require('fs')
+const checkReCAPTCHA = require('./checkReCAPTCHA')
 function generateState(length){
     let possible = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789`~!@#$%^&*()-_=+'
     let state = ''
@@ -10,29 +9,6 @@ function generateState(length){
         state+=possible[random]
     }
     return state
-}
-
-async function checkReCAPTCHA(token,req){
-    const options = {
-        secret: fs.readFileSync('SECRET/reCAPTCHASecret.txt',{encoding:'utf-8'}),
-        response:token,
-        remoteip:req.ip
-    }
-    const encodedQuery = querystring.encode(options)
-    
-    let validation = await fetch('https://www.google.com/recaptcha/api/siteverify',{
-        method: 'POST',
-        body:encodedQuery,
-        headers:{
-            'Content-Type': 'application/x-www-form-urlencoded'
-        }
-    })
-    validation = await validation.json()
-
-    if(!validation.success){
-        return null
-    }
-    return validation.score
 }
 
 async function login(req,res,data,isLoggedOut){

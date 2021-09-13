@@ -20,7 +20,8 @@
         "./public/script/mobileDesktop.js",
         "./public/script/themeOut.js",
         "./public/script/base.js",
-        "./public/script/window.onresize.out.js"
+        "./public/script/window.onresize.out.js",
+        "./public/script/loggedOut/out.js"
     ],
     "top_tracks":[
         "./public/script/jquery.js",

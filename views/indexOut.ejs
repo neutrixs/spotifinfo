@@ -51,16 +51,9 @@
             <script src="/script/themeOut.js"></script>
             <script src="/script/base.js"></script>
             <script src="/script/window.onresize.out.js"></script>
+            <script src="/script/loggedOut/out.js"></script>
         <%}else{%>
             <script src="/script_minify/indexOut.js?1631281239085"></script>
         <%}%>
-        <script>
-            if(window.localStorage['force'] == 'true'){
-                loginParam.force = true
-            }
-            if(window.localStorage['dark'] == 'false'){
-                $('#profile').attr('src','/img/Spotify_Icon_RGB_Black.png')
-            }
-        </script>
     </body>
 </html>

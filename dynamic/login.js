@@ -19,7 +19,7 @@ async function login(req,res,data,isLoggedOut){
 
     if(!req.query.reCAPTCHAToken) return res.status(400).send('Bad Request')
 
-    const captchaCheck = checkReCAPTCHA(req.query.reCAPTCHAToken,req)
+    const captchaCheck = await checkReCAPTCHA(req.query.reCAPTCHAToken,req)
     if(captchaCheck == null){
         res.status(400).send('Bad Request')
         return

@@ -1,8 +1,8 @@
 const setNPSideText = function(){
-    const picHolderWidth = $('#mainPictureHold').innerWidth()
-    const nowPlayingWidth = $('#nowPlaying').width()
+    const picHolderWidth = 21.5 * parseFloat($("body").css("font-size"))
+    const holderWidth = $('#holder').width()
 
-    if(picHolderWidth / nowPlayingWidth < 0.5){
+    if(picHolderWidth / holderWidth < 0.5){
         $('#mainInfoHolder').addClass('mainInfoHolderSide')
         return
     }

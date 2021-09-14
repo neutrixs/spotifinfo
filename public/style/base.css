@@ -119,6 +119,9 @@ a{
     float: right;
     margin-left: 0.5em;
 }
+.grecaptcha-badge {
+    visibility: hidden;
+}
 #recaptchaBrandingHolder{
     padding: 1.5em;
     padding-top: 0;

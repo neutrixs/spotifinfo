@@ -20,3 +20,6 @@
 .infoText{
     font-size: 2em;
 }
+.grecaptcha-badge {
+    visibility: visible;
+}

@@ -10,6 +10,12 @@
                 'Authorization':window.localStorage['token']
             }
         })
+
+        if(res.status == 204){
+            $('#nowPlaying').addClass('none')
+            return
+        }
+
         res = await res.json()
     
         if(res.error){

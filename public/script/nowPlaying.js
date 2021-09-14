@@ -25,7 +25,6 @@
             }
             return
         }
-        let nowPlayingStack=0
     
         if(res.item == null){
             $('#nowPlaying').addClass('none')

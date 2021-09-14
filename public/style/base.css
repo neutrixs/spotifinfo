@@ -123,6 +123,12 @@ a{
     padding: 1.5em;
     padding-top: 0;
 }
+#recaptchaBrandingHolder a{
+    font-size: 0.75em;
+}
+#recaptchaBrandingHolder span{
+    font-size: 0.75em;
+}
 .rcB{
     color: hsl(220,100%,75%);
     text-decoration: underline;

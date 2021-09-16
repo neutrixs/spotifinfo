@@ -23,7 +23,7 @@ const getToken = async function(){
     currentFetch = true
 
     grecaptcha.ready(async function(){
-        const token = await grecaptcha.execute('6Ld9VmMcAAAAAK48XrvY1T8vcjjNBHN4tkRipg5C',{action:'submit'})
+        const token = await grecaptcha.execute('6Ld9VmMcAAAAAK48XrvY1T8vcjjNBHN4tkRipg5C',{action:'get_token'})
 
         let res
         res = await fetch('/gettoken?reCAPTCHAToken='+encodeURIComponent(token))

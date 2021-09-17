@@ -28,7 +28,7 @@ const getAccountInfo = async function(){
         url = '/img/user.png'
     }
 
-    let temp = `<p class="listAccountInfo">Email: <span class="copy">${res.email}</span></p><p class="listAccountInfo">ID: <span class="copy">${res.id}</span></p><p class="listAccountInfo">Followers: ${res.followers.total}</p><p class="listAccountInfo">Plan: ${res.product=='premium'?'premium':'free'}</p>`
+    let temp = `<p class="listAccountInfo">Email: <span class="copy">${he.encode(res.email)}</span></p><p class="listAccountInfo">ID: <span class="copy">${res.id}</span></p><p class="listAccountInfo">Followers: ${res.followers.total}</p><p class="listAccountInfo">Plan: ${res.product=='premium'?'premium':'free'}</p>`
     $('#accountInfo').html($('#accountInfo').html()+temp)
     $('#profilePic').attr('src',url)
     if(!res.images[0]) $('#profilePic').css('box-shadow','none');

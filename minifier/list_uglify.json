@@ -34,6 +34,7 @@
     ],
     "account":[
         "./public/script/jquery.js",
+        "./public/script/he.js",
         "./public/script/base.js",
         "./public/script/acc/mobileDesktop.js",
         "./public/script/acc/getInfo.js",

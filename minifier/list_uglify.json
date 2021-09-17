@@ -8,8 +8,8 @@
         "./public/script/nowPlaying.js",
         "./public/script/nowPlayingSideText.js",
         "./public/script/recentlyPlayed.js",
-        "./public/script/colourModule.js",
-        "./public/script/colour.js",
+        "./public/script/loggedIn/colourModule.js",
+        "./public/script/loggedIn/colour.js",
         "./public/script/theme.js",
         "./public/script/window.onresize.js"
     ],

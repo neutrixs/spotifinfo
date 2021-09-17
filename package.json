@@ -1,11 +1,11 @@
 {
-  "name": "spotify-web-api-meh-rebuild",
+  "name": "spotifinfo",
   "version": "1.0.0",
   "description": "",
   "main": "server_for_self.js",
   "scripts": {
-    "test": "node ./server_for_self_test.js",
-    "uglify": "node ./minifier/uglify.js",
+    "dev": "node ./server_for_self_test.js",
+    "build": "node ./minifier/uglify.js",
     "deploy": "node ssh/ssh2.js"
   },
   "keywords": [],

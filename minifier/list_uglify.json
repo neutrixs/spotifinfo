@@ -1,7 +1,7 @@
 {
     "index":[
         "./public/script/base/jquery.js",
-        "./public/script/he.js",
+        "./public/script/base/he.js",
         "./public/script/base/isMobile.js",
         "./public/script/base/base.js",
         "./public/script/mobileDesktop.js",
@@ -25,7 +25,7 @@
     ],
     "top_tracks":[
         "./public/script/base/jquery.js",
-        "./public/script/he.js",
+        "./public/script/base/he.js",
         "./public/script/base/isMobile.js",
         "./public/script/base/base.js",
         "./public/script/top/mobileDesktop.js",
@@ -35,7 +35,7 @@
     ],
     "account":[
         "./public/script/base/jquery.js",
-        "./public/script/he.js",
+        "./public/script/base/he.js",
         "./public/script/base/base.js",
         "./public/script/acc/mobileDesktop.js",
         "./public/script/acc/getInfo.js",

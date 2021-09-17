@@ -25,6 +25,7 @@
     ],
     "top_tracks":[
         "./public/script/jquery.js",
+        "./public/script/he.js",
         "./public/script/isMobile.js",
         "./public/script/base/base.js",
         "./public/script/top/mobileDesktop.js",

@@ -53,7 +53,7 @@ const getRecentlyPlayed = async function(){
         let recentlyPlayedSongName = document[createElement]('p')
         
         recentlyPlayedSongName[setAttribute]('class','recentlyPlayedSongName')
-        recentlyPlayedSongName.innerHTML = res[items][i][track].name
+        recentlyPlayedSongName.innerHTML = he.encode(res[items][i][track].name)
         
         let recentlyPlayedArtistName = document[createElement]('p')
             
@@ -63,7 +63,7 @@ const getRecentlyPlayed = async function(){
             let each = document[createElement]('span')
                 
             each[setAttribute]('id','recent'+i+'artist'+j)
-            each.innerHTML = res[items][i][track].artists[j].name
+            each.innerHTML = he.encode(res[items][i][track].artists[j].name)
 
             recentlyPlayedArtistName[appendChild](each)
 

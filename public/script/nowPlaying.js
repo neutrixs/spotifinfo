@@ -57,7 +57,7 @@
             }
         })
     
-        $('#mainTitle').html(res.item.name)
+        $('#mainTitle').html(he.encode(res.item.name))
         .off()
         .on('click',function(){
             if(isMobile()){
@@ -70,7 +70,7 @@
     
         let artist = ''
         for(i=0;i<res.item.artists.length;i++){
-            artist+=`<span id="mainArtist${i}" class="pointer">${res.item.artists[i].name}</span>`
+            artist+=`<span id="mainArtist${i}" class="pointer">${he.encode(res.item.artists[i].name)}</span>`
             if(i < res.item.artists.length-1){
                 artist+=', '
             }

@@ -18,7 +18,7 @@ const getAccountInfo = async function(){
         }
         return
     }
-    $('#accountName').html(res.display_name)
+    $('#accountName').html(he.encode(res.display_name))
 
     if(res.images[0]){
         baseURL = res.images[0].url

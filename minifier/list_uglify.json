@@ -1,8 +1,8 @@
 {
     "index":[
-        "./public/script/jquery.js",
+        "./public/script/base/jquery.js",
         "./public/script/he.js",
-        "./public/script/isMobile.js",
+        "./public/script/base/isMobile.js",
         "./public/script/base/base.js",
         "./public/script/mobileDesktop.js",
         "./public/script/nowPlaying.js",
@@ -14,7 +14,7 @@
         "./public/script/window.onresize.js"
     ],
     "indexOut":[
-        "./public/script/jquery.js",
+        "./public/script/base/jquery.js",
         "./public/script/base/querystring.js",
         "./public/script/loggedOut/login.js",
         "./public/script/mobileDesktop.js",
@@ -24,9 +24,9 @@
         "./public/script/loggedOut/out.js"
     ],
     "top_tracks":[
-        "./public/script/jquery.js",
+        "./public/script/base/jquery.js",
         "./public/script/he.js",
-        "./public/script/isMobile.js",
+        "./public/script/base/isMobile.js",
         "./public/script/base/base.js",
         "./public/script/top/mobileDesktop.js",
         "./public/script/top/getTop.js",
@@ -34,7 +34,7 @@
         "./public/script/top/theme.js"
     ],
     "account":[
-        "./public/script/jquery.js",
+        "./public/script/base/jquery.js",
         "./public/script/he.js",
         "./public/script/base/base.js",
         "./public/script/acc/mobileDesktop.js",

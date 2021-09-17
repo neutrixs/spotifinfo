@@ -61,14 +61,14 @@
             let trackTitle = document[createElement]('div')
 
             trackTitle[setAttribute]('class','listTrackTitle')
-            trackTitle.innerHTML = res[items][i].name
+            trackTitle.innerHTML = he.encode(res[items][i].name)
 
             let trackArtist = document[createElement]('div')
 
             trackArtist[setAttribute]('class','listTrackArtist')
 
             for(j=0;j<res[items][i].artists.length;j++){
-                trackArtist.innerHTML+=res[items][i].artists[j].name
+                trackArtist.innerHTML+=he.encode(res[items][i].artists[j].name)
 
                 if(j!= res[items][i].artists.length-1){
                     trackArtist.innerHTML+=', '
@@ -172,7 +172,7 @@
 
             artistName[setAttribute]('id',`listArtist${type}N${i}Info`)
             artistName[setAttribute]('class','listArtistInfo')
-            artistName.innerHTML = res[items][i].name
+            artistName.innerHTML = he.encode(res[items][i].name)
 
             profileHolder[appendChild](profile)
             infoHolder[appendChild](artistName)

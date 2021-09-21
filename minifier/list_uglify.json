@@ -11,7 +11,7 @@
         "./public/script/loggedIn/colourModule.js",
         "./public/script/loggedIn/colour.js",
         "./public/script/loggedIn/theme.js",
-        "./public/script/window.onresize.js"
+        "./public/script/loggedIn/window.onresize.js"
     ],
     "indexOut":[
         "./public/script/base/jquery.js",
@@ -20,7 +20,7 @@
         "./public/script/base/mobileDesktop.js",
         "./public/script/loggedOut/theme.js",
         "./public/script/base/base.js",
-        "./public/script/window.onresize.out.js",
+        "./public/script/loggedOut/window.onresize.js",
         "./public/script/loggedOut/out.js"
     ],
     "top_tracks":[

@@ -85,3 +85,50 @@ const halfOpacity = function(arr,dark){
 
     return res.join(',')
 }
+
+const checkLightness = function(rgb){
+
+    const r = 1/255*rgb[0]
+    const g = 1/255*rgb[1]
+    const b = 1/255*rgb[2]
+
+    return Math.sqrt( 0.299 * r ** 2 + 0.587 * g ** 2 + 0.114 * b ** 2 )
+}
+
+const changeLightness = function(toIncrease,rgb){
+    if(toIncrease){
+        for( i=0; i<3; i++ ){
+            rgb[i] = rgb[i] * 1.1
+        }
+    }
+    else{
+        for( i=0; i<3; i++ ){
+            rgb[i] = rgb[i] / 1.1
+        }
+    }
+
+    const currentLightness = checkLightness(rgb)
+    if(currentLightness > 0.45 || currentLightness < 0.4){
+        return changeLightness(toIncrease,rgb)
+    }
+    else{
+        return rgb
+    }
+}
+
+const autoAdjustLightness = function(rgb){
+    const currentLightness = checkLightness(rgb)
+
+    if(currentLightness < 0.4){
+        rgb = changeLightness(true,rgb)
+    }
+    else if(currentLightness > 0.4){
+        rgb = changeLightness(false,rgb)
+    }
+
+    for( i=0; i<3; i++ ){
+        rgb[i] = Math.round(rgb[i])
+    }
+
+    return rgb
+}

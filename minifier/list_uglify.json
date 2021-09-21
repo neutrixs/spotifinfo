@@ -10,7 +10,7 @@
         "./public/script/loggedIn/recentlyPlayed.js",
         "./public/script/loggedIn/colourModule.js",
         "./public/script/loggedIn/colour.js",
-        "./public/script/theme.js",
+        "./public/script/loggedIn/theme.js",
         "./public/script/window.onresize.js"
     ],
     "indexOut":[
@@ -18,7 +18,7 @@
         "./public/script/base/querystring.js",
         "./public/script/loggedOut/login.js",
         "./public/script/base/mobileDesktop.js",
-        "./public/script/themeOut.js",
+        "./public/script/loggedOut/theme.js",
         "./public/script/base/base.js",
         "./public/script/window.onresize.out.js",
         "./public/script/loggedOut/out.js"

@@ -122,7 +122,7 @@ const autoAdjustLightness = function(rgb){
     if(currentLightness < 0.4){
         rgb = changeLightness(true,rgb)
     }
-    else if(currentLightness > 0.4){
+    else if(currentLightness > 0.45){
         rgb = changeLightness(false,rgb)
     }
 

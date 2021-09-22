@@ -6,16 +6,11 @@
     img.addEventListener('load',function(){
         let currentPalette = colour.getPalette(img,5)
         let indexNo = indexMostSaturated([...currentPalette])
-
-        currentPalette = autoAdjustLightness(currentPalette[indexNo])
-        currentPalette = currentPalette.join(',')
+        currentPalette = currentPalette[indexNo]
         palette = [currentPalette,currentPalette]
-    
-        //checkDarkPalette(palette[0])
-        //checkLightPalette(palette[1])
-
-        //palette[0] = halfOpacity(palette[0],true)
-        //palette[1] = halfOpacity(palette[1],false)
+        
+        palette[0] = autoAdjustLightness(palette[0],0.35,0.45).join(',')
+        palette[1] = autoAdjustLightness(palette[1],0.7,0.8).join(',')
     
         setPalette()
     })

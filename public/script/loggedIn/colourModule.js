@@ -95,10 +95,11 @@ const checkLightness = function(rgb){
     return Math.sqrt( 0.299 * r ** 2 + 0.587 * g ** 2 + 0.114 * b ** 2 )
 }
 
-const changeLightness = function(toIncrease,rgb){
+const changeLightness = function(toIncrease,rgb,rangeLower,rangeUpper){
     if(toIncrease){
         for( i=0; i<3; i++ ){
             rgb[i] = rgb[i] * 1.1
+            if(rgb[i] > 255) rgb[i] = 255;
         }
     }
     else{
@@ -108,22 +109,22 @@ const changeLightness = function(toIncrease,rgb){
     }
 
     const currentLightness = checkLightness(rgb)
-    if(currentLightness > 0.45 || currentLightness < 0.4){
-        return changeLightness(toIncrease,rgb)
+    if(currentLightness > rangeUpper || currentLightness < rangeLower){
+        return changeLightness(toIncrease,rgb,rangeLower,rangeUpper)
     }
     else{
         return rgb
     }
 }
 
-const autoAdjustLightness = function(rgb){
+const autoAdjustLightness = function(rgb,rangeLower,rangeUpper){
     const currentLightness = checkLightness(rgb)
 
-    if(currentLightness < 0.4){
-        rgb = changeLightness(true,rgb)
+    if(currentLightness < rangeLower){
+        rgb = changeLightness(true,rgb,rangeLower,rangeUpper)
     }
-    else if(currentLightness > 0.45){
-        rgb = changeLightness(false,rgb)
+    else if(currentLightness > rangeUpper){
+        rgb = changeLightness(false,rgb,rangeLower,rangeUpper)
     }
 
     for( i=0; i<3; i++ ){

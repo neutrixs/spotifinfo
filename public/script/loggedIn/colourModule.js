@@ -147,26 +147,25 @@ const checkLightness = function(rgb){
     return Math.sqrt( 0.299 * r ** 2 + 0.587 * g ** 2 + 0.114 * b ** 2 )
 }
 
+const changeHSLLightness = function(rgb,valuePercent){
+    hsl = RGBToHSL(rgb)
+
+    hsl[2] += valuePercent/100
+
+    rgb = HSLToRGB(hsl)
+    
+    return rgb
+}
+
 const changeLightness = function(toIncrease,rgb,rangeLower,rangeUpper){
-    if(toIncrease){
-        for( i=0; i<3; i++ ){
-            rgb[i] = rgb[i] * 1.1
-            if(rgb[i] > 255) rgb[i] = 255;
-        }
-    }
-    else{
-        for( i=0; i<3; i++ ){
-            rgb[i] = rgb[i] / 1.1
-        }
+    for(i=0;i<100;i++){ //maximum is 100 because i will increase/decrease hsl lightness each by 1%
+        rgb = changeHSLLightness(rgb,toIncrease?1:-1)
+
+        let lightness = checkLightness(rgb)
+        if(lightness > rangeLower && lightness < rangeUpper) break
     }
 
-    const currentLightness = checkLightness(rgb)
-    if(currentLightness > rangeUpper || currentLightness < rangeLower){
-        return changeLightness(toIncrease,rgb,rangeLower,rangeUpper)
-    }
-    else{
-        return rgb
-    }
+    return rgb
 }
 
 const autoAdjustLightness = function(rgb,rangeLower,rangeUpper){

@@ -50,7 +50,7 @@ const RGBToHSV = function(arr) {
     };
 }
 
-function RGBToHSL(rgb){
+const RGBToHSL = function(rgb){
     let r = rgb[0]
     let g = rgb[1]
     let b = rgb[2]
@@ -74,7 +74,7 @@ function RGBToHSL(rgb){
     return [h, s, l];
 }
 
-function HSLToRGB(hsl){
+const HSLToRGB = function(hsl){
     let h = hsl[0]
     let s = hsl[1]
     let l = hsl[2]
@@ -114,30 +114,6 @@ const indexMostSaturated = function(list){
     return list[0].indexNo
 }
 
-const halfOpacity = function(arr,dark){
-    let baseBackground
-    let style = getComputedStyle(document.body)
-    let res = []
-
-    arr = arr.split(',')
-
-    if(dark){
-        baseBackground = style.getPropertyValue('--background-dark')
-    }
-    else{
-        baseBackground = style.getPropertyValue('--background-light')
-    }
-
-    baseBackground = hexToRGB(baseBackground)
-
-    for(i=0;i<3;i++){
-        arr[i] = parseInt(arr[i])
-        res[i] = Math.floor( ( arr[i] + baseBackground[i] ) / 2 )
-    }
-
-    return res.join(',')
-}
-
 const checkLightness = function(rgb){
 
     const r = 1/255*rgb[0]
@@ -153,7 +129,7 @@ const changeHSLLightness = function(rgb,valuePercent){
     hsl[2] += valuePercent/100
 
     rgb = HSLToRGB(hsl)
-    
+
     return rgb
 }
 

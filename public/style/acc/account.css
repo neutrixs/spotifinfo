@@ -3,7 +3,7 @@
 }
 #title{
     font-size: 2em;
-    font-weight: bold;
+    font-weight: 600;
     line-height: 1em;
 }
 #profilePic{
@@ -13,7 +13,7 @@
 }
 #accountName{
     font-size: 2em;
-    font-weight: bold;
+    font-weight: 600;
     margin-bottom: 0;
 }
 .listAccountInfo{

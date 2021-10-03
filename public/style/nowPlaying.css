@@ -27,7 +27,7 @@
 }
 #nowPlayingStatus{
     font-size: 2em;
-    font-weight: bold;
+    font-weight: 600;
     line-height: 1em;
     margin-top: 0;
 }
@@ -52,7 +52,7 @@
 }
 #mainTitle{
     font-size: 1.5em;
-    font-weight: bold;
+    font-weight: 600;
     cursor: pointer;
     margin-bottom: 0;
 }
@@ -74,7 +74,7 @@
 }
 #titleRecentlyPlayed{
     font-size: 2em;
-    font-weight: bold;
+    font-weight: 600;
     line-height: 1em;
 }
 .listRecentlyPlayed{
@@ -103,7 +103,7 @@
 .recentlyPlayedSongName{
     margin: 0;
     margin-bottom: 0.5em;
-    font-weight: bold;
+    font-weight: 600;
     width: 100%;
     white-space: nowrap;
     text-overflow: ellipsis;

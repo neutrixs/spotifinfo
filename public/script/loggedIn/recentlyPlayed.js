@@ -46,10 +46,11 @@ const getRecentlyPlayed = async function(){
         recentlyPlayedImage[setAttribute]('class','recentlyPlayedImage')
         recentlyPlayedImage[setAttribute]('src',url)
 
-        let recentlyPlayedInfoHolder = document[createElement]('div')
+        let recentlyPlayedInfoHolder = document[createElement]('a')
         
         recentlyPlayedInfoHolder[setAttribute]('id','recentlyPlayed'+i+'InfoHolder')
         recentlyPlayedInfoHolder[setAttribute]('class','recentlyPlayedInfoHolder')
+        recentlyPlayedInfoHolder[setAttribute]('href',res[items][i].track.external_urls.spotify)
 
         let recentlyPlayedSongName = document[createElement]('p')
         
@@ -84,18 +85,6 @@ const getRecentlyPlayed = async function(){
 
         let listHolder = document.getElementById('recentlyPlayedListHolder')
         listHolder[appendChild](recentlyPlayedEach)
-    }
-
-    for(i=0;i<res[items].length;i++){
-        $(`#recentlyPlayed${i}InfoHolder`).off().on('click',{res:{...res},i:i},(event)=>{
-            let url = event.data.res.items[event.data.i].track.external_urls.spotify
-            if(isMobile()){
-                location.href = url
-            }
-            else{
-                window.open(url)
-            }
-        })
     }
 
     $('#recentlyPlayed').removeClass('none')

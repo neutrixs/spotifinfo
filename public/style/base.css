@@ -19,6 +19,9 @@ body{
     color: var(--font-light);
     background-color: var(--background-light);
 }
+.bodyLight a{
+    color: var(--font-light);
+}
 .holder{
     margin-left: 10em;
     margin-right: 10em;

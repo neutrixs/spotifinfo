@@ -130,10 +130,11 @@
             listNumber[setAttribute]('class','listNumber')
             listNumber.innerHTML = i+1
 
-            let profileHolder = document[createElement]('div')
+            let profileHolder = document[createElement]('a')
 
             profileHolder[setAttribute]('id',`listArtist${type}N${i}ProfileHolder`)
             profileHolder[setAttribute]('class','listArtistProfileHolder')
+            profileHolder[setAttribute]('href',res[items][i].external_urls.spotify)
 
             let profile = document[createElement]('img')
 
@@ -144,10 +145,11 @@
             profile[setAttribute]('class',`listArtistProfile`)
             profile[setAttribute]('src',url)
 
-            let infoHolder = document[createElement]('div')
+            let infoHolder = document[createElement]('a')
 
             infoHolder[setAttribute]('id',`listArtist${type}N${i}InfoHolder`)
             infoHolder[setAttribute]('class','listArtistInfoHolder')
+            infoHolder[setAttribute]('href',res[items][i].external_urls.spotify)
 
             let artistName = document[createElement]('p')
 
@@ -162,28 +164,6 @@
             artistEach[appendChild](infoHolder)
 
             document.getElementById(`listArtist${type}`)[appendChild](artistEach)
-        }
-
-        for(i=0;i<res[items].length;i++){
-            $(`#listArtist${type}N${i}ProfileHolder`).off().on('click',{res,i},function(event){
-                let url = event.data.res.items[event.data.i].external_urls.spotify
-                if(isMobile()){
-                    location.href = url
-                }
-                else{
-                    window.open(url)
-                }
-            })
-            $(`#listArtist${type}N${i}InfoHolder`).off().on('click',{res,i},function(event){
-                let url = event.data.res.items[event.data.i].external_urls.spotify
-                if(isMobile()){
-                    location.href = url
-                }
-                else{
-                    window.open(url)
-                }
-            })
-
         }
     }
 

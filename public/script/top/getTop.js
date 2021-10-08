@@ -39,10 +39,11 @@
             listNumber[setAttribute]('class','listNumber')
             listNumber.innerHTML = i+1
 
-            let albumHolder = document[createElement]('div')
+            let albumHolder = document[createElement]('a')
 
             albumHolder[setAttribute]('id',`listTrack${type}N${i}AlbumHolder`)
             albumHolder[setAttribute]('class','listTrackAlbumHolder')
+            albumHolder[setAttribute]('href',res[items][i].album.external_urls.spotify)
 
             let albumImg = document[createElement]('img')
 
@@ -53,10 +54,11 @@
             albumImg[setAttribute]('class','listTrackAlbum')
             albumImg[setAttribute]('src',url)
 
-            let infoHolder = document[createElement]('div')
+            let infoHolder = document[createElement]('a')
 
             infoHolder[setAttribute]('id',`listTrack${type}N${i}InfoHolder`)
             infoHolder[setAttribute]('class','listTrackInfoHolder')
+            infoHolder[setAttribute]('href',res[items][i].external_urls.spotify)
 
             let trackTitle = document[createElement]('div')
 
@@ -85,27 +87,6 @@
             topEach[appendChild](infoHolder)
 
             document.getElementById(`listTrack${type}`)[appendChild](topEach)
-        }
-
-        for(i=0;i<res[items].length;i++){
-            $(`#listTrack${type}N${i}AlbumHolder`).off().on('click',{res,i},function(event){
-                let url = event.data.res.items[event.data.i].album.external_urls.spotify
-                if(isMobile()){
-                    location.href = url
-                }
-                else{
-                    window.open(url)
-                }
-            })
-            $(`#listTrack${type}N${i}InfoHolder`).off().on('click',{res,i},function(event){
-                let url = event.data.res.items[event.data.i].external_urls.spotify
-                if(isMobile()){
-                    location.href = url
-                }
-                else{
-                    window.open(url)
-                }
-            })
         }
     }
 

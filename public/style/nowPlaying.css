@@ -51,6 +51,8 @@
 }
 #mainTitle{
     font-size: 1.5em;
+    margin-top: 1em;
+    display: block;
     font-weight: 600;
     cursor: pointer;
     margin-bottom: 0;

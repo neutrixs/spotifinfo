@@ -54,23 +54,12 @@
     
         let artist = ''
         for(i=0;i<res.item.artists.length;i++){
-            artist+=`<span id="mainArtist${i}" class="pointer">${he.encode(res.item.artists[i].name)}</span>`
+            artist+=`<a href="${res.item.artists[i].external_urls.spotify}" id="mainArtist${i}">${he.encode(res.item.artists[i].name)}</a>`
             if(i < res.item.artists.length-1){
                 artist+=', '
             }
         }
         $('#mainArtist').html(artist)
-    
-        for(i=0;i<res.item.artists.length;i++){
-            $(`#mainArtist${i}`).off().on('click',{url:res.item.artists[i].external_urls.spotify},function(e){
-                if(isMobile()){
-                    location.href = e.data.url
-                }
-                else{
-                    window.open(e.data.url)
-                }
-            })
-        }
     
         $('#nowPlaying').removeClass('none')
     }

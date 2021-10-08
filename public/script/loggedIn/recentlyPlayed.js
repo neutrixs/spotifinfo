@@ -32,10 +32,11 @@ const getRecentlyPlayed = async function(){
         recentlyPlayedEach[setAttribute]('id','RecentlyPlayed'+i)
         recentlyPlayedEach[setAttribute]('class','listRecentlyPlayed')
 
-        let recentlyPlayedImageHolder = document[createElement]('div')
+        let recentlyPlayedImageHolder = document[createElement]('a')
             
         recentlyPlayedImageHolder[setAttribute]('id','recentlyPlayed'+i+'ImageHolder')
         recentlyPlayedImageHolder[setAttribute]('class','recentlyPlayedImageHolder')
+        recentlyPlayedImageHolder[setAttribute]('href',res[items][i].track.album.external_urls.spotify)
 
         let recentlyPlayedImage = document[createElement]('img')
 
@@ -88,15 +89,6 @@ const getRecentlyPlayed = async function(){
     for(i=0;i<res[items].length;i++){
         $(`#recentlyPlayed${i}InfoHolder`).off().on('click',{res:{...res},i:i},(event)=>{
             let url = event.data.res.items[event.data.i].track.external_urls.spotify
-            if(isMobile()){
-                location.href = url
-            }
-            else{
-                window.open(url)
-            }
-        })
-        $(`#recentlyPlayed${i}ImageHolder`).off().on('click',{res:{...res},i:i},(event)=>{
-            let url = event.data.res.items[event.data.i].track.album.external_urls.spotify
             if(isMobile()){
                 location.href = url
             }

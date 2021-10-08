@@ -47,15 +47,7 @@
         }
         $('#nowPlaying').removeClass('none')
     
-        $('#mainPicture').off()
-        .on('click',function(){
-            if(isMobile()){
-                location.href = res.item.album.external_urls.spotify
-            }
-            else{
-                window.open(res.item.album.external_urls.spotify)
-            }
-        })
+        $('#mainPictureHold').attr('href',res.item.album.external_urls.spotify)
     
         $('#mainTitle').html(he.encode(res.item.name))
         .off()

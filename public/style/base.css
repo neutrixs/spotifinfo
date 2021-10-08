@@ -140,5 +140,5 @@ a{
     text-decoration: underline;
 }
 .rcBLight{
-    color: hsl(220,100%,50%)
+    color: hsl(220,100%,50%) !important
 }

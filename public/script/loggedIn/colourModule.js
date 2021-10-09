@@ -138,7 +138,7 @@ const changeLightness = function(toIncrease,rgb,rangeLower,rangeUpper){
         rgb = changeHSLLightness(rgb,toIncrease?1:-1)
 
         let lightness = checkLightness(rgb)
-        if(rangeLower < lightness > rangeUpper) break
+        if(rangeLower < lightness < rangeUpper) break
     }
 
     return rgb

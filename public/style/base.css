@@ -34,7 +34,9 @@ body{
     width: 100%;
 }
 .ts300ms{
-    transition: 300ms ease-out;
+    transition-property: margin;
+    transition-duration: 300ms;
+    transition-timing-function: ease-out;
 }
 .body_l{
     color: black;

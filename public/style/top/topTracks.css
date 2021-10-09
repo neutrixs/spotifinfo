@@ -31,7 +31,6 @@
     padding-top: 0.5em;
     padding-bottom: 0.5em;
     cursor: pointer;
-    transition: 150ms;
 }
 #artistSelector{
     width: 50%;
@@ -40,7 +39,6 @@
     padding-top: 0.5em;
     padding-bottom: 0.5em;
     cursor: pointer;
-    transition: 150ms;
 }
 .timeSelector{
     width: calc(100% / 3 - 0.1em);
@@ -49,7 +47,6 @@
     padding-top: 0.5em;
     padding-bottom: 0.5em;
     cursor: pointer;
-    transition: 150ms;
 }
 .timeSelector#timeSelector2{
     float: right;

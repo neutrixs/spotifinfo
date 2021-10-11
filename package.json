@@ -19,6 +19,7 @@
     "firebase-admin": "^9.9.0",
     "node-fetch": "^2.6.1",
     "ssh2": "^1.4.0",
+    "terser-webpack-plugin": "^5.2.4",
     "uglify-js": "^3.13.10"
   }
 }

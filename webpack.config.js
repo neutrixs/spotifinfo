@@ -15,7 +15,9 @@ module.exports = {
         minimizer:[
             new TerserPlugin({
                 terserOptions:{
-                    mangle:true
+                    mangle:{
+                        properties:true,
+                    }
                     /*mangle:{
                         properties:{
                             regex:/(^_)[^\s]+/

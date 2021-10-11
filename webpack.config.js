@@ -4,7 +4,6 @@ let devMode = false
 
 module.exports = function(env,argv){
     devMode = argv.mode == "development"
-    console.log(devMode)
     return config
 }
 

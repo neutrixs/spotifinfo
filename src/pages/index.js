@@ -9,6 +9,12 @@ import {
 
 import { themeStart } from '../script/loggedIn/theme'
 
+import { mobileDesktopSizeHandler, mobileDesktopStart } from '../script/base/mobileDesktop'
+
+import { setNPSideText } from '../script/loggedIn/nowPlayingSideText'
+
+import { windowOnResize } from '../script/loggedIn/window.onresize'
+
 import $ from 'jquery'
 import he from 'he'
 import '../style/base.css'
@@ -18,3 +24,5 @@ window.he = he
 
 baseStart()
 themeStart()
+mobileDesktopStart()
+windowOnResize(setNPSideText,mobileDesktopSizeHandler)

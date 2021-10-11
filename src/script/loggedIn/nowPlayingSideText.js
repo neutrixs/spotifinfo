@@ -8,3 +8,5 @@ const setNPSideText = function(){
     }
     $('#mainInfoHolder').removeClass('mainInfoHolderSide')
 }
+
+export { setNPSideText }

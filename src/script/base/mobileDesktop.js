@@ -1,20 +1,21 @@
 const mobile = function(){
-    $('#holder').addClass('margin0')
-    $('#nowPlaying').addClass('nowPlayingMobile')
+    window.$('#holder').addClass('margin0')
+    window.$('#nowPlaying').addClass('nowPlayingMobile')
 }
 const desktop = function(){
-    $('#holder').removeClass('margin0')
-    $('#nowPlaying').removeClass('nowPlayingMobile')
+    window.$('#holder').removeClass('margin0')
+    window.$('#nowPlaying').removeClass('nowPlayingMobile')
 }
 
 let changeAt = 44.5
-if($(window).width() / parseFloat($("body").css("font-size")) < changeAt) mobile();
-$('#holder').removeClass('none').addClass('ts300ms')
+const mobileDesktopStart = function(){
+    if(window.$(window).width() / parseFloat(window.$("body").css("font-size")) < changeAt) mobile();
+    window.$('#holder').removeClass('none').addClass('ts300ms')
+}
 
 const mobileDesktopSizeHandler = function(){
-    let width = this.innerWidth;
     
-    let emWidth = $(window).width() / parseFloat($("body").css("font-size"))
+    let emWidth = window.$(window).width() / parseFloat(window.$("body").css("font-size"))
     if(emWidth < changeAt){
         mobile()
     }
@@ -22,3 +23,5 @@ const mobileDesktopSizeHandler = function(){
         desktop()
     }
 }
+
+export { mobileDesktopSizeHandler, mobileDesktopStart }

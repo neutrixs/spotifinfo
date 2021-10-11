@@ -1,7 +1,15 @@
 const path = require('path')
 const TerserPlugin = require("terser-webpack-plugin")
-module.exports = {
-    mode:"production",
+let devMode = false
+
+module.exports = function(env,argv){
+    devMode = argv.mode == "development"
+    console.log(devMode)
+    return config
+}
+
+const config = {
+    mode: devMode ? "development" : "production",
     entry: {
         "index":'./src/pages/index.js'
     },

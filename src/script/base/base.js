@@ -1,7 +1,9 @@
-const EUC = encodeURIComponent
-const baseProxy = '/proxy?url='
-let currentFetch = false
-let useProxy = false
+let globalVar = {} //ways to store data by references (because i'm lazy)
+const EUC = globalVar.EUC = encodeURIComponent
+const baseProxy = globalVar.baseProxy = '/proxy?url='
+let currentFetch = globalVar.currentFetch = false
+let useProxy = globalVar.useProxy = false
+
 if(window.localStorage.proxy){
     useProxy = JSON.parse(window.localStorage.proxy) === true
 }
@@ -100,29 +102,40 @@ const dropdown = function(){
 }
 
 let isDropdownLocked = false
-$('#profile_h').click(function(){
-    isDropdownLocked = true
-    dropdown()
-})
-
-$('#dropdown_options').click(function(){
-    isDropdownLocked = true
-})
-
-$('#logout').click(function(){
-    logOut(true)
-})
-
-$(window).click(function(){
-    if(isDropdownLocked){
-        isDropdownLocked = false
-        return
-    }
-    if(isDropdownOpened){
+function baseStart(){
+    $('#profile_h').click(function(){
+        isDropdownLocked = true
         dropdown()
-    }
-})
+    })
 
-if(!isLoggedOut){
-    getProfile()
+    $('#dropdown_options').click(function(){
+        isDropdownLocked = true
+    })
+
+    $('#logout').click(function(){
+        logOut(true)
+    })
+
+    $(window).click(function(){
+        if(isDropdownLocked){
+            isDropdownLocked = false
+            return
+        }
+        if(isDropdownOpened){
+            dropdown()
+        }
+    })
+
+    if(!isLoggedOut){
+        getProfile()
+    }
+}
+
+export {
+    globalVar,
+    sleep,
+    getToken,
+    getProfile,
+    logOut,
+    baseStart
 }

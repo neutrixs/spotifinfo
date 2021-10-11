@@ -3,9 +3,7 @@ const TerserPlugin = require("terser-webpack-plugin")
 module.exports = {
     mode:"production",
     entry: {
-        "jQuery":"./src/script/base/jquery.js",
-        "he":"./src/script/base/he.js",
-        "index":"./src/pages/index.js"
+        "index":'./src/pages/index.js'
     },
     output: {
         filename:"[name].js",
@@ -15,14 +13,14 @@ module.exports = {
         minimizer:[
             new TerserPlugin({
                 terserOptions:{
-                    mangle:{
-                        properties:true,
-                    }
                     /*mangle:{
+                        properties:true,
+                    }*/
+                    mangle:{
                         properties:{
                             regex:/(^_)[^\s]+/
                         }
-                    }*/
+                    }
                 }
             })
         ]

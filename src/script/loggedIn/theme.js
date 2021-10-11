@@ -7,12 +7,12 @@ const themeChange = function(){
         $('#theme_check').removeClass('none')
 
         let a = $('a')
-        for(i=0;i<a.length;i++){
+        for(let i=0;i<a.length;i++){
             a[i].classList.remove('aLight')
         }
 
         let badge = $('#recaptchaBrandingHolder a')
-        for(i=0;i<badge.length;i++){
+        for(let i=0;i<badge.length;i++){
             badge[i].classList.remove('rcBLight')
         }
 
@@ -26,12 +26,12 @@ const themeChange = function(){
         $('#theme_check').addClass('none')
 
         let a = $('a')
-        for(i=0;i<a.length;i++){
+        for(let i=0;i<a.length;i++){
             a[i].classList.add('aLight')
         }
 
         let badge = $('#recaptchaBrandingHolder a')
-        for(i=0;i<badge.length;i++){
+        for(let i=0;i<badge.length;i++){
             badge[i].classList.add('rcBLight')
         }
 
@@ -47,18 +47,22 @@ const themeForce = function(){
     $('#theme_check').addClass('none')
 
     let a = $('a')
-    for(i=0;i<a.length;i++){
+    for(let i=0;i<a.length;i++){
         a[i].classList.add('aLight')
     }
 
     let badge = $('#recaptchaBrandingHolder a')
-    for(i=0;i<badge.length;i++){
+    for(let i=0;i<badge.length;i++){
         badge[i].classList.add('rcBLight')
     }
 }
 
-if(window.localStorage['dark'] == 'false'){
-    themeForce()
+const themeStart = function(){
+    if(window.localStorage['dark'] == 'false'){
+        themeForce()
+    }
+
+    $('#theme').on('click',themeChange)
 }
 
-$('#theme').on('click',themeChange)
+export {themeStart}

@@ -1,5 +1,6 @@
 const path = require('path')
 module.exports = {
+    mode:"production",
     entry: {
         "jQuery":"./src/script/base/jquery.js",
     },

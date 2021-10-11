@@ -72,7 +72,7 @@ const getProfile = async function(){
         profilePic = '/img/user.png'
     }
 
-    $('#profile').attr('src',profilePic)
+    window.$('#profile').attr('src',profilePic)
 }
 const logOut = function(self) {
     delete window.localStorage['token']
@@ -90,33 +90,33 @@ const logOut = function(self) {
 let isDropdownOpened = false
 const dropdown = function(){
     if(isDropdownOpened){
-        $('#dropdown').removeClass('r180')
-        $('#dropdown_options').addClass('none')
+        window.$('#dropdown').removeClass('r180')
+        window.$('#dropdown_options').addClass('none')
         isDropdownOpened = false
     }
     else{
-        $('#dropdown').addClass('r180')
-        $('#dropdown_options').removeClass('none')
+        window.$('#dropdown').addClass('r180')
+        window.$('#dropdown_options').removeClass('none')
         isDropdownOpened = true
     }
 }
 
 let isDropdownLocked = false
 function baseStart(){
-    $('#profile_h').click(function(){
+    window.$('#profile_h').click(function(){
         isDropdownLocked = true
         dropdown()
     })
 
-    $('#dropdown_options').click(function(){
+    window.$('#dropdown_options').click(function(){
         isDropdownLocked = true
     })
 
-    $('#logout').click(function(){
+    window.$('#logout').click(function(){
         logOut(true)
     })
 
-    $(window).click(function(){
+    window.$(window).click(function(){
         if(isDropdownLocked){
             isDropdownLocked = false
             return

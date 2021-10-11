@@ -18,6 +18,7 @@ import { windowOnResize } from '../script/loggedIn/window.onresize'
 import $ from 'jquery'
 import he from 'he'
 import '../style/base.css'
+import '../style/nowPlaying.css'
 
 window.$ = $
 window.he = he

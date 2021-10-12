@@ -12,7 +12,7 @@ function nowPlayingStart(globalVar,getRecentlyPlayed,getToken){
         })
 
         if(res.status == 204){
-            window.$('#nowPlaying').addClass('none')
+            $('#nowPlaying').addClass('none')
             return
         }
 
@@ -27,29 +27,29 @@ function nowPlayingStart(globalVar,getRecentlyPlayed,getToken){
         }
     
         if(res.item == null){
-            window.$('#nowPlaying').addClass('none')
+            $('#nowPlaying').addClass('none')
             return
         }
     
-        if(res.item.name !== he.decode(window.$('#mainTitle').html())){
+        if(res.item.name !== he.decode($('#mainTitle').html())){
             getRecentlyPlayed(globalVar)
             baseURL = res.item.album.images[0].url
             url = globalVar.useProxy ? baseProxy+EUC(baseURL) : baseURL
-            window.$('#mainPicture').attr('src',url)
+            $('#mainPicture').attr('src',url)
         }
     
         nowPlayingProgress = [res.progress_ms,res.item.duration_ms,res.is_playing]
     
-        window.$('#nowPlayingStatus').html(res.is_playing?'Now Playing:':'Last Played Song:')
+        $('#nowPlayingStatus').html(res.is_playing?'Now Playing:':'Last Played Song:')
     
         if(res.item == null){
-            window.$('#nowPlaying').addClass('none')
+            $('#nowPlaying').addClass('none')
         }
-        window.$('#nowPlaying').removeClass('none')
+        $('#nowPlaying').removeClass('none')
     
-        window.$('#mainPictureHold').attr('href',res.item.album.external_urls.spotify)
+        $('#mainPictureHold').attr('href',res.item.album.external_urls.spotify)
     
-        window.$('#mainTitle').html(he.encode(res.item.name))
+        $('#mainTitle').html(he.encode(res.item.name))
         .attr('href',res.item.external_urls.spotify)
     
         let artist = ''
@@ -59,9 +59,9 @@ function nowPlayingStart(globalVar,getRecentlyPlayed,getToken){
                 artist+=', '
             }
         }
-        window.$('#mainArtist').html(artist)
+        $('#mainArtist').html(artist)
     
-        window.$('#nowPlaying').removeClass('none')
+        $('#nowPlaying').removeClass('none')
     }
     if(!isLoggedOut){
         getNowPlaying()
@@ -82,7 +82,7 @@ function nowPlayingStart(globalVar,getRecentlyPlayed,getToken){
             let currentSecond = (Math.floor(current/1000)%60).toString()
             currentSecond = (currentSecond<10?'0':'')+currentSecond
     
-            window.$('#mainProgress').html(currentMinute+':'+currentSecond+' / '+totalMinute+':'+totalSecond)
+            $('#mainProgress').html(currentMinute+':'+currentSecond+' / '+totalMinute+':'+totalSecond)
         }
     },100)
 }

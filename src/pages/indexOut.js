@@ -1,6 +1,5 @@
 import {
     globalVar,
-    getToken,
     baseStart,
     unsetHidden
 } from '../script/base/base'

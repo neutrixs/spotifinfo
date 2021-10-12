@@ -3,8 +3,15 @@ const TerserPlugin = require("terser-webpack-plugin")
 let devMode = false
 
 module.exports = function(env,argv){
+    console.log(argv)
     devMode = argv.mode == "development"
     return config
+}
+
+const mangleNormal = {
+    properties:{
+        regex:/(^_)[^\s]+/
+    }
 }
 
 const config = {
@@ -23,11 +30,7 @@ const config = {
                     /*mangle:{
                         properties:true,
                     }*/
-                    mangle:{
-                        properties:{
-                            regex:/(^_)[^\s]+/
-                        }
-                    }
+                    mangle:devMode ? false : mangleNormal
                 }
             })
         ]

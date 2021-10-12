@@ -1,3 +1,7 @@
-window.onresize = function(){
-    mobileDesktopSizeHandler()
+const windowOnResize = function(mobileDesktopSizeHandler){
+    window.onresize = function(){
+        mobileDesktopSizeHandler()
+    }
 }
+
+export { windowOnResize }

@@ -9,7 +9,7 @@ admin.initializeApp({
 });
 const db = admin.firestore();
 
-require('./checkDB')()
+require('./checker')()
 
 app.use(cookie_parser())
 app.set('view engine','ejs')

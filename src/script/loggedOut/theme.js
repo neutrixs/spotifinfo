@@ -39,8 +39,12 @@ const themeForce = function(){
     }
 }
 
-if(window.localStorage['dark'] == 'false'){
-    themeForce()
+const themeStart = function(){
+    if(window.localStorage['dark'] == 'false'){
+        themeForce()
+    }
+
+    $('#theme').off().on('click',themeChange)
 }
 
-$('#theme').off().on('click',themeChange)
+export { themeStart }

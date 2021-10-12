@@ -7,6 +7,10 @@ import {
 
 import { themeStart } from '../script/acc/theme'
 
+import { mobileDesktopSizeHandler } from '../script/acc/mobileDesktop'
+
+import { getAccountInfo } from '../script/acc/getInfo'
+
 import $ from 'jquery'
 import he from 'he'
 import '../style/base.css'
@@ -18,3 +22,5 @@ window.he = he
 unsetHidden()
 baseStart()
 themeStart()
+mobileDesktopSizeHandler()
+getAccountInfo(globalVar,getToken)

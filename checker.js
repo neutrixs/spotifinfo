@@ -10,7 +10,7 @@ const main = function(){
 }
 const version = function(){
     try{
-        const read = fs.readFileSync('./db/scriptVer.txt')
+        const read = fs.readFileSync('./db/scriptVer.txt',{encoding:'utf-8'})
         if(!read){
             const date = (+new Date()).toString()
             fs.writeFileSync('./db/scriptVer.txt',date)

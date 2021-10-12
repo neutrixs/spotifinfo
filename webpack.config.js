@@ -20,7 +20,8 @@ const config = {
     entry: {
         "index":'./src/pages/index.js',
         "indexOut":'./src/pages/indexOut.js',
-        "top_tracks":'./src/pages/top_tracks.js'
+        "top_tracks":'./src/pages/top_tracks.js',
+        "account":'./src/pages/account.js'
     },
     output: {
         filename:"[name].js",

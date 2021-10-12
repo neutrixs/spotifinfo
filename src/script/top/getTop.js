@@ -1,4 +1,4 @@
-(async function(document){    
+const getTop = function(globalVar,getToken){    
     const getTopTracks = async function(type){
         let createElement = 'createElement' // best for minifier, but doesn't make it hard to code either
         let setAttribute = 'setAttribute'
@@ -9,7 +9,7 @@
         let res,term,temp, baseURL, url
         term = ['long_term','medium_term','short_term']
         baseURL = 'https://api.spotify.com/v1/me/top/tracks?limit=50&time_range='+term[type]
-        url = useProxy ? baseProxy+EUC(baseURL) : baseURL
+        url = globalVar.useProxy ? globalVar.baseProxy+globalVar.EUC(baseURL) : baseURL
         res = await fetch(url,{
             method:'GET',
             headers:{
@@ -28,7 +28,7 @@
 
         document.getElementById(`listTrack${type}`).innerHTML=''
 
-        for(i=0;i<res[items].length;i++){
+        for(let i=0;i<res[items].length;i++){
             let topEach = document[createElement]('div')
 
             topEach[setAttribute]('id',`listTrack${type}N${i}`)
@@ -48,7 +48,7 @@
             let albumImg = document[createElement]('img')
 
             baseURL = res[items][i].album.images[1].url
-            url = useProxy ? baseProxy+EUC(baseURL) : baseURL
+            url = globalVar.useProxy ? globalVar.baseProxy+globalVar.EUC(baseURL) : baseURL
 
             albumImg[setAttribute]('id',`listTrack${type}N${i}Album`)
             albumImg[setAttribute]('class','listTrackAlbum')
@@ -69,7 +69,7 @@
 
             trackArtist[setAttribute]('class','listTrackArtist')
 
-            for(j=0;j<res[items][i].artists.length;j++){
+            for(let j=0;j<res[items][i].artists.length;j++){
                 trackArtist.innerHTML+=he.encode(res[items][i].artists[j].name)
 
                 if(j!= res[items][i].artists.length-1){
@@ -100,7 +100,7 @@
         let res,term,temp, baseURL, url
         term = ['long_term','medium_term','short_term']
         baseURL = 'https://api.spotify.com/v1/me/top/artists?limit=50&time_range='+term[type]
-        url = useProxy ? baseProxy+EUC(baseURL) : baseURL
+        url = globalVar.useProxy ? globalVar.baseProxy+globalVar.EUC(baseURL) : baseURL
         res = await fetch(url,{
             method:'GET',
             headers:{
@@ -119,7 +119,7 @@
         
         document.getElementById(`listArtist${type}`).innerHTML = ''
 
-        for(i=0;i<res[items].length;i++){
+        for(let i=0;i<res[items].length;i++){
             let artistEach = document[createElement]('div')
 
             artistEach[setAttribute]('id',`listArtist${type}N${i}`)
@@ -139,7 +139,7 @@
             let profile = document[createElement]('img')
 
             baseURL = res[items][i].images[1].url
-            url = useProxy ? baseProxy+EUC(baseURL) : baseURL
+            url = globalVar.useProxy ? globalVar.baseProxy+globalVar.EUC(baseURL) : baseURL
 
             profile[setAttribute]('id',`listArtist${type}N${i}Profile`)
             profile[setAttribute]('class',`listArtistProfile`)
@@ -173,4 +173,6 @@
     getTopArtists(0)
     getTopArtists(1)
     getTopArtists(2)
-})(document)
+}
+
+export { getTop }

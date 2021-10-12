@@ -5,7 +5,7 @@
   "main": "server_for_self.js",
   "scripts": {
     "dev": "node ./server_for_self_test.js",
-    "build": "node ./minifier/uglify.js",
+    "build": "node scripts/changeVer.js && webpack build",
     "deploy": "node ssh/ssh2.js"
   },
   "keywords": [],

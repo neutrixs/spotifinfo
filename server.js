@@ -9,6 +9,7 @@ admin.initializeApp({
 });
 const db = admin.firestore();
 
+const version = require('./checker').version()
 require('./checker').db()
 
 app.use(cookie_parser())
@@ -21,10 +22,10 @@ app.get(/^\//,(req,res)=>{
     switch(req.path){
         case '/':
             if(isLoggedOut){
-                res.render('indexOut.ejs',{isLoggedOut:isLoggedOut,useMinify:true})
+                res.render('indexOut.ejs',{isLoggedOut:isLoggedOut,useMinify:true,version:version})
             }
             else{
-                res.render('index.ejs',{isLoggedOut:isLoggedOut,useMinify:true})
+                res.render('index.ejs',{isLoggedOut:isLoggedOut,useMinify:true,version:version})
             }
         return
         case '/account':
@@ -32,13 +33,13 @@ app.get(/^\//,(req,res)=>{
                 res.redirect('/')
                 return
             }
-            res.render('account.ejs',{isLoggedOut:isLoggedOut,useMinify:true})
+            res.render('account.ejs',{isLoggedOut:isLoggedOut,useMinify:true,version:version})
         return
         case '/top_tracks':
             if(isLoggedOut){
                 res.redirect('/')
             }
-            res.render('top_tracks.ejs',{isLoggedOut:isLoggedOut,useMinify:true})
+            res.render('top_tracks.ejs',{isLoggedOut:isLoggedOut,useMinify:true,version:version})
         return
         case '/login':
             require('./dynamic/login')(req,res,data,isLoggedOut)

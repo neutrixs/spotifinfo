@@ -4,7 +4,7 @@ import {
     unsetHidden
 } from '../script/base/base'
 
-import { themeStart } from '../script/loggedOut/theme'
+import { themeStart } from '../script/top/theme'
 
 import { mobileDesktopSizeHandler } from '../script/top/mobileDesktop'
 

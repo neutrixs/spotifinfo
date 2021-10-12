@@ -17,7 +17,8 @@ const mangleNormal = {
 const config = {
     mode: devMode ? "development" : "production",
     entry: {
-        "index":'./src/pages/index.js'
+        "index":'./src/pages/index.js',
+        "indexOut":'./src/pages/indexOut.js'
     },
     output: {
         filename:"[name].js",

@@ -11,9 +11,9 @@ const hexToRGB = function(hex){
 }
 
 const RGBToHSV = function(arr) {
-    r = parseInt(arr[0])
-    g = parseInt(arr[1])
-    b = parseInt(arr[2])
+    const r = parseInt(arr[0])
+    const g = parseInt(arr[1])
+    const b = parseInt(arr[2])
     let rabs, gabs, babs, rr, gg, bb, h, s, v, diff, diffc, percentRoundFn;
     rabs = r / 255;
     gabs = g / 255;
@@ -104,7 +104,7 @@ const HSLToRGB = function(hsl){
 
 const indexMostSaturated = function(list){
     
-    for( i=0; i < list.length; i++ ){
+    for( let i=0; i < list.length; i++ ){
         list[i] = { ...RGBToHSV( list[i] ) }
         list[i]['indexNo'] = i
     }
@@ -124,7 +124,7 @@ const checkLightness = function(rgb){
 }
 
 const changeHSLLightness = function(rgb,valuePercent){
-    hsl = RGBToHSL(rgb)
+    let hsl = RGBToHSL(rgb)
 
     hsl[2] += valuePercent/100
 
@@ -134,7 +134,7 @@ const changeHSLLightness = function(rgb,valuePercent){
 }
 
 const changeLightness = function(toIncrease,rgb,rangeLower,rangeUpper){
-    for(i=0;i<100;i++){ //maximum is 100 because i will increase/decrease hsl lightness each by 1%
+    for(let i=0;i<100;i++){ //maximum is 100 because i will increase/decrease hsl lightness each by 1%
         rgb = changeHSLLightness(rgb,toIncrease?1:-1)
 
         let lightness = checkLightness(rgb)
@@ -154,9 +154,14 @@ const autoAdjustLightness = function(rgb,rangeLower,rangeUpper){
         rgb = changeLightness(false,rgb,rangeLower,rangeUpper)
     }
 
-    for( i=0; i<3; i++ ){
+    for( let i=0; i<3; i++ ){
         rgb[i] = Math.round(rgb[i])
     }
 
     return rgb
+}
+
+export {
+    indexMostSaturated,
+    autoAdjustLightness,
 }

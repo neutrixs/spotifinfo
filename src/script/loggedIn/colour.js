@@ -1,4 +1,4 @@
-(function(){
+function colourStart(indexMostSaturated,autoAdjustLightness){
     let palette = ''
     const colour = new ColorThief()
     let img = document.getElementById('mainPicture')
@@ -22,4 +22,6 @@
     $('#theme').on('click',function(){
         setTimeout(setPalette,10)
     })
-})()
+}
+
+export { colourStart }

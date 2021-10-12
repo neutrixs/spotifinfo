@@ -11,6 +11,12 @@ import { mobileDesktopSizeHandler, mobileDesktopStart } from '../script/base/mob
 
 import { windowOnResize } from '../script/loggedOut/window.onresize'
 
+import { encodeQueryString } from '../script/base/querystring'
+
+import { outStart } from '../script/loggedOut/out'
+
+import { loginHandler } from '../script/loggedOut/login'
+
 import $ from 'jquery'
 import he from 'he'
 import '../style/base.css'
@@ -24,3 +30,7 @@ baseStart()
 themeStart()
 mobileDesktopStart()
 windowOnResize(mobileDesktopSizeHandler)
+
+let loginParam = globalVar.loginParam = {}
+outStart(loginParam)
+loginHandler(loginParam,encodeQueryString)

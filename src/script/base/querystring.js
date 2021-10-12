@@ -22,3 +22,5 @@ function decodeQueryString(str){
     }
     return obj
 }
+
+export { encodeQueryString, decodeQueryString }

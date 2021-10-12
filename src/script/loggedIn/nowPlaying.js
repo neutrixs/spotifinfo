@@ -1,9 +1,9 @@
-(function(){
+function nowPlayingStart(globalVar,getRecentlyPlayed){
     let nowPlayingProgress = []
     const getNowPlaying = async function(){
         let baseURL, url
         baseURL = 'https://api.spotify.com/v1/me/player/currently-playing'
-        url = useProxy ? baseProxy+EUC(baseURL) : baseURL
+        url = globalVar.useProxy ? baseProxy+EUC(baseURL) : baseURL
         let res = await fetch(url,{
             method:'GET',
             headers:{
@@ -12,7 +12,7 @@
         })
 
         if(res.status == 204){
-            $('#nowPlaying').addClass('none')
+            window.$('#nowPlaying').addClass('none')
             return
         }
 
@@ -27,41 +27,41 @@
         }
     
         if(res.item == null){
-            $('#nowPlaying').addClass('none')
+            window.$('#nowPlaying').addClass('none')
             return
         }
     
-        if(res.item.name !== he.decode($('#mainTitle').html())){
-            getRecentlyPlayed()
+        if(res.item.name !== he.decode(window.$('#mainTitle').html())){
+            getRecentlyPlayed(globalVar)
             baseURL = res.item.album.images[0].url
-            url = useProxy ? baseProxy+EUC(baseURL) : baseURL
-            $('#mainPicture').attr('src',url)
+            url = globalVar.useProxy ? baseProxy+EUC(baseURL) : baseURL
+            window.$('#mainPicture').attr('src',url)
         }
     
         nowPlayingProgress = [res.progress_ms,res.item.duration_ms,res.is_playing]
     
-        $('#nowPlayingStatus').html(res.is_playing?'Now Playing:':'Last Played Song:')
+        window.$('#nowPlayingStatus').html(res.is_playing?'Now Playing:':'Last Played Song:')
     
         if(res.item == null){
-            $('#nowPlaying').addClass('none')
+            window.$('#nowPlaying').addClass('none')
         }
-        $('#nowPlaying').removeClass('none')
+        window.$('#nowPlaying').removeClass('none')
     
-        $('#mainPictureHold').attr('href',res.item.album.external_urls.spotify)
+        window.$('#mainPictureHold').attr('href',res.item.album.external_urls.spotify)
     
-        $('#mainTitle').html(he.encode(res.item.name))
+        window.$('#mainTitle').html(he.encode(res.item.name))
         .attr('href',res.item.external_urls.spotify)
     
         let artist = ''
-        for(i=0;i<res.item.artists.length;i++){
+        for(let i=0;i<res.item.artists.length;i++){
             artist+=`<a href="${res.item.artists[i].external_urls.spotify}" id="mainArtist${i}">${he.encode(res.item.artists[i].name)}</a>`
             if(i < res.item.artists.length-1){
                 artist+=', '
             }
         }
-        $('#mainArtist').html(artist)
+        window.$('#mainArtist').html(artist)
     
-        $('#nowPlaying').removeClass('none')
+        window.$('#nowPlaying').removeClass('none')
     }
     if(!isLoggedOut){
         getNowPlaying()
@@ -82,7 +82,9 @@
             let currentSecond = (Math.floor(current/1000)%60).toString()
             currentSecond = (currentSecond<10?'0':'')+currentSecond
     
-            $('#mainProgress').html(currentMinute+':'+currentSecond+' / '+totalMinute+':'+totalSecond)
+            window.$('#mainProgress').html(currentMinute+':'+currentSecond+' / '+totalMinute+':'+totalSecond)
         }
     },100)
-})()
+}
+
+export { nowPlayingStart }

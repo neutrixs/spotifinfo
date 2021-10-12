@@ -1,4 +1,4 @@
-const getRecentlyPlayed = async function(){
+const getRecentlyPlayed = async function(globalVar){
     let createElement = 'createElement' // best for minifier, but doesn't make it hard to code either
     let setAttribute = 'setAttribute'
     let items = 'items'
@@ -7,7 +7,7 @@ const getRecentlyPlayed = async function(){
 
     let baseURL, url
     baseURL = 'https://api.spotify.com/v1/me/player/recently-played?limit=50'
-    url = useProxy ? baseProxy+EUC(baseURL) : baseURL
+    url = globalVar.useProxy ? baseProxy+EUC(baseURL) : baseURL
     let res = await fetch(url,{
         method:'GET',
         headers:{
@@ -26,7 +26,7 @@ const getRecentlyPlayed = async function(){
 
     $('#recentlyPlayedListHolder').html('')
 
-    for(i=0;i<res[items].length;i++){
+    for(let i=0;i<res[items].length;i++){
         let recentlyPlayedEach = document[createElement]('div')
         
         recentlyPlayedEach[setAttribute]('id','RecentlyPlayed'+i)
@@ -41,7 +41,7 @@ const getRecentlyPlayed = async function(){
         let recentlyPlayedImage = document[createElement]('img')
 
         baseURL = res[items][i][track].album.images[1].url
-        url = useProxy ? baseProxy+EUC(baseURL) : baseURL
+        url = globalVar.useProxy ? baseProxy+EUC(baseURL) : baseURL
             
         recentlyPlayedImage[setAttribute]('class','recentlyPlayedImage')
         recentlyPlayedImage[setAttribute]('src',url)
@@ -61,7 +61,7 @@ const getRecentlyPlayed = async function(){
             
         recentlyPlayedArtistName[setAttribute]('class','recentlyPlayedArtistName')
         
-        for(j=0;j<res[items][i][track].artists.length;j++){
+        for(let j=0;j<res[items][i][track].artists.length;j++){
             let each = document[createElement]('span')
                 
             each[setAttribute]('id','recent'+i+'artist'+j)
@@ -89,4 +89,5 @@ const getRecentlyPlayed = async function(){
 
     $('#recentlyPlayed').removeClass('none')
 }
-if(!isLoggedOut)getRecentlyPlayed();
+
+export { getRecentlyPlayed }

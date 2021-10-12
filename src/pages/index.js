@@ -15,6 +15,10 @@ import { setNPSideText } from '../script/loggedIn/nowPlayingSideText'
 
 import { windowOnResize } from '../script/loggedIn/window.onresize'
 
+import { getRecentlyPlayed } from '../script/loggedIn/recentlyPlayed'
+
+import { nowPlayingStart } from '../script/loggedIn/nowPlaying'
+
 import $ from 'jquery'
 import he from 'he'
 import '../style/base.css'
@@ -27,3 +31,5 @@ baseStart()
 themeStart()
 mobileDesktopStart()
 windowOnResize(setNPSideText,mobileDesktopSizeHandler)
+nowPlayingStart(globalVar,getRecentlyPlayed)
+getRecentlyPlayed(globalVar)

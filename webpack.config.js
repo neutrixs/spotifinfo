@@ -1,5 +1,6 @@
 const path = require('path')
 const TerserPlugin = require("terser-webpack-plugin")
+const CopyPlugin = require("copy-webpack-plugin")
 let devMode = false
 
 module.exports = function(env,argv){
@@ -43,5 +44,23 @@ const config = {
                 use: ["style-loader", "css-loader"],
             },
         ]
-    }
+    },
+    plugins:[
+        new CopyPlugin({
+            patterns:[
+                {
+                    from:'./src/font',
+                    to:'./font'
+                },
+                {
+                    from:'./src/img',
+                    to:'./img'
+                },
+                {
+                    from:'./src/favicon.ico',
+                    to:'./favicon.ico'
+                }
+            ]
+        })
+    ]
 }

@@ -19,7 +19,8 @@ const config = {
     mode: devMode ? "development" : "production",
     entry: {
         "index":'./src/pages/index.js',
-        "indexOut":'./src/pages/indexOut.js'
+        "indexOut":'./src/pages/indexOut.js',
+        "top_tracks":'./src/pages/top_tracks.js'
     },
     output: {
         filename:"[name].js",

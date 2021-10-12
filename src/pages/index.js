@@ -1,9 +1,6 @@
 import {
     globalVar,
-    sleep,
     getToken,
-    getProfile,
-    logOut,
     baseStart,
     unsetHidden
 } from '../script/base/base'

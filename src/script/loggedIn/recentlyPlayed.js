@@ -1,4 +1,4 @@
-const getRecentlyPlayed = async function(globalVar){
+const getRecentlyPlayed = async function(globalVar,getToken){
     let createElement = 'createElement' // best for minifier, but doesn't make it hard to code either
     let setAttribute = 'setAttribute'
     let items = 'items'

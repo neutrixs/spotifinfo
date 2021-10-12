@@ -1,4 +1,4 @@
-function nowPlayingStart(globalVar,getRecentlyPlayed){
+function nowPlayingStart(globalVar,getRecentlyPlayed,getToken){
     let nowPlayingProgress = []
     const getNowPlaying = async function(){
         let baseURL, url

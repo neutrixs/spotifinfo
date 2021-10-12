@@ -41,8 +41,12 @@ const changeTime = function(type){
     timeSelected = type
 }
 
-$('#trackSelector').off().on('click',()=>{changeType(0)})
-$('#artistSelector').off().on('click',()=>{changeType(1)})
-$('#timeSelector0').off().on('click',()=>{changeTime(0)})
-$('#timeSelector1').off().on('click',()=>{changeTime(1)})
-$('#timeSelector2').off().on('click',()=>{changeTime(2)})
+const topScriptStart = function(){
+    $('#trackSelector').off().on('click',()=>{changeType(0)})
+    $('#artistSelector').off().on('click',()=>{changeType(1)})
+    $('#timeSelector0').off().on('click',()=>{changeTime(0)})
+    $('#timeSelector1').off().on('click',()=>{changeTime(1)})
+    $('#timeSelector2').off().on('click',()=>{changeTime(2)})
+}
+
+export { topScriptStart }

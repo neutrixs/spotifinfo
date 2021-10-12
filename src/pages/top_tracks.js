@@ -8,6 +8,8 @@ import { themeStart } from '../script/top/theme'
 
 import { mobileDesktopSizeHandler } from '../script/top/mobileDesktop'
 
+import { topScriptStart } from '../script/top/topScript'
+
 import $ from 'jquery'
 import he from 'he'
 import '../style/base.css'
@@ -20,3 +22,4 @@ unsetHidden()
 baseStart()
 themeStart()
 mobileDesktopSizeHandler()
+topScriptStart()

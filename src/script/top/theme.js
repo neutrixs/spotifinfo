@@ -1,47 +1,47 @@
 const themeChange = function(){
     if(window.localStorage['dark'] == 'false'){
-        $('body')[0].classList.remove('bodyLight')
-        $('#nav').removeClass('navLight')
-        $('#dropdown_options').removeClass('dropdown_optionsLight')
-        $('#dropdown').html($('#dropdown').html().replace('black','white'))
-        $('#theme_check').removeClass('none')
+        window.$('body')[0].classList.remove('bodyLight')
+        window.$('#nav').removeClass('navLight')
+        window.$('#dropdown_options').removeClass('dropdown_optionsLight')
+        window.$('#dropdown').html(window.$('#dropdown').html().replace('black','white'))
+        window.$('#theme_check').removeClass('none')
 
-        let a = $('a')
-        for(i=0;i<a.length;i++){
+        let a = window.$('a')
+        for(let i=0;i<a.length;i++){
             a[i].classList.remove('aLight')
         }
 
-        let selected = $('.selectedLight')
-        for(i=0;i<selected.length;i++){
+        let selected = window.$('.selectedLight')
+        for(let i=0;i<selected.length;i++){
             selected[i].classList.replace('selectedLight','selected')
         }
 
-        let badge = $('#recaptchaBrandingHolder a')
-        for(i=0;i<badge.length;i++){
+        let badge = window.$('#recaptchaBrandingHolder a')
+        for(let i=0;i<badge.length;i++){
             badge[i].classList.remove('rcBLight')
         }
 
         window.localStorage['dark'] = true
     }
     else{
-        $('body')[0].classList.add('bodyLight')
-        $('#nav').addClass('navLight')
-        $('#dropdown_options').addClass('dropdown_optionsLight')
-        $('#dropdown').html($('#dropdown').html().replace('white','black'))
-        $('#theme_check').addClass('none')
+        window.$('body')[0].classList.add('bodyLight')
+        window.$('#nav').addClass('navLight')
+        window.$('#dropdown_options').addClass('dropdown_optionsLight')
+        window.$('#dropdown').html(window.$('#dropdown').html().replace('white','black'))
+        window.$('#theme_check').addClass('none')
 
-        let a = $('a')
-        for(i=0;i<a.length;i++){
+        let a = window.$('a')
+        for(let i=0;i<a.length;i++){
             a[i].classList.add('aLight')
         }
 
-        let selected = $('.selected')
-        for(i=0;i<selected.length;i++){
+        let selected = window.$('.selected')
+        for(let i=0;i<selected.length;i++){
             selected[i].classList.replace('selected','selectedLight')
         }
 
-        let badge = $('#recaptchaBrandingHolder a')
-        for(i=0;i<badge.length;i++){
+        let badge = window.$('#recaptchaBrandingHolder a')
+        for(let i=0;i<badge.length;i++){
             badge[i].classList.add('rcBLight')
         }
 
@@ -50,30 +50,34 @@ const themeChange = function(){
 }
 
 const themeForce = function(){
-    $('body')[0].classList.add('bodyLight')
-    $('#nav').addClass('navLight')
-    $('#dropdown_options').addClass('dropdown_optionsLight')
-    $('#dropdown').html($('#dropdown').html().replace('white','black'))
-    $('#theme_check').addClass('none')
+    window.$('body')[0].classList.add('bodyLight')
+    window.$('#nav').addClass('navLight')
+    window.$('#dropdown_options').addClass('dropdown_optionsLight')
+    window.$('#dropdown').html(window.$('#dropdown').html().replace('white','black'))
+    window.$('#theme_check').addClass('none')
 
-    let a = $('a')
-    for(i=0;i<a.length;i++){
+    let a = window.$('a')
+    for(let i=0;i<a.length;i++){
         a[i].classList.add('aLight')
     }
 
-    let selected = $('.selected')
-    for(i=0;i<selected.length;i++){
+    let selected = window.$('.selected')
+    for(let i=0;i<selected.length;i++){
         selected[i].classList.replace('selected','selectedLight')
     }
 
-    let badge = $('#recaptchaBrandingHolder a')
-    for(i=0;i<badge.length;i++){
+    let badge = window.$('#recaptchaBrandingHolder a')
+    for(let i=0;i<badge.length;i++){
         badge[i].classList.add('rcBLight')
     }
 }
 
-if(window.localStorage['dark'] == 'false'){
-    themeForce()
+const themeStart = function(){
+    if(window.localStorage['dark'] == 'false'){
+        themeForce()
+    }
+
+    window.$('#theme').off().on('click',themeChange)
 }
 
-$('#theme').off().on('click',themeChange)
+export { themeStart }

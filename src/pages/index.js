@@ -4,7 +4,8 @@ import {
     getToken,
     getProfile,
     logOut,
-    baseStart
+    baseStart,
+    unsetHidden
 } from '../script/base/base'
 
 import {
@@ -34,6 +35,7 @@ import '../style/nowPlaying.css'
 window.$ = $
 window.he = he
 
+unsetHidden()
 baseStart()
 themeStart()
 mobileDesktopStart()

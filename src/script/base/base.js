@@ -87,6 +87,10 @@ const logOut = function(self) {
     window.location.replace('/')
 }
 
+const unsetHidden = function(){
+    window.$('body').css('display','unset')
+}
+
 let isDropdownOpened = false
 const dropdown = function(){
     if(isDropdownOpened){
@@ -137,5 +141,6 @@ export {
     getToken,
     getProfile,
     logOut,
-    baseStart
+    baseStart,
+    unsetHidden
 }

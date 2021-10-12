@@ -6,6 +6,8 @@ import {
 
 import { themeStart } from '../script/loggedOut/theme'
 
+import { mobileDesktopSizeHandler } from '../script/top/mobileDesktop'
+
 import $ from 'jquery'
 import he from 'he'
 import '../style/base.css'
@@ -17,3 +19,4 @@ window.he = he
 unsetHidden()
 baseStart()
 themeStart()
+mobileDesktopSizeHandler()

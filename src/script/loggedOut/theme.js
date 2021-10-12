@@ -6,7 +6,7 @@ const themeChange = function(){
         $('#theme_check').removeClass('none')
 
         let a = $('a')
-        for(i=0;i<a.length;i++){
+        for(let i=0;i<a.length;i++){
             a[i].classList.remove('aLight')
         }
 
@@ -19,7 +19,7 @@ const themeChange = function(){
         $('#theme_check').addClass('none')
 
         let a = $('a')
-        for(i=0;i<a.length;i++){
+        for(let i=0;i<a.length;i++){
             a[i].classList.add('aLight')
         }
 
@@ -34,7 +34,7 @@ const themeForce = function(){
     $('#theme_check').addClass('none')
 
     let a = $('a')
-    for(i=0;i<a.length;i++){
+    for(let i=0;i<a.length;i++){
         a[i].classList.add('aLight')
     }
 }

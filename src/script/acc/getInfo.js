@@ -1,7 +1,7 @@
-const getAccountInfo = async function(globalVar,getToken){
+const getAccountInfo = async function(getToken){
     let baseURL, url
     baseURL = 'https://api.spotify.com/v1/me'
-    url = globalVar.useProxy ? globalVar.baseProxy+globalVar.EUC(baseURL) : baseURL
+    url = useProxy ? baseProxy+EUC(baseURL) : baseURL
     let res = await fetch(url,{
         method:'GET',
         headers:{
@@ -22,7 +22,7 @@ const getAccountInfo = async function(globalVar,getToken){
 
     if(res.images[0]){
         baseURL = res.images[0].url
-        url = globalVar.useProxy ? globalVar.baseProxy+globalVar.EUC(baseURL) : baseURL
+        url = useProxy ? baseProxy+EUC(baseURL) : baseURL
     }
     else{
         url = '/img/user.png'

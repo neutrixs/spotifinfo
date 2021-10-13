@@ -1,4 +1,4 @@
-const outStart = function(loginParam){
+const outStart = function(){
     if(window.localStorage['force'] == 'true'){
         loginParam.force = true
     }

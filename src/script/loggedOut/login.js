@@ -1,4 +1,4 @@
-const loginHandler = function(loginParam,encodeQueryString){
+const loginHandler = function(encodeQueryString){
     $('#profile_h').on('click',function(){
         grecaptcha.ready(function(){
             grecaptcha.execute('6Ld9VmMcAAAAAK48XrvY1T8vcjjNBHN4tkRipg5C',{action:'loginClick'}).then(function(token){

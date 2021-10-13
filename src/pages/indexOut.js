@@ -1,5 +1,4 @@
 import {
-    globalVar,
     baseStart,
     unsetHidden
 } from '../script/base/base'
@@ -30,6 +29,6 @@ themeStart()
 mobileDesktopStart()
 windowOnResize(mobileDesktopSizeHandler)
 
-let loginParam = globalVar.loginParam = {}
-outStart(loginParam)
-loginHandler(loginParam,encodeQueryString)
+window.loginParam = {}
+outStart()
+loginHandler(encodeQueryString)

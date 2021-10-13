@@ -24,10 +24,6 @@ const themeStart = function(){
     if(window.localStorage['dark'] == 'false'){
         themeChange(true)
     }
-
-    $('#theme').off().on('click',function(){
-        themeChange(false)
-    })
 }
 
 export { themeStart }

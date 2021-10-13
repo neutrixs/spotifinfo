@@ -1,50 +1,33 @@
-const themeChange = function(){
-    if(window.localStorage['dark'] == 'false'){
-        $('body')[0].classList.remove('bodyLight')
-        $('#nav').removeClass('navLight')
-        $('#dropdown_options').removeClass('dropdown_optionsLight')
-        $('#theme_check').removeClass('none')
+const themeChange = function(force){
 
-        let a = $('a')
-        for(let i=0;i<a.length;i++){
-            a[i].classList.remove('aLight')
-        }
+    const isLight = window.localStorage['dark'] === 'false'
+    let modeJquery = isLight ? 'removeClass' : 'addClass'
+    let modeVanilla = isLight ? 'remove' : 'add'
 
-        window.localStorage['dark'] = true
+    if(force){
+        modeJquery = 'addClass'
+        modeVanilla = 'add'
     }
-    else{
-        $('body')[0].classList.add('bodyLight')
-        $('#nav').addClass('navLight')
-        $('#dropdown_options').addClass('dropdown_optionsLight')
-        $('#theme_check').addClass('none')
 
-        let a = $('a')
-        for(let i=0;i<a.length;i++){
-            a[i].classList.add('aLight')
-        }
-
-        window.localStorage['dark'] = false
-    }
-}
-
-const themeForce = function(){
-    $('body')[0].classList.add('bodyLight')
-    $('#nav').addClass('navLight')
-    $('#dropdown_options').addClass('dropdown_optionsLight')
-    $('#theme_check').addClass('none')
+    $('body')[0].classList[modeVanilla]('bodyLight')
+    $('#nav')[modeJquery]('navLight')
 
     let a = $('a')
     for(let i=0;i<a.length;i++){
-        a[i].classList.add('aLight')
+        a[i].classList[modeVanilla]('aLight')
     }
+
+    if(!force) window.localStorage['dark'] = true;
 }
 
 const themeStart = function(){
     if(window.localStorage['dark'] == 'false'){
-        themeForce()
+        themeChange(true)
     }
 
-    $('#theme').off().on('click',themeChange)
+    $('#theme').off().on('click',function(){
+        themeChange(false)
+    })
 }
 
 export { themeStart }

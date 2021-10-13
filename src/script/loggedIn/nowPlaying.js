@@ -1,5 +1,6 @@
 function nowPlayingStart(getRecentlyPlayed,getToken){
     let nowPlayingProgress = []
+    let nowPlayingInterval;
     const getNowPlaying = async function(){
         let baseURL, url
         baseURL = 'https://api.spotify.com/v1/me/player/currently-playing'
@@ -20,8 +21,10 @@ function nowPlayingStart(getRecentlyPlayed,getToken){
     
         if(res.error){
             if(res.error.status == 400 || res.error.status == 401){
+                clearInterval(nowPlayingInterval)
                 await getToken()
                 await getNowPlaying();
+                nowPlayingInterval = setInterval(getNowPlaying,2000)
             }
             return
         }
@@ -64,8 +67,8 @@ function nowPlayingStart(getRecentlyPlayed,getToken){
         $('#nowPlaying').removeClass('none')
     }
     if(!isLoggedOut){
+        nowPlayingInterval = setInterval(getNowPlaying,2000)
         getNowPlaying()
-        let nowPlayingInterval = setInterval(getNowPlaying,2000)
     }
     let nowPlayingProgressInterval = setInterval(()=>{
         nowPlayingProgress[0]+=100

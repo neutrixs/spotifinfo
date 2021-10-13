@@ -32,7 +32,7 @@ function nowPlayingStart(getRecentlyPlayed,getToken){
         }
     
         if(res.item.name !== he.decode($('#mainTitle').html())){
-            getRecentlyPlayed(globalVar)
+            getRecentlyPlayed(getToken)
             baseURL = res.item.album.images[0].url
             url = useProxy ? baseProxy+EUC(baseURL) : baseURL
             $('#mainPicture').attr('src',url)

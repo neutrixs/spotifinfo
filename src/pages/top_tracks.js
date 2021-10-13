@@ -1,5 +1,4 @@
 import {
-    globalVar,
     baseStart,
     getToken,
     unsetHidden
@@ -26,4 +25,4 @@ baseStart()
 themeStart()
 mobileDesktopSizeHandler()
 topScriptStart()
-getTop(globalVar,getToken)
+getTop(getToken)

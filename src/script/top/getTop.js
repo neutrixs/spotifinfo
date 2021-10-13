@@ -1,4 +1,4 @@
-const getTop = function(globalVar,getToken){    
+const getTop = function(getToken){    
     const getTopTracks = async function(type){
         let createElement = 'createElement' // best for minifier, but doesn't make it hard to code either
         let setAttribute = 'setAttribute'
@@ -9,7 +9,7 @@ const getTop = function(globalVar,getToken){
         let res,term,temp, baseURL, url
         term = ['long_term','medium_term','short_term']
         baseURL = 'https://api.spotify.com/v1/me/top/tracks?limit=50&time_range='+term[type]
-        url = globalVar.useProxy ? globalVar.baseProxy+globalVar.EUC(baseURL) : baseURL
+        url = useProxy ? baseProxy+EUC(baseURL) : baseURL
         res = await fetch(url,{
             method:'GET',
             headers:{
@@ -48,7 +48,7 @@ const getTop = function(globalVar,getToken){
             let albumImg = document[createElement]('img')
 
             baseURL = res[items][i].album.images[1].url
-            url = globalVar.useProxy ? globalVar.baseProxy+globalVar.EUC(baseURL) : baseURL
+            url = useProxy ? baseProxy+EUC(baseURL) : baseURL
 
             albumImg[setAttribute]('id',`listTrack${type}N${i}Album`)
             albumImg[setAttribute]('class','listTrackAlbum')
@@ -100,7 +100,7 @@ const getTop = function(globalVar,getToken){
         let res,term,temp, baseURL, url
         term = ['long_term','medium_term','short_term']
         baseURL = 'https://api.spotify.com/v1/me/top/artists?limit=50&time_range='+term[type]
-        url = globalVar.useProxy ? globalVar.baseProxy+globalVar.EUC(baseURL) : baseURL
+        url = useProxy ? baseProxy+EUC(baseURL) : baseURL
         res = await fetch(url,{
             method:'GET',
             headers:{
@@ -139,7 +139,7 @@ const getTop = function(globalVar,getToken){
             let profile = document[createElement]('img')
 
             baseURL = res[items][i].images[1].url
-            url = globalVar.useProxy ? globalVar.baseProxy+globalVar.EUC(baseURL) : baseURL
+            url = useProxy ? baseProxy+EUC(baseURL) : baseURL
 
             profile[setAttribute]('id',`listArtist${type}N${i}Profile`)
             profile[setAttribute]('class',`listArtistProfile`)

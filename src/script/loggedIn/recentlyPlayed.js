@@ -1,4 +1,4 @@
-const getRecentlyPlayed = async function(globalVar,getToken){
+const getRecentlyPlayed = async function(getToken){
     let createElement = 'createElement' // best for minifier, but doesn't make it hard to code either
     let setAttribute = 'setAttribute'
     let items = 'items'
@@ -7,7 +7,7 @@ const getRecentlyPlayed = async function(globalVar,getToken){
 
     let baseURL, url
     baseURL = 'https://api.spotify.com/v1/me/player/recently-played?limit=50'
-    url = globalVar.useProxy ? baseProxy+EUC(baseURL) : baseURL
+    url = useProxy ? baseProxy+EUC(baseURL) : baseURL
     let res = await fetch(url,{
         method:'GET',
         headers:{
@@ -41,7 +41,7 @@ const getRecentlyPlayed = async function(globalVar,getToken){
         let recentlyPlayedImage = document[createElement]('img')
 
         baseURL = res[items][i][track].album.images[1].url
-        url = globalVar.useProxy ? baseProxy+EUC(baseURL) : baseURL
+        url = useProxy ? baseProxy+EUC(baseURL) : baseURL
             
         recentlyPlayedImage[setAttribute]('class','recentlyPlayedImage')
         recentlyPlayedImage[setAttribute]('src',url)

@@ -1,14 +1,3 @@
-let globalVar = {} //ways to store data by references (because i'm lazy)
-const EUC = globalVar.EUC = encodeURIComponent
-const baseProxy = globalVar.baseProxy = '/proxy?url='
-let currentFetch = globalVar.currentFetch = false
-let useProxy = globalVar.useProxy = false
-
-if(window.localStorage.proxy){
-    useProxy = JSON.parse(window.localStorage.proxy) === true
-}
-console.log(useProxy)
-
 const sleep = async function(ms){
     return new Promise((a,b)=>{
         setTimeout(a,ms)
@@ -107,6 +96,16 @@ const dropdown = function(){
 
 let isDropdownLocked = false
 function baseStart(){
+    window.EUC = encodeURIComponent
+    window.baseProxy = '/proxy?url='
+    window.currentFetch = false
+    window.useProxy = false
+
+    if(window.localStorage.proxy){
+        useProxy = JSON.parse(window.localStorage.proxy) === true
+    }
+    console.log(useProxy)
+
     $('#profile_h').click(function(){
         isDropdownLocked = true
         dropdown()
@@ -136,7 +135,6 @@ function baseStart(){
 }
 
 export {
-    globalVar,
     sleep,
     getToken,
     getProfile,

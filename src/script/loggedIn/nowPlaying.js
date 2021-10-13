@@ -1,9 +1,9 @@
-function nowPlayingStart(globalVar,getRecentlyPlayed,getToken){
+function nowPlayingStart(getRecentlyPlayed,getToken){
     let nowPlayingProgress = []
     const getNowPlaying = async function(){
         let baseURL, url
         baseURL = 'https://api.spotify.com/v1/me/player/currently-playing'
-        url = globalVar.useProxy ? baseProxy+EUC(baseURL) : baseURL
+        url = useProxy ? baseProxy+EUC(baseURL) : baseURL
         let res = await fetch(url,{
             method:'GET',
             headers:{
@@ -34,7 +34,7 @@ function nowPlayingStart(globalVar,getRecentlyPlayed,getToken){
         if(res.item.name !== he.decode($('#mainTitle').html())){
             getRecentlyPlayed(globalVar)
             baseURL = res.item.album.images[0].url
-            url = globalVar.useProxy ? baseProxy+EUC(baseURL) : baseURL
+            url = useProxy ? baseProxy+EUC(baseURL) : baseURL
             $('#mainPicture').attr('src',url)
         }
     

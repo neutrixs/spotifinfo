@@ -1,5 +1,4 @@
 import {
-    globalVar,
     getToken,
     baseStart,
     unsetHidden
@@ -37,6 +36,6 @@ baseStart()
 themeStart()
 mobileDesktopStart()
 windowOnResize(setNPSideText,mobileDesktopSizeHandler)
-nowPlayingStart(globalVar,getRecentlyPlayed,getToken)
-getRecentlyPlayed(globalVar,getToken)
+nowPlayingStart(getRecentlyPlayed,getToken)
+getRecentlyPlayed(getToken)
 colourStart(indexMostSaturated,autoAdjustLightness)

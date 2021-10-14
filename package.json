@@ -4,7 +4,7 @@
   "description": "",
   "main": "server_for_self.js",
   "scripts": {
-    "dev": "node ./server_for_self_test.js",
+    "dev": "node ./server.js --devmode",
     "build": "node scripts/changeVer.js && webpack build",
     "deploy": "node ssh/ssh2.js"
   },

@@ -12,6 +12,10 @@ const db = admin.firestore();
 const version = require('./checker').version()
 require('./checker').db()
 
+if(process.argv.includes('--devmode')) {
+    app.use(express.static(__dirname+'/public'))
+}
+
 app.use(cookie_parser())
 app.set('view engine','ejs')
 

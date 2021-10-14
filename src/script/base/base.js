@@ -45,7 +45,6 @@ const getProfile = async function(){
     if(res.error){
         if(res.error.status == 401 || res.error.status == 400){
             await getToken()
-            await sleep(1000)
             await getProfile()
         }
         return

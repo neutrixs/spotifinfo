@@ -1,10 +1,10 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { Navbar } from './base/navbar'
 
 ReactDOM.render(
     <>
-        <div id="navbar"></div>
-        <div id="content"></div>
+        <Navbar/>
         <h1>Hello, world!</h1>
     </>,
     document.getElementById('root')

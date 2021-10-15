@@ -27,6 +27,8 @@
     "ssh2": "^1.4.0",
     "style-loader": "^3.3.0",
     "terser-webpack-plugin": "^5.2.4",
+    "ts-loader": "^9.2.6",
+    "typescript": "^4.4.4",
     "uglify-js": "^3.13.10",
     "webpack": "^5.58.1",
     "webpack-cli": "^4.9.0",

@@ -5,7 +5,9 @@
   "main": "server_for_self.js",
   "scripts": {
     "dev": "node ./server.js --devmode",
-    "build": "node scripts/changeVer.js && webpack build",
+    "build": "webpack build",
+    "builddev": "webpack build --mode=development",
+    "start": "webpack serve --mode=development",
     "deploy": "node ssh/ssh2.js"
   },
   "keywords": [],

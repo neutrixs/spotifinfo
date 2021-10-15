@@ -76,4 +76,8 @@ const config = {
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],
     },
+    devServer: {
+        static: './public',
+        hot:true
+    }
 }

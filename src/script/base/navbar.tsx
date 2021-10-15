@@ -6,10 +6,54 @@ import { Route, Switch, BrowserRouter as Router, NavLink } from 'react-router-do
 interface navbarParam {
     isLoggedOut:boolean
 }
+interface dropDownState {
+    dropDownOpened:boolean
+    dropDownLocked:boolean
+}
 
-export class Navbar extends Component<navbarParam> {
+export class Navbar extends Component<navbarParam, dropDownState> {
     constructor(props:any) {
         super(props)
+        this.state = {
+            dropDownOpened:false,
+            dropDownLocked:false
+        }
+
+        const this1 = this
+        document.addEventListener('click',function(){
+            if(this1.state.dropDownLocked){
+                this1.setState({
+                    dropDownLocked:false
+                })
+                return
+            }
+            if(this1.state.dropDownOpened){
+                this1.dropdown(false,true)
+            }
+        })
+    }
+
+    dropdown(lock:boolean,dropdownInteract:boolean){
+        if(lock){
+            this.setState({
+                dropDownLocked:true
+            })
+        }
+        if(!dropdownInteract) return
+        if(this.state.dropDownOpened){
+            document.getElementById('dropdown').classList.remove('rotate180deg')
+            document.getElementById('dropdown_options').classList.add('none')
+            this.setState({
+                dropDownOpened:false
+            })
+        }
+        else{
+            document.getElementById('dropdown').classList.add('rotate180deg')
+            document.getElementById('dropdown_options').classList.remove('none')
+            this.setState({
+                dropDownOpened:true
+            })
+        }
     }
 
     topTracksRouter(){
@@ -23,16 +67,16 @@ export class Navbar extends Component<navbarParam> {
         return null
     }
 
-    dropdown(){
+    dropdown_elements(){
         if(!this.props.isLoggedOut){
             return(
                 <>
-                    <div id="profile_holder">
+                    <div id="profile_holder" onClick={()=>this.dropdown(true,true)}>
                         <img id="profile" />
                         <svg id="dropdown" viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg"><g><path fill="white" d="m121.3,34.6c-1.6-1.6-4.2-1.6-5.8,0l-51,51.1-51.1-51.1c-1.6-1.6-4.2-1.6-5.8,0-1.6,1.6-1.6,4.2 0,5.8l53.9,53.9c0.8,0.8 1.8,1.2 2.9,1.2 1,0 2.1-0.4 2.9-1.2l53.9-53.9c1.7-1.6 1.7-4.2 0.1-5.8z"></path></g></svg>
                     </div>
 
-                    <div id="dropdown_options" className="dropdown_options none">
+                    <div id="dropdown_options" className="dropdown_options none" onClick={()=>this.dropdown(true,false)}>
                         <NavLink to="/account">
                             <span className="pointer">Account</span>
                         </NavLink>
@@ -53,7 +97,6 @@ export class Navbar extends Component<navbarParam> {
     }
 
     render(){
-        console.log(this.props)
         return(
             <div id="navBar" className="nav">
                 <Router>
@@ -61,7 +104,7 @@ export class Navbar extends Component<navbarParam> {
                         <span className="pages lineHeight1" style={{marginLeft:'1.5em'}}>Home</span>
                     </NavLink>
                     {this.topTracksRouter()}
-                    {this.dropdown()}
+                    {this.dropdown_elements()}
                 </Router>
             </div>
         )

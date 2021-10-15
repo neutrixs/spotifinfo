@@ -16,6 +16,9 @@ a:-webkit-any-link{
 .lineHeight1{
     line-height: 1em;
 }
+.rotate180deg{
+    transform: rotate(180deg);
+}
 
 /*
     CLASSES

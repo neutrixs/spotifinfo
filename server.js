@@ -17,33 +17,27 @@ if(process.argv.includes('--devmode')) {
 }
 
 app.use(cookie_parser())
-app.set('view engine','ejs')
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
+app.set('views', __dirname+'/public')
 
 app.get(/^\//,(req,res)=>{
 
     let isLoggedOut = !req.cookies['state'] || !req.cookies['uname']
 
+    const defaultRender = function(){
+        res.render('index.html')
+    }
+
     switch(req.path){
         case '/':
-            if(isLoggedOut){
-                res.render('indexOut.ejs',{isLoggedOut:isLoggedOut,useMinify:true,version:version})
-            }
-            else{
-                res.render('index.ejs',{isLoggedOut:isLoggedOut,useMinify:true,version:version})
-            }
+            defaultRender()
         return
         case '/account':
-            if(isLoggedOut){
-                res.redirect('/')
-                return
-            }
-            res.render('account.ejs',{isLoggedOut:isLoggedOut,useMinify:true,version:version})
+            defaultRender()
         return
         case '/top_tracks':
-            if(isLoggedOut){
-                res.redirect('/')
-            }
-            res.render('top_tracks.ejs',{isLoggedOut:isLoggedOut,useMinify:true,version:version})
+            defaultRender()
         return
         case '/login':
             require('./dynamic/login')(req,res,data,isLoggedOut)
@@ -58,7 +52,7 @@ app.get(/^\//,(req,res)=>{
             require('./dynamic/proxy/proxy')(req,res)
         return
     }
-    res.status(404).render('404.ejs',{url:req.url})
+    res.status(404).render('index.html')
 })
 app.post('/getdata',(req,res)=>{
     require('./dynamic/getdata')(req,res,data)

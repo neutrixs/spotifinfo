@@ -69,7 +69,8 @@ const config = {
         }),
         new HtmlWebpackPlugin({
             template:'./src/index.html',
-            filename:'../views/index.ejs'
+            filename:'index.html',
+            publicPath:'/'
         })
     ],
     resolve: {

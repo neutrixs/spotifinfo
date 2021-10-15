@@ -78,6 +78,7 @@ const config = {
     },
     devServer: {
         static: './public',
-        hot:true
+        hot:true,
+        historyApiFallback:true,
     }
 }

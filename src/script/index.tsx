@@ -10,6 +10,7 @@ function isLoggedOut():boolean{
 ReactDOM.render(
     <>
         <Navbar isLoggedOut={isLoggedOut()}/>
+        <div id="page"></div>
         <h1>Hello, world!</h1>
     </>,
     document.getElementById('root')

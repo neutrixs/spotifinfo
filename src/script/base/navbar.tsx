@@ -16,7 +16,7 @@ export class Navbar extends Component<navbarParam> {
         if(!this.props.isLoggedOut){
             return(
                 <NavLink to="/top_tracks">
-                        <span className="page lh1">Top Tracks/Artists</span>
+                        <span className="pages lineHeight1">Top Tracks/Artists</span>
                 </NavLink>
             )
         }
@@ -36,9 +36,9 @@ export class Navbar extends Component<navbarParam> {
                         <NavLink to="/account">
                             <span className="pointer">Account</span>
                         </NavLink>
-                        <div className="divide1"></div>
+                        <div className="divider1"></div>
                         <a id="logout" className="pointer">Logout</a>
-                        <div className="divide1"></div>
+                        <div className="divider1"></div>
                         <div id="theme" className="pointer">
                             <span>Dark mode</span>
                             <svg id="theme_check" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z" fill="white"/></svg>
@@ -58,7 +58,7 @@ export class Navbar extends Component<navbarParam> {
             <div id="navBar" className="nav">
                 <Router>
                     <NavLink to="/">
-                        <span className="page page_lft lh1">Home</span>
+                        <span className="pages lineHeight1" style={{marginLeft:'1.5em'}}>Home</span>
                     </NavLink>
                     {this.topTracksRouter()}
                     {this.dropdown()}

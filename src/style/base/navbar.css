@@ -1,7 +1,26 @@
+/*
+    NON SPECIFICS
+*/
+
 a:-webkit-any-link{
     color:unset;
     text-decoration:unset;
 }
+.pointer{
+    cursor: pointer;
+}
+.divider1{
+    height: 1em;
+    display:block;
+}
+.lineHeight1{
+    line-height: 1em;
+}
+
+/*
+    CLASSES
+*/
+
 .nav{
     top: 0;
     position: sticky;
@@ -15,18 +34,28 @@ a:-webkit-any-link{
 .navLight{
     background-color: var(--navbar-light);
 }
-.page{
+.dropdown_options{
+    position: fixed;
+    top: 4.5em;
+    right: 1.5em;
+    background-color: var(--navbar-dark);
+    padding: 1em;
+    border-radius: 0.5em;
+    box-shadow: 0.1em 0.1em 0.2em rgb(0,0,0,0.6);
+}
+.dropdown_optionsLight{
+    background-color: var(--navbar-light);
+}
+.pages{
     margin-right: 2em;
     padding-top: 1.5em;
     padding-bottom: 1.5em;
     display: inline-block;
 }
-.page_lft{
-    margin-left: 1.5em;
-}
-.lh1{
-    line-height: 1em;
-}
+
+/*
+    INDIVIDUAL
+*/
 
 #profile{
     margin:1em;
@@ -45,26 +74,6 @@ a:-webkit-any-link{
     vertical-align: middle;
     width: 1em;
     transition: 100ms;
-}
-
-.dropdown_options{
-    position: fixed;
-    top: 4.5em;
-    right: 1.5em;
-    background-color: var(--navbar-dark);
-    padding: 1em;
-    border-radius: 0.5em;
-    box-shadow: 0.1em 0.1em 0.2em rgb(0,0,0,0.6);
-}
-.dropdown_optionsLight{
-    background-color: var(--navbar-light);
-}
-.pointer{
-    cursor: pointer;
-}
-.divide1{
-    height: 1em;
-    display:block;
 }
 #theme_check{
     width: 1em;

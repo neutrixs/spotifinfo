@@ -11,6 +11,18 @@ export class Navbar extends Component<navbarParam> {
     constructor(props:any) {
         super(props)
     }
+
+    topTracksRouter(){
+        if(!this.props.isLoggedOut){
+            return(
+                <NavLink to="/top_tracks">
+                        <span className="page lh1">Top Tracks/Artists</span>
+                </NavLink>
+            )
+        }
+        return null
+    }
+
     render(){
         console.log(this.props)
         return(
@@ -19,11 +31,7 @@ export class Navbar extends Component<navbarParam> {
                     <NavLink to="/">
                         <span className="page page_lft lh1">Home</span>
                     </NavLink>
-                {!this.props.isLoggedOut ? 
-                    <NavLink to="/top_tracks">
-                        <span className="page lh1">Top Tracks/Artists</span>
-                    </NavLink>
-                :null}
+                    {this.topTracksRouter()}
                 </Router>
             </div>
         )

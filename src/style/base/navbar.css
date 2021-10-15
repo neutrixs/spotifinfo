@@ -1,0 +1,25 @@
+.nav{
+    top: 0;
+    position: sticky;
+    padding-bottom: 0;
+    padding-top: 0;
+    width: 100%;
+    min-width: 24.5em;
+    background-color: var(--navbar-dark);
+    box-shadow: 0 0.1em 0.2em rgb(0,0,0,0.6);
+}
+.navLight{
+    background-color: var(--navbar-light);
+}
+.page{
+    margin-right: 2em;
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
+    display: inline-block;
+}
+.page_lft{
+    margin-left: 1.5em;
+}
+a:-webkit-any-link{
+    color:unset;
+}

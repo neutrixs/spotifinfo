@@ -1,6 +1,7 @@
 const path = require('path')
 const TerserPlugin = require("terser-webpack-plugin")
 const CopyPlugin = require("copy-webpack-plugin")
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 let devMode = false
 
 module.exports = function(env,argv){
@@ -18,13 +19,10 @@ const mangleNormal = {
 const config = {
     mode: devMode ? "development" : "production",
     entry: {
-        "index":'./src/pages/index.js',
-        "indexOut":'./src/pages/indexOut.js',
-        "top_tracks":'./src/pages/top_tracks.js',
-        "account":'./src/pages/account.js'
+        "index":'./src/script/index.tsx'
     },
     output: {
-        filename:"[name].js",
+        filename:"[fullhash].js",
         path: path.resolve(__dirname,"public")
     },
     optimization: {
@@ -68,6 +66,13 @@ const config = {
                     to:'./favicon.ico'
                 }
             ]
+        }),
+        new HtmlWebpackPlugin({
+            template:'./src/index.html',
+            filename:'index.html'
         })
-    ]
+    ],
+    resolve: {
+        extensions: ['.tsx', '.ts', '.js'],
+    },
 }

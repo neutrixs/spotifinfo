@@ -7,7 +7,7 @@
     "dev": "node ./server.js --devmode",
     "build": "webpack build",
     "builddev": "webpack build --mode=development",
-    "start": "webpack serve --mode=development",
+    "start": "webpack serve --mode=development --port 80",
     "deploy": "node ssh/ssh2.js"
   },
   "keywords": [],

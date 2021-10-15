@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const cookie_parser = require('cookie-parser');
-const data = require('./config');
+const data = require(process.argv.includes('--devmode') ? './config_for_self' : './config' );
 const admin = require('firebase-admin');
 const serviceAccount = require('./SECRET/accountkey.json');
 admin.initializeApp({

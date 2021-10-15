@@ -77,8 +77,10 @@ const config = {
         extensions: ['.tsx', '.ts', '.js'],
     },
     devServer: {
+        host:'192.168.1.50',
         static: './public',
         hot:true,
         historyApiFallback:true,
+        allowedHosts: ['192.168.1.50','localhost']
     }
 }

@@ -152,10 +152,10 @@ export class NowPlaying extends React.Component<{},NowPlayingState>{
         for(let i=0; i< nowPlayingData.item.artists.length; i++){
             let thisArtist = nowPlayingData.item.artists[i]
             artists.push(
-                <>
-                    <a id={"nowPlayingArtists"+i.toString()} href={thisArtist.external_urls.spotify}>{thisArtist.name}</a>
-                    {i !== nowPlayingData.item.artists.length-1 ? <span>, </span>: null}
-                </>
+                <span key={thisArtist.id+'_hold'}>
+                    <a key={thisArtist.id} id={"nowPlayingArtists"+i.toString()} href={thisArtist.external_urls.spotify}>{thisArtist.name}</a>
+                    {i !== nowPlayingData.item.artists.length-1 ? <span key={thisArtist.id+'_comma'}>, </span>: null}
+                </span>
             )
         }
 

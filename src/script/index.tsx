@@ -5,6 +5,9 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import { RouteGenerate } from './base/routeGenerate'
 import '../style/base/base.css'
 
+declare const window:any
+window.currentFetch = false
+
 function isLoggedOut():boolean{
     return document.cookie.indexOf('state=') == -1 || document.cookie.indexOf('uname=') == -1
 }

@@ -25,6 +25,36 @@ const getToken = async function(){
     })
 }
 
+const getProfile = async function(){
+    let res, url
+    url = 'https://api.spotify.com/v1/me'
+    res = await fetch(url,{
+        method:'GET',
+        headers:{
+            'Authorization':window.localStorage['token']
+        }
+    })
+    res = await res.json()
+    
+    if(res.error){
+        if(res.error.status == 401 || res.error.status == 400){
+            await getToken()
+            await getProfile()
+        }
+        return
+    }
+
+    let profilePic
+    if(res.images[0]){
+        profilePic = res.images[0].url
+    }
+    else{
+        profilePic = '/img/user.png'
+    }
+
+    return profilePic
+}
+
 const sleep = async function(ms:number){
     return new Promise((a,b)=>{
         setTimeout(a,ms)
@@ -44,4 +74,4 @@ const logOut = function(self:boolean) {
     window.location.replace('/')
 }
 
-export { getToken }
+export { getToken, getProfile }

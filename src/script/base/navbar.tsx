@@ -1,6 +1,7 @@
 import * as React from 'react';
 import '../../style/base/navbar.css'
 import { Route, Switch, BrowserRouter as Router, NavLink } from 'react-router-dom'
+import {getProfile} from './functions'
 
 interface navbarParam {
     isLoggedOut:boolean
@@ -8,6 +9,7 @@ interface navbarParam {
 interface dropDownState {
     dropDownOpened:boolean
     dropDownLocked:boolean
+    profilePicURL:string
 }
 
 export class Navbar extends React.Component<navbarParam, dropDownState> {
@@ -15,7 +17,8 @@ export class Navbar extends React.Component<navbarParam, dropDownState> {
         super(props)
         this.state = {
             dropDownOpened:false,
-            dropDownLocked:false
+            dropDownLocked:false,
+            profilePicURL:''
         }
 
         const this1 = this
@@ -71,7 +74,7 @@ export class Navbar extends React.Component<navbarParam, dropDownState> {
             return(
                 <>
                     <div id="profile_holder" onClick={()=>this.dropdown(true,true)}>
-                        <img id="profile" />
+                        <img id="profile" src={this.state.profilePicURL} />
                         <svg id="dropdown" viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg"><g><path fill="white" d="m121.3,34.6c-1.6-1.6-4.2-1.6-5.8,0l-51,51.1-51.1-51.1c-1.6-1.6-4.2-1.6-5.8,0-1.6,1.6-1.6,4.2 0,5.8l53.9,53.9c0.8,0.8 1.8,1.2 2.9,1.2 1,0 2.1-0.4 2.9-1.2l53.9-53.9c1.7-1.6 1.7-4.2 0.1-5.8z"></path></g></svg>
                     </div>
 
@@ -93,6 +96,18 @@ export class Navbar extends React.Component<navbarParam, dropDownState> {
         else{
             return null
         }
+    }
+
+    componentDidMount(){
+        this.profilePicURL()
+    }
+
+    profilePicURL(){
+        getProfile().then(url=>{
+            this.setState({
+                profilePicURL:url
+            })
+        })
     }
 
     render(){

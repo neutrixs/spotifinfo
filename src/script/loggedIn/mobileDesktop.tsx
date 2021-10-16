@@ -1,3 +1,6 @@
+const changeAt = 44.5
+const bodyFontSize = window.getComputedStyle(document.body).getPropertyValue('font-size')
+
 const mobile = function(){
     document.getElementById('page').classList.add('pageMobile')
     document.getElementById('nowPlaying').classList.add('nowPlayingHolderMobile')
@@ -6,12 +9,6 @@ const desktop = function(){
     document.getElementById('page').classList.remove('pageMobile')
     document.getElementById('nowPlaying').classList.remove('nowPlayingHolderMobile')
 }
-
-let changeAt = 44.5
-const bodyFontSize = window.getComputedStyle(document.body).getPropertyValue('font-size')
-if(window.innerWidth / parseFloat(bodyFontSize) < changeAt) mobile();
-//document.getElementById('page').classList.remove('none')
-//document.getElementById('page').classList.add('ts300ms')
 
 const handler = function(){
     let width = window.innerWidth;
@@ -26,6 +23,8 @@ const handler = function(){
 }
 
 const mobileDesktopStart = function(){
+    if(window.innerWidth / parseFloat(bodyFontSize) < changeAt) mobile();
+    document.getElementById('page').classList.add('transition300ms')
     window.addEventListener('resize',handler)
 }
 const mobileDesktopStop = function(){

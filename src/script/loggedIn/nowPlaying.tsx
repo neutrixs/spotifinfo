@@ -81,14 +81,37 @@ export class NowPlaying extends React.Component<{},NowPlayingState>{
             return
         }
 
+        if(nowPlayingData.is_playing){
+            this.setState({
+                isPlaying:true
+            })
+        }
+        else{
+            this.setState({
+                isPlaying:false
+            })
+        }
+
         if(nowPlayingData.item.name !== this.state.nowPlayingTitle){
             //TODO: call get recently played here
+        }
+
+        let artists = []
+        for(let i=0; i< nowPlayingData.item.artists.length; i++){
+            let thisArtist = nowPlayingData.item.artists[i]
+            artists.push(
+                <>
+                    <a id={"nowPlayingArtists"+i.toString()} href={thisArtist.external_urls.spotify}>{thisArtist.name}</a>
+                    {i !== nowPlayingData.item.artists.length-1 ? <span>, </span>: null}
+                </>
+            )
         }
 
         this.setState({
             nowPlayingTitle:nowPlayingData.item.name,
             nowPlayingTitleLink:nowPlayingData.item.external_urls.spotify,
-            albumArtSrc:nowPlayingData.item.album.images[0].url
+            albumArtSrc:nowPlayingData.item.album.images[0].url,
+            Artists:artists
         })
 
         //TODO: add now playing progress

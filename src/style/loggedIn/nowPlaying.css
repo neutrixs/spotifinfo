@@ -40,3 +40,6 @@
     cursor: pointer;
     margin-bottom: 0;
 }
+#nowPlayingArtists{
+    margin-top: 0.5em;
+}

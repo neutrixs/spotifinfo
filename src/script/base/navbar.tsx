@@ -99,13 +99,11 @@ export class Navbar extends Component<navbarParam, dropDownState> {
     render(){
         return(
             <div id="navBar" className="nav">
-                <Router>
-                    <NavLink to="/">
-                        <span className="pages lineHeight1" style={{marginLeft:'1.5em'}}>Home</span>
-                    </NavLink>
-                    {this.topTracksRouter()}
-                    {this.dropdown_elements()}
-                </Router>
+                <NavLink to="/">
+                    <span className="pages lineHeight1" style={{marginLeft:'1.5em'}}>Home</span>
+                </NavLink>
+                {this.topTracksRouter()}
+                {this.dropdown_elements()}
             </div>
         )
     }

@@ -3,6 +3,11 @@ import '../../style/loggedIn/nowPlaying.css'
 import {getToken} from '../base/functions'
 
 type classNone = '' | 'none'
+interface progress{
+    currentMs: number|null,
+    totalMs: number|null,
+    isPlaying: boolean
+}
 interface NowPlayingState {
     isPlaying:boolean,
     albumArtSrc:string,
@@ -11,7 +16,9 @@ interface NowPlayingState {
     nowPlayingTitleLink:string,
     Artists:any, //idk what react's element type is, so will put this temporarily
     nowPlayingInterval: any,
-    nowPlayingProgress: string,
+    nowPlayingProgressInterval:any,
+    nowPlayingProgress: progress,
+    nowPlayingProgressStr: string,
     classNone:classNone
 }
 
@@ -20,13 +27,19 @@ export class NowPlaying extends React.Component<{},NowPlayingState>{
         super(props)
         this.state = {
             nowPlayingInterval:undefined,
+            nowPlayingProgressInterval:undefined,
             isPlaying:false,
             albumArtSrc: '',
             albumArtLinkSrc:'',
             nowPlayingTitle: '',
             nowPlayingTitleLink: '',
             Artists:null,
-            nowPlayingProgress:'',
+            nowPlayingProgress:{
+                currentMs:null,
+                totalMs:null,
+                isPlaying:false
+            },
+            nowPlayingProgressStr:'',
             classNone:'none'
         }
     }
@@ -38,11 +51,49 @@ export class NowPlaying extends React.Component<{},NowPlayingState>{
                 this.getNowPlaying()
             },2000)
         })
+
+        this.nowPlayingProgress()
+        this.setState({
+            nowPlayingProgressInterval:setInterval(()=>{
+                this.nowPlayingProgress()
+            },100)
+        })
     }
 
     componentWillUnmount(){
         console.log(this.state)
         clearInterval(this.state.nowPlayingInterval)
+        clearInterval(this.state.nowPlayingProgressInterval)
+    }
+
+    nowPlayingProgress(){
+        console.log('wtf')
+        if(!this.state.nowPlayingProgress.isPlaying) return
+
+        this.setState((state)=>({
+            nowPlayingProgress:{
+                currentMs: state.nowPlayingProgress.currentMs+100,
+                totalMs: state.nowPlayingProgress.totalMs,
+                isPlaying: state.nowPlayingProgress.isPlaying
+            }
+        }))
+
+        const current = this.state.nowPlayingProgress.currentMs
+        const total = this.state.nowPlayingProgress.totalMs
+
+        let currentMinute = Math.floor(current/60000).toString()
+        let currentSecond:string|number = (Math.floor(current/1000) % 60)
+        currentSecond = (currentSecond < 10 ? '0' : '')+currentSecond.toString()
+
+        let totalMinute = Math.floor(total/60000).toString()
+        let totalSecond:string|number = (Math.floor(total/1000) % 60)
+        totalSecond = (total < 10 ? '0' : '')+totalSecond.toString
+
+        let stringRes = currentMinute+':'+currentSecond+' / '+totalMinute+':'+totalSecond
+
+        this.setState({
+            nowPlayingProgressStr:stringRes
+        })
     }
 
     async getNowPlaying(){
@@ -141,7 +192,7 @@ export class NowPlaying extends React.Component<{},NowPlayingState>{
                         {this.state.Artists}
                     </p>
                     <p id="nowPlayingProgress">
-                        {this.state.nowPlayingProgress}
+                        {this.state.nowPlayingProgressStr}
                     </p>
                 </div>
             </div>

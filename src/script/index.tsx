@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Navbar } from './base/navbar'
+import { Navbar } from './base/navigation'
 import '../style/base/base.css'
 
 function isLoggedOut():boolean{

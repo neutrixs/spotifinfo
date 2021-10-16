@@ -66,7 +66,6 @@ export class NowPlaying extends React.Component<props,NowPlayingState>{
     }
 
     componentWillUnmount(){
-        console.log(this.state)
         clearInterval(this.state.nowPlayingInterval)
         clearInterval(this.state.nowPlayingProgressInterval)
     }

@@ -10,6 +10,8 @@ interface dropDownState {
     dropDownOpened:boolean
     dropDownLocked:boolean
     profilePicURL:string
+    classDropdownIconRotate:''|'rotate180deg'
+    classDropdownNone:''|'none'
 }
 
 export class Navbar extends React.Component<navbarParam, dropDownState> {
@@ -18,7 +20,9 @@ export class Navbar extends React.Component<navbarParam, dropDownState> {
         this.state = {
             dropDownOpened:false,
             dropDownLocked:false,
-            profilePicURL:''
+            profilePicURL:'',
+            classDropdownIconRotate:'',
+            classDropdownNone:'none'
         }
 
         const this1 = this
@@ -42,20 +46,12 @@ export class Navbar extends React.Component<navbarParam, dropDownState> {
             })
         }
         if(!dropdownInteract) return
-        if(this.state.dropDownOpened){
-            document.getElementById('dropdown').classList.remove('rotate180deg')
-            document.getElementById('dropdown_options').classList.add('none')
-            this.setState({
-                dropDownOpened:false
-            })
-        }
-        else{
-            document.getElementById('dropdown').classList.add('rotate180deg')
-            document.getElementById('dropdown_options').classList.remove('none')
-            this.setState({
-                dropDownOpened:true
-            })
-        }
+
+        this.setState((state)=>({
+            classDropdownIconRotate: this.state.dropDownOpened ? '' : 'rotate180deg',
+            classDropdownNone: this.state.dropDownOpened ? 'none' : '',
+            dropDownOpened: !state.dropDownOpened
+        }))
     }
 
     topTracksRouter(){
@@ -75,10 +71,10 @@ export class Navbar extends React.Component<navbarParam, dropDownState> {
                 <>
                     <div id="profile_holder" onClick={()=>this.dropdown(true,true)}>
                         <img id="profile" src={this.state.profilePicURL} />
-                        <svg id="dropdown" viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg"><g><path fill="white" d="m121.3,34.6c-1.6-1.6-4.2-1.6-5.8,0l-51,51.1-51.1-51.1c-1.6-1.6-4.2-1.6-5.8,0-1.6,1.6-1.6,4.2 0,5.8l53.9,53.9c0.8,0.8 1.8,1.2 2.9,1.2 1,0 2.1-0.4 2.9-1.2l53.9-53.9c1.7-1.6 1.7-4.2 0.1-5.8z"></path></g></svg>
+                        <svg id="dropdown" className={this.state.classDropdownIconRotate} viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg"><g><path fill="white" d="m121.3,34.6c-1.6-1.6-4.2-1.6-5.8,0l-51,51.1-51.1-51.1c-1.6-1.6-4.2-1.6-5.8,0-1.6,1.6-1.6,4.2 0,5.8l53.9,53.9c0.8,0.8 1.8,1.2 2.9,1.2 1,0 2.1-0.4 2.9-1.2l53.9-53.9c1.7-1.6 1.7-4.2 0.1-5.8z"></path></g></svg>
                     </div>
 
-                    <div id="dropdown_options" className="dropdown_options none" onClick={()=>this.dropdown(true,false)}>
+                    <div id="dropdown_options" className={"dropdown_options "+this.state.classDropdownNone} onClick={()=>this.dropdown(true,false)}>
                         <NavLink to="/account">
                             <span className="pointer">Account</span>
                         </NavLink>

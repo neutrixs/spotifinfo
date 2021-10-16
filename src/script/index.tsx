@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Navbar } from './base/navbar'
 import { BrowserRouter as Router } from 'react-router-dom'
-import { RouteGenerate } from './routeGenerate'
+import { RouteGenerate } from './base/routeGenerate'
 import '../style/base/base.css'
 
 function isLoggedOut():boolean{

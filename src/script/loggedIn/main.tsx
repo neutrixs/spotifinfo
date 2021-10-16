@@ -31,8 +31,8 @@ export class LoggedInMain extends React.Component<{},states>{
             pageStyleTransition: 'transition300ms'
         })
 
-        //this.mobileListener(this)
-        //window.addEventListener('resize',()=>{this.mobileListener(this)})
+        this.mobileListener(this)
+        window.addEventListener('resize',()=>{this.mobileListener(this)})
     }
     componentWillUnmount(){
         window.removeEventListener('resize',()=>{this.mobileListener(this)})
@@ -46,6 +46,10 @@ export class LoggedInMain extends React.Component<{},states>{
         this1.setState({
             additionalPageStyle: isMobile ? 'pageMobile' : ''
         })
+    }
+
+    mobileListenerFirst(this1:any){
+
     }
 
     render(){

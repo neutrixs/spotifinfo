@@ -1,7 +1,9 @@
 import * as React from 'react';
+import { lazy } from 'react';
 import * as ReactDOM from 'react-dom';
 import { Navbar } from './base/navbar'
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom'
+import { RouteGenerate } from './routeGenerate'
 import '../style/base/base.css'
 
 function isLoggedOut():boolean{
@@ -16,11 +18,7 @@ ReactDOM.render(
             </Route>
         </Switch>
         <div id="page">
-            <Switch>
-                <Route exact path="/">
-                    <h1>Hello, world!</h1>
-                </Route>
-            </Switch>
+            <RouteGenerate isLoggedOut={isLoggedOut()} />
         </div>
     </Router>,
     document.getElementById('root')

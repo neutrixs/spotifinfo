@@ -30,8 +30,11 @@ export class NowPlaying extends React.Component<{},NowPlayingState>{
     }
 
     componentDidMount(){
+        this.getNowPlaying()
         this.setState({
-            nowPlayingInterval:setInterval(this.getNowPlaying,2000)
+            nowPlayingInterval:setInterval(()=>{
+                this.getNowPlaying()
+            },2000)
         })
     }
 
@@ -61,9 +64,11 @@ export class NowPlaying extends React.Component<{},NowPlayingState>{
             if(nowPlayingData.error.status == 400 || nowPlayingData.error.status == 401){
                 clearInterval(this.state.nowPlayingInterval)
                 await getToken()
-                await this.getNowPlaying()
+                this.getNowPlaying()
                 this.setState({
-                    nowPlayingInterval:setInterval(this.getNowPlaying,2000)
+                    nowPlayingInterval:setInterval(()=>{
+                        this.getNowPlaying()
+                    },2000)
                 })
             }
             return

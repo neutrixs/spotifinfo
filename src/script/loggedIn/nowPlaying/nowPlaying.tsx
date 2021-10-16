@@ -24,7 +24,11 @@ interface NowPlayingState {
     classNone:classNone
 }
 
-export class NowPlaying extends React.Component<{},NowPlayingState>{
+interface props{
+    classNowPlayingMobile:''|'nowPlayingHolderMobile'
+}
+
+export class NowPlaying extends React.Component<props,NowPlayingState>{
     constructor(props:any){
         super(props)
         this.state = {
@@ -78,7 +82,7 @@ export class NowPlaying extends React.Component<{},NowPlayingState>{
 
     render(){
         return(
-            <div id="nowPlaying" className={"nowPlayingHolder "+this.state.classNone}>
+            <div id="nowPlaying" className={"nowPlayingHolder "+this.state.classNone+' '+this.props.classNowPlayingMobile}>
                 <p id="nowPlayingStatus">
                     {this.state.isPlaying ? 'Now Playing:' : 'Last Played Song:'}
                 </p>

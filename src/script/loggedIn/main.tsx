@@ -4,7 +4,8 @@ import '../../style/loggedIn/main.css'
 
 interface states{
     additionalPageStyle:string,
-    pageStyleTransition:string
+    pageStyleTransition:string,
+    classNowPlayingMobile:''|'nowPlayingHolderMobile'
 }
 
 export class LoggedInMain extends React.Component<{},states>{
@@ -12,7 +13,8 @@ export class LoggedInMain extends React.Component<{},states>{
         super(props)
         this.state = {
             additionalPageStyle: '',
-            pageStyleTransition: ''
+            pageStyleTransition: '',
+            classNowPlayingMobile: ''
         }
     }
     componentDidMount(){
@@ -28,20 +30,12 @@ export class LoggedInMain extends React.Component<{},states>{
         const isMobile = window.innerWidth / windowFontSize < changeAt
 
         this1.setState({
-            additionalPageStyle: isMobile ? 'pageMobile' : ''
+            additionalPageStyle: isMobile ? 'pageMobile' : '',
+            classNowPlayingMobile: isMobile ? 'nowPlayingHolderMobile' : ''
         })
     }
 
     mobileListenerFirst(this1:any){
-        const changeAt = 44.5
-        const windowFontSize = parseFloat(window.getComputedStyle(document.body).getPropertyValue('font-size'))
-        const isMobile = window.innerWidth / windowFontSize < changeAt
-
-        if(isMobile){
-            this.setState({
-                additionalPageStyle: 'pageMobile'
-            })
-        }
         this.setState({
             pageStyleTransition: 'transition300ms'
         })
@@ -51,9 +45,10 @@ export class LoggedInMain extends React.Component<{},states>{
     }
 
     render(){
+        const classNowPlayingMobile = this.state.classNowPlayingMobile
         return(
             <div id="page" className={this.state.pageStyleTransition+' '+this.state.additionalPageStyle}>
-                <NowPlaying />
+                <NowPlaying classNowPlayingMobile={classNowPlayingMobile} />
             </div>
             //TODO: add recently played, and recaptcha badge
         )

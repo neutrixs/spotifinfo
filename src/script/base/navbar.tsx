@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Component } from 'react';
 import '../../style/base/navbar.css'
 import { Route, Switch, BrowserRouter as Router, NavLink } from 'react-router-dom'
 
@@ -11,7 +10,7 @@ interface dropDownState {
     dropDownLocked:boolean
 }
 
-export class Navbar extends Component<navbarParam, dropDownState> {
+export class Navbar extends React.Component<navbarParam, dropDownState> {
     constructor(props:any) {
         super(props)
         this.state = {

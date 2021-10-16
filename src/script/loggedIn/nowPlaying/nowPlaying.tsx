@@ -1,6 +1,5 @@
 import * as React from 'react';
 import '../../../style/loggedIn/nowPlaying.css'
-import {getToken} from '../../base/functions'
 import {getNowPlaying} from './getNowPlaying'
 import {nowPlayingProgress} from './nowPlayingProgress'
 

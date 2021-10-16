@@ -86,7 +86,7 @@ export class NowPlaying extends React.Component<{},NowPlayingState>{
 
         let totalMinute = Math.floor(total/60000).toString()
         let totalSecond:string|number = (Math.floor(total/1000) % 60)
-        totalSecond = (total < 10 ? '0' : '')+totalSecond.toString
+        totalSecond = (total < 10 ? '0' : '')+totalSecond.toString()
 
         let stringRes = currentMinute+':'+currentSecond+' / '+totalMinute+':'+totalSecond
 

@@ -18,3 +18,10 @@ body{
 .none{
     display: none;
 }
+
+#page{
+    margin-left: 10em;
+    margin-right: 10em;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+}

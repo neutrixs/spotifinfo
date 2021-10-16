@@ -67,7 +67,6 @@ export class NowPlaying extends React.Component<{},NowPlayingState>{
     }
 
     nowPlayingProgress(){
-        console.log('wtf')
         if(!this.state.nowPlayingProgress.isPlaying) return
 
         this.setState((state)=>({

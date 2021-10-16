@@ -4,8 +4,7 @@ import '../../style/loggedIn/main.css'
 
 interface states{
     additionalPageStyle:string,
-    pageStyleTransition:string,
-    mobileListenerFunction:Function|null
+    pageStyleTransition:string
 }
 
 export class LoggedInMain extends React.Component<{},states>{
@@ -13,26 +12,11 @@ export class LoggedInMain extends React.Component<{},states>{
         super(props)
         this.state = {
             additionalPageStyle: '',
-            pageStyleTransition: '',
-            mobileListenerFunction: null
+            pageStyleTransition: ''
         }
     }
     componentDidMount(){
-        const changeAt = 44.5
-        const windowFontSize = parseFloat(window.getComputedStyle(document.body).getPropertyValue('font-size'))
-        const isMobile = window.innerWidth / windowFontSize < changeAt
-
-        if(isMobile){
-            this.setState({
-                additionalPageStyle: 'pageMobile'
-            })
-        }
-        this.setState({
-            pageStyleTransition: 'transition300ms'
-        })
-
-        this.mobileListener(this)
-        window.addEventListener('resize',()=>{this.mobileListener(this)})
+        this.mobileListenerFirst(this)
     }
     componentWillUnmount(){
         window.removeEventListener('resize',()=>{this.mobileListener(this)})
@@ -49,7 +33,21 @@ export class LoggedInMain extends React.Component<{},states>{
     }
 
     mobileListenerFirst(this1:any){
+        const changeAt = 44.5
+        const windowFontSize = parseFloat(window.getComputedStyle(document.body).getPropertyValue('font-size'))
+        const isMobile = window.innerWidth / windowFontSize < changeAt
 
+        if(isMobile){
+            this.setState({
+                additionalPageStyle: 'pageMobile'
+            })
+        }
+        this.setState({
+            pageStyleTransition: 'transition300ms'
+        })
+
+        this.mobileListener(this)
+        window.addEventListener('resize',()=>{this1.mobileListener(this1)})
     }
 
     render(){

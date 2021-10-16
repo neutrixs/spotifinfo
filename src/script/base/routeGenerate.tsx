@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Switch, Route } from 'react-router-dom'
+import { LoggedInPage } from '../loggedIn/loggedInPage'
 
 interface routeGenerateParam{
     isLoggedOut:boolean
@@ -13,7 +14,7 @@ export class RouteGenerate extends React.Component<routeGenerateParam>{
     homepage(){
         if(!this.props.isLoggedOut){
             return(
-                <h1>test abcd</h1>
+                <LoggedInPage />
             )
         }
         return(

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { NowPlaying } from './nowPlaying';
+import { NowPlaying } from './nowPlaying/nowPlaying';
 import '../../style/loggedIn/main.css'
 
 interface states{

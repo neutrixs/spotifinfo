@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { lazy } from 'react';
 import * as ReactDOM from 'react-dom';
 import { Navbar } from './base/navbar'
-import { Route, Switch, BrowserRouter as Router } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 import { RouteGenerate } from './routeGenerate'
 import '../style/base/base.css'
 

@@ -20,9 +20,7 @@ function isLoggedOut():boolean{
 ReactDOM.render(
     <Router>
         <Navbar isLoggedOut={isLoggedOut()}/>
-        <div id="page">
-            <RouteGenerate isLoggedOut={isLoggedOut()} />
-        </div>
+        <RouteGenerate isLoggedOut={isLoggedOut()} />
     </Router>,
     document.getElementById('root')
 )

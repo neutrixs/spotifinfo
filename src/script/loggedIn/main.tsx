@@ -12,7 +12,9 @@ export class LoggedInMain extends React.Component{
     }
     render(){
         return(
-            <NowPlaying />
+            <div id="page">
+                <NowPlaying />
+            </div>
             //TODO: add recently played, and recaptcha badge
         )
     }

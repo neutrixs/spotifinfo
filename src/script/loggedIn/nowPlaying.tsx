@@ -164,7 +164,12 @@ export class NowPlaying extends React.Component<{},NowPlayingState>{
             nowPlayingTitleLink:nowPlayingData.item.external_urls.spotify,
             albumArtSrc:nowPlayingData.item.album.images[0].url,
             albumArtLinkSrc:nowPlayingData.item.album.external_urls.spotify,
-            Artists:artists
+            Artists:artists,
+            nowPlayingProgress:{
+                currentMs:nowPlayingData.progress_ms,
+                totalMs:nowPlayingData.item.duration_ms,
+                isPlaying:nowPlayingData.is_playing
+            }
         })
 
         //TODO: add now playing progress

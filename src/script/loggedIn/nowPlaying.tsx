@@ -6,6 +6,7 @@ type classNone = '' | 'none'
 interface NowPlayingState {
     isPlaying:boolean,
     albumArtSrc:string,
+    albumArtLinkSrc:string,
     nowPlayingTitle:string,
     nowPlayingTitleLink:string,
     Artists:any, //idk what react's element type is, so will put this temporarily
@@ -21,6 +22,7 @@ export class NowPlaying extends React.Component<{},NowPlayingState>{
             nowPlayingInterval:undefined,
             isPlaying:false,
             albumArtSrc: '',
+            albumArtLinkSrc:'',
             nowPlayingTitle: '',
             nowPlayingTitleLink: '',
             Artists:null,
@@ -111,6 +113,7 @@ export class NowPlaying extends React.Component<{},NowPlayingState>{
             nowPlayingTitle:nowPlayingData.item.name,
             nowPlayingTitleLink:nowPlayingData.item.external_urls.spotify,
             albumArtSrc:nowPlayingData.item.album.images[0].url,
+            albumArtLinkSrc:nowPlayingData.item.album.external_urls.spotify,
             Artists:artists
         })
 
@@ -127,7 +130,7 @@ export class NowPlaying extends React.Component<{},NowPlayingState>{
                 <p id="nowPlayingStatus">
                     {this.state.isPlaying ? 'Now Playing:' : 'Last Played Song:'}
                 </p>
-                <a id="albumArtHolder">
+                <a id="albumArtHolder" href={this.state.albumArtLinkSrc}>
                     <img id="albumArt" src={this.state.albumArtSrc} />
                 </a>
                 <div id="nowPlayingInfoHolder">

@@ -39,9 +39,9 @@ const getProfile = async function(){
     if(res.error){
         if(res.error.status == 401 || res.error.status == 400){
             await getToken()
-            await getProfile()
+            let profilePic:string = await getProfile()
+            return profilePic
         }
-        return
     }
 
     let profilePic

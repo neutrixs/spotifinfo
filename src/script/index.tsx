@@ -7,7 +7,8 @@ import '../style/base/base.css'
 
 declare global{
     interface Window{
-        currentFetch:boolean
+        currentFetch:boolean,
+        grecaptcha:any
     }
 }
 window.currentFetch = false

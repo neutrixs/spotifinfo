@@ -14,3 +14,29 @@
     line-height: 1em;
     margin-top: 0;
 }
+#albumArtHolder{
+    display: inline-block;
+    margin-right: 1.5em;
+    width: 20em;
+    height: 20em;
+}
+#albumArt{
+    width: 20em;
+    box-shadow: 0 0.2em 0.4em rgb(0,0,0,0.6);
+    display: block;
+}
+#nowPlayingInfoHolder{
+    display: inline-block;
+    vertical-align: top;
+}
+.nowPlayingInfoHolderSide{
+    max-width: calc(100% - 21.5em);
+}
+#nowPlayingTitle{
+    font-size: 1.5em;
+    margin-top: 1em;
+    display: block;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 0;
+}

@@ -87,7 +87,8 @@ export class NowPlaying extends React.Component<{},NowPlayingState>{
 
         this.setState({
             nowPlayingTitle:nowPlayingData.item.name,
-            nowPlayingTitleLink:nowPlayingData.item.external_urls.spotify
+            nowPlayingTitleLink:nowPlayingData.item.external_urls.spotify,
+            albumArtSrc:nowPlayingData.item.album.images[0].url
         })
 
         //TODO: add now playing progress
@@ -99,7 +100,7 @@ export class NowPlaying extends React.Component<{},NowPlayingState>{
 
     render(){
         return(
-            <div id="nowPlaying" className={"nowPlaying "+this.state.classNone}>
+            <div id="nowPlaying" className={"nowPlayingHolder "+this.state.classNone}>
                 <p id="nowPlayingStatus">
                     {this.state.isPlaying ? 'Now Playing:' : 'Last Played Song:'}
                 </p>

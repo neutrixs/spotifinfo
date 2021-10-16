@@ -172,8 +172,6 @@ export class NowPlaying extends React.Component<{},NowPlayingState>{
             }
         })
 
-        //TODO: add now playing progress
-
         this.setState({
             classNone:''
         })

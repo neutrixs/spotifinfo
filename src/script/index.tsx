@@ -5,7 +5,11 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import { RouteGenerate } from './base/routeGenerate'
 import '../style/base/base.css'
 
-declare const window:any
+declare global{
+    interface Window{
+        currentFetch:boolean
+    }
+}
 window.currentFetch = false
 
 function isLoggedOut():boolean{

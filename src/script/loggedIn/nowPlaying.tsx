@@ -24,6 +24,8 @@ export class NowPlaying extends React.Component<{},NowPlayingState>{
         }
     }
 
+    
+
     render(){
         return(
             <div id="nowPlaying" className="nowPlaying none">

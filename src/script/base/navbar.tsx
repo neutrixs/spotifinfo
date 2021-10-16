@@ -97,17 +97,13 @@ export class Navbar extends React.Component<navbarParam, dropDownState> {
 
     render(){
         return(
-            <Switch>
-                <Route>
-                    <div id="navBar" className="nav">
-                        <NavLink to="/">
-                            <span className="pages lineHeight1" style={{marginLeft:'1.5em'}}>Home</span>
-                        </NavLink>
-                        {this.topTracksRouter()}
-                        {this.dropdown_elements()}
-                    </div>
-                </Route>
-            </Switch>
+            <div id="navBar" className="nav">
+                <NavLink to="/">
+                    <span className="pages lineHeight1" style={{marginLeft:'1.5em'}}>Home</span>
+                </NavLink>
+                {this.topTracksRouter()}
+                {this.dropdown_elements()}
+            </div>
         )
     }
 }

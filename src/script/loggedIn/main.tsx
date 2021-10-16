@@ -1,0 +1,14 @@
+import * as React from 'react';
+import { NowPlaying } from './nowPlaying';
+
+export class LoggedInMain extends React.Component{
+    constructor(props:any){
+        super(props)
+    }
+    render(){
+        return(
+            <NowPlaying />
+            //TODO: add recently played, and recaptcha badge
+        )
+    }
+}

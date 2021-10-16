@@ -1,8 +1,10 @@
 const mobile = function(){
     document.getElementById('page').classList.add('pageMobile')
+    document.getElementById('nowPlaying').classList.add('nowPlayingHolderMobile')
 }
 const desktop = function(){
     document.getElementById('page').classList.remove('pageMobile')
+    document.getElementById('nowPlaying').classList.remove('nowPlayingHolderMobile')
 }
 
 let changeAt = 44.5

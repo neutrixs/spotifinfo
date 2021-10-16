@@ -7,6 +7,11 @@
     transition: background-color 500ms;
     box-shadow: 0 0.2em 0.4em rgb(0,0,0,0.6);
 }
+.nowPlayingHolderMobile{
+    margin-top: 0;
+    padding-top: 3em;
+    border-radius: 0;
+}
 
 
 

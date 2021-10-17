@@ -1,5 +1,6 @@
 import {getToken} from '../../base/functions'
 import * as React from 'react';
+import { spotifyCurrentlyPlayingType } from '../types/spotifyCurrentlyPlaying'
 async function getNowPlaying(this1:any){
     const res = await fetch('https://api.spotify.com/v1/me/player/currently-playing',{
         method:'GET',
@@ -15,21 +16,19 @@ async function getNowPlaying(this1:any){
         return
     }
 
-    const nowPlayingData = await res.json()
-
-    if(nowPlayingData.error){
-        if(nowPlayingData.error.status == 400 || nowPlayingData.error.status == 401){
-            clearInterval(this1.state.nowPlayingInterval)
-            await getToken()
-            this1.getNowPlaying()
-            this1.setState({
-                nowPlayingInterval:setInterval(()=>{
-                    this1.getNowPlaying()
-                },2000)
-            })
-        }
+    if(res.status == 400 || res.status == 401){
+        clearInterval(this1.state.nowPlayingInterval)
+        await getToken()
+        this1.getNowPlaying()
+        this1.setState({
+            nowPlayingInterval:setInterval(()=>{
+                this1.getNowPlaying()
+            },2000)
+        })
         return
     }
+
+    const nowPlayingData:spotifyCurrentlyPlayingType = await res.json()
 
     if(!nowPlayingData.item){
         this1.setState({

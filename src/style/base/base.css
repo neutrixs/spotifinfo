@@ -22,6 +22,7 @@ body{
 #page{
     margin-left: 10em;
     margin-right: 10em;
+    min-width: 24.5em;
 }
 .pageMobile{
     margin: 0 !important;

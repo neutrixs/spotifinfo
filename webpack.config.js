@@ -23,7 +23,8 @@ const config = {
     },
     output: {
         filename:"[fullhash].js",
-        path: path.resolve(__dirname,"public")
+        path: path.resolve(__dirname,"public"),
+        clean:true
     },
     optimization: {
         minimizer:[

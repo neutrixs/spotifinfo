@@ -49,7 +49,7 @@ async function getNowPlaying(this1:any){
     }
 
     if(nowPlayingData.item.name !== this1.state.nowPlayingTitle){
-        this1.props.getRecentlyPlayed()
+        if(this1.state.nowPlayingTitle) this1.props.getRecentlyPlayed()
     }
 
     let artists = []

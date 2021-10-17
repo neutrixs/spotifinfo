@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {getToken} from '../../base/functions'
 import '../../../style/loggedIn/recentlyPlayed.css'
+import { spotifyRecentlyPlayedType, artists } from '../types/spotifyRecentlyPlayed'
 
 interface props{
     setGetRecentlyPlayedFunction:Function
@@ -28,7 +29,7 @@ export class RecentlyPlayed extends React.Component<props,states> {
         this.getRecentlyPlayed()
     }
 
-    structureData(data:any){
+    structureData(data:spotifyRecentlyPlayedType){
         let constructedData = []
         for(let i = 0; i < data.items?.length; i++){
             let thisTrack = data.items[i].track
@@ -45,7 +46,7 @@ export class RecentlyPlayed extends React.Component<props,states> {
                         </p>
                         <p className={"recentlyPlayedArtistsName"} key={key+'_5'}>
                             {
-                                thisTrack.artists.map((artist:any)=>{
+                                thisTrack.artists.map((artist:artists)=>{
                                     return artist.name
                                 }).join(', ')
                             }
@@ -76,7 +77,7 @@ export class RecentlyPlayed extends React.Component<props,states> {
             return
         }
 
-        const data = await res.json()
+        const data:spotifyRecentlyPlayedType = await res.json()
         this.structureData(data)
     }
 

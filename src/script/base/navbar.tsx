@@ -95,7 +95,7 @@ export class Navbar extends React.Component<navbarParam, dropDownState> {
     }
 
     componentDidMount(){
-        this.profilePicURL()
+        if(!this.props.isLoggedOut)this.profilePicURL()
     }
 
     profilePicURL(){

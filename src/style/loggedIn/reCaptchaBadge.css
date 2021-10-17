@@ -1,0 +1,18 @@
+
+#recaptchaBrandingHolder{
+    padding: 1.5em;
+    padding-top: 0;
+}
+#recaptchaBrandingHolder span{
+    font-size: 0.75em;
+}
+#recaptchaBrandingHolder a{
+    font-size: 0.75em;
+}
+.recaptchaBrandingText{
+    color: hsl(220,100%,75%) !important;
+    text-decoration: underline !important;
+}
+.recaptchaBrandingTextLight{
+    color: hsl(220,100%,50%) !important
+}

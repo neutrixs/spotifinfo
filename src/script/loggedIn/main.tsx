@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { NowPlaying } from './nowPlaying/nowPlaying';
 import '../../style/loggedIn/main.css'
+import { ReCaptchaBadge } from './reCaptchaBadge/reCaptchaBadge'
 
 interface states{
     additionalPageStyle:string,
@@ -49,8 +50,9 @@ export class LoggedInMain extends React.Component<{},states>{
         return(
             <div id="page" className={this.state.pageStyleTransition+' '+this.state.additionalPageStyle}>
                 <NowPlaying classNowPlayingMobile={classNowPlayingMobile} />
+                {/* TODO: add recently played */}
+                <ReCaptchaBadge />
             </div>
-            //TODO: add recently played, and recaptcha badge
         )
     }
 }

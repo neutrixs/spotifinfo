@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { NowPlaying } from './nowPlaying/nowPlaying';
 import '../../style/loggedIn/main.css'
-import { ReCaptchaBadge } from './reCaptchaBadge/reCaptchaBadge'
+import { ReCaptchaBadge } from '../base/reCaptchaBadge'
 
 interface states{
     additionalPageStyle:string,

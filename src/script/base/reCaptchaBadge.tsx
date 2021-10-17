@@ -1,5 +1,5 @@
 import * as React from 'react';
-import '../../../style/loggedIn/reCaptchaBadge.css'
+import '../../style/base/reCaptchaBadge.css'
 
 export class ReCaptchaBadge extends React.Component{
     constructor(props:any){

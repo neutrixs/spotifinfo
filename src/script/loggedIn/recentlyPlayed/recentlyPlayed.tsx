@@ -62,7 +62,6 @@ export class RecentlyPlayed extends React.Component<props,states> {
     }
 
     async getRecentlyPlayed(){
-        console.log('im here')
         const url = 'https://api.spotify.com/v1/me/player/recently-played?limit=50'
         const res = await fetch(url,{
             method:'GET',

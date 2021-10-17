@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {getToken} from '../../base/functions'
+import '../../../style/loggedIn/recentlyPlayed.css'
 
 interface props{
     setGetRecentlyPlayedFunction:Function
@@ -19,6 +20,7 @@ export class RecentlyPlayed extends React.Component<props,states> {
             classNone:'none'
         }
 
+        this.getRecentlyPlayed = this.getRecentlyPlayed.bind(this)
         this.props.setGetRecentlyPlayedFunction(this.getRecentlyPlayed)
     }
 
@@ -26,8 +28,37 @@ export class RecentlyPlayed extends React.Component<props,states> {
         this.getRecentlyPlayed()
     }
 
-    structureData(data:{[key:string]:any}){
+    structureData(data:any){
         let constructedData = []
+        for(let i = 0; i < data.items?.length; i++){
+            let thisTrack = data.items[i].track
+            let key = thisTrack.id+i.toString()
+
+            constructedData.push(
+                <div id={"recentlyPlayed"+i} className={"recentlyPlayedEach"} key={key}>
+                    <a id={"recentlyPlayed"+i+"ArtHolder"} className={"recentlyPlayedArtHolder"} href={thisTrack.album.external_urls.spotify} key={key+'_1'}>
+                        <img className={"recentlyPlayedArt"} src={thisTrack.album.images[1].url} key={key+'_2'} />
+                    </a>
+                    <a id={"recentlyPlayed"+i+"InfoHolder"} className={"recentlyPlayedInfoHolder"} href={thisTrack.external_urls.spotify} key={key+'_3'}>
+                        <p className={"recentlyPlayedSongName"} key={key+'_4'}>
+                            {thisTrack.name}
+                        </p>
+                        <p className={"recentlyPlayedArtistsName"} key={key+'_5'}>
+                            {
+                                thisTrack.artists.map((artist:any)=>{
+                                    return artist.name
+                                }).join(', ')
+                            }
+                        </p>
+                    </a>
+                </div>
+            )
+        }
+
+        this.setState({
+            data:constructedData,
+            classNone:''
+        })
     }
 
     async getRecentlyPlayed(){
@@ -47,13 +78,16 @@ export class RecentlyPlayed extends React.Component<props,states> {
         }
 
         const data = await res.json()
+        this.structureData(data)
     }
 
     render(){
         return(
             <div id="recentlyPlayed" className={this.state.classNone}>
                 <p id="titleRecentlyPlayed">Recently Played:</p>
-                <div id="recentlyPlayedListHolder"></div>
+                <div id="recentlyPlayedListHolder">
+                    {this.state.data}
+                </div>
             </div>
         )
     }

@@ -24,7 +24,8 @@ interface NowPlayingState {
 }
 
 interface props{
-    classNowPlayingMobile:''|'nowPlayingHolderMobile'
+    classNowPlayingMobile:''|'nowPlayingHolderMobile',
+    getRecentlyPlayed:Function
 }
 
 export class NowPlaying extends React.Component<props,NowPlayingState>{

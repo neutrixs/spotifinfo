@@ -2,11 +2,13 @@ import * as React from 'react';
 import { NowPlaying } from './nowPlaying/nowPlaying';
 import '../../style/loggedIn/main.css'
 import { ReCaptchaBadge } from '../base/reCaptchaBadge'
+import { RecentlyPlayed } from './recentlyPlayed/recentlyPlayed'
 
 interface states{
     additionalPageStyle:string,
     pageStyleTransition:string,
-    classNowPlayingMobile:''|'nowPlayingHolderMobile'
+    classNowPlayingMobile:''|'nowPlayingHolderMobile',
+    getRecentlyPlayed:Function
 }
 
 export class LoggedInMain extends React.Component<{},states>{
@@ -15,14 +17,23 @@ export class LoggedInMain extends React.Component<{},states>{
         this.state = {
             additionalPageStyle: '',
             pageStyleTransition: '',
-            classNowPlayingMobile: ''
+            classNowPlayingMobile: '',
+            getRecentlyPlayed:function(){}
         }
+
+        this.setGetRecentlyPlayedFunction = this.setGetRecentlyPlayedFunction.bind(this)
     }
     componentDidMount(){
         this.mobileListenerFirst(this)
     }
     componentWillUnmount(){
         window.removeEventListener('resize',()=>{this.mobileListener(this)})
+    }
+
+    setGetRecentlyPlayedFunction(func:Function){
+        this.setState({
+            getRecentlyPlayed:func
+        })
     }
 
     mobileListener(this1:any){
@@ -49,8 +60,8 @@ export class LoggedInMain extends React.Component<{},states>{
         const classNowPlayingMobile = this.state.classNowPlayingMobile
         return(
             <div id="page" className={this.state.pageStyleTransition+' '+this.state.additionalPageStyle}>
-                <NowPlaying classNowPlayingMobile={classNowPlayingMobile} />
-                {/* TODO: add recently played */}
+                <NowPlaying getRecentlyPlayed={this.state.getRecentlyPlayed} classNowPlayingMobile={classNowPlayingMobile} />
+                <RecentlyPlayed setGetRecentlyPlayedFunction={this.setGetRecentlyPlayedFunction} />
                 <ReCaptchaBadge />
             </div>
         )

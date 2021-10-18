@@ -3,7 +3,7 @@ import '../../../style/loggedIn/nowPlaying.css'
 import {getNowPlaying} from './getNowPlaying'
 import {nowPlayingProgress} from './nowPlayingProgress'
 import { props, NowPlayingState } from '../types/nowPlayingTypes'
-import {startListener as sideTextStartListener, stopListener as sideTextStopListener, listener as sideTextListener} from './nowPlayingSideText'
+import {listener as sideTextListener} from './nowPlayingSideText'
 
 export class NowPlaying extends React.Component<props,NowPlayingState>{
     constructor(props:props){
@@ -28,6 +28,8 @@ export class NowPlaying extends React.Component<props,NowPlayingState>{
         }
     }
 
+    _sideTextListener = sideTextListener.bind(this)
+
     componentDidMount(){
         this.getNowPlaying()
         this.setState({
@@ -43,15 +45,15 @@ export class NowPlaying extends React.Component<props,NowPlayingState>{
             },100)
         })
 
-        //sideTextListener.bind(this)()
-        //sideTextStartListener.bind(this)()
+        window.addEventListener('resize',this._sideTextListener)
+        sideTextListener.bind(this)()
     }
 
     componentWillUnmount(){
         clearInterval(this.state.nowPlayingInterval)
         clearInterval(this.state.nowPlayingProgressInterval)
 
-        //sideTextStopListener.bind(this)()
+        window.removeEventListener('resize',this._sideTextListener)
     }
 
     nowPlayingProgress(){

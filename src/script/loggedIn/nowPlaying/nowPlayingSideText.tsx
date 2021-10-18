@@ -8,6 +8,7 @@ let listener = function(this:NowPlaying){
     this.setState({
         nowPlayingInfoHolderSide: side ? 'nowPlayingInfoHolderSide' : ''
     })
+    console.log('ismounted is fucking ')
 }
 
 function startListener(this:NowPlaying){

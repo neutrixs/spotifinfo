@@ -22,12 +22,13 @@ export class LoggedInMain extends React.Component<{},states>{
         }
 
         this.setGetRecentlyPlayedFunction = this.setGetRecentlyPlayedFunction.bind(this)
+        this.mobileListener = this.mobileListener.bind(this)
     }
     componentDidMount(){
-        this.mobileListenerFirst(this)
+        this.mobileListenerFirst()
     }
     componentWillUnmount(){
-        window.removeEventListener('resize',()=>{this.mobileListener(this)})
+        window.removeEventListener('resize',this.mobileListener)
     }
 
     setGetRecentlyPlayedFunction(func:Function){
@@ -36,24 +37,24 @@ export class LoggedInMain extends React.Component<{},states>{
         })
     }
 
-    mobileListener(this1:any){
+    mobileListener(this:this){
         const changeAt = 44.5
         const windowFontSize = parseFloat(window.getComputedStyle(document.body).getPropertyValue('font-size'))
         const isMobile = window.innerWidth / windowFontSize < changeAt
 
-        this1.setState({
+        this.setState({
             additionalPageStyle: isMobile ? 'pageMobile' : '',
             classNowPlayingMobile: isMobile ? 'nowPlayingHolderMobile' : ''
         })
     }
 
-    mobileListenerFirst(this1:any){
+    mobileListenerFirst(){
         this.setState({
             pageStyleTransition: 'transition300ms'
         })
 
-        this.mobileListener(this)
-        window.addEventListener('resize',()=>{this1.mobileListener(this1)})
+        this.mobileListener()
+        window.addEventListener('resize',this.mobileListener)
     }
 
     render(){

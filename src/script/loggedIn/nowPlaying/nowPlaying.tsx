@@ -43,15 +43,15 @@ export class NowPlaying extends React.Component<props,NowPlayingState>{
             },100)
         })
 
-        sideTextListener.bind(this)()
-        sideTextStartListener.bind(this)()
+        //sideTextListener.bind(this)()
+        //sideTextStartListener.bind(this)()
     }
 
     componentWillUnmount(){
         clearInterval(this.state.nowPlayingInterval)
         clearInterval(this.state.nowPlayingProgressInterval)
 
-        sideTextStopListener.bind(this)()
+        //sideTextStopListener.bind(this)()
     }
 
     nowPlayingProgress(){

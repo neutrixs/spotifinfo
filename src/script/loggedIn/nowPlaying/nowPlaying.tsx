@@ -24,7 +24,8 @@ export class NowPlaying extends React.Component<props,NowPlayingState>{
             },
             nowPlayingProgressStr:'',
             classNone:'none',
-            nowPlayingInfoHolderSide:'nowPlayingInfoHolderSide'
+            nowPlayingInfoHolderSide:'nowPlayingInfoHolderSide',
+            palette:undefined
         }
     }
 

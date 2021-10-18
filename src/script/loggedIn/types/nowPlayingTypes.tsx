@@ -18,7 +18,8 @@ interface NowPlayingState {
     nowPlayingProgress: progress,
     nowPlayingProgressStr: string,
     nowPlayingInfoHolderSide: 'nowPlayingInfoHolderSide'|'',
-    classNone:classNone
+    classNone:classNone,
+    palette:Array<number[]>|undefined
 }
 
 interface props{

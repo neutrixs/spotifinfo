@@ -38,7 +38,7 @@ export class LoggedInMain extends React.Component<{},states>{
     }
 
     mobileListener(this:this){
-        const changeAt = 44.5
+        const changeAt = 66
         const windowFontSize = parseFloat(window.getComputedStyle(document.body).getPropertyValue('font-size'))
         const isMobile = window.innerWidth / windowFontSize < changeAt
 

@@ -1,7 +1,9 @@
-function nowPlayingProgress(this1:any){
-    if(!this1.state.nowPlayingProgress.isPlaying) return
+import {NowPlaying} from './nowPlaying'
+import {NowPlayingState} from '../types/nowPlayingTypes'
+function nowPlayingProgress(this:NowPlaying){
+    if(!this.state.nowPlayingProgress.isPlaying) return
 
-    this1.setState((state:any)=>({
+    this.setState((state:NowPlayingState)=>({
         nowPlayingProgress:{
             currentMs: state.nowPlayingProgress.currentMs+100,
             totalMs: state.nowPlayingProgress.totalMs,
@@ -9,8 +11,8 @@ function nowPlayingProgress(this1:any){
         }
     }))
 
-    const current = this1.state.nowPlayingProgress.currentMs
-    const total = this1.state.nowPlayingProgress.totalMs
+    const current = this.state.nowPlayingProgress.currentMs
+    const total = this.state.nowPlayingProgress.totalMs
 
     let currentMinute = Math.floor(current/60000).toString()
     let currentSecond:string|number = (Math.floor(current/1000) % 60)
@@ -22,7 +24,7 @@ function nowPlayingProgress(this1:any){
 
     let stringRes = currentMinute+':'+currentSecond+' / '+totalMinute+':'+totalSecond
 
-    this1.setState({
+    this.setState({
         nowPlayingProgressStr:stringRes
     })
 }

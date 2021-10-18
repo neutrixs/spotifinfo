@@ -2,31 +2,7 @@ import * as React from 'react';
 import '../../../style/loggedIn/nowPlaying.css'
 import {getNowPlaying} from './getNowPlaying'
 import {nowPlayingProgress} from './nowPlayingProgress'
-
-type classNone = '' | 'none'
-interface progress{
-    currentMs: number|null,
-    totalMs: number|null,
-    isPlaying: boolean
-}
-interface NowPlayingState {
-    isPlaying:boolean,
-    albumArtSrc:string,
-    albumArtLinkSrc:string,
-    nowPlayingTitle:string,
-    nowPlayingTitleLink:string,
-    Artists:Array<JSX.Element>,
-    nowPlayingInterval: NodeJS.Timer,
-    nowPlayingProgressInterval: NodeJS.Timer,
-    nowPlayingProgress: progress,
-    nowPlayingProgressStr: string,
-    classNone:classNone
-}
-
-interface props{
-    classNowPlayingMobile:''|'nowPlayingHolderMobile',
-    getRecentlyPlayed:Function
-}
+import { props, NowPlayingState } from '../types/nowPlayingTypes'
 
 export class NowPlaying extends React.Component<props,NowPlayingState>{
     constructor(props:props){
@@ -72,11 +48,11 @@ export class NowPlaying extends React.Component<props,NowPlayingState>{
     }
 
     nowPlayingProgress(){
-        nowPlayingProgress(this)
+        nowPlayingProgress.bind(this)()
     }
 
     async getNowPlaying(){
-        await getNowPlaying(this)
+        await getNowPlaying.bind(this)()
     }
 
     render(){

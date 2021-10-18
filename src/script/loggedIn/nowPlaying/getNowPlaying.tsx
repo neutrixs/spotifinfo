@@ -1,7 +1,8 @@
 import {getToken} from '../../base/functions'
 import * as React from 'react';
 import { spotifyCurrentlyPlayingType } from '../types/spotifyCurrentlyPlaying'
-async function getNowPlaying(this1:any){
+import {NowPlaying} from './nowPlaying'
+async function getNowPlaying(this:NowPlaying){
     const res = await fetch('https://api.spotify.com/v1/me/player/currently-playing',{
         method:'GET',
         headers:{
@@ -10,19 +11,19 @@ async function getNowPlaying(this1:any){
     })
 
     if(res.status == 204){
-        this1.setState({
+        this.setState({
             classNone:'none'
         })
         return
     }
 
     if(res.status == 400 || res.status == 401){
-        clearInterval(this1.state.nowPlayingInterval)
+        clearInterval(this.state.nowPlayingInterval)
         await getToken()
-        this1.getNowPlaying()
-        this1.setState({
+        this.getNowPlaying()
+        this.setState({
             nowPlayingInterval:setInterval(()=>{
-                this1.getNowPlaying()
+                this.getNowPlaying()
             },2000)
         })
         return
@@ -31,25 +32,25 @@ async function getNowPlaying(this1:any){
     const nowPlayingData:spotifyCurrentlyPlayingType = await res.json()
 
     if(!nowPlayingData.item){
-        this1.setState({
+        this.setState({
             classNone:'none'
         })
         return
     }
 
     if(nowPlayingData.is_playing){
-        this1.setState({
+        this.setState({
             isPlaying:true
         })
     }
     else{
-        this1.setState({
+        this.setState({
             isPlaying:false
         })
     }
 
-    if(nowPlayingData.item.name !== this1.state.nowPlayingTitle){
-        if(this1.state.nowPlayingTitle) this1.props.getRecentlyPlayed()
+    if(nowPlayingData.item.name !== this.state.nowPlayingTitle){
+        if(this.state.nowPlayingTitle) this.props.getRecentlyPlayed()
     }
 
     let artists = []
@@ -63,7 +64,7 @@ async function getNowPlaying(this1:any){
         )
     }
 
-    this1.setState({
+    this.setState({
         nowPlayingTitle:nowPlayingData.item.name,
         nowPlayingTitleLink:nowPlayingData.item.external_urls.spotify,
         albumArtSrc:nowPlayingData.item.album.images[0].url,
@@ -76,7 +77,7 @@ async function getNowPlaying(this1:any){
         }
     })
 
-    this1.setState({
+    this.setState({
         classNone:''
     })
 }

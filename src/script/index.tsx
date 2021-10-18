@@ -8,7 +8,8 @@ import '../style/base/base.css'
 declare global{
     interface Window{
         currentFetch:boolean,
-        grecaptcha:any
+        grecaptcha:any,
+        ColorThief:any
     }
 }
 window.currentFetch = false

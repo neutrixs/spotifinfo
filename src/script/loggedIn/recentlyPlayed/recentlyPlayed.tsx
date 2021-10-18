@@ -13,7 +13,7 @@ interface states{
 }
 
 export class RecentlyPlayed extends React.Component<props,states> {
-    constructor(props:any){
+    constructor(props:props){
         super(props)
 
         this.state = {

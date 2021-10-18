@@ -4,6 +4,7 @@ import {getNowPlaying} from './getNowPlaying'
 import {nowPlayingProgress} from './nowPlayingProgress'
 import { props, NowPlayingState } from '../types/nowPlayingTypes'
 import {listener as sideTextListener} from './nowPlayingSideText'
+import {colour} from './colour'
 
 export class NowPlaying extends React.Component<props,NowPlayingState>{
     constructor(props:props){
@@ -30,6 +31,7 @@ export class NowPlaying extends React.Component<props,NowPlayingState>{
     }
 
     _sideTextListener = sideTextListener.bind(this)
+    _colour = colour.bind(this)
 
     componentDidMount(){
         this.getNowPlaying()
@@ -48,6 +50,10 @@ export class NowPlaying extends React.Component<props,NowPlayingState>{
 
         window.addEventListener('resize',this._sideTextListener)
         sideTextListener.bind(this)()
+
+        const img = document.getElementById('albumArt') as HTMLImageElement
+        img.crossOrigin = 'anonymous'
+        img.addEventListener('load',this._colour)
     }
 
     componentWillUnmount(){
@@ -55,6 +61,8 @@ export class NowPlaying extends React.Component<props,NowPlayingState>{
         clearInterval(this.state.nowPlayingProgressInterval)
 
         window.removeEventListener('resize',this._sideTextListener)
+        const img = document.getElementById('albumArt') as HTMLImageElement
+        img.removeEventListener('load',this._colour)
     }
 
     nowPlayingProgress(){
@@ -67,7 +75,12 @@ export class NowPlaying extends React.Component<props,NowPlayingState>{
 
     render(){
         return(
-            <div id="nowPlaying" className={"nowPlayingHolder "+this.state.classNone+' '+this.props.classNowPlayingMobile}>
+            <div id="nowPlaying" 
+                className={"nowPlayingHolder "+this.state.classNone+' '+this.props.classNowPlayingMobile}
+                style={{
+                    backgroundColor: this.state.palette ? 'rgb('+this.state.palette[0].join(',')+')' : ''
+                }}
+            >
                 <p id="nowPlayingStatus">
                     {this.state.isPlaying ? 'Now Playing:' : 'Last Played Song:'}
                 </p>

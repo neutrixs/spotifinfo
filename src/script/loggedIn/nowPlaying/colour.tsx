@@ -1,8 +1,8 @@
 import {NowPlaying} from './nowPlaying'
 import {indexMostSaturated,autoAdjustLightness} from './colourModule'
 const colorthief = new window.ColorThief()
-const img = document.getElementById('albumArt')
 function colour(this:NowPlaying){
+    const img = document.getElementById('albumArt')
     const palette:Array<number[]> = colorthief.getPalette(img,5)
     const indexNo = indexMostSaturated([...palette])
     const saturatedPalette = palette[indexNo]

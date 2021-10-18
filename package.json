@@ -15,8 +15,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/react": "^17.0.30",
-    "@types/react-router-dom": "^5.3.1",
     "cookie-parser": "^1.4.5",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
@@ -24,7 +22,9 @@
     "node-fetch": "^2.6.1"
   },
   "devDependencies": {
+    "@types/react": "^17.0.30",
     "@types/react-dom": "^17.0.9",
+    "@types/react-router-dom": "^5.3.1",
     "clean-css": "^5.1.5",
     "copy-webpack-plugin": "^9.0.1",
     "css-loader": "^6.4.0",

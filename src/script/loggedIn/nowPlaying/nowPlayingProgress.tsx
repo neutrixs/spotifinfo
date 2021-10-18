@@ -11,6 +11,8 @@ function nowPlayingProgress(this:NowPlaying){
         }
     }))
 
+    if(this.state.nowPlayingProgress.currentMs > this.state.nowPlayingProgress.totalMs) return
+
     const current = this.state.nowPlayingProgress.currentMs
     const total = this.state.nowPlayingProgress.totalMs
 

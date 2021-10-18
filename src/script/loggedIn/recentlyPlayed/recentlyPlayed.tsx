@@ -8,7 +8,7 @@ interface props{
 }
 
 interface states{
-    data:Array<any>
+    data:Array<JSX.Element>
     classNone:''|'none'
 }
 
@@ -30,7 +30,7 @@ export class RecentlyPlayed extends React.Component<props,states> {
     }
 
     structureData(data:spotifyRecentlyPlayedType){
-        let constructedData = []
+        let constructedData:Array<JSX.Element> = []
         for(let i = 0; i < data.items?.length; i++){
             let thisTrack = data.items[i].track
             let key = thisTrack.id+i.toString()

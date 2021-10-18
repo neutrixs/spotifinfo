@@ -15,9 +15,9 @@ interface NowPlayingState {
     albumArtLinkSrc:string,
     nowPlayingTitle:string,
     nowPlayingTitleLink:string,
-    Artists:any, //idk what react's element type is, so will put this temporarily
-    nowPlayingInterval: any,
-    nowPlayingProgressInterval:any,
+    Artists:Array<JSX.Element>,
+    nowPlayingInterval: NodeJS.Timer,
+    nowPlayingProgressInterval: NodeJS.Timer,
     nowPlayingProgress: progress,
     nowPlayingProgressStr: string,
     classNone:classNone
@@ -29,7 +29,7 @@ interface props{
 }
 
 export class NowPlaying extends React.Component<props,NowPlayingState>{
-    constructor(props:any){
+    constructor(props:props){
         super(props)
         this.state = {
             nowPlayingInterval:undefined,

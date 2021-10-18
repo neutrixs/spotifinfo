@@ -16,13 +16,4 @@ let listener = function(this:NowPlaying){
     })
 }
 
-function startListener(this:NowPlaying){
-    listener = listener.bind(this)
-    window.addEventListener('resize',listener)
-}
-
-function stopListener(this:NowPlaying){
-    window.removeEventListener('resize',listener)
-}
-
-export {startListener, stopListener, listener}
+export {listener}

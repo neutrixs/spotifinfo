@@ -17,6 +17,7 @@ interface NowPlayingState {
     nowPlayingProgressInterval: NodeJS.Timer,
     nowPlayingProgress: progress,
     nowPlayingProgressStr: string,
+    nowPlayingInfoHolderSide: 'nowPlayingInfoHolderSide'|'',
     classNone:classNone
 }
 

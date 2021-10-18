@@ -3,6 +3,7 @@ import '../../../style/loggedIn/nowPlaying.css'
 import {getNowPlaying} from './getNowPlaying'
 import {nowPlayingProgress} from './nowPlayingProgress'
 import { props, NowPlayingState } from '../types/nowPlayingTypes'
+import {startListener as sideTextStartListener, stopListener as sideTextStopListener, listener as sideTextListener} from './nowPlayingSideText'
 
 export class NowPlaying extends React.Component<props,NowPlayingState>{
     constructor(props:props){
@@ -22,7 +23,8 @@ export class NowPlaying extends React.Component<props,NowPlayingState>{
                 isPlaying:false
             },
             nowPlayingProgressStr:'',
-            classNone:'none'
+            classNone:'none',
+            nowPlayingInfoHolderSide:'nowPlayingInfoHolderSide'
         }
     }
 
@@ -40,11 +42,16 @@ export class NowPlaying extends React.Component<props,NowPlayingState>{
                 this.nowPlayingProgress()
             },100)
         })
+
+        sideTextListener.bind(this)()
+        sideTextStartListener.bind(this)()
     }
 
     componentWillUnmount(){
         clearInterval(this.state.nowPlayingInterval)
         clearInterval(this.state.nowPlayingProgressInterval)
+
+        sideTextStopListener.bind(this)()
     }
 
     nowPlayingProgress(){
@@ -64,7 +71,7 @@ export class NowPlaying extends React.Component<props,NowPlayingState>{
                 <a id="albumArtHolder" href={this.state.albumArtLinkSrc}>
                     <img id="albumArt" src={this.state.albumArtSrc} />
                 </a>
-                <div id="nowPlayingInfoHolder">
+                <div id="nowPlayingInfoHolder" className={this.state.nowPlayingInfoHolderSide}>
                     <a id="nowPlayingTitle" href={this.state.nowPlayingTitleLink}>
                         {this.state.nowPlayingTitle}
                     </a>

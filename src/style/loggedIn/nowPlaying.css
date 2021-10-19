@@ -35,6 +35,7 @@
 #nowPlayingInfoHolder{
     display: inline-block;
     vertical-align: top;
+    width: 100%;
 }
 .nowPlayingInfoHolderSide{
     max-width: calc(100% - 21.5em);
@@ -46,9 +47,11 @@
     font-weight: 600;
     cursor: pointer;
     margin-bottom: 0;
+    overflow-wrap:break-word;
 }
 #nowPlayingArtists{
     margin-top: 0.5em;
+    overflow-wrap: break-word;
 }
 #nowPlayingProgress{
     font-family: 'JetBrains Mono', monospace;

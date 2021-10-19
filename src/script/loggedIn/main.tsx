@@ -7,7 +7,7 @@ import { RecentlyPlayed } from './recentlyPlayed/recentlyPlayed'
 interface states{
     additionalPageStyle:string,
     pageStyleTransition:string,
-    classNowPlayingMobile:''|'nowPlayingHolderMobile',
+    classNowPlayingMobile:boolean,
     pageClassNone:''|'none',
     getRecentlyPlayed:Function
 }
@@ -18,7 +18,7 @@ export default class LoggedInMain extends React.Component<{},states>{
         this.state = {
             additionalPageStyle: '',
             pageStyleTransition: '',
-            classNowPlayingMobile: '',
+            classNowPlayingMobile: false,
             pageClassNone:'none',
             getRecentlyPlayed:function(){}
         }
@@ -46,7 +46,7 @@ export default class LoggedInMain extends React.Component<{},states>{
 
         this.setState({
             additionalPageStyle: isMobile ? 'pageMobile' : '',
-            classNowPlayingMobile: isMobile ? 'nowPlayingHolderMobile' : ''
+            classNowPlayingMobile: isMobile ? true : false
         })
     }
 

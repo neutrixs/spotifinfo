@@ -22,7 +22,7 @@ interface NowPlayingState {
 }
 
 interface props{
-    classNowPlayingMobile:''|'nowPlayingHolderMobile',
+    classNowPlayingMobile:boolean,
     getRecentlyPlayed:Function
 }
 

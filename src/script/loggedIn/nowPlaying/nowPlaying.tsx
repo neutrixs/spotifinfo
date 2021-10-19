@@ -86,7 +86,7 @@ export class NowPlaying extends React.Component<props,NowPlayingState>{
                 className={
                     "nowPlayingHolder "+
                     (this.state.classNone ? 'none ' : '')+
-                    this.props.classNowPlayingMobile
+                    (this.props.classNowPlayingMobile ? 'nowPlayingHolderMobile ': '')
                 }
                 style={{
                     backgroundColor: this.setPalette()

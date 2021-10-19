@@ -2,6 +2,8 @@ const path = require('path')
 const TerserPlugin = require("terser-webpack-plugin")
 const CopyPlugin = require("copy-webpack-plugin")
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 let devMode = false
 
 module.exports = function(env,argv){
@@ -35,14 +37,18 @@ const config = {
                     }*/
                     mangle:devMode ? false : mangleNormal
                 }
-            })
+            }),
+            new CssMinimizerPlugin()
         ]
     },
     module:{
         rules:[
             {
                 test: /\.css$/i,
-                use: ["style-loader", "css-loader"],
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    "css-loader"
+                ],
             },
             {
                 test: /\.tsx?$/,
@@ -72,6 +78,9 @@ const config = {
             template:'./src/index.html',
             filename:'index.html',
             publicPath:'/'
+        }),
+        new MiniCssExtractPlugin({
+            filename:'[contenthash].css'
         })
     ],
     resolve: {

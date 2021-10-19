@@ -52,12 +52,10 @@ export class LoggedInMain extends React.Component<{},states>{
 
     mobileListenerFirst(){
         this.mobileListener()
-        setTimeout(function(this:LoggedInMain){
-            this.setState({
-                pageClassNone:'',
-                pageStyleTransition:'transition300ms'
-            })
-        }.bind(this),10)
+        this.setState({
+            pageClassNone:'',
+            pageStyleTransition:'transition300ms'
+        })
 
         window.addEventListener('resize',this.mobileListener)
     }
@@ -65,7 +63,7 @@ export class LoggedInMain extends React.Component<{},states>{
     render(){
         const classNowPlayingMobile = this.state.classNowPlayingMobile
         return(
-            <div id="page" className={this.state.pageStyleTransition+' '+this.state.additionalPageStyle}>
+            <div id="page" className={this.state.pageStyleTransition+' '+this.state.additionalPageStyle+' '+this.state.pageClassNone}>
                 <NowPlaying getRecentlyPlayed={this.state.getRecentlyPlayed} classNowPlayingMobile={classNowPlayingMobile} />
                 <RecentlyPlayed setGetRecentlyPlayedFunction={this.setGetRecentlyPlayedFunction} />
                 <ReCaptchaBadge />

@@ -1,5 +1,4 @@
 const querystring = require('querystring')
-const checkReCAPTCHA = require('./checkReCAPTCHA')
 function generateState(length){
     let possible = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789`~!@#$%^&*()-_=+'
     let state = ''
@@ -17,18 +16,6 @@ async function login(req,res,data,isLoggedOut){
         return
     }
 
-    if(!req.query.reCAPTCHAToken) return res.status(400).send('Bad Request')
-
-    const captchaCheck = await checkReCAPTCHA(req.query.reCAPTCHAToken,req)
-    if(captchaCheck == null){
-        res.status(400).send('Bad Request')
-        return
-    }
-    if(captchaCheck < 0.5){ //reCAPTCHA score
-        res.status(403).send('Forbidden')
-        return
-    }
-
     let state = generateState(16)
 
     let query = querystring.encode({
@@ -37,7 +24,7 @@ async function login(req,res,data,isLoggedOut){
         redirect_uri:data.redirect_uri,
         state:state,
         scope:data.scope,
-        show_dialog:req.query.force?true:false
+        show_dialog:req.query.force==='true'?true:false
     })
 
     res.redirect('https://accounts.spotify.com/authorize?'+query)

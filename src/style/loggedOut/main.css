@@ -1,0 +1,17 @@
+#kingHolder{
+    display: inline-block;
+}
+#king{
+    width: 20em;
+    display: block;
+}
+#title{
+    font-size: 2em;
+    font-weight: 600;
+}
+#subTitle{
+    font-size: 2em;
+}
+#listYouCanDo li{
+    font-size: 2em;
+}

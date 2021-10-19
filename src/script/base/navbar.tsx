@@ -1,7 +1,7 @@
 import * as React from 'react';
 import '../../style/base/navbar.css'
 import '../../style/loggedOut/loginNavbar.css'
-import { Route, Switch, BrowserRouter as Router, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import {getProfile, logOut} from './functions'
 
 interface navbarParam {

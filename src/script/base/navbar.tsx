@@ -15,7 +15,7 @@ interface dropDownState {
 }
 
 export class Navbar extends React.Component<navbarParam, dropDownState> {
-    constructor(props:any) {
+    constructor(props:navbarParam) {
         super(props)
         this.state = {
             dropDownOpened:false,

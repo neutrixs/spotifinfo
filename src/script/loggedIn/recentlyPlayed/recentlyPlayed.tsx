@@ -9,7 +9,7 @@ interface props{
 
 interface states{
     data:Array<JSX.Element>
-    classNone:''|'none'
+    classNone:boolean
 }
 
 export class RecentlyPlayed extends React.Component<props,states> {
@@ -18,7 +18,7 @@ export class RecentlyPlayed extends React.Component<props,states> {
 
         this.state = {
             data:[],
-            classNone:'none'
+            classNone:true
         }
 
         this.getRecentlyPlayed = this.getRecentlyPlayed.bind(this)
@@ -58,7 +58,7 @@ export class RecentlyPlayed extends React.Component<props,states> {
 
         this.setState({
             data:constructedData,
-            classNone:''
+            classNone:false
         })
     }
 
@@ -83,7 +83,12 @@ export class RecentlyPlayed extends React.Component<props,states> {
 
     render(){
         return(
-            <div id="recentlyPlayed" className={this.state.classNone}>
+            <div 
+                id="recentlyPlayed" 
+                className={
+                    (this.state.classNone ? 'none ' : '')
+                }
+            >
                 <p id="titleRecentlyPlayed">Recently Played:</p>
                 <div id="recentlyPlayedListHolder">
                     {this.state.data}

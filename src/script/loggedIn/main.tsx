@@ -12,7 +12,7 @@ interface states{
     getRecentlyPlayed:Function
 }
 
-export class LoggedInMain extends React.Component<{},states>{
+export default class LoggedInMain extends React.Component<{},states>{
     constructor(props:any){
         super(props)
         this.state = {

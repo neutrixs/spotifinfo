@@ -1,7 +1,8 @@
 import * as React from 'react';
+import {lazy, Suspense} from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom'
-import { LoggedInMain } from '../loggedIn/main'
-import { LoggedOutMain } from '../loggedOut/main'
+const LoggedInMain = lazy(()=>import('../loggedIn/main'))
+const LoggedOutMain  = lazy(()=>import('../loggedOut/main'))
 
 interface routeGenerateParam{
     isLoggedOut:boolean
@@ -15,11 +16,15 @@ export class RouteGenerate extends React.Component<routeGenerateParam>{
     homepage(){
         if(!this.props.isLoggedOut){
             return(
-                <LoggedInMain />
+                <Suspense fallback={null}>
+                    <LoggedInMain />
+                </Suspense>
             )
         }
         return(
-            <LoggedOutMain />
+            <Suspense fallback={null}>
+                <LoggedOutMain />
+            </Suspense>
         )
     }
 

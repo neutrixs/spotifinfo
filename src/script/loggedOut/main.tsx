@@ -7,7 +7,7 @@ interface states {
     transitionOn:boolean
 }
 
-export class LoggedOutMain extends React.Component<{},states> {
+export default class LoggedOutMain extends React.Component<{},states> {
     constructor(props:{}){
         super(props)
         this.state = {

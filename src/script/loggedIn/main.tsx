@@ -8,6 +8,7 @@ interface states{
     additionalPageStyle:string,
     pageStyleTransition:string,
     classNowPlayingMobile:''|'nowPlayingHolderMobile',
+    pageClassNone:''|'none',
     getRecentlyPlayed:Function
 }
 
@@ -18,6 +19,7 @@ export class LoggedInMain extends React.Component<{},states>{
             additionalPageStyle: '',
             pageStyleTransition: '',
             classNowPlayingMobile: '',
+            pageClassNone:'none',
             getRecentlyPlayed:function(){}
         }
 
@@ -49,11 +51,14 @@ export class LoggedInMain extends React.Component<{},states>{
     }
 
     mobileListenerFirst(){
-        this.setState({
-            pageStyleTransition: 'transition300ms'
-        })
-
         this.mobileListener()
+        setTimeout(function(this:LoggedInMain){
+            this.setState({
+                pageClassNone:'',
+                pageStyleTransition:'transition300ms'
+            })
+        }.bind(this),10)
+
         window.addEventListener('resize',this.mobileListener)
     }
 

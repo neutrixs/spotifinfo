@@ -28,6 +28,27 @@ export class Navbar extends React.Component<navbarParam, dropDownState> {
         this.documentClick = this.documentClick.bind(this)
     }
 
+    componentDidMount(){
+        if(!this.props.isLoggedOut)this.profilePicURL()
+        document.addEventListener('click',this.documentClick)
+    }
+
+    componentWillUnmount(){
+        document.removeEventListener('click',this.documentClick)
+    }
+
+    login():string{
+        return '/login?force='+(window.localStorage['force'] === 'true').toString()
+    }
+
+    profilePicURL(){
+        getProfile().then(url=>{
+            this.setState({
+                profilePicURL:url
+            })
+        })
+    }
+
     documentClick(){
         if(this.state.dropDownLocked){
             this.setState({
@@ -120,27 +141,6 @@ export class Navbar extends React.Component<navbarParam, dropDownState> {
                 </a>
             )
         }
-    }
-
-    componentDidMount(){
-        if(!this.props.isLoggedOut)this.profilePicURL()
-        document.addEventListener('click',this.documentClick)
-    }
-
-    componentWillUnmount(){
-        document.removeEventListener('click',this.documentClick)
-    }
-
-    login():string{
-        return '/login?force='+(window.localStorage['force'] === 'true').toString()
-    }
-
-    profilePicURL(){
-        getProfile().then(url=>{
-            this.setState({
-                profilePicURL:url
-            })
-        })
     }
 
     render(){

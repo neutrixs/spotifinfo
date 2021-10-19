@@ -1,5 +1,10 @@
+#loggedOutHolder{
+    padding: 1.5em
+}
 #kingHolder{
     display: inline-block;
+    margin-right: 1.5em;
+    vertical-align: top;
 }
 #king{
     width: 20em;
@@ -14,4 +19,11 @@
 }
 #listYouCanDo li{
     font-size: 2em;
+}
+#infoHolder{
+    display: inline-block;
+}
+
+.grecaptcha-badge{
+    visibility:visible;
 }

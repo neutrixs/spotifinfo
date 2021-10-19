@@ -73,12 +73,19 @@ export class NowPlaying extends React.Component<props,NowPlayingState>{
         await getNowPlaying.bind(this)()
     }
 
+    setPalette(){
+        if(!this.state.palette) return ''
+
+        const colour = this.state.palette[0].join(',')
+        return 'rgb('+colour+')'
+    }
+
     render(){
         return(
             <div id="nowPlaying" 
                 className={"nowPlayingHolder "+this.state.classNone+' '+this.props.classNowPlayingMobile}
                 style={{
-                    backgroundColor: this.state.palette ? 'rgb('+this.state.palette[0].join(',')+')' : ''
+                    backgroundColor: this.setPalette()
                 }}
             >
                 <p id="nowPlayingStatus">

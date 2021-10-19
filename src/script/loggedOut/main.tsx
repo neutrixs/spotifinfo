@@ -1,14 +1,61 @@
 import * as React from 'react';
 import '../../style/loggedOut/main.css'
 
-export class LoggedOutMain extends React.Component {
+interface states {
+    isMobile:boolean
+    pageNone:boolean
+    transitionOn:boolean
+}
+
+export class LoggedOutMain extends React.Component<{},states> {
     constructor(props:{}){
         super(props)
+        this.state = {
+            isMobile:false,
+            pageNone:true,
+            transitionOn:false
+        }
+        this.mobileListener = this.mobileListener.bind(this)
+    }
+
+    componentDidMount(){
+        this.mobileListenerStart()
+    }
+
+    componentWillUnmount(){
+        window.removeEventListener('resize',this.mobileListener)
+    }
+
+    mobileListener(){
+        const changeAt = 66
+        const windowFontSize = parseFloat(window.getComputedStyle(document.body).getPropertyValue('font-size'))
+        const isMobile = window.innerWidth / windowFontSize < changeAt
+
+        this.setState({
+            isMobile:isMobile
+        })
+    }
+
+    mobileListenerStart(){
+        this.mobileListener()
+        this.setState({
+            pageNone:false,
+            transitionOn:true
+        })
+
+        window.addEventListener('resize',this.mobileListener)
     }
 
     render(){
         return(
-            <div id="page">
+            <div
+                id="page"
+                className={
+                    (this.state.pageNone ? 'none ' : '')+
+                    (this.state.isMobile ? 'pageMobile ' : '')+
+                    (this.state.transitionOn ? 'transition300ms ' : '')
+                }
+            >
                 <div id="loggedOutHolder">
                     <div id="kingHolder">
                         <img id="king" src="/img/kinghd.png" />

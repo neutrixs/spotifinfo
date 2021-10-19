@@ -35,10 +35,10 @@
 #nowPlayingInfoHolder{
     display: inline-block;
     vertical-align: top;
-    width: 100%;
+    max-width: 100%;
 }
 .nowPlayingInfoHolderSide{
-    max-width: calc(100% - 21.5em);
+    max-width: calc(100% - 21.5em) !important;
 }
 #nowPlayingTitle{
     font-size: 1.5em;

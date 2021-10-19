@@ -24,19 +24,19 @@ export class Navbar extends React.Component<navbarParam, dropDownState> {
             classDropdownIconRotate:'',
             classDropdownNone:'none'
         }
+        this.documentClick = this.documentClick.bind(this)
+    }
 
-        const this1 = this
-        document.addEventListener('click',function(){
-            if(this1.state.dropDownLocked){
-                this1.setState({
-                    dropDownLocked:false
-                })
-                return
-            }
-            if(this1.state.dropDownOpened){
-                this1.dropdown(false,true)
-            }
-        })
+    documentClick(){
+        if(this.state.dropDownLocked){
+            this.setState({
+                dropDownLocked:false
+            })
+            return
+        }
+        if(this.state.dropDownOpened){
+            this.dropdown(false,true)
+        }
     }
 
     dropdown(lock:boolean,dropdownInteract:boolean){
@@ -96,6 +96,11 @@ export class Navbar extends React.Component<navbarParam, dropDownState> {
 
     componentDidMount(){
         if(!this.props.isLoggedOut)this.profilePicURL()
+        document.addEventListener('click',this.documentClick)
+    }
+
+    componentWillUnmount(){
+        document.removeEventListener('click',this.documentClick)
     }
 
     profilePicURL(){

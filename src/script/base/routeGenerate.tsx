@@ -13,7 +13,7 @@ export class RouteGenerate extends React.Component<routeGenerateParam>{
         super(props)
     }
 
-    homepage(){
+    homepage():JSX.Element{
         if(!this.props.isLoggedOut){
             return(
                 <Suspense fallback={null}>
@@ -28,6 +28,28 @@ export class RouteGenerate extends React.Component<routeGenerateParam>{
         )
     }
 
+    top_tracks():null|JSX.Element{
+        if(!this.props.isLoggedOut){
+            return null
+        }
+        else{
+            return(
+                <Redirect to="/" />
+            )
+        }
+    }
+
+    account():null|JSX.Element{
+        if(!this.props.isLoggedOut){
+            return null
+        }
+        else{
+            return(
+                <Redirect to="/" />
+            )
+        }
+    }
+
     render(){
         return(
             <Switch>
@@ -35,14 +57,10 @@ export class RouteGenerate extends React.Component<routeGenerateParam>{
                     {this.homepage()}
                 </Route>
                 <Route exact path="/top_tracks">
-                    {
-                        this.props.isLoggedOut ? <Redirect to="/" /> : null
-                    }
+                    {this.top_tracks()}
                 </Route>
                 <Route exact path="/account">
-                    {
-                        this.props.isLoggedOut ? <Redirect to="/" /> : null
-                    }
+                    {this.account()}
                 </Route>
             </Switch>
         )

@@ -1,0 +1,10 @@
+#loginHolder{
+    float:right;
+    margin-right: 1.5em;
+    cursor: pointer;
+}
+#spotifyLogo{
+    width: 2em;
+    margin: 1em;
+    vertical-align: middle;
+}

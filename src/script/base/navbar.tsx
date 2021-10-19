@@ -1,5 +1,6 @@
 import * as React from 'react';
 import '../../style/base/navbar.css'
+import '../../style/loggedOut/loginNavbar.css'
 import { Route, Switch, BrowserRouter as Router, NavLink } from 'react-router-dom'
 import {getProfile, logOut} from './functions'
 
@@ -90,7 +91,17 @@ export class Navbar extends React.Component<navbarParam, dropDownState> {
             )
         }
         else{
-            return null
+            return (
+                <div id="loginHolder">
+                    <img id="spotifyLogo" src="/img/spotify_logo.png" />
+                    <span 
+                        style={{
+                            lineHeight:'1em',
+                            verticalAlign:'middle'
+                        }}
+                    >Login</span>
+                </div>
+            )
         }
     }
 

@@ -89,7 +89,7 @@ const config = {
     devServer: {
         host:'192.168.1.50',
         static: './public',
-        hot:true,
+        hot:false,
         historyApiFallback:true,
         allowedHosts: ['192.168.1.50','localhost']
     }

@@ -101,7 +101,7 @@ export class NowPlaying extends React.Component<props,NowPlayingState>{
                 <div 
                     id="nowPlayingInfoHolder" 
                     className={
-                        (this.state.nowPlayingInfoHolderSide ? 'nowPlayingHolderSide ' : '')
+                        (this.state.nowPlayingInfoHolderSide ? 'nowPlayingInfoHolderSide ' : '')
                     }
                 >
                     <a id="nowPlayingTitle" href={this.state.nowPlayingTitleLink}>

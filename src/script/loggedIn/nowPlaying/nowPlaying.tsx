@@ -49,7 +49,7 @@ export class NowPlaying extends React.Component<props,NowPlayingState>{
         })
 
         window.addEventListener('resize',this._sideTextListener)
-        sideTextListener.bind(this)()
+        setTimeout(sideTextListener.bind(this),10)
 
         const img = document.getElementById('albumArt') as HTMLImageElement
         img.crossOrigin = 'anonymous'

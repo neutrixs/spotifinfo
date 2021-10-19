@@ -92,7 +92,7 @@ export class Navbar extends React.Component<navbarParam, dropDownState> {
         }
         else{
             return (
-                <div id="loginHolder" onClick={this.login}>
+                <a id="loginHolder" href={this.login()}>
                     <img id="spotifyLogo" src="/img/spotify_logo.png" />
                     <span 
                         style={{
@@ -100,7 +100,7 @@ export class Navbar extends React.Component<navbarParam, dropDownState> {
                             verticalAlign:'middle'
                         }}
                     >Login</span>
-                </div>
+                </a>
             )
         }
     }
@@ -114,8 +114,8 @@ export class Navbar extends React.Component<navbarParam, dropDownState> {
         document.removeEventListener('click',this.documentClick)
     }
 
-    login(){
-        window.location.href = '/login?force='+(window.localStorage['force'] === 'true').toString()
+    login():string{
+        return '/login?force='+(window.localStorage['force'] === 'true').toString()
     }
 
     profilePicURL(){

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import '../../style/base/navbar.css'
 import { Route, Switch, BrowserRouter as Router, NavLink } from 'react-router-dom'
-import {getProfile} from './functions'
+import {getProfile, logOut} from './functions'
 
 interface navbarParam {
     isLoggedOut:boolean
@@ -79,7 +79,7 @@ export class Navbar extends React.Component<navbarParam, dropDownState> {
                             <span className="pointer">Account</span>
                         </NavLink>
                         <div className="divider1"></div>
-                        <a id="logout" className="pointer">Logout</a>
+                        <a id="logout" className="pointer" onClick={()=>logOut(true)}>Logout</a>
                         <div className="divider1"></div>
                         <div id="theme" className="pointer">
                             <span>Dark mode</span>

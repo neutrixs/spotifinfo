@@ -74,4 +74,4 @@ const logOut = function(self:boolean) {
     window.location.replace('/')
 }
 
-export { getToken, getProfile }
+export { getToken, getProfile, logOut }

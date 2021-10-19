@@ -1,6 +1,5 @@
 
 
-type classNone = '' | 'none'
 interface progress{
     currentMs: number|null,
     totalMs: number|null,
@@ -17,8 +16,8 @@ interface NowPlayingState {
     nowPlayingProgressInterval: NodeJS.Timer,
     nowPlayingProgress: progress,
     nowPlayingProgressStr: string,
-    nowPlayingInfoHolderSide: 'nowPlayingInfoHolderSide'|'',
-    classNone:classNone,
+    nowPlayingInfoHolderSide: boolean,
+    classNone:boolean,
     palette:Array<number[]>|undefined
 }
 

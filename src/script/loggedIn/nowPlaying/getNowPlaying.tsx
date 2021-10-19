@@ -12,7 +12,7 @@ async function getNowPlaying(this:NowPlaying){
 
     if(res.status == 204){
         this.setState({
-            classNone:'none'
+            classNone:true
         })
         return
     }
@@ -33,7 +33,7 @@ async function getNowPlaying(this:NowPlaying){
 
     if(!nowPlayingData.item){
         this.setState({
-            classNone:'none'
+            classNone:true
         })
         return
     }
@@ -78,7 +78,7 @@ async function getNowPlaying(this:NowPlaying){
     })
 
     this.setState({
-        classNone:''
+        classNone:false
     })
 }
 

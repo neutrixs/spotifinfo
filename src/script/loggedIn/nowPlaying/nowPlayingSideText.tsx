@@ -12,7 +12,7 @@ let listener = function(this:NowPlaying){
     const side = imgHolderWidth / nowPlayingWidth < 0.5
 
     this.setState({
-        nowPlayingInfoHolderSide: side ? 'nowPlayingInfoHolderSide' : ''
+        nowPlayingInfoHolderSide: side ? true : false
     })
 }
 

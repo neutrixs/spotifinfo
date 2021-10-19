@@ -24,8 +24,8 @@ export class NowPlaying extends React.Component<props,NowPlayingState>{
                 isPlaying:false
             },
             nowPlayingProgressStr:'',
-            classNone:'none',
-            nowPlayingInfoHolderSide:'nowPlayingInfoHolderSide',
+            classNone:true,
+            nowPlayingInfoHolderSide:true,
             palette:undefined
         }
     }
@@ -83,7 +83,11 @@ export class NowPlaying extends React.Component<props,NowPlayingState>{
     render(){
         return(
             <div id="nowPlaying" 
-                className={"nowPlayingHolder "+this.state.classNone+' '+this.props.classNowPlayingMobile}
+                className={
+                    "nowPlayingHolder "+
+                    (this.state.classNone ? 'none ' : '')+
+                    this.props.classNowPlayingMobile
+                }
                 style={{
                     backgroundColor: this.setPalette()
                 }}
@@ -94,7 +98,12 @@ export class NowPlaying extends React.Component<props,NowPlayingState>{
                 <a id="albumArtHolder" href={this.state.albumArtLinkSrc}>
                     <img id="albumArt" src={this.state.albumArtSrc} />
                 </a>
-                <div id="nowPlayingInfoHolder" className={this.state.nowPlayingInfoHolderSide}>
+                <div 
+                    id="nowPlayingInfoHolder" 
+                    className={
+                        (this.state.nowPlayingInfoHolderSide ? 'nowPlayingHolderSide ' : '')
+                    }
+                >
                     <a id="nowPlayingTitle" href={this.state.nowPlayingTitleLink}>
                         {this.state.nowPlayingTitle}
                     </a>

@@ -1,4 +1,4 @@
-export interface spotifyTopTracks{
+interface spotifyTopTracks{
     href:string
     items:item
     limit:number
@@ -62,3 +62,5 @@ interface image{
     url:string
     width:number
 }
+
+export {spotifyTopTracks}

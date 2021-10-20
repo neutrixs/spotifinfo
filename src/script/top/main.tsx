@@ -15,6 +15,35 @@ export default class TopPage extends React.Component<{},states>{
             isMobile: false,
             transitionOn: false
         }
+        this.mobileListener = this.mobileListener.bind(this)
+    }
+
+    componentDidMount(){
+        this.mobileListenerStart()
+    }
+
+    componentWillUnmount(){
+        window.removeEventListener('resize',this.mobileListener)
+    }
+
+    mobileListenerStart(){
+        this.mobileListener()
+        window.addEventListener('resize',this.mobileListener)
+
+        this.setState({
+            pageNone: false,
+            transitionOn: true
+        })
+    }
+
+    mobileListener(){
+        const changeAt = 66
+        const windowFontSize = parseFloat(window.getComputedStyle(document.body).getPropertyValue('font-size'))
+        const isMobile = window.innerWidth / windowFontSize < changeAt
+
+        this.setState({
+            isMobile:isMobile
+        })
     }
 
     render(){

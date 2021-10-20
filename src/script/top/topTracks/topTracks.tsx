@@ -1,6 +1,5 @@
 import * as React from 'react';
-import {spotifyTopTracks, artist} from '../types/spotifyTop'
-import {getToken} from '../../base/functions'
+import getTopTracks from './getTopTracks';
 import '../../../style/top/topTracks.css'
 
 interface props{
@@ -22,6 +21,10 @@ export default class TopTracks extends React.Component<props,states>{
         }
     }
 
+    componentDidMount(){
+        getTopTracks.bind(this)()
+    }
+
     render(){
         return(
             <div 
@@ -32,7 +35,7 @@ export default class TopTracks extends React.Component<props,states>{
                 }
             
             >
-                
+                {this.state.data}
             </div>
         )
     }

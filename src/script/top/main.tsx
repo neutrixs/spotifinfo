@@ -1,14 +1,19 @@
 import * as React from 'react';
+import '../../style/top/main.css'
 
 interface states{
-    pageNone:boolean
+    pageNone:boolean,
+    isMobile:boolean,
+    transitionOn:boolean
 }
 
 export default class TopPage extends React.Component<{},states>{
     constructor(props:{}) {
         super(props)
         this.state = {
-            pageNone: true
+            pageNone: true,
+            isMobile: false,
+            transitionOn: false
         }
     }
 
@@ -17,7 +22,9 @@ export default class TopPage extends React.Component<{},states>{
             <div 
                 id="page"
                 className={
-                    (this.state.pageNone? 'none ' : '')
+                    (this.state.pageNone? 'none ' : '')+
+                    (this.state.isMobile ? 'pageMobile ' : '')+
+                    (this.state.transitionOn? 'transition300ms ' : '')
                 }
             >
 

@@ -1,0 +1,5 @@
+.transition300ms{
+    transition-property: margin, width;
+    transition-duration: 300ms;
+    transition-timing-function: ease-out;
+}

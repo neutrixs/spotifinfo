@@ -35,6 +35,11 @@ export default async function getTopArtists(this:TopArtists){
                 <a key={key+'3'} className="listArtistProfileHolder" href={thisArtist.external_urls.spotify}>
                     <img key={key+'4'} className="listArtistProfile" src={thisArtist.images[1].url} />
                 </a>
+                <a key={key+'5'} className="listArtistNameHolder" href={thisArtist.external_urls.spotify}>
+                    <p key={key+'6'} className="listArtistName">
+                        <span>{thisArtist.name}</span>
+                    </p>
+                </a>
             </div>
         )
     }

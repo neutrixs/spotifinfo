@@ -5,7 +5,7 @@
     margin-top: 1em;
     margin-bottom: 1em;
 }
-.listNumber{
+.listTrackNumber{
     width: 1em;
     display: inline-block;
     margin-right: 1em;
@@ -14,13 +14,36 @@
     font-family: 'JetBrains Mono', monospace;
     vertical-align: middle;
 }
-.listArtHolder{
+.listTrackArtHolder{
     width: 3em;
     height: 3em;
     margin-right: 1em;
     display: inline-block;
     vertical-align: middle;
 }
-.listArt{
+.listTrackArt{
     width: 3em;
+}
+.listTrackInfoHolder{
+    width: max-content;
+    max-width: calc(100% - 6em);
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: middle;
+}
+.listTrackTitle {
+    margin: 0;
+    margin-bottom: 0.5em;
+    font-weight: 600;
+    width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.listTrackArtist {
+    margin: 0;
+    width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }

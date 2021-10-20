@@ -6,15 +6,15 @@
    height="100mm"
    viewBox="0 0 100 100"
    version="1.1"
-   id="svg5"
+   id="svg142"
    inkscape:version="1.1 (c68e22c387, 2021-05-23)"
-   sodipodi:docname="dropdown.svg"
+   sodipodi:docname="dropdown_src.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <sodipodi:namedview
-     id="namedview7"
+     id="namedview144"
      pagecolor="#505050"
      bordercolor="#eeeeee"
      borderopacity="1"
@@ -24,9 +24,9 @@
      inkscape:document-units="mm"
      showgrid="false"
      width="100mm"
-     inkscape:zoom="0.70710678"
-     inkscape:cx="149.19953"
-     inkscape:cy="265.16504"
+     inkscape:zoom="0.92648709"
+     inkscape:cx="205.07571"
+     inkscape:cy="206.69473"
      inkscape:window-width="1366"
      inkscape:window-height="705"
      inkscape:window-x="-8"
@@ -34,26 +34,26 @@
      inkscape:window-maximized="1"
      inkscape:current-layer="layer1" />
   <defs
-     id="defs2" />
+     id="defs139" />
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.222878;stroke-opacity:1"
-       id="rect868"
+       style="fill:#ffffff;stroke-width:0.229903"
+       id="rect168"
        width="50"
-       height="5"
-       x="34.460629"
-       y="8.7499552"
+       height="10"
+       x="35.668396"
+       y="4.9577136"
        transform="rotate(45)" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.222878;stroke-opacity:1"
-       id="rect868-8"
+       style="fill:#ffffff;stroke-width:0.229903"
+       id="rect168-9"
        width="50"
-       height="5"
-       x="-36.250046"
-       y="-84.460632"
+       height="10"
+       x="-35.042286"
+       y="-85.668396"
        transform="rotate(135)" />
   </g>
 </svg>

@@ -6,28 +6,28 @@
    height="100mm"
    viewBox="0 0 100 100"
    version="1.1"
-   id="svg2040"
+   id="svg489"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <defs
-     id="defs2037" />
+     id="defs486" />
   <g
      id="layer1">
     <rect
-       style="fill:#ffffff;stroke-width:0.163598"
-       id="rect2123"
+       style="fill:#ffffff;stroke-width:0.193826"
+       id="rect515"
        width="50"
-       height="5"
-       x="-19.99972"
-       y="73.210869"
+       height="10"
+       x="-21.24991"
+       y="69.46106"
        transform="rotate(-45)" />
     <rect
-       style="fill:#ffffff;stroke-width:0.22561"
-       id="rect2331"
-       width="5"
-       height="25"
-       x="14.99972"
-       y="-78.210869"
-       transform="rotate(135)" />
+       style="fill:#ffffff;stroke-width:0.234572"
+       id="rect723"
+       width="25"
+       height="10"
+       x="54.46106"
+       y="11.249909"
+       transform="rotate(45)" />
   </g>
 </svg>

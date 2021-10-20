@@ -6,7 +6,7 @@
    height="100mm"
    viewBox="0 0 100 100"
    version="1.1"
-   id="svg2040"
+   id="svg489"
    inkscape:version="1.1 (c68e22c387, 2021-05-23)"
    sodipodi:docname="check_src.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
@@ -14,7 +14,7 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <sodipodi:namedview
-     id="namedview2042"
+     id="namedview491"
      pagecolor="#505050"
      bordercolor="#eeeeee"
      borderopacity="1"
@@ -25,8 +25,8 @@
      showgrid="false"
      width="100mm"
      inkscape:zoom="0.92648709"
-     inkscape:cx="155.96548"
-     inkscape:cy="233.67838"
+     inkscape:cx="266.59843"
+     inkscape:cy="189.4252"
      inkscape:window-width="1366"
      inkscape:window-height="705"
      inkscape:window-x="-8"
@@ -34,26 +34,26 @@
      inkscape:window-maximized="1"
      inkscape:current-layer="layer1" />
   <defs
-     id="defs2037" />
+     id="defs486" />
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
     <rect
-       style="fill:#ffffff;stroke-width:0.163598"
-       id="rect2123"
+       style="fill:#ffffff;stroke-width:0.193826"
+       id="rect515"
        width="50"
-       height="5"
-       x="-19.99972"
-       y="73.210869"
+       height="10"
+       x="-21.24991"
+       y="69.46106"
        transform="rotate(-45)" />
     <rect
-       style="fill:#ffffff;stroke-width:0.22561"
-       id="rect2331"
-       width="5"
-       height="25"
-       x="14.99972"
-       y="-78.210869"
-       transform="rotate(135)" />
+       style="fill:#ffffff;stroke-width:0.234572"
+       id="rect723"
+       width="25"
+       height="10"
+       x="54.46106"
+       y="11.249909"
+       transform="rotate(45)" />
   </g>
 </svg>

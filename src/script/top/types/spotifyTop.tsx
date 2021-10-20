@@ -1,6 +1,6 @@
 interface spotifyTopTracks{
     href:string
-    items:item
+    items:item[]
     limit:number
     next:null
     offset:number

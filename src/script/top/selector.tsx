@@ -39,6 +39,35 @@ export default class Selector extends React.Component<props>{
                         <span>Top Artists</span>
                     </div>
                 </div>
+                <div id="rangeSelector">
+                    <div
+                        className={
+                            'rangeSelectorEach '+
+                            (this.props.selectedRange === 0 ? 'selected ' : '')
+                        }
+                        onClick={()=>this.props.setSelectedRange(0)}
+                    >
+                        <span>All Time</span>
+                    </div>
+                    <div
+                        className={
+                            'rangeSelectorEach '+
+                            (this.props.selectedRange === 1 ? 'selected ' : '')
+                        }
+                        onClick={()=>this.props.setSelectedRange(1)}
+                    >
+                        <span>6 Months</span>
+                    </div>
+                    <div
+                        className={
+                            'rangeSelectorEach '+
+                            (this.props.selectedRange === 2 ? 'selected ' : '')
+                        }
+                        onClick={()=>this.props.setSelectedRange(2)}
+                    >
+                        <span>1 Month</span>
+                    </div>
+                </div>
             </div>
         )
     }

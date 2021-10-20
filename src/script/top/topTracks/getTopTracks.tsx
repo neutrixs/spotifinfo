@@ -22,9 +22,15 @@ export default async function getTopTracks(this:TopTracks){
     const data:spotifyTopTracks = await res.json()
     let constructedData = []
 
-    constructedData.push(
-        <div></div>
-    )
+    for(let i=0;i<data.items.length;i++){
+        let currentTrack = data.items[i]
+        let key = currentTrack.id+'_'+i.toString()+'_'
+        constructedData.push(
+            <div key={key+'0'}>
+
+            </div>
+        )
+    }
 
     this.setState({
         data: constructedData

@@ -14,20 +14,20 @@
   <g
      id="layer1">
     <rect
-       style="fill:#ffffff;stroke-width:0.229903"
+       style="fill:#ffffff;stroke-width:0.322487"
        id="rect168"
-       width="50"
-       height="10"
-       x="35.668396"
-       y="4.9577136"
+       width="70.135567"
+       height="14.027113"
+       x="21.615786"
+       y="7.0135593"
        transform="rotate(45)" />
     <rect
-       style="fill:#ffffff;stroke-width:0.229903"
+       style="fill:#ffffff;stroke-width:0.322487"
        id="rect168-9"
-       width="50"
-       height="10"
-       x="-35.042286"
-       y="-85.668396"
-       transform="rotate(135)" />
+       width="70.135567"
+       height="14.027113"
+       x="-21.040672"
+       y="77.724236"
+       transform="rotate(-45)" />
   </g>
 </svg>

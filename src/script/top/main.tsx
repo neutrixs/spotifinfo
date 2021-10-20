@@ -109,9 +109,9 @@ export default class TopPage extends React.Component<{},states>{
                     <TopArtists selectedType={this.state.selectedType} selectedRange={this.state.selectedRange} Range={0} />
                     <TopArtists selectedType={this.state.selectedType} selectedRange={this.state.selectedRange} Range={1} />
                     <TopArtists selectedType={this.state.selectedType} selectedRange={this.state.selectedRange} Range={2} />
-
-                    <ReCaptchaBadge noPaddingLeftAndRight={true} paddingTop={true} />
+                    
                 </div>
+                <ReCaptchaBadge />
             </div>
         )
     }

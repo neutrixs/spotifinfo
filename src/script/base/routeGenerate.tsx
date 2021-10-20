@@ -14,18 +14,17 @@ export class RouteGenerate extends React.Component<routeGenerateParam>{
     }
 
     pageLoading():JSX.Element{
+        const divStyle:React.CSSProperties = {
+            textAlign:'center',
+            minWidth:'24.5em'
+        }
+        const pStyle:React.CSSProperties = {
+            fontSize:'2em'
+        }
+
         return(
-            <div
-                style={{
-                    textAlign:'center',
-                    minWidth: '24.5em'
-                }}
-            >
-                <p
-                    style={{
-                        fontSize:'2em'
-                    }}
-                >Loading page...</p>
+            <div style={divStyle}>
+                <p style={pStyle}>Loading page...</p>
             </div>
         )
     }

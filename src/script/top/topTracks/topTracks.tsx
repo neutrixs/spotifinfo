@@ -16,7 +16,14 @@ export default class TopTracks extends React.Component<props>{
 
     render(){
         return(
-            <div id={"topTracks"+this.props.Range.toString()} className="topTracks">
+            <div 
+                id={"topTracks"+this.props.Range.toString()} 
+                className={
+                    "topTracks "+
+                    (this.props.selectedType === 0 ? this.props.selectedRange == this.props.Range ? '' : 'none' : 'none ')
+                }
+            
+            >
                 
             </div>
         )

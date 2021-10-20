@@ -77,7 +77,14 @@ export default class TopPage extends React.Component<{},states>{
                     (this.state.transitionOn? 'transition300ms ' : '')
                 }
             >
-
+                <div 
+                    id="topHolder"
+                    style={{
+                        padding: '1.5em'
+                    }}
+                >
+                    
+                </div>
             </div>
         )
     }

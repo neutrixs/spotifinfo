@@ -3,6 +3,7 @@ import '../../style/base/navbar.css'
 import '../../style/loggedOut/loginNavbar.css'
 import { NavLink } from 'react-router-dom'
 import {getProfile, logOut} from './functions'
+import loginButton from '../loggedOut/loginButton'
 
 interface navbarParam {
     isLoggedOut:boolean
@@ -129,17 +130,7 @@ export class Navbar extends React.Component<navbarParam, dropDownState> {
             )
         }
         else{
-            return (
-                <a id="loginHolder" href={this.login()}>
-                    <img id="spotifyLogo" src="/img/spotify_logo.png" />
-                    <span 
-                        style={{
-                            lineHeight:'1em',
-                            verticalAlign:'middle'
-                        }}
-                    >Login</span>
-                </a>
-            )
+            return loginButton.bind(this)()
         }
     }
 

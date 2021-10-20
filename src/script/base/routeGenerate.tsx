@@ -13,16 +13,29 @@ export class RouteGenerate extends React.Component<routeGenerateParam>{
         super(props)
     }
 
+    pageLoading():JSX.Element{
+        return(
+            <p
+                style={{
+                    textAlign:'center',
+                    fontSize:'2em'
+                }}
+            >
+                <span>Loading page...</span>
+            </p>
+        )
+    }
+
     homepage():JSX.Element{
         if(!this.props.isLoggedOut){
             return(
-                <Suspense fallback={null}>
+                <Suspense fallback={this.pageLoading()}>
                     <LoggedInMain />
                 </Suspense>
             )
         }
         return(
-            <Suspense fallback={null}>
+            <Suspense fallback={this.pageLoading()}>
                 <LoggedOutMain />
             </Suspense>
         )

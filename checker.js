@@ -8,23 +8,4 @@ const main = function(){
         fs.writeFileSync('./db/data.json','{}')
     }
 }
-const version = function(){
-    try{
-        const read = fs.readFileSync('./db/scriptVer.txt',{encoding:'utf-8'})
-        if(!read){
-            const date = (+new Date()).toString()
-            fs.writeFileSync('./db/scriptVer.txt',date)
-            return date
-        }
-        return read
-    }
-    catch(e){
-        const date = (+new Date()).toString()
-        fs.writeFileSync('./db/scriptVer.txt',date)
-        return date
-    }
-}
-module.exports = {
-    db:main,
-    version:version
-}
+module.exports = main

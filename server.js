@@ -9,8 +9,7 @@ admin.initializeApp({
 });
 const db = admin.firestore();
 
-const version = require('./checker').version()
-require('./checker').db()
+require('./checker')()
 
 if(process.argv.includes('--devmode')) {
     app.use(express.static(__dirname+'/public'))

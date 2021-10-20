@@ -4,8 +4,8 @@ import '../../style/top/selector.css'
 interface props{
     selectedType:0|1
     selectedRange:0|1|2
-    setSelectedType:Function
-    setSelectedRange:Function
+    setSelectedType:(selected:0|1)=>void
+    setSelectedRange:(selected:0|1|2)=>void
 }
 
 export default class Selector extends React.Component<props>{

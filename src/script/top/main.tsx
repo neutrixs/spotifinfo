@@ -30,6 +30,12 @@ export default class TopPage extends React.Component<{},states>{
 
     componentDidMount(){
         this.mobileListenerStart()
+
+        const type:any = parseInt(window.localStorage['type'])
+        if(0 <= type && type <= 1) this.setSelectedType(type)
+
+        const range:any = parseInt(window.localStorage['range'])
+        if(0 <= range && range <= 2) this.setSelectedRange(range)
     }
 
     componentWillUnmount(){
@@ -50,12 +56,14 @@ export default class TopPage extends React.Component<{},states>{
         this.setState({
             selectedType:selected
         })
+        window.localStorage['type'] = selected.toString()
     }
 
     setSelectedRange(selected:selectedRange){
         this.setState({
             selectedRange:selected
         })
+        window.localStorage['range'] = selected.toString()
     }
 
     mobileListener(){

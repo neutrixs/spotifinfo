@@ -30,6 +30,9 @@ export default async function getTopTracks(this:TopTracks){
                 <div key={key+'1'} className="listNumber">
                     <span key={key+'2'}> {(i+1).toString()} </span>
                 </div>
+                <a key={key+'3'} className="listArtHolder" href={currentTrack.album.external_urls.spotify}>
+                    <img src={currentTrack.album.images[1].url} className="listArt" />
+                </a>
             </div>
         )
     }

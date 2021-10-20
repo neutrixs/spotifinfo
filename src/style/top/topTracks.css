@@ -14,3 +14,13 @@
     font-family: 'JetBrains Mono', monospace;
     vertical-align: middle;
 }
+.listArtHolder{
+    width: 3em;
+    height: 3em;
+    margin-right: 1em;
+    display: inline-block;
+    vertical-align: middle;
+}
+.listArt{
+    width: 3em;
+}

@@ -6,7 +6,7 @@ export default async function getTopTracks(this:TopTracks){
     const listRanges = ['long_term','medium_term','short_term']
     const currentRange = listRanges[this.props.Range]
 
-    const res = await fetch('https://api.spotify.com/v1/me/top/artists?limit=50&time_range='+currentRange,{
+    const res = await fetch('https://api.spotify.com/v1/me/top/tracks?limit=50&time_range='+currentRange,{
         method: 'GET',
         headers:{
             'Authorization':window.localStorage['token']

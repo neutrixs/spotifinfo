@@ -1,4 +1,6 @@
 import * as React from 'react';
+import {spotifyTopTracks, artist} from '../types/spotifyTop'
+import {getToken} from '../../base/functions'
 
 interface props{
     selectedType:0|1
@@ -10,4 +12,6 @@ export default class TopTracks extends React.Component<props>{
     constructor(props:props){
         super(props)
     }
+
+    
 }

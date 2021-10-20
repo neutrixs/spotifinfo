@@ -24,7 +24,7 @@ const config = {
         "index":'./src/script/index.tsx'
     },
     output: {
-        filename:"[contenthash].js",
+        filename:"assets/[contenthash].js",
         path: path.resolve(__dirname,"public"),
         clean:true
     },
@@ -80,7 +80,7 @@ const config = {
             publicPath:'/'
         }),
         new MiniCssExtractPlugin({
-            filename:'[contenthash].css'
+            filename:'assets/[contenthash].css'
         })
     ],
     resolve: {

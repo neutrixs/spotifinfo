@@ -6,6 +6,7 @@ import {getProfile, logOut} from './functions'
 import loginButton from '../loggedOut/loginButton'
 import * as defaultProfilePic from '../../img/user.png'
 import * as dropdownIcon from '../../svg/dropdown.svg'
+import * as checkmark from '../../svg/check.svg'
 
 interface navbarParam {
     isLoggedOut:boolean
@@ -115,7 +116,7 @@ export class Navbar extends React.Component<navbarParam, dropDownState> {
                         <div className="divider1"></div>
                         <div id="theme" className="pointer">
                             <span>Dark mode</span>
-                            <svg id="theme_check" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z" fill="white"/></svg>
+                            <img id="theme_check" src={checkmark} />
                         </div>
                     </div>
                 </>

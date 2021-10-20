@@ -2,6 +2,7 @@ import * as React from 'react';
 import '../../style/top/main.css'
 import Selector from './selector'
 import TopTracks from './topTracks/topTracks'
+import TopArtists from './topArtists/topArtists'
 import {ReCaptchaBadge} from '../base/reCaptchaBadge'
 
 type selectedType = 0|1 //0 is tracks, 1 is artists
@@ -104,6 +105,8 @@ export default class TopPage extends React.Component<{},states>{
                     <TopTracks selectedType={this.state.selectedType} selectedRange={this.state.selectedRange} Range={0} />
                     <TopTracks selectedType={this.state.selectedType} selectedRange={this.state.selectedRange} Range={1} />
                     <TopTracks selectedType={this.state.selectedType} selectedRange={this.state.selectedRange} Range={2} />
+
+                    <TopArtists selectedType={this.state.selectedType} selectedRange={this.state.selectedRange} Range={0} />
 
                     <ReCaptchaBadge />
                 </div>

@@ -24,7 +24,7 @@ const config = {
         "index":'./src/script/index.tsx'
     },
     output: {
-        filename:"[fullhash].js",
+        filename:"[contenthash].js",
         path: path.resolve(__dirname,"public"),
         clean:true
     },

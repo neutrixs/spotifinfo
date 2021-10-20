@@ -1,5 +1,6 @@
 import * as React from 'react';
 import '../../style/loggedOut/main.css'
+import * as kinghd from '../../img/kinghd.png'
 
 interface states {
     isMobile:boolean
@@ -58,7 +59,7 @@ export default class LoggedOutMain extends React.Component<{},states> {
             >
                 <div id="loggedOutHolder">
                     <div id="kingHolder">
-                        <img id="king" src="/img/kinghd.png" />
+                        <img id="king" src={kinghd} />
                     </div>
                     <div id="infoHolder">
                         <p id="title">Spotifinfo</p>

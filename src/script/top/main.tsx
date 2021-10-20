@@ -1,6 +1,7 @@
 import * as React from 'react';
 import '../../style/top/main.css'
 import Selector from './selector'
+import TopTracks from './topTracks/topTracks'
 
 type selectedType = 0|1 //0 is tracks, 1 is artists
 type selectedRange = 0|1|2 //0 is all time, 1 is 6 months, 2 is 1 month
@@ -98,6 +99,8 @@ export default class TopPage extends React.Component<{},states>{
                         setSelectedType={this.setSelectedType}
                         setSelectedRange={this.setSelectedRange}
                     />
+
+                    <TopTracks selectedType={this.state.selectedType} selectedRange={this.state.selectedRange} Range={0} />
                 </div>
             </div>
         )

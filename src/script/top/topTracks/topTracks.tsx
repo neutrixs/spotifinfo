@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {spotifyTopTracks, artist} from '../types/spotifyTop'
 import {getToken} from '../../base/functions'
+import '../../../style/top/topTracks.css'
 
 interface props{
     selectedType:0|1
@@ -13,5 +14,11 @@ export default class TopTracks extends React.Component<props>{
         super(props)
     }
 
-    
+    render(){
+        return(
+            <div id={"topTracks"+this.props.Range.toString()} className="topTracks">
+                
+            </div>
+        )
+    }
 }

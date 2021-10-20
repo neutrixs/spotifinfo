@@ -8,6 +8,16 @@ interface spotifyTopTracks{
     total:number
 }
 
+interface spotifyTopArtists{
+    href:string
+    items:artistFull[]
+    limit:number
+    next:null
+    offset:number
+    previous:null
+    total:number
+}
+
 interface item{
     album:{
         album_type:string
@@ -73,4 +83,4 @@ interface image{
     width:number
 }
 
-export {spotifyTopTracks, artist, artistFull}
+export {spotifyTopTracks, spotifyTopArtists, artist, artistFull}

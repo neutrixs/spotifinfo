@@ -24,8 +24,15 @@ export default async function getTopArtists(this:TopArtists){
     let constructedData = []
 
     for(let i=0; i<data.items.length; i++){
+        let thisArtist = data.items[i]
+        let key = thisArtist.id+'_'+i.toString()+'_'
+
         constructedData.push(
-            <div></div>
+            <div key={key+'0'} className="artistEach">
+                <div key={key+'1'} className="listArtistNumber">
+                    <span key={key+'2'}>{(i+1).toString()}</span>
+                </div>
+            </div>
         )
     }
 

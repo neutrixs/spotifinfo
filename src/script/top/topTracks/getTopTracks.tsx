@@ -26,8 +26,10 @@ export default async function getTopTracks(this:TopTracks){
         let currentTrack = data.items[i]
         let key = currentTrack.id+'_'+i.toString()+'_'
         constructedData.push(
-            <div key={key+'0'}>
-
+            <div key={key+'0'} className="trackEach">
+                <div key={key+'1'} className="listNumber">
+                    <span key={key+'2'}> {(i+1).toString()} </span>
+                </div>
             </div>
         )
     }

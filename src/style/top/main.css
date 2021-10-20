@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap');
 .transition300ms{
     transition-property: margin, width;
     transition-duration: 300ms;

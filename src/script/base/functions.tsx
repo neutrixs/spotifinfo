@@ -49,7 +49,7 @@ const getProfile = async function(){
         profilePic = res.images[0].url
     }
     else{
-        profilePic = '/img/user.png'
+        profilePic = null
     }
 
     return profilePic

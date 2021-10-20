@@ -4,6 +4,7 @@ import '../../style/loggedOut/loginNavbar.css'
 import { NavLink } from 'react-router-dom'
 import {getProfile, logOut} from './functions'
 import loginButton from '../loggedOut/loginButton'
+import * as defaultProfilePic from '../../img/user.png'
 
 interface navbarParam {
     isLoggedOut:boolean
@@ -45,7 +46,7 @@ export class Navbar extends React.Component<navbarParam, dropDownState> {
     profilePicURL(){
         getProfile().then(url=>{
             this.setState({
-                profilePicURL:url
+                profilePicURL:url??defaultProfilePic
             })
         })
     }

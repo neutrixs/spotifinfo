@@ -2,3 +2,21 @@
     font-size: 2em;
     font-weight: 600;
 }
+#typeSelector{
+    width: 100%;
+    max-width: 30em;
+}
+
+.typeSelectorEach{
+    width: 50%;
+    display: inline-block;
+    text-align: center;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    cursor: pointer;
+    border-radius: 0.25em;
+}
+.selected{
+    background-color: #505050;
+    box-shadow: 0.1em 0.1em 0.2em #000;
+}

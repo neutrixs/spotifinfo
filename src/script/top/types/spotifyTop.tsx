@@ -53,6 +53,16 @@ interface artist{
     uri:string
 }
 
+interface artistFull extends artist{
+    followers:{
+        href:null
+        total:number
+    }
+    genres:string[]
+    images:image[]
+    popularity:number
+}
+
 interface external_urls{
     spotify:string
 }
@@ -63,4 +73,4 @@ interface image{
     width:number
 }
 
-export {spotifyTopTracks}
+export {spotifyTopTracks, artist, artistFull}

@@ -14,3 +14,17 @@
     font-family: 'JetBrains Mono', monospace;
     vertical-align: middle;
 }
+.listArtistProfileHolder{
+    width: 3em;
+    height: 3em;
+    margin-right: 1em;
+    display: inline-block;
+    vertical-align: middle;
+}
+.listArtistProfile{
+    width: 3em;
+    height: 3em;
+    object-fit: cover;
+    border-radius: 1.5em;
+    display: block;
+}

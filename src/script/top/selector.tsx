@@ -15,9 +15,11 @@ export default class Selector extends React.Component<props>{
 
     render(){
         return(
-            <p id="typeName">
-                Top {this.props.selectedType === 0 ? 'Tracks' : 'Artists'}
-            </p>
+            <div>
+                <p id="typeName">
+                    Top {this.props.selectedType === 0 ? 'Tracks' : 'Artists'}
+                </p>
+            </div>
         )
     }
 }

@@ -9,9 +9,17 @@ interface props{
     Range:0|1|2
 }
 
-export default class TopTracks extends React.Component<props>{
+interface states{
+    data:JSX.Element[]|null[]
+}
+
+export default class TopTracks extends React.Component<props,states>{
     constructor(props:props){
         super(props)
+
+        this.state = {
+            data:[null]
+        }
     }
 
     render(){

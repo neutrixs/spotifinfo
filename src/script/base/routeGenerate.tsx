@@ -3,6 +3,7 @@ import {lazy, Suspense} from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom'
 const LoggedInMain = lazy(()=>import('../loggedIn/main'))
 const LoggedOutMain  = lazy(()=>import('../loggedOut/main'))
+const TopPage = lazy(()=>import('../top/main'))
 
 interface routeGenerateParam{
     isLoggedOut:boolean
@@ -46,7 +47,11 @@ export class RouteGenerate extends React.Component<routeGenerateParam>{
 
     top_tracks():null|JSX.Element{
         if(!this.props.isLoggedOut){
-            return null
+            return(
+                <Suspense fallback={this.pageLoading()}>
+                    <TopPage/>
+                </Suspense>
+            )
         }
         else{
             return(

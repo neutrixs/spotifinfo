@@ -74,6 +74,9 @@ export default class AccountPage extends React.Component<{},states>{
                 <div id="accountInfoHolder">
                     <p id="accountInfoTitle">Your Account</p>
                     <img id="accountInfoProfilePic" src={this.state.profilePicURL} />
+                    <div>
+                        <p id="accountInfoUsername">{this.state.username}</p>
+                    </div>
                 </div>
                 <ReCaptchaBadge />
             </div>

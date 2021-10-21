@@ -21,6 +21,7 @@ export default async function getAccountInfo(this:AccountPage){
     const resData:spotifyAccountInfo = await res.json()
 
     this.setState({
-        profilePicURL:resData.images[0]?.url ?? defaultProfilePic
+        profilePicURL:resData.images[0]?.url ?? defaultProfilePic,
+        username:resData.display_name
     })
 }

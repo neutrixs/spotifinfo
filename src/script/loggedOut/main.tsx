@@ -1,6 +1,6 @@
 import * as React from 'react';
 import '../../style/loggedOut/main.css'
-import * as kinghd from '../../img/kinghd.png'
+import * as kinghd from '../../img/kinghd.webp'
 
 interface states {
     isMobile:boolean

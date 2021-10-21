@@ -8,6 +8,7 @@ interface states{
     isMobile:boolean
     transition:boolean
     profilePicURL:string
+    isDefaultProfile:boolean
     username:string
     email:string
     id:string
@@ -23,6 +24,7 @@ export default class AccountPage extends React.Component<{},states>{
             isMobile:false,
             transition:false,
             profilePicURL:'',
+            isDefaultProfile:false,
             username:'',
             email:'',
             id:'',
@@ -73,7 +75,7 @@ export default class AccountPage extends React.Component<{},states>{
             >
                 <div id="accountInfoHolder">
                     <p id="accountInfoTitle">Your Account</p>
-                    <img id="accountInfoProfilePic" src={this.state.profilePicURL} />
+                    <img id="accountInfoProfilePic" src={this.state.profilePicURL} className={this.state.isDefaultProfile ? 'accountInfoProfilePicDefault ' : ''} />
                     <div>
                         <p id="accountInfoUsername">{this.state.username}</p>
                         <p className="infoSmall">

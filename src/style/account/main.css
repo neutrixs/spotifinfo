@@ -18,6 +18,9 @@
     width: 20em;
     box-shadow: 0 0.2em 0.4em rgb(0,0,0,0.6);
 }
+.accountInfoProfilePicDefault{
+    border-radius: 10em;
+}
 #accountInfoUsername{
     font-size: 2em;
     font-weight: 600;

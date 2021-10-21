@@ -55,6 +55,9 @@ a:-webkit-any-link{
     padding-bottom: 1.5em;
     display: inline-block;
 }
+#theme span{
+    vertical-align: middle;
+}
 
 /*
     INDIVIDUAL
@@ -80,6 +83,6 @@ a:-webkit-any-link{
 }
 #theme_check{
     width: 1em;
-    float: right;
+    vertical-align: middle;
     margin-left: 0.5em;
 }

@@ -6,3 +6,15 @@
 .grecaptcha-badge {
     visibility: hidden;
 }
+#accountInfoHolder{
+    padding: 1.5em;
+}
+#accountInfoTitle{
+    font-size: 2em;
+    font-weight: 600;
+}
+#accountInfoProfilePic{
+    display: block;
+    width: 20em;
+    box-shadow: 0 0.2em 0.4em rgb(0,0,0,0.6);
+}

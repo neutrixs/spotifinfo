@@ -1,11 +1,18 @@
 import * as React from 'react';
 import '../../style/account/main.css'
 import {ReCaptchaBadge} from '../base/reCaptchaBadge'
+import getAccountInfo from './getAccountInfo'
 
 interface states{
     pageNone:boolean
     isMobile:boolean
     transition:boolean
+    profilePicURL:string
+    username:string
+    email:string
+    id:string
+    followers:number|null
+    plan:'premium'|'open'|null
 }
 
 export default class AccountPage extends React.Component<{},states>{
@@ -14,13 +21,20 @@ export default class AccountPage extends React.Component<{},states>{
         this.state = {
             pageNone:true,
             isMobile:false,
-            transition:false
+            transition:false,
+            profilePicURL:'',
+            username:'',
+            email:'',
+            id:'',
+            followers:null,
+            plan:null
         }
         this.mobileListener = this.mobileListener.bind(this)
     }
 
     componentDidMount(){
         this.mobileListenerStart()
+        getAccountInfo.bind(this)()
     }
 
     componentWillUnmount(){
@@ -57,7 +71,10 @@ export default class AccountPage extends React.Component<{},states>{
                     (this.state.transition ? 'transition300ms ' : '')
                 }
             >
-
+                <div id="accountInfoHolder">
+                    <p id="accountInfoTitle">Your Account</p>
+                    <img id="accountInfoProfilePic" src={this.state.profilePicURL} />
+                </div>
                 <ReCaptchaBadge />
             </div>
         )

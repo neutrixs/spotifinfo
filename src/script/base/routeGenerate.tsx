@@ -4,6 +4,7 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 const LoggedInMain = lazy(()=>import('../loggedIn/main'))
 const LoggedOutMain  = lazy(()=>import('../loggedOut/main'))
 const TopPage = lazy(()=>import('../top/main'))
+const AccountPage = lazy(()=>import('../account/main'))
 
 interface routeGenerateParam{
     isLoggedOut:boolean
@@ -45,7 +46,7 @@ export class RouteGenerate extends React.Component<routeGenerateParam>{
         )
     }
 
-    top_tracks():null|JSX.Element{
+    top_tracks():JSX.Element{
         if(!this.props.isLoggedOut){
             return(
                 <Suspense fallback={this.pageLoading()}>
@@ -60,9 +61,13 @@ export class RouteGenerate extends React.Component<routeGenerateParam>{
         }
     }
 
-    account():null|JSX.Element{
+    account():JSX.Element{
         if(!this.props.isLoggedOut){
-            return null
+            return (
+                <Suspense fallback={this.pageLoading()}>
+                    <AccountPage />
+                </Suspense>
+            )
         }
         else{
             return(

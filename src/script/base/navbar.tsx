@@ -109,15 +109,15 @@ export class Navbar extends React.Component<navbarParam, dropDownState> {
                         onClick={()=>this.dropdown(true,false)}
                     >
                         <NavLink to="/account">
-                            <span className="pointer">Account</span>
+                            <span className="pointer">Account Page</span>
                         </NavLink>
                         <div className="divider1"></div>
                         <a id="logout" className="pointer" onClick={()=>logOut(true)}>Logout</a>
-                        <div className="divider1"></div>
+                        {/*<div className="divider1"></div>
                         <div id="theme" className="pointer">
                             <span>Dark mode</span>
                             <img id="theme_check" src={checkmark} />
-                        </div>
+                        </div>*/}
                     </div>
                 </>
             )

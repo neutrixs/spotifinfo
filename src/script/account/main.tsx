@@ -76,6 +76,22 @@ export default class AccountPage extends React.Component<{},states>{
                     <img id="accountInfoProfilePic" src={this.state.profilePicURL} />
                     <div>
                         <p id="accountInfoUsername">{this.state.username}</p>
+                        <p className="infoSmall">
+                            <span>Email: </span>
+                            <span className="copy">{this.state.email}</span>
+                        </p>
+                        <p className="infoSmall">
+                            <span>ID: </span>
+                            <span className="copy">{this.state.id}</span>
+                        </p>
+                        <p className="infoSmall">
+                            <span>Followers: </span>
+                            <span>{this.state.followers?.toString()}</span>
+                        </p>
+                        <p className="infoSmall">
+                            <span>Plan: </span>
+                            <span>{this.state.plan == 'premium' ? 'premium' : 'free'}</span>
+                        </p>
                     </div>
                 </div>
                 <ReCaptchaBadge />

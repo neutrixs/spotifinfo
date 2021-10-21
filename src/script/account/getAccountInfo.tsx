@@ -22,6 +22,10 @@ export default async function getAccountInfo(this:AccountPage){
 
     this.setState({
         profilePicURL:resData.images[0]?.url ?? defaultProfilePic,
-        username:resData.display_name
+        username:resData.display_name,
+        email:resData.email,
+        id:resData.id,
+        followers: resData.followers.total,
+        plan: resData.product
     })
 }

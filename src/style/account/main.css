@@ -21,4 +21,13 @@
 #accountInfoUsername{
     font-size: 2em;
     font-weight: 600;
+    margin-bottom: 0;
+}
+
+.infoSmall{
+    margin-top: 0.5em;
+    margin-bottom: 0;
+}
+.copy{
+    user-select: all;
 }

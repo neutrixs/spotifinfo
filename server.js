@@ -20,24 +20,15 @@ app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 app.set('views', __dirname+'/public')
 
+app.get(/^\/(|top_tracks|account)[\/]*$/,(req,res)=>{
+    res.render('index.html')
+})
+
 app.get(/^\//,(req,res)=>{
 
     let isLoggedOut = !req.cookies['state'] || !req.cookies['uname']
 
-    const defaultRender = function(){
-        res.render('index.html')
-    }
-
     switch(req.path){
-        case '/':
-            defaultRender()
-        return
-        case '/account':
-            defaultRender()
-        return
-        case '/top_tracks':
-            defaultRender()
-        return
         case '/login':
             require('./dynamic/login')(req,res,data,isLoggedOut)
         return

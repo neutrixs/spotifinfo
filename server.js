@@ -21,7 +21,14 @@ app.set('view engine', 'html');
 app.set('views', __dirname+'/public')
 
 app.get(/^\/(|top_tracks|account)[\/]*$/,(req,res)=>{
-    res.render('index.html')
+    const newPath = req.path.replace(/\/+/g,'/')
+
+    if(req.path != newPath){
+        res.redirect(newPath)
+        return
+    }
+
+    res.render('meaningOfLife.html')
 })
 
 app.get(/^\//,(req,res)=>{
@@ -42,7 +49,7 @@ app.get(/^\//,(req,res)=>{
             require('./dynamic/proxy/proxy')(req,res)
         return
     }
-    res.status(404).render('index.html')
+    res.status(404).render('meaningOfLife.html')
 })
 app.post('/getdata',(req,res)=>{
     require('./dynamic/getdata')(req,res,data)

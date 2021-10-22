@@ -5,6 +5,7 @@ const LoggedInMain = lazy(()=>import('../loggedIn/main'))
 const LoggedOutMain  = lazy(()=>import('../loggedOut/main'))
 const TopPage = lazy(()=>import('../top/main'))
 const AccountPage = lazy(()=>import('../account/main'))
+const Page404 = lazy(()=>import('./404'))
 
 interface routeGenerateParam{
     isLoggedOut:boolean
@@ -76,6 +77,14 @@ export class RouteGenerate extends React.Component<routeGenerateParam>{
         }
     }
 
+    page404(){
+        return(
+            <Suspense fallback={null}>
+                <Page404 />
+            </Suspense>
+        )
+    }
+
     render(){
         return(
             <Switch>
@@ -87,6 +96,9 @@ export class RouteGenerate extends React.Component<routeGenerateParam>{
                 </Route>
                 <Route exact path="/account">
                     {this.account()}
+                </Route>
+                <Route>
+                    {this.page404()}
                 </Route>
             </Switch>
         )

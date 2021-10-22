@@ -80,7 +80,7 @@ const config = {
         }),
         new HtmlWebpackPlugin({
             template:'./src/index.html',
-            filename:'index.html',
+            filename:'meaningOfLife.html',
             publicPath:'/'
         }),
         new MiniCssExtractPlugin({

@@ -70,10 +70,6 @@ const config = ()=> ({
         new CopyPlugin({
             patterns:[
                 {
-                    from:'./src/font',
-                    to:'./font'
-                },
-                {
                     from:'./src/favicon.ico',
                     to:'./favicon.ico'
                 }

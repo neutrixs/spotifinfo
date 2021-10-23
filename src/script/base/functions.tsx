@@ -61,7 +61,9 @@ const sleep = async function(ms:number){
     })
 }
 
-const logOut = function(self:boolean) {
+const logOut = function(self:boolean,event?:{[key:string]:any}) {
+    if(event?.key && event?.key != 'Enter') return
+
     delete window.localStorage['token']
     delete window.localStorage['validuntil']
     delete window.localStorage['force']

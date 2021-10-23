@@ -65,7 +65,9 @@ export class Navbar extends React.Component<navbarParam, dropDownState> {
         }
     }
 
-    dropdown(lock:boolean,dropdownInteract:boolean){
+    dropdown(lock:boolean,dropdownInteract:boolean,event?:{[key:string]:any}){
+        if(event?.key && event?.key != 'Enter') return
+
         if(lock){
             this.setState({
                 dropDownLocked:true
@@ -95,7 +97,7 @@ export class Navbar extends React.Component<navbarParam, dropDownState> {
         if(!this.props.isLoggedOut){
             return(
                 <>
-                    <div id="profile_holder" onClick={()=>this.dropdown(true,true)}>
+                    <div id="profile_holder" tabIndex={0} role="button" onKeyDown={(e)=>this.dropdown(true,true,e)} onClick={()=>this.dropdown(true,true)}>
                         <img id="profile" src={this.state.profilePicURL} />
                         <img src={dropdownIcon} id="dropdown" className={(this.state.classDropdownIconRotate ? 'rotate180deg ' : '')} />
                     </div>
@@ -112,7 +114,7 @@ export class Navbar extends React.Component<navbarParam, dropDownState> {
                             <span className="pointer">Account Page</span>
                         </NavLink>
                         <div className="divider1"></div>
-                        <a id="logout" className="pointer" onClick={()=>logOut(true)}>Logout</a>
+                        <a id="logout" className="pointer" role="button" tabIndex={0} onKeyDown={(e)=>logOut(true,e)} onClick={()=>logOut(true)}>Logout</a>
                         {/*<div className="divider1"></div>
                         <div id="theme" className="pointer">
                             <span>Dark mode</span>

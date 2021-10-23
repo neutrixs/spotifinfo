@@ -55,14 +55,18 @@ export default class TopPage extends React.Component<{},states>{
         })
     }
 
-    setSelectedType(selected:selectedType){
+    setSelectedType(selected:selectedType,event?:{[key:string]:any}){
+        if(event?.key && event?.key != 'Enter') return
+
         this.setState({
             selectedType:selected
         })
         window.localStorage['type'] = selected.toString()
     }
 
-    setSelectedRange(selected:selectedRange){
+    setSelectedRange(selected:selectedRange,event?:{[key:string]:any}){
+        if(event?.key && event?.key != 'Enter') return
+
         this.setState({
             selectedRange:selected
         })

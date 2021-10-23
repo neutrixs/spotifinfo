@@ -9,7 +9,8 @@ let devMode = false
 module.exports = function(env,argv){
     console.log(argv)
     devMode = argv.mode == "development"
-    return config
+    console.log(devMode)
+    return config()
 }
 
 const mangleNormal = {
@@ -18,7 +19,7 @@ const mangleNormal = {
     }
 }
 
-const config = {
+const config = ()=> ({
     mode: devMode ? "development" : "production",
     entry: {
         "index":'./src/script/index.tsx'
@@ -80,7 +81,7 @@ const config = {
         }),
         new HtmlWebpackPlugin({
             template:'./src/index.html',
-            filename:'meaningOfLife.html',
+            filename:devMode ? 'index.html' : 'meaningOfLife.html',
             publicPath:'/'
         }),
         new MiniCssExtractPlugin({
@@ -97,4 +98,4 @@ const config = {
         historyApiFallback:true,
         allowedHosts: ['192.168.1.50','localhost']
     }
-}
+})

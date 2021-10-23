@@ -31,9 +31,24 @@ export class RecentlyPlayed extends React.Component<props,states> {
 
     structureData(data:spotifyRecentlyPlayedType){
         let constructedData:Array<JSX.Element> = []
+        let currentDate:number = 0
+        let dateInString:string
+
         for(let i = 0; i < data.items?.length; i++){
             let thisTrack = data.items[i].track
             let key = thisTrack.id+i.toString()
+
+            dateInString = new Date(data.items[i].played_at).toLocaleDateString('en-GB',{dateStyle:'medium'})
+
+            if(+new Date(dateInString) !== currentDate){
+                currentDate = +new Date(dateInString)
+
+                constructedData.push(
+                    <p key={key+'_date_0'} className="playedDate">
+                        <span>{dateInString}</span>
+                    </p>
+                )
+            }
 
             constructedData.push(
                 <div id={"recentlyPlayed"+i} className={"recentlyPlayedEach"} key={key}>

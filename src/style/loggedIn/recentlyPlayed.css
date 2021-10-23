@@ -45,3 +45,9 @@
     text-overflow: ellipsis;
     overflow: hidden;
 }
+.playedDate{
+    font-size: 1.5em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    font-weight: 600;
+}

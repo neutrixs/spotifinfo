@@ -116,7 +116,7 @@ export class Navbar extends React.Component<navbarParam, dropDownState> {
                         <div className="divider1"></div>
                         <a id="logout" role="button" tabIndex={0} onKeyDown={(e)=>logOut(true,e)} onClick={()=>logOut(true)}>Logout</a>
                         {/*<div className="divider1"></div>
-                        <div id="theme" className="pointer">
+                        <div id="theme">
                             <span>Dark mode</span>
                             <img id="theme_check" src={checkmark} />
                         </div>*/}

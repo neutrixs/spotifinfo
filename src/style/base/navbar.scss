@@ -62,8 +62,19 @@ $navbar-light: #e1e1e1;
             height: 1em;
         }
 
-        #logout{
+        #logout, #theme{
             cursor: pointer;
+        }
+
+        #theme{
+            span{
+                vertical-align: middle;
+            }
+            #theme_check{
+                width: 1em;
+                vertical-align: middle;
+                margin-left: 0.5em;
+            }
         }
     }
 }

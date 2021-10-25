@@ -7,6 +7,11 @@ $background-light: #dfdfdf;
 $navbar-dark: #505050;
 $navbar-light: #e1e1e1;
 
+a:-webkit-any-link{
+    color: inherit;
+    text-decoration: inherit;
+}
+
 body{
     margin:0;
     user-select: none;

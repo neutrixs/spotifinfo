@@ -1,0 +1,72 @@
+$navbar-dark: #505050;
+$navbar-light: #e1e1e1;
+
+.nav{
+    top: 0;
+    position: sticky;
+    padding-bottom: 0;
+    padding-top: 0;
+    width: 100%;
+    min-width: 24.5em;
+    background-color: $navbar-dark;
+    box-shadow: 0 0.1em 0.2em rgb(0,0,0,0.6);
+
+    a:-webkit-any-link{
+        color: inherit;
+        text-decoration: inherit;
+    }
+
+    .pages{
+        margin-right: 2em;
+        padding-top: 1.5em;
+        padding-bottom: 1.5em;
+        display: inline-block;
+        line-height: 1em;
+    }
+
+    #profile_holder{
+        float: right;
+        margin-right: 1.5em;
+        cursor: pointer;
+
+        #profile{
+            margin:1em;
+            margin-left: 0;
+            height: 2em;
+            border-radius: 1em;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        #dropdown{
+            vertical-align: middle;
+            width: 1em;
+            transition: 100ms;
+        }
+
+        .rotate180deg{
+            transform: rotate(180deg);
+        }
+    }
+
+    .dropdown_options{
+        position: fixed;
+        top: 4.5em;
+        right: 1.5em;
+        background-color: $navbar-dark;
+        padding: 1em;
+        border-radius: 0.5em;
+        box-shadow: 0.1em 0.1em 0.2em rgb(0,0,0,0.6);
+
+        .divider1{
+            height: 1em;
+        }
+
+        #logout{
+            cursor: pointer;
+        }
+    }
+}
+.navLight{
+    background-color: $navbar-light;
+}

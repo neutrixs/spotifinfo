@@ -1,5 +1,5 @@
 import * as React from 'react';
-import '../../style/base/navbar.css'
+import '../../style/base/navbar.scss'
 import '../../style/loggedOut/loginNavbar.css'
 import { NavLink } from 'react-router-dom'
 import {getProfile, logOut} from './functions'
@@ -86,7 +86,7 @@ export class Navbar extends React.Component<navbarParam, dropDownState> {
         if(!this.props.isLoggedOut){
             return(
                 <NavLink to="/top_tracks">
-                        <span className="pages lineHeight1">Top Tracks/Artists</span>
+                        <span className="pages">Top Tracks/Artists</span>
                 </NavLink>
             )
         }
@@ -114,7 +114,7 @@ export class Navbar extends React.Component<navbarParam, dropDownState> {
                             <span className="pointer">Account Page</span>
                         </NavLink>
                         <div className="divider1"></div>
-                        <a id="logout" className="pointer" role="button" tabIndex={0} onKeyDown={(e)=>logOut(true,e)} onClick={()=>logOut(true)}>Logout</a>
+                        <a id="logout" role="button" tabIndex={0} onKeyDown={(e)=>logOut(true,e)} onClick={()=>logOut(true)}>Logout</a>
                         {/*<div className="divider1"></div>
                         <div id="theme" className="pointer">
                             <span>Dark mode</span>
@@ -133,7 +133,7 @@ export class Navbar extends React.Component<navbarParam, dropDownState> {
         return(
             <div id="navBar" className="nav">
                 <NavLink to="/">
-                    <span className="pages lineHeight1" style={{marginLeft:'1.5em'}}>Home</span>
+                    <span className="pages" style={{marginLeft:'1.5em'}}>Home</span>
                 </NavLink>
                 {this.topTracksRouter()}
                 {this.dropdown_elements()}

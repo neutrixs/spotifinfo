@@ -1,0 +1,34 @@
+#loggedOutHolder{
+    padding: 1.5em;
+
+    #tutel{ /*no, this is not a typo*/
+        display: inline-block;
+        margin-right: 1.5em;
+        vertical-align: top;
+
+        img{
+            width: 20em;
+            display: block;
+        }
+    }
+
+    #infoHolder{
+        display: inline-block;
+
+        #title, #subTitle, #canDo li {
+            font-size: 2em;
+        }
+
+        #title{
+            font-weight: 600;
+        }
+    }
+}
+.transition300ms{
+    transition-property: margin, width;
+    transition-duration: 300ms;
+    transition-timing-function: ease-out;
+}
+.grecaptcha-badge{
+    visibility:visible;
+}

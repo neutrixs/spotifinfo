@@ -1,5 +1,5 @@
 import * as React from 'react';
-import '../../style/loggedOut/main.css'
+import '../../style/loggedOut/main.scss'
 import * as kinghd from '../../img/kinghd.webp'
 
 interface states {
@@ -58,13 +58,13 @@ export default class LoggedOutMain extends React.Component<{},states> {
                 }
             >
                 <div id="loggedOutHolder">
-                    <div id="kingHolder">
-                        <img id="king" src={kinghd} />
+                    <div id="tutel">
+                        <img src={kinghd} />
                     </div>
                     <div id="infoHolder">
                         <p id="title">Spotifinfo</p>
                         <p id="subTitle">What you can do with this:</p>
-                        <ul id="listYouCanDo">
+                        <ul id="canDo">
                             <li>See your now playing</li>
                             <li>See your listening history</li>
                             <li>See your top tracks and artists</li>

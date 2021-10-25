@@ -1,5 +1,5 @@
 import * as React from 'react';
-import '../../../style/loggedIn/nowPlaying.css'
+import '../../../style/loggedIn/nowPlaying.scss'
 import {getNowPlaying} from './getNowPlaying'
 import {nowPlayingProgress} from './nowPlayingProgress'
 import { props, NowPlayingState } from '../types/nowPlayingTypes'
@@ -92,25 +92,25 @@ export class NowPlaying extends React.Component<props,NowPlayingState>{
                     backgroundColor: this.setPalette()
                 }}
             >
-                <p id="nowPlayingStatus">
+                <p id="status">
                     {this.state.isPlaying ? 'Now Playing:' : 'Last Played Song:'}
                 </p>
                 <a id="albumArtHolder" href={this.state.albumArtLinkSrc}>
                     <img id="albumArt" src={this.state.albumArtSrc} />
                 </a>
                 <div 
-                    id="nowPlayingInfoHolder" 
                     className={
-                        (this.state.nowPlayingInfoHolderSide ? 'nowPlayingInfoHolderSide ' : '')
+                        'infoHolder '+
+                        (this.state.nowPlayingInfoHolderSide ? 'infoHolderSide ' : '')
                     }
                 >
-                    <a id="nowPlayingTitle" href={this.state.nowPlayingTitleLink}>
+                    <a id="title" href={this.state.nowPlayingTitleLink}>
                         {this.state.nowPlayingTitle}
                     </a>
-                    <p id="nowPlayingArtists">
+                    <p id="artists">
                         {this.state.Artists}
                     </p>
-                    <p id="nowPlayingProgress">
+                    <p id="progress">
                         {this.state.nowPlayingProgressStr}
                     </p>
                 </div>

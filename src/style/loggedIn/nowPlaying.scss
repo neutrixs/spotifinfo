@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
+
+.nowPlayingHolder{
+    padding: 1.5em;
+    margin-top: 1.5em;
+    border-radius: 1em;
+    transition: background-color 500ms;
+    box-shadow: 0 0.2em 0.4em rgb(0,0,0,0.6);
+
+    #status{
+        font-size: 2em;
+        font-weight: 600;
+        line-height: 1em;
+        margin-top: 0;
+    }
+    #albumArtHolder{
+        display: inline-block;
+        margin-right: 1.5em;
+        width: 20em;
+        height: 20em;
+
+        #albumArt{
+            width: 20em;
+            box-shadow: 0 0.2em 0.4em rgb(0,0,0,0.6);
+            display: block;
+        }
+    }
+
+    .infoHolder{
+        display: inline-block;
+        vertical-align: top;
+        max-width: 100%;
+
+        #title{
+            font-size: 1.5em;
+            margin-top: 1em;
+            display: block;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 0;
+            overflow-wrap:break-word;
+        }
+        #artists{
+            margin-top: 0.5em;
+            overflow-wrap: break-word;
+        }
+        #progress{
+            font-family: 'JetBrains Mono', monospace;
+        }
+    }
+    .infoHolderSide{
+        max-width: calc(100% - 21.5em) !important;
+    }
+}
+.nowPlayingHolderMobile{
+    margin-top: 0;
+    padding-top: 3em;
+    border-radius: 0;
+}

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import '../../style/base/404.css'
+import '../../style/base/404.scss'
 
 export default class Page404 extends React.Component{
     constructor(props:{}){
@@ -8,11 +8,11 @@ export default class Page404 extends React.Component{
 
     render(){
         return(
-            <div id="holderAll">
-                <div id="holder404">
-                    <p id="text404">404</p>
+            <div id="holder404">
+                <div>
+                    <p id="text">404</p>
                     <p id="notFound">NOT FOUND</p>
-                    <p id="info404">THE REQUESTED RESOURCE {'\u00a0'} {window.location.pathname.toUpperCase()} {'\u00a0'} COULD NOT BE FOUND</p>
+                    <p id="info">THE REQUESTED RESOURCE {'\u00a0'} {window.location.pathname.toUpperCase()} {'\u00a0'} COULD NOT BE FOUND</p>
                 </div>
             </div>
         )

@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+#holder404{
+    min-width: 24.5em;
+
+    div{
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        padding: 1.5em;
+        padding-top: 5em;
+        text-align: center;
+        overflow-wrap: break-word;
+
+        #text{
+            font-size: 5em;
+            font-weight: 700;
+            margin: 0;
+        }
+        #notFound{
+            font-size: 3em;
+            margin-top: 0.5em;
+        }
+        #info{
+            font-size: 2em;
+        }
+    }
+}

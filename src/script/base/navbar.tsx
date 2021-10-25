@@ -1,6 +1,5 @@
 import * as React from 'react';
 import '../../style/base/navbar.scss'
-import '../../style/loggedOut/loginNavbar.css'
 import { NavLink } from 'react-router-dom'
 import {getProfile, logOut} from './functions'
 import loginButton from '../loggedOut/loginButton'

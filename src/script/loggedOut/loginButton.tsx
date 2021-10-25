@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {Navbar} from '../base/navbar'
+import '../../style/loggedOut/loginNavbar.css'
 import * as spotifyLogo from '../../img/spotify_logo.png'
 
 export default function loginButton(this:Navbar):JSX.Element{

@@ -104,7 +104,7 @@ export class RecentlyPlayed extends React.Component<props,states> {
                     (this.state.classNone ? 'none ' : '')
                 }
             >
-                <p id="titleRecentlyPlayed">Recently Played:</p>
+                <p id="title">Recently Played:</p>
                 <div>
                     {this.state.data}
                 </div>

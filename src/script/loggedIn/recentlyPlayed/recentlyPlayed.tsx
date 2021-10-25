@@ -51,11 +51,11 @@ export class RecentlyPlayed extends React.Component<props,states> {
             }
 
             constructedData.push(
-                <div id={"recentlyPlayed"+i} className={"each"} key={key}>
-                    <a id={"recentlyPlayed"+i+"ArtHolder"} className={"artHolder"} href={thisTrack.album.external_urls.spotify} key={key+'_1'}>
+                <div className={"each"} key={key}>
+                    <a className={"artHolder"} href={thisTrack.album.external_urls.spotify} key={key+'_1'}>
                         <img className={"recentlyPlayedArt"} src={thisTrack.album.images[1].url} key={key+'_2'} />
                     </a>
-                    <a id={"recentlyPlayed"+i+"InfoHolder"} className={"infoHolder"} href={thisTrack.external_urls.spotify} key={key+'_3'}>
+                    <a className={"infoHolder"} href={thisTrack.external_urls.spotify} key={key+'_3'}>
                         <p className={"songName"} key={key+'_4'}>
                             {thisTrack.name}
                         </p>

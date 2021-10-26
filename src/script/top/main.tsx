@@ -1,5 +1,5 @@
 import * as React from 'react';
-import '../../style/top/main.css'
+import '../../style/top/main.scss'
 import Selector from './selector'
 import TopTracks from './topTracks/topTracks'
 import TopArtists from './topArtists/topArtists'

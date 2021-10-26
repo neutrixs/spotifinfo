@@ -28,14 +28,14 @@ export default async function getTopArtists(this:TopArtists){
         let key = thisArtist.id+'_'+i.toString()+'_'
 
         constructedData.push(
-            <div key={key+'0'} className="artistEach">
-                <div key={key+'1'} className="listArtistNumber">
+            <div key={key+'0'} className="artist">
+                <div key={key+'1'} className="number">
                     <span key={key+'2'}>{(i+1).toString()}</span>
                 </div>
-                <a key={key+'3'} className="listArtistProfileHolder" href={thisArtist.external_urls.spotify}>
-                    <img key={key+'4'} className="listArtistProfile" src={thisArtist.images[1].url} />
+                <a key={key+'3'} className="profileHolder" href={thisArtist.external_urls.spotify}>
+                    <img key={key+'4'} src={thisArtist.images[1].url} />
                 </a>
-                <a key={key+'5'} className="listArtistNameHolder" href={thisArtist.external_urls.spotify}>
+                <a key={key+'5'} className="nameHolder" href={thisArtist.external_urls.spotify}>
                     <p key={key+'6'} className="listArtistName">
                         <span>{thisArtist.name}</span>
                     </p>

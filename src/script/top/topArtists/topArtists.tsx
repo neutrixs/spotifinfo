@@ -1,5 +1,5 @@
 import * as React from 'react';
-import '../../../style/top/topArtists.css'
+import '../../../style/top/topArtists.scss'
 import getTopArtists from './getTopArtists'
 
 interface props{
@@ -27,10 +27,9 @@ export default class TopArtists extends React.Component<props,states>{
     render(){
         return(
             <div
-                id={"topArtist"+this.props.Range.toString()}
                 className={
                     "topArtists "+
-                    (this.props.selectedType === 1 ? this.props.selectedRange === this.props.Range ? '' : 'none' : 'none ')
+                    (this.props.selectedType === 1 ? this.props.selectedRange === this.props.Range ? '' : 'none ' : 'none ')
                 }
             >
                 {this.state.data}

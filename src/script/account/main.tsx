@@ -1,5 +1,5 @@
 import * as React from 'react';
-import '../../style/account/main.css'
+import '../../style/account/main.scss'
 import {ReCaptchaBadge} from '../base/reCaptchaBadge'
 import getAccountInfo from './getAccountInfo'
 
@@ -74,10 +74,10 @@ export default class AccountPage extends React.Component<{},states>{
                 }
             >
                 <div id="accountInfoHolder">
-                    <p id="accountInfoTitle">Your Account</p>
-                    <img id="accountInfoProfilePic" src={this.state.profilePicURL} className={this.state.isDefaultProfile ? 'accountInfoProfilePicDefault ' : ''} />
-                    <div>
-                        <p id="accountInfoUsername">{this.state.username}</p>
+                    <p id="title">Your Account</p>
+                    <img id="profile" src={this.state.profilePicURL} className={this.state.isDefaultProfile ? 'defaultProfile' : ''} />
+                    <div id="infoHolder">
+                        <p id="username">{this.state.username}</p>
                         <p className="infoSmall">
                             <span>Email: </span>
                             <span className="copy">{this.state.email}</span>

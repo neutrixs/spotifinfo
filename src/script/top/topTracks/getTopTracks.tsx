@@ -26,18 +26,18 @@ export default async function getTopTracks(this:TopTracks){
         let currentTrack = data.items[i]
         let key = currentTrack.id+'_'+i.toString()+'_'
         constructedData.push(
-            <div key={key+'0'} className="trackEach">
-                <div key={key+'1'} className="listTrackNumber">
+            <div key={key+'0'} className="track">
+                <div key={key+'1'} className="number">
                     <span key={key+'2'}> {(i+1).toString()} </span>
                 </div>
-                <a key={key+'3'} className="listTrackArtHolder" href={currentTrack.album.external_urls.spotify}>
-                    <img key={key+'4'} src={currentTrack.album.images[1].url} className="listTrackArt" />
+                <a key={key+'3'} className="artHolder" href={currentTrack.album.external_urls.spotify}>
+                    <img key={key+'4'} src={currentTrack.album.images[1].url} />
                 </a>
-                <a key={key+'5'} className="listTrackInfoHolder" href={currentTrack.external_urls.spotify}>
-                    <div key={key+'6'} className="listTrackTitle">
+                <a key={key+'5'} className="infoHolder" href={currentTrack.external_urls.spotify}>
+                    <div key={key+'6'} className="title">
                         <span key={key+'7'}>{currentTrack.name}</span>
                     </div>
-                    <div key={key+'8'} className="listTrackArtist">
+                    <div key={key+'8'} className="artist">
                         <span key={key+'9'}>
                             {
                                 currentTrack.artists.map(function(currentArtist:artist){

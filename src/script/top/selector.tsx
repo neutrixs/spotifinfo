@@ -1,5 +1,5 @@
 import * as React from 'react';
-import '../../style/top/selector.css'
+import '../../style/top/selector.scss'
 
 interface props{
     selectedType:0|1
@@ -15,8 +15,8 @@ export default class Selector extends React.Component<props>{
 
     render(){
         return(
-            <div>
-                <p id="typeName">
+            <div id="selector">
+                <p id="type">
                     Top {this.props.selectedType === 0 ? 'Tracks' : 'Artists'}
                 </p>
                 <div id="typeSelector">
@@ -24,7 +24,6 @@ export default class Selector extends React.Component<props>{
                         role="button"
                         tabIndex={0}
                         className={
-                            'typeSelectorEach '+
                             (this.props.selectedType === 0 ? 'selected ' : '')
                         }
                         onClick={()=>this.props.setSelectedType(0)}
@@ -36,7 +35,6 @@ export default class Selector extends React.Component<props>{
                         role="button"
                         tabIndex={0}
                         className={
-                            'typeSelectorEach '+
                             (this.props.selectedType === 1 ? 'selected ' : '')
                         }
                         onClick={()=>this.props.setSelectedType(1)}
@@ -50,7 +48,6 @@ export default class Selector extends React.Component<props>{
                         role="button"
                         tabIndex={0}
                         className={
-                            'rangeSelectorEach '+
                             (this.props.selectedRange === 0 ? 'selected ' : '')
                         }
                         onClick={()=>this.props.setSelectedRange(0)}
@@ -62,7 +59,6 @@ export default class Selector extends React.Component<props>{
                         role="button"
                         tabIndex={0}
                         className={
-                            'rangeSelectorEach '+
                             (this.props.selectedRange === 1 ? 'selected ' : '')
                         }
                         onClick={()=>this.props.setSelectedRange(1)}
@@ -74,7 +70,6 @@ export default class Selector extends React.Component<props>{
                         role="button"
                         tabIndex={0}
                         className={
-                            'rangeSelectorEach '+
                             (this.props.selectedRange === 2 ? 'selected ' : '')
                         }
                         onClick={()=>this.props.setSelectedRange(2)}

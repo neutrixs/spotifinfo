@@ -30,10 +30,25 @@ class Main extends React.Component<{},states>{
             /**
              * determine if the theme is dark (defaults to dark theme if it doesn't exist)
              */
-            isDark: localStorage.getItem('isDark') ? localStorage.getItem('isDark') == 'true' : true
+            isDark: (():boolean=>{
+                if(!localStorage.getItem('isDark')) return true
+
+                if(localStorage.getItem('isDark') == 'true'){
+                    return true
+                }
+                if(localStorage.getItem('isDark') == 'false'){
+                    return false
+                }
+
+                return true
+            })()
         }
 
         this.toggleTheme = this.toggleTheme.bind(this)
+    }
+
+    componentDidMount(){
+        localStorage.setItem('isDark', this.state.isDark.toString())
     }
 
     toggleTheme(){

@@ -47,17 +47,23 @@ class Main extends React.Component<{},states>{
     }
 
     toggleTheme(){
-        this.setState(prevState => ({
-            isDark: !prevState.isDark
-        }))
+        this.setState(prevState => {
+            localStorage.setItem('isDark', (!this.state.isDark).toString())
 
-        localStorage.setItem('isDark', this.state.isDark.toString())
+            return {
+                isDark: !prevState.isDark
+            }
+        })
     }
 
     render(){
         return(
             <Router>
-                <Navbar isLoggedOut={isLoggedOut()}/>
+                <Navbar 
+                    isLoggedOut={isLoggedOut()}
+                    isDark={this.state.isDark}
+                    toggleTheme={this.toggleTheme}
+                />
                 <RouteGenerate isLoggedOut={isLoggedOut()} />
             </Router>
         )

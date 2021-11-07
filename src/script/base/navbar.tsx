@@ -9,6 +9,8 @@ import * as checkmark from '../../svg/check.svg'
 
 interface navbarParam {
     isLoggedOut:boolean
+    toggleTheme:()=>void
+    isDark:boolean
 }
 interface dropDownState {
     dropDownOpened:boolean
@@ -107,11 +109,11 @@ export class Navbar extends React.Component<navbarParam, dropDownState> {
                         </NavLink>
                         <div className="divider1"></div>
                         <a id="logout" role="button" tabIndex={0} onKeyDown={(e)=>logOut(true,e)} onClick={()=>logOut(true)}>Logout</a>
-                        {/*<div className="divider1"></div>
-                        <div id="theme">
+                        <div className="divider1"></div>
+                        <div id="theme" onClick={this.props.toggleTheme}>
                             <span>Dark mode</span>
-                            <img id="theme_check" src={checkmark} />
-                        </div>*/}
+                            <img id="theme_check" src={checkmark} className={this.props.isDark ? '' : 'none '} />
+                        </div>
                     </div>
                 </div>
             )

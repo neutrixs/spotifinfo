@@ -28,6 +28,7 @@ $navbar-light: #e1e1e1;
         float: right;
         margin-right: 1.5em;
         cursor: pointer;
+        position: relative;
 
         #profile{
             margin:1em;
@@ -50,9 +51,10 @@ $navbar-light: #e1e1e1;
     }
 
     .dropdown_options{
-        position: fixed;
+        position: absolute;
+        width: max-content;
         top: 4.5em;
-        right: 1.5em;
+        right: 0;
         background-color: $navbar-dark;
         padding: 1em;
         border-radius: 0.5em;

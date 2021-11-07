@@ -100,6 +100,9 @@ const config = ()=> ({
         static: './public',
         hot:false,
         historyApiFallback:true,
-        allowedHosts: ['192.168.1.50','localhost']
+        allowedHosts: ['192.168.1.50','localhost'],
+        proxy:{
+            '/gettoken':'http://192.168.1.50'
+        }
     }
 })

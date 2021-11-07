@@ -18,10 +18,19 @@ function isLoggedOut():boolean{
     return document.cookie.indexOf('state=') == -1 || document.cookie.indexOf('uname=') == -1
 }
 
-ReactDOM.render(
-    <Router>
-        <Navbar isLoggedOut={isLoggedOut()}/>
-        <RouteGenerate isLoggedOut={isLoggedOut()} />
-    </Router>,
-    document.getElementById('root')
-)
+class Main extends React.Component{
+    constructor(props:{}){
+        super(props)
+    }
+
+    render(){
+        return(
+            <Router>
+                <Navbar isLoggedOut={isLoggedOut()}/>
+                <RouteGenerate isLoggedOut={isLoggedOut()} />
+            </Router>
+        )
+    }
+}
+
+ReactDOM.render(<Main />,document.getElementById('root'))

@@ -18,9 +18,30 @@ function isLoggedOut():boolean{
     return document.cookie.indexOf('state=') == -1 || document.cookie.indexOf('uname=') == -1
 }
 
-class Main extends React.Component{
+interface states{
+    isDark:boolean
+}
+
+class Main extends React.Component<{},states>{
     constructor(props:{}){
         super(props)
+
+        this.state = {
+            /**
+             * determine if the theme is dark (defaults to dark theme if it doesn't exist)
+             */
+            isDark: localStorage.getItem('isDark') ? localStorage.getItem('isDark') == 'true' : true
+        }
+
+        this.toggleTheme = this.toggleTheme.bind(this)
+    }
+
+    toggleTheme(){
+        this.setState(prevState => ({
+            isDark: !prevState.isDark
+        }))
+
+        localStorage.setItem('isDark', this.state.isDark.toString())
     }
 
     render(){

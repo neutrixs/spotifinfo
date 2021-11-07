@@ -27,8 +27,11 @@ $navbar-light: #e1e1e1;
     #profile_holder{
         float: right;
         margin-right: 1.5em;
-        cursor: pointer;
         position: relative;
+
+        div:nth-child(1){
+            cursor: pointer;
+        }
 
         #profile{
             margin:1em;

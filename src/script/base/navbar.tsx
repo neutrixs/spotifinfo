@@ -100,12 +100,12 @@ export class Navbar extends React.Component<navbarParam, dropDownState> {
                     <img src={dropdownIcon} id="dropdown" className={(this.state.classDropdownIconRotate ? 'rotate180deg ' : '')} />
 
                     <div 
-                    id="dropdown_options" 
-                    className={
-                        "dropdown_options "+
-                        (this.state.classDropdownNone ? 'none ': '')
-                    } 
-                    onClick={()=>this.dropdown(true,false)}
+                        id="dropdown_options" 
+                        className={
+                            "dropdown_options "+
+                            (this.state.classDropdownNone ? 'none ': '')
+                        } 
+                        onClick={()=>this.dropdown(true,false)}
                     >
                         <NavLink to="/account">
                             <span className="pointer">Account Page</span>

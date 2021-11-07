@@ -31,16 +31,11 @@ class Main extends React.Component<{},states>{
              * determine if the theme is dark (defaults to dark theme if it doesn't exist)
              */
             isDark: (():boolean=>{
-                if(!localStorage.getItem('isDark')) return true
+                const isDark = localStorage.getItem('isDark')
 
-                if(localStorage.getItem('isDark') == 'true'){
-                    return true
-                }
-                if(localStorage.getItem('isDark') == 'false'){
-                    return false
-                }
+                if(isDark != 'true' && isDark != 'false') return true
 
-                return true
+                return isDark == 'true'
             })()
         }
 

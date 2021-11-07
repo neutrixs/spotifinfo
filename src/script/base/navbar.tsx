@@ -95,18 +95,13 @@ export class Navbar extends React.Component<navbarParam, dropDownState> {
     dropdown_elements(){
         if(!this.props.isLoggedOut){
             return(
-                <div id="profile_holder" tabIndex={0} role="button" onKeyDown={(e)=>this.dropdown(true,true,e)} onClick={()=>this.dropdown(true,true)}>
-                    <img id="profile" src={this.state.profilePicURL} />
-                    <img src={dropdownIcon} id="dropdown" className={(this.state.classDropdownIconRotate ? 'rotate180deg ' : '')} />
+                <div id="profile_holder">
+                    <div tabIndex={0} role="button" onKeyDown={(e)=>this.dropdown(true,true,e)} onClick={()=>this.dropdown(true,true)}>
+                        <img id="profile" src={this.state.profilePicURL} />
+                        <img src={dropdownIcon} id="dropdown" className={(this.state.classDropdownIconRotate ? 'rotate180deg ' : '')} />
+                    </div>
 
-                    <div 
-                    id="dropdown_options" 
-                    className={
-                        "dropdown_options "+
-                        (this.state.classDropdownNone ? 'none ': '')
-                    } 
-                    onClick={()=>this.dropdown(true,false)}
-                    >
+                    <div id="dropdown_options" className={(this.state.classDropdownNone ? 'none ': '')} onClick={()=>this.dropdown(true,false)}>
                         <NavLink to="/account">
                             <span className="pointer">Account Page</span>
                         </NavLink>

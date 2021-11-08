@@ -108,6 +108,7 @@ export default class TopPage extends React.Component<props,states>{
                         selectedRange={this.state.selectedRange}
                         setSelectedType={this.setSelectedType}
                         setSelectedRange={this.setSelectedRange}
+                        isDark={this.props.isDark}
                     />
 
                     <TopTracks selectedType={this.state.selectedType} selectedRange={this.state.selectedRange} Range={0} />

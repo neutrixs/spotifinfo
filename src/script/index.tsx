@@ -58,14 +58,21 @@ class Main extends React.Component<{},states>{
 
     render(){
         return(
-            <Router>
-                <Navbar 
-                    isLoggedOut={isLoggedOut()}
-                    isDark={this.state.isDark}
-                    toggleTheme={this.toggleTheme}
-                />
-                <RouteGenerate isLoggedOut={isLoggedOut()} />
-            </Router>
+            <div 
+                className={
+                    'fake '+
+                    (!this.state.isDark ? 'fakeLight ' : '')
+                }
+            >
+                <Router>
+                    <Navbar 
+                        isLoggedOut={isLoggedOut()}
+                        isDark={this.state.isDark}
+                        toggleTheme={this.toggleTheme}
+                    />
+                    <RouteGenerate isLoggedOut={isLoggedOut()} />
+                </Router>
+            </div>
         )
     }
 }

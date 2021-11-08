@@ -3,7 +3,7 @@
 $font-light: #202020;
 $font-dark: #dfdfdf;
 $background-dark: #202020;
-$background-light: #dfdfdf;
+$background-light: #ffffff;
 $navbar-dark: #505050;
 $navbar-light: #e1e1e1;
 
@@ -22,6 +22,17 @@ body{
 }
 .none{
     display: none;
+}
+
+.fake{
+    min-height: 100vh;
+    min-width: 24.5em;
+    height: max-content;
+}
+
+.fakeLight{
+    background-color: $background-light;
+    color: $font-light;
 }
 
 #page{

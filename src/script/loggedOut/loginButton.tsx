@@ -1,12 +1,24 @@
 import * as React from 'react';
-import {Navbar} from '../base/navbar'
 import '../../style/loggedOut/loginNavbar.scss'
 import * as spotifyLogo from '../../img/spotify_logo.png'
+import * as spotifyLogoForLight from '../../img/Spotify_Icon_RGB_Black.png'
 
-export default function loginButton(this:Navbar):JSX.Element{
-    return (
-        <a id="loginHolder" href={this.login()}>
-            <img src={spotifyLogo} />
+interface props{
+    isDark:boolean
+    login:()=>string
+}
+
+export default class Loginbutton extends React.Component<props>{
+    constructor(props:props){
+        super(props)
+    }
+
+    render(){
+        return(
+            <a id="loginHolder" href={this.props.login()}>
+            <img 
+                src={(this.props.isDark ? spotifyLogo : spotifyLogoForLight)} 
+            />
             <span 
                 style={{
                     lineHeight:'1em',
@@ -14,5 +26,6 @@ export default function loginButton(this:Navbar):JSX.Element{
                 }}
             >Login</span>
         </a>
-    )
+        )
+    }
 }

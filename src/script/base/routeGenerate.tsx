@@ -9,6 +9,7 @@ const Page404 = lazy(()=>import('./404'))
 
 interface routeGenerateParam{
     isLoggedOut:boolean
+    isDark:boolean
 }
 
 export class RouteGenerate extends React.Component<routeGenerateParam>{

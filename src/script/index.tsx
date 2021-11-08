@@ -70,7 +70,10 @@ class Main extends React.Component<{},states>{
                         isDark={this.state.isDark}
                         toggleTheme={this.toggleTheme}
                     />
-                    <RouteGenerate isLoggedOut={isLoggedOut()} />
+                    <RouteGenerate 
+                        isLoggedOut={isLoggedOut()} 
+                        isDark={this.state.isDark}
+                    />
                 </Router>
             </div>
         )

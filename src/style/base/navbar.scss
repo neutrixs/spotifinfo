@@ -63,6 +63,10 @@ $navbar-light: #e1e1e1;
         border-radius: 0.5em;
         box-shadow: 0.1em 0.1em 0.2em rgb(0,0,0,0.6);
 
+        &.dropdown_options_light{
+            background-color: $navbar-light;
+        }
+
         .divider1{
             height: 1em;
         }

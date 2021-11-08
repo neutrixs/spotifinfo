@@ -108,7 +108,14 @@ export class Navbar extends React.Component<navbarParam, dropDownState> {
                         />
                     </div>
 
-                    <div id="dropdown_options" className={(this.state.classDropdownNone ? 'none ': '')} onClick={()=>this.dropdown(true,false)}>
+                    <div 
+                        id="dropdown_options" 
+                        className={
+                            (this.state.classDropdownNone ? 'none ': '')+
+                            (!this.props.isDark ? 'dropdown_options_light ': '')
+                        } 
+                        onClick={()=>this.dropdown(true,false)}
+                    >
                         <NavLink to="/account">
                             <span className="pointer">Account Page</span>
                         </NavLink>

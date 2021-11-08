@@ -16,8 +16,12 @@ interface states{
     selectedRange:selectedRange
 }
 
-export default class TopPage extends React.Component<{},states>{
-    constructor(props:{}) {
+interface props {
+    isDark:boolean
+}
+
+export default class TopPage extends React.Component<props,states>{
+    constructor(props:props) {
         super(props)
         this.state = {
             pageNone: true,

@@ -37,13 +37,13 @@ export class RouteGenerate extends React.Component<routeGenerateParam>{
         if(!this.props.isLoggedOut){
             return(
                 <Suspense fallback={this.pageLoading()}>
-                    <LoggedInMain />
+                    <LoggedInMain isDark={this.props.isDark} />
                 </Suspense>
             )
         }
         return(
             <Suspense fallback={this.pageLoading()}>
-                <LoggedOutMain />
+                <LoggedOutMain isDark={this.props.isDark} />
             </Suspense>
         )
     }
@@ -52,7 +52,7 @@ export class RouteGenerate extends React.Component<routeGenerateParam>{
         if(!this.props.isLoggedOut){
             return(
                 <Suspense fallback={this.pageLoading()}>
-                    <TopPage/>
+                    <TopPage isDark={this.props.isDark} />
                 </Suspense>
             )
         }
@@ -67,7 +67,7 @@ export class RouteGenerate extends React.Component<routeGenerateParam>{
         if(!this.props.isLoggedOut){
             return (
                 <Suspense fallback={this.pageLoading()}>
-                    <AccountPage />
+                    <AccountPage isDark={this.props.isDark} />
                 </Suspense>
             )
         }

@@ -16,8 +16,12 @@ interface states{
     plan:'premium'|'open'|null
 }
 
-export default class AccountPage extends React.Component<{},states>{
-    constructor(props:{}){
+interface props{
+    isDark:boolean
+}
+
+export default class AccountPage extends React.Component<props,states>{
+    constructor(props:props){
         super(props)
         this.state = {
             pageNone:true,

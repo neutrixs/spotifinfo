@@ -12,8 +12,12 @@ interface states{
     getRecentlyPlayed:Function
 }
 
-export default class LoggedInMain extends React.Component<{},states>{
-    constructor(props:any){
+interface props{
+    isDark:boolean
+}
+
+export default class LoggedInMain extends React.Component<props,states>{
+    constructor(props:props){
         super(props)
         this.state = {
             additionalPageStyle: '',

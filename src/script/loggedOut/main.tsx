@@ -8,8 +8,12 @@ interface states {
     transitionOn:boolean
 }
 
-export default class LoggedOutMain extends React.Component<{},states> {
-    constructor(props:{}){
+interface props {
+    isDark: boolean
+}
+
+export default class LoggedOutMain extends React.Component<props,states> {
+    constructor(props:props){
         super(props)
         this.state = {
             isMobile:false,

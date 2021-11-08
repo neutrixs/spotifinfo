@@ -119,7 +119,7 @@ export default class TopPage extends React.Component<props,states>{
                     <TopArtists selectedType={this.state.selectedType} selectedRange={this.state.selectedRange} Range={2} />
                     
                 </div>
-                <ReCaptchaBadge />
+                <ReCaptchaBadge isDark={this.props.isDark} />
             </div>
         )
     }

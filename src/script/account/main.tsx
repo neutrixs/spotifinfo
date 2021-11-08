@@ -100,7 +100,7 @@ export default class AccountPage extends React.Component<props,states>{
                         </p>
                     </div>
                 </div>
-                <ReCaptchaBadge />
+                <ReCaptchaBadge isDark={this.props.isDark} />
             </div>
         )
     }

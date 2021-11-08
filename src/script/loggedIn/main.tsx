@@ -70,7 +70,7 @@ export default class LoggedInMain extends React.Component<props,states>{
             <div id="page" className={this.state.pageStyleTransition+' '+this.state.additionalPageStyle+' '+this.state.pageClassNone}>
                 <NowPlaying getRecentlyPlayed={this.state.getRecentlyPlayed} classNowPlayingMobile={classNowPlayingMobile} />
                 <RecentlyPlayed setGetRecentlyPlayedFunction={this.setGetRecentlyPlayedFunction} />
-                <ReCaptchaBadge />
+                <ReCaptchaBadge isDark={this.props.isDark} />
             </div>
         )
     }

@@ -5,6 +5,7 @@ import {getProfile, logOut} from './functions'
 import loginButton from '../loggedOut/loginButton'
 import * as defaultProfilePic from '../../svg/profile_pic.svg'
 import * as dropdownIcon from '../../svg/dropdown.svg'
+import * as dropdownIconForLight from '../../svg/dropdown_for_light.svg'
 import * as checkmark from '../../svg/check.svg'
 
 interface navbarParam {
@@ -100,7 +101,11 @@ export class Navbar extends React.Component<navbarParam, dropDownState> {
                 <div id="profile_holder">
                     <div tabIndex={0} role="button" onKeyDown={(e)=>this.dropdown(true,true,e)} onClick={()=>this.dropdown(true,true)}>
                         <img id="profile" src={this.state.profilePicURL} />
-                        <img src={dropdownIcon} id="dropdown" className={(this.state.classDropdownIconRotate ? 'rotate180deg ' : '')} />
+                        <img 
+                            src={(this.props.isDark ? dropdownIcon : dropdownIconForLight)} 
+                            id="dropdown" 
+                            className={(this.state.classDropdownIconRotate ? 'rotate180deg ' : '')} 
+                        />
                     </div>
 
                     <div id="dropdown_options" className={(this.state.classDropdownNone ? 'none ': '')} onClick={()=>this.dropdown(true,false)}>

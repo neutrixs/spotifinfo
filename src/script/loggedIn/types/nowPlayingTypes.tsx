@@ -24,6 +24,7 @@ interface NowPlayingState {
 interface props{
     classNowPlayingMobile:boolean,
     getRecentlyPlayed:Function
+    isDark:boolean
 }
 
 export { props, NowPlayingState }

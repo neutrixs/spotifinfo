@@ -73,10 +73,10 @@ export class NowPlaying extends React.Component<props,NowPlayingState>{
         await getNowPlaying.bind(this)()
     }
 
-    setPalette(){
+    setPalette(dark:boolean):string{
         if(!this.state.palette) return ''
 
-        const colour = this.state.palette[0].join(',')
+        const colour = this.state.palette[dark ? 0 : 1].join(',')
         return 'rgb('+colour+')'
     }
 
@@ -89,7 +89,7 @@ export class NowPlaying extends React.Component<props,NowPlayingState>{
                     (this.props.classNowPlayingMobile ? 'nowPlayingHolderMobile ': '')
                 }
                 style={{
-                    backgroundColor: this.setPalette()
+                    backgroundColor: this.setPalette(this.props.isDark)
                 }}
             >
                 <p id="status">

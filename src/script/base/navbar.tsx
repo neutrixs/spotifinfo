@@ -125,7 +125,13 @@ export class Navbar extends React.Component<navbarParam, dropDownState> {
 
     render(){
         return(
-            <div id="navBar" className="nav">
+            <div 
+                id="navBar" 
+                className={
+                    "nav "+
+                    (!this.props.isDark ? 'navLight ' : '')
+                }
+            >
                 <NavLink to="/">
                     <span className="pages" style={{marginLeft:'1.5em'}}>Home</span>
                 </NavLink>

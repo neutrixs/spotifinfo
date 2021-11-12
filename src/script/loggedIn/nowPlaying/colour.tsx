@@ -1,5 +1,5 @@
 import {NowPlaying} from './nowPlaying'
-import {indexMostSaturated,autoAdjustLightness} from './colourModule'
+import {indexMostSaturated,autoAdjustLightness} from './colourModule__obfu'
 const colorthief = new window.ColorThief()
 function colour(this:NowPlaying){
     const img = document.getElementById('albumArt')

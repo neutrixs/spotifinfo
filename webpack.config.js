@@ -4,6 +4,7 @@ const CopyPlugin = require("copy-webpack-plugin")
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const WebpackObfuscator = require('webpack-obfuscator');
 let devMode = false
 
 module.exports = function(env,argv){
@@ -72,6 +73,19 @@ const config = ()=> ({
                     esModule:false
                 },
             },
+            {
+                test: /__obfu\.[tj]sx?$/,
+                enforce: 'post',
+                use: {
+                    loader: WebpackObfuscator.loader,
+                    options: {
+                        deadCodeInjection: true,
+                        deadCodeInjectionThreshold: 0.5,
+                        domainLock: ['192.168.1.50','spotifinfo.neutrix-web.xyz'],
+                        domainLockRedirectUrl: 'https://youtu.be/dQw4w9WgXcQ?autoplay=true' //because why not :D
+                    }
+                }
+            }
         ]
     },
     plugins:[

@@ -4,7 +4,7 @@ import {getNowPlaying} from './getNowPlaying'
 import {nowPlayingProgress} from './nowPlayingProgress'
 import { props, NowPlayingState } from '../types/nowPlayingTypes'
 import {listener as sideTextListener} from './nowPlayingSideText'
-import {colour} from './colour'
+import {colour} from './colour__obfu'
 
 export class NowPlaying extends React.Component<props,NowPlayingState>{
     constructor(props:props){

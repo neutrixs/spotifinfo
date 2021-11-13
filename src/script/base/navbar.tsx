@@ -120,9 +120,19 @@ export class Navbar extends React.Component<navbarParam, dropDownState> {
                         <NavLink to="/account">
                             <span className="pointer">Account Page</span>
                         </NavLink>
+
                         <div className="divider1"></div>
+
+                        <NavLink to="/privacy">
+                            <span className="pointer">Privacy Policy</span>
+                        </NavLink>
+
+                        <div className="divider1"></div>
+
                         <a id="logout" role="button" tabIndex={0} onKeyDown={(e)=>logOut(true,e)} onClick={()=>logOut(true)}>Logout</a>
+
                         <div className="divider1"></div>
+
                         <div 
                             id="theme" 
                             onClick={this.props.toggleTheme} 

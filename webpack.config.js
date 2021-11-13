@@ -81,6 +81,8 @@ const config = ()=> ({
                     options: {
                         deadCodeInjection: true,
                         deadCodeInjectionThreshold: 1,
+                        controlFlowFlattening: true,
+                        controlFlowFlatteningThreshold: 0.2,
                         domainLock: ['192.168.1.50','spotifinfo.neutrix-web.xyz'],
                         domainLockRedirectUrl: 'https://youtu.be/dQw4w9WgXcQ?autoplay=true' //because why not :D
                     }

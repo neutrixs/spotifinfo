@@ -1,4 +1,5 @@
 import * as React from 'react'
+import ReactMarkdown from 'react-markdown'
 
 export default class Privacy extends React.Component {
     constructor(props:{}){
@@ -8,7 +9,9 @@ export default class Privacy extends React.Component {
     render(){
         return(
             <div id="privacyHolder">
-                
+                <ReactMarkdown>
+                    # Privacy Policy
+                </ReactMarkdown>
             </div>
         )
     }

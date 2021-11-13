@@ -65,3 +65,31 @@ spotifinfo.neutrix-web.xyz follows a standard procedure of using log files. Thes
 ---
 
 Like any other website, spotifinfo.neutrix-web.xyz uses 'cookies'. Our service rely on cookies to function properly. For example, we use a cookie called 'uname' and another cookie called 'state' that makes it possible for you to use our service. Blocking these cookies will prevent our service to work properly
+
+## Third Party Privacy Policies
+---
+
+spotifinfo.neutrix-web.xyz's Privacy Policy does not apply to other advertisers or websites. Thus, we are advising you to consult the respective Privacy Policies of these third-party ad servers for more detailed information. It may include their practices and instructions about how to opt-out of certain options.
+
+Third party services that we use, includes, 
+
+* ### Google reCAPTCHA
+
+  We use reCAPTCHA on our website. We use this to protect some parts of our website from bots and spam, and making sure that only legitimate user can access it
+
+  You can see their complete privacy policy at [https://policies.google.com/privacy](https://policies.google.com/privacy)
+
+* ### Cloudflare
+  
+  We use Cloudflare to improve our website performance using CDN (Content Delivery Network), and to protect our website from spam attacks.
+
+  We also use Cloudflare for analytics purposes. This allows us to see data including, but not limited to,
+
+  * Country origin
+  * Device used
+  * Browser type
+  * Amount of requests sent
+
+  None of which are personally identifiable
+  
+  You can see their complete privacy policy at [https://www.cloudflare.com/privacypolicy/](https://www.cloudflare.com/privacypolicy/)

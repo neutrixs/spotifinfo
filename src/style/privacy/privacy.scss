@@ -3,6 +3,12 @@ $font-dark: #dfdfdf;
 
 #privacyHolder{
     padding: 1.5em;
+    line-height: 1.5em;
+    user-select: text;
+
+    a{
+        text-decoration: underline;
+    }
 
     h1,h2,h3,h4,h5,h6{
         border-bottom: solid 0.05em $font-dark;

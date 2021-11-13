@@ -96,6 +96,17 @@ export class Navbar extends React.Component<navbarParam, dropDownState> {
         return null
     }
 
+    privacyLoggedOut(){
+        if(this.props.isLoggedOut){
+            return(
+                <NavLink to="/privacy">
+                    <span className="pages">Privacy Policy</span>
+                </NavLink>
+            )
+        }
+        return null
+    }
+
     dropdown_elements(){
         if(!this.props.isLoggedOut){
             return(
@@ -169,6 +180,7 @@ export class Navbar extends React.Component<navbarParam, dropDownState> {
                     <span className="pages" style={{marginLeft:'1.5em'}}>Home</span>
                 </NavLink>
                 {this.topTracksRouter()}
+                {this.privacyLoggedOut()}
                 {this.dropdown_elements()}
             </div>
         )

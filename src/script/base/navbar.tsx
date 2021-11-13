@@ -123,7 +123,15 @@ export class Navbar extends React.Component<navbarParam, dropDownState> {
                         <div className="divider1"></div>
                         <a id="logout" role="button" tabIndex={0} onKeyDown={(e)=>logOut(true,e)} onClick={()=>logOut(true)}>Logout</a>
                         <div className="divider1"></div>
-                        <div id="theme" onClick={this.props.toggleTheme}>
+                        <div 
+                            id="theme" 
+                            onClick={this.props.toggleTheme} 
+                            onKeyDown={e=>{
+                                e.key == 'Enter' ? this.props.toggleTheme() : null
+                            }}
+                            role="button"
+                            tabIndex={0}
+                        >
                             <span>Dark mode</span>
                             <img id="theme_check" src={checkmark} className={this.props.isDark ? '' : 'none '} />
                         </div>

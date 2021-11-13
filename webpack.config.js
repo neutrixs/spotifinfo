@@ -66,7 +66,7 @@ const config = ()=> ({
                 exclude: /node_modules/,
             },
             {
-                test: /\.(png|jpe?g|gif|jp2|webp|svg|otf)$/,
+                test: /\.(png|jpe?g|gif|jp2|webp|svg|otf|md)$/,
                 loader: 'file-loader',
                 options: {
                     name: 'assets/[contenthash].[ext]',

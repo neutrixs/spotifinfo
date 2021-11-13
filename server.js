@@ -20,7 +20,7 @@ app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 app.set('views', __dirname+'/public')
 
-app.get(/^\/(|top_tracks|account)[\/]*$/,(req,res)=>{
+app.get(/^\/(|top_tracks|account|privacy)[\/]*$/,(req,res)=>{
     const newPath = req.path.replace(/\/+/g,'/')
 
     if(req.path != newPath){

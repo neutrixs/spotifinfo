@@ -80,7 +80,7 @@ const config = ()=> ({
                     loader: WebpackObfuscator.loader,
                     options: {
                         deadCodeInjection: true,
-                        deadCodeInjectionThreshold: 0.5,
+                        deadCodeInjectionThreshold: 1,
                         domainLock: ['192.168.1.50','spotifinfo.neutrix-web.xyz'],
                         domainLockRedirectUrl: 'https://youtu.be/dQw4w9WgXcQ?autoplay=true' //because why not :D
                     }

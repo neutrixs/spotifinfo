@@ -8,7 +8,7 @@ export default class Privacy extends React.Component {
 
     render(){
         return(
-            <div id="privacyHolder">
+            <div id="privacyHolder" style={{padding:'1.5em'}}>
                 <ReactMarkdown>
                     # Privacy Policy
                 </ReactMarkdown>

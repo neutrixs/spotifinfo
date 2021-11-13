@@ -21,6 +21,28 @@ By using our website, you hereby consent to our Privacy Policy and agree to its 
 
   If you contact us directly, we may receive additional information about you such as your name, email address, phone number, the contents of the message and/or attachments you may send us, and any other information you may choose to provide.
 
+* ### Your Spotify account information
+
+  When you choose to login to our service through Spotify, we will store few information about your Spotify account, including,
+
+  * Your Spotify account ID
+
+    We store this to identify whose Spotify account these data belongs to
+
+  * Refresh token from Spotify
+
+    This is necessary to grant you a new temporary token from Spotify, which is used for authentication to Spotify
+
+  * State
+
+    State is a unique ID, which allows us to serve you the correct account credential, and not someone else's, for example.
+
+* ### Other information
+
+  * The timestamp of when these data were saved
+
+    We use this for analytics purposes. For example, it allows us to see how many people have logged in to our site in the current day, month, year, etc.
+
 ## How we use your information
 ---
 

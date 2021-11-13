@@ -1,6 +1,7 @@
 import * as React from 'react'
 import ReactMarkdown from 'react-markdown'
 import * as privacyPolicyText from './privacy.md'
+import '../../style/privacy/privacy.scss'
 
 interface states{
     textData:string
@@ -26,7 +27,7 @@ export default class Privacy extends React.Component<{},states> {
 
     render(){
         return(
-            <div id="privacyHolder" style={{padding:'1.5em'}}>
+            <div id="privacyHolder">
                 <ReactMarkdown>
                     {this.state.textData}
                 </ReactMarkdown>

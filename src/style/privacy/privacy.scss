@@ -7,6 +7,7 @@ $font-dark: #dfdfdf;
     user-select: text;
 
     a{
+        color: hsl(220,100%,75%);
         text-decoration: underline;
     }
 
@@ -14,6 +15,12 @@ $font-dark: #dfdfdf;
         border-color: $font-dark;
         border-style: solid;
         border-width: 0.05em;
+    }
+
+    &.light{
+        a{
+            color: hsl(220,100%,50%);
+        }
     }
 }
 

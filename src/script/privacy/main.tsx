@@ -7,8 +7,12 @@ interface states{
     textData:string
 }
 
-export default class Privacy extends React.Component<{},states> {
-    constructor(props:{}){
+interface props{
+    isDark:boolean
+}
+
+export default class Privacy extends React.Component<props,states> {
+    constructor(props:props){
         super(props)
 
         this.state = {
@@ -27,7 +31,12 @@ export default class Privacy extends React.Component<{},states> {
 
     render(){
         return(
-            <div id="privacyHolder">
+            <div 
+                id="privacyHolder" 
+                className={
+                    (!this.props.isDark ? 'light ' : '')
+                }
+            >
                 <ReactMarkdown>
                     {this.state.textData}
                 </ReactMarkdown>

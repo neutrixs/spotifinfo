@@ -101,7 +101,7 @@ export class RouteGenerate extends React.Component<routeGenerateParam>{
                 </Route>
                 <Route exact path="/privacy">
                     <Suspense fallback={this.pageLoading()}>
-                        <Privacy />
+                        <Privacy isDark={this.props.isDark} />
                     </Suspense>
                 </Route>
                 <Route>

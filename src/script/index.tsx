@@ -48,7 +48,7 @@ class Main extends React.Component<{},states>{
 
     toggleTheme(){
         this.setState(prevState => {
-            localStorage.setItem('isDark', (!this.state.isDark).toString())
+            localStorage.setItem('isDark', (!prevState.isDark).toString())
 
             return {
                 isDark: !prevState.isDark

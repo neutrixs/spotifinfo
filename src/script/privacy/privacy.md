@@ -27,7 +27,7 @@ By using our website, you hereby consent to our Privacy Policy and agree to its 
 
   * Your Spotify account ID
 
-    We store this to identify whose Spotify account these data belongs to
+    We store this to identify which Spotify account these data below belongs to
 
   * Refresh token from Spotify
 
@@ -35,7 +35,7 @@ By using our website, you hereby consent to our Privacy Policy and agree to its 
 
   * State
 
-    State is a unique ID, which allows us to serve you the correct account credential, and not someone else's, for example.
+    State is a unique ID, which allows us to serve you the correct account credential.
 
 * ### Other information
 
@@ -64,7 +64,7 @@ spotifinfo.neutrix-web.xyz follows a standard procedure of using log files. Thes
 ## Cookies and Web Beacons
 ---
 
-Like any other website, spotifinfo.neutrix-web.xyz uses 'cookies'. Our service rely on cookies to function properly. For example, we use a cookie called 'uname' and another cookie called 'state' that makes it possible for you to use our service. Blocking these cookies will prevent our service to work properly
+Like any other website, spotifinfo.neutrix-web.xyz uses 'cookies'. Our service rely on cookies to function properly. For example, we use a cookie called 'uname' and another cookie called 'state' that makes it possible for you to use our service. Blocking these cookies will prevent our service from working properly
 
 ## Third Party Privacy Policies
 ---

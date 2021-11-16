@@ -274,5 +274,5 @@ function HSLTRGB(hsl:HSL):rgbArray{ //https://stackoverflow.com/a/9493060/140631
 
 export {
     indexMostSaturated,
-    autoAdjustLightness,
+    autoAdjust,
 }

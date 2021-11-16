@@ -10,7 +10,7 @@ function colour(this:NowPlaying){
     const indexNo = indexMostSaturated([...palette])
     const saturatedPalette = palette[indexNo]
 
-    let finalPalette = [saturatedPalette,saturatedPalette]
+    let finalPalette:rgbArray[] = [[...saturatedPalette],[...saturatedPalette]]
     finalPalette[0] = autoAdjust(finalPalette[0],0.4,0.02)
     finalPalette[1] = autoAdjust(finalPalette[1],0.75,0.02)
 

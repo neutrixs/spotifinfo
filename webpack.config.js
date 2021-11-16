@@ -73,7 +73,7 @@ const config = ()=> ({
                     esModule:false
                 },
             },
-            {
+            (!devMode?{
                 test: /__obfu\.[tj]sx?$/,
                 enforce: 'post',
                 use: {
@@ -87,7 +87,7 @@ const config = ()=> ({
                         domainLockRedirectUrl: 'https://youtu.be/dQw4w9WgXcQ?autoplay=true' //because why not :D
                     }
                 }
-            }
+            }:{})
         ]
     },
     plugins:[

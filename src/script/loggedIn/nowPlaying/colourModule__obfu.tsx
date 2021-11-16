@@ -161,7 +161,36 @@ const autoAdjustLightness = function(rgb:number[],rangeLower:number,rangeUpper:n
  * new implementation testing below
  */
 
+type rgbArray = [number,number,number]
+const steps = [32,16,8,4,2,1]
 
+/**
+ * 
+ * @param rgb value between 0-255 [r,g,b]
+ * @param targetLightness value between 0-1 (could be float)
+ * @param tolerance percentage of tolerance (0-1)
+ */
+
+function autoAdjust(rgb:rgbArray,targetLightness:number,tolerance:number){
+    let currentStepsIndex:number = 0
+    let currentLightness:number = checkLightness(rgb)
+
+    if(currentLightness > targetLightness - tolerance && currentLightness < targetLightness + tolerance){
+        return rgb
+    }
+
+    while(currentLightness < targetLightness - tolerance || currentLightness > targetLightness + tolerance){
+        for(let i = currentStepsIndex; i < steps.length; i++){
+            const diffOriginal = targetLightness - currentLightness
+            const difference = diffOriginal < 0 ? -diffOriginal : diffOriginal
+
+            if(steps[i] < difference*100){
+                currentStepsIndex = i
+                break
+            }
+        }
+    }
+}
 
 export {
     indexMostSaturated,

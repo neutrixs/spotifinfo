@@ -178,7 +178,7 @@ const steps = [32,16,8,4,2,1,0]
  * @param tolerance percentage of tolerance (0-1)
  */
 
-function autoAdjust(rgb:rgbArray,targetLightness:number,tolerance:number){
+function autoAdjust(rgb:rgbArray,targetLightness:number,tolerance:number):rgbArray{
     let currentStepsIndex:number = 0
     let currentLightness:number = checkLightness(rgb)
     const toIncrease = currentLightness < targetLightness
@@ -201,6 +201,8 @@ function autoAdjust(rgb:rgbArray,targetLightness:number,tolerance:number){
         rgb = changeHSLLight(rgb,toIncrease ? steps[currentStepsIndex] : -steps[currentStepsIndex])
         currentLightness = checkLightness(rgb)
     }
+
+    return rgb
 }
 
 /**

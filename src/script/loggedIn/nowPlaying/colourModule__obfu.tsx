@@ -187,19 +187,23 @@ function autoAdjust(rgb:rgbArray,targetLightness:number,tolerance:number):rgbArr
         return rgb
     }
 
-    while(currentLightness < targetLightness - tolerance || currentLightness > targetLightness + tolerance){
-        for(let i = currentStepsIndex; i < steps.length; i++){
-            const diffOriginal = targetLightness - currentLightness
-            const difference = diffOriginal < 0 ? -diffOriginal : diffOriginal
-
-            if(steps[i] < difference*100){
-                currentStepsIndex = i
-                break
-            }
+    for( let i = 0; i < 100; i++){ // no while loop because it may crash
+        if(currentLightness > targetLightness - tolerance && currentLightness < targetLightness + tolerance){
+            break
         }
 
-        rgb = changeHSLLight(rgb,toIncrease ? steps[currentStepsIndex] : -steps[currentStepsIndex])
-        currentLightness = checkLightness(rgb)
+        const rgbNow:rgbArray = changeHSLLight([...rgb],toIncrease?steps[currentStepsIndex]:-steps[currentStepsIndex])
+        const lightnessNow = checkLightness(rgbNow)
+        const toIncreaseNow = lightnessNow < targetLightness
+
+        if(toIncreaseNow !== toIncrease){
+            currentStepsIndex++
+            if(steps[currentStepsIndex] == 0) break // there is no point of continuing it if it's zero
+            continue
+        }
+
+        rgb = rgbNow
+        currentLightness = lightnessNow
     }
 
     return rgb

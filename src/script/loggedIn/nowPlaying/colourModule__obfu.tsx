@@ -169,7 +169,7 @@ interface HSL{
     l:number
 }
 
-const steps = [32,16,8,4,2,1]
+const steps = [32,16,8,4,2,1,0]
 
 /**
  * 
@@ -181,6 +181,7 @@ const steps = [32,16,8,4,2,1]
 function autoAdjust(rgb:rgbArray,targetLightness:number,tolerance:number){
     let currentStepsIndex:number = 0
     let currentLightness:number = checkLightness(rgb)
+    const toIncrease = currentLightness < targetLightness
 
     if(currentLightness > targetLightness - tolerance && currentLightness < targetLightness + tolerance){
         return rgb
@@ -196,6 +197,9 @@ function autoAdjust(rgb:rgbArray,targetLightness:number,tolerance:number){
                 break
             }
         }
+
+        rgb = changeHSLLight(rgb,toIncrease ? steps[currentStepsIndex] : -steps[currentStepsIndex])
+        currentLightness = checkLightness(rgb)
     }
 }
 

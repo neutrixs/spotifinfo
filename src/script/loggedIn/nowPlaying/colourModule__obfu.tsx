@@ -158,7 +158,7 @@ const autoAdjustLightness = function(rgb:number[],rangeLower:number,rangeUpper:n
 }
 
 /**
- * new implementation testing below
+ * new implementation testing below (plus refactor of old one)
  */
 
 type rgbArray = [number,number,number]

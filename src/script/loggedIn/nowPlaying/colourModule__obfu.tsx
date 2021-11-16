@@ -162,6 +162,13 @@ const autoAdjustLightness = function(rgb:number[],rangeLower:number,rangeUpper:n
  */
 
 type rgbArray = [number,number,number]
+
+interface HSL{
+    h:number
+    s:number
+    l:number
+}
+
 const steps = [32,16,8,4,2,1]
 
 /**
@@ -190,6 +197,73 @@ function autoAdjust(rgb:rgbArray,targetLightness:number,tolerance:number){
             }
         }
     }
+}
+
+/**
+ * @param rgb value between 0-255 [r,g,b]
+ * @param value in PERCENTAGE (0-100)
+ */
+
+function changeHSLLight(rgb:rgbArray,value:number):rgbArray{
+    let hsl = RGBTHSL(rgb)
+    hsl.l += value * 0.01 // i heard somewhere that multiplying is better than dividing
+
+    return HSLTRGB(hsl)
+}
+
+function RGBTHSL(rgb:rgbArray):HSL{ //https://stackoverflow.com/a/9493060/14063158
+    const r = rgb[0]/255
+    const g = rgb[1]/255
+    const b = rgb[2]/255
+
+    var max = Math.max(r, g, b), min = Math.min(r, g, b);
+    var h, s, l = (max + min) / 2;
+
+    if(max == min){
+        h = s = 0; // achromatic
+    }else{
+        var d = max - min;
+        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+        switch(max){
+            case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+            case g: h = (b - r) / d + 2; break;
+            case b: h = (r - g) / d + 4; break;
+        }
+        h /= 6;
+    }
+
+    return {
+        h,s,l
+    }
+}
+
+function HSLTRGB(hsl:HSL):rgbArray{ //https://stackoverflow.com/a/9493060/14063158
+    var r:number, g:number, b:number
+
+    const h = hsl.h
+    const s = hsl.s
+    const l = hsl.l
+
+    if(s == 0){
+        r = g = b = l; // achromatic
+    }else{
+        var hue2rgb = function hue2rgb(p:number, q:number, t:number){
+            if(t < 0) t += 1;
+            if(t > 1) t -= 1;
+            if(t < 1/6) return p + (q - p) * 6 * t;
+            if(t < 1/2) return q;
+            if(t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+            return p;
+        }
+
+        var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+        var p = 2 * l - q;
+        r = hue2rgb(p, q, h + 1/3);
+        g = hue2rgb(p, q, h);
+        b = hue2rgb(p, q, h - 1/3);
+    }
+
+    return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
 }
 
 export {

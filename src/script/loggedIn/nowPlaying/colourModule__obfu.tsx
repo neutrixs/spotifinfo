@@ -157,6 +157,12 @@ const autoAdjustLightness = function(rgb:number[],rangeLower:number,rangeUpper:n
     return rgb
 }
 
+/**
+ * new implementation testing below
+ */
+
+
+
 export {
     indexMostSaturated,
     autoAdjustLightness,

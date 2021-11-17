@@ -1,5 +1,5 @@
 import * as React from 'react';
-import '../../../style/top/topArtists.scss'
+import './topArtists.scss'
 import getTopArtists from './getTopArtists'
 
 interface props{

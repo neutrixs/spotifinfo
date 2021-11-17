@@ -1,4 +1,4 @@
-import {NowPlaying} from './nowPlaying'
+import {NowPlaying} from '../nowPlaying'
 
 let listener = function(this:NowPlaying){
     const emSize = parseFloat(window.getComputedStyle(document.body).getPropertyValue('font-size'))

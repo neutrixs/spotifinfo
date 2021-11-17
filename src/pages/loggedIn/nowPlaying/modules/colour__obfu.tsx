@@ -1,4 +1,4 @@
-import {NowPlaying} from './nowPlaying'
+import {NowPlaying} from '../nowPlaying'
 import {indexMostSaturated,autoAdjust} from './colourModule__obfu'
 const colorthief = new window.ColorThief()
 

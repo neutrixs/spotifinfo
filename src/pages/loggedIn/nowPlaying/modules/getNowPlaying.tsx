@@ -1,7 +1,7 @@
-import {getToken} from '../../base/functions'
+import {getToken} from '../../../base/functions'
 import * as React from 'react';
-import { spotifyCurrentlyPlayingType } from '../types/spotifyCurrentlyPlaying'
-import {NowPlaying} from './nowPlaying'
+import { spotifyCurrentlyPlayingType } from '../../types/spotifyCurrentlyPlaying'
+import {NowPlaying} from '../nowPlaying'
 async function getNowPlaying(this:NowPlaying){
     const res = await fetch('https://api.spotify.com/v1/me/player/currently-playing',{
         method:'GET',

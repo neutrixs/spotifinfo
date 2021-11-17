@@ -1,5 +1,5 @@
-import {NowPlaying} from './nowPlaying'
-import {NowPlayingState} from '../types/nowPlayingTypes'
+import {NowPlaying} from '../nowPlaying'
+import {NowPlayingState} from '../../types/nowPlayingTypes'
 function nowPlayingProgress(this:NowPlaying){
     if(!this.state.nowPlayingProgress.isPlaying) return
 

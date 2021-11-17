@@ -1,5 +1,5 @@
 import * as React from 'react';
-import '../../style/top/selector.scss'
+import './selector.scss'
 
 interface props{
     selectedType:0|1

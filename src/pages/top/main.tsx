@@ -1,6 +1,6 @@
 import * as React from 'react';
-import '../../style/top/main.scss'
-import Selector from './selector'
+import './main.scss'
+import Selector from './selector/selector'
 import TopTracks from './topTracks/topTracks'
 import TopArtists from './topArtists/topArtists'
 import {ReCaptchaBadge} from '../base/reCaptchaBadge'

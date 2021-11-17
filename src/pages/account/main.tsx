@@ -1,5 +1,5 @@
 import * as React from 'react';
-import '../../style/account/main.scss'
+import './main.scss'
 import {ReCaptchaBadge} from '../base/reCaptchaBadge'
 import getAccountInfo from './getAccountInfo'
 

@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom';
 import { Navbar } from './base/ts/navbar'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { RouteGenerate } from './base/ts/routeGenerate'
-import '../style/base/base.scss'
+import './base/css/base.scss'
 
 declare global{
     interface Window{

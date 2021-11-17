@@ -1,7 +1,7 @@
 import * as React from 'react';
-import '../css/navbar.scss'
+import './navbar.scss'
 import { NavLink } from 'react-router-dom'
-import {getProfile, logOut} from './functions'
+import {getProfile, logOut} from '../functions'
 import LoginButton from '../../loggedOut/loginButton'
 import * as defaultProfilePic from '../../svg/profile_pic.svg'
 import * as dropdownIcon from '../../svg/dropdown.svg'

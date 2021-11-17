@@ -1,8 +1,8 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Navbar } from './base/ts/navbar'
+import { Navbar } from './base/navbar/navbar'
 import { BrowserRouter as Router } from 'react-router-dom'
-import { RouteGenerate } from './base/ts/routeGenerate'
+import { RouteGenerate } from './base/routeGenerate'
 import './base.scss'
 
 declare global{

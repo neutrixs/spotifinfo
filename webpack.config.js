@@ -23,7 +23,7 @@ const mangleNormal = {
 const config = ()=> ({
     mode: devMode ? "development" : "production",
     entry: {
-        "index":'./src/script/index.tsx'
+        "index":'./src/pages/index.tsx'
     },
     output: {
         filename:"assets/[contenthash].js",

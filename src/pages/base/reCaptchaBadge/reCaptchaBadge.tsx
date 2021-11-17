@@ -1,5 +1,5 @@
 import * as React from 'react';
-import '../../style/base/reCaptchaBadge.scss'
+import './reCaptchaBadge.scss'
 
 interface props {
     isDark:boolean

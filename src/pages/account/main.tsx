@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './main.scss'
-import {ReCaptchaBadge} from '../base/reCaptchaBadge'
+import {ReCaptchaBadge} from '../base/reCaptchaBadge/reCaptchaBadge'
 import getAccountInfo from './getAccountInfo'
 
 interface states{

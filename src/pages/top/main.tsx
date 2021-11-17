@@ -3,7 +3,7 @@ import './main.scss'
 import Selector from './selector/selector'
 import TopTracks from './topTracks/topTracks'
 import TopArtists from './topArtists/topArtists'
-import {ReCaptchaBadge} from '../base/reCaptchaBadge'
+import {ReCaptchaBadge} from '../base/reCaptchaBadge/reCaptchaBadge'
 
 type selectedType = 0|1 //0 is tracks, 1 is artists
 type selectedRange = 0|1|2 //0 is all time, 1 is 6 months, 2 is 1 month

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { NowPlaying } from './nowPlaying/nowPlaying';
 import './main.scss'
-import { ReCaptchaBadge } from '../base/reCaptchaBadge'
+import { ReCaptchaBadge } from '../base/reCaptchaBadge/reCaptchaBadge'
 import { RecentlyPlayed } from './recentlyPlayed/recentlyPlayed'
 
 interface states{

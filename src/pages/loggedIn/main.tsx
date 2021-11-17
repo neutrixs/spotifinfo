@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { NowPlaying } from '../../script/loggedIn/nowPlaying/nowPlaying';
-import '../../style/loggedIn/main.scss'
+import './main.scss'
 import { ReCaptchaBadge } from '../base/reCaptchaBadge'
 import { RecentlyPlayed } from '../../script/loggedIn/recentlyPlayed/recentlyPlayed'
 

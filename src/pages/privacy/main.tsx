@@ -1,7 +1,7 @@
 import * as React from 'react'
 import ReactMarkdown from 'react-markdown'
 import * as privacyPolicyText from './privacy.md'
-import '../../style/privacy/privacy.scss'
+import './privacy.scss'
 
 interface states{
     textData:string

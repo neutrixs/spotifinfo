@@ -15,6 +15,8 @@ if(process.argv.includes('--devmode')) {
     app.use(express.static(__dirname+'/public'))
 }
 
+app.disable('view cache')
+
 app.use(cookie_parser())
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');

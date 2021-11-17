@@ -1,5 +1,5 @@
 import * as React from 'react';
-import '../../style/base/404.scss'
+import './404.scss'
 
 export default class Page404 extends React.Component{
     constructor(props:{}){

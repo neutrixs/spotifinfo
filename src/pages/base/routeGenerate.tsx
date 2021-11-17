@@ -5,7 +5,7 @@ const LoggedInMain = lazy(()=>import('../loggedIn/main'))
 const LoggedOutMain  = lazy(()=>import('../loggedOut/main'))
 const TopPage = lazy(()=>import('../top/main'))
 const AccountPage = lazy(()=>import('../account/main'))
-const Page404 = lazy(()=>import('./404'))
+const Page404 = lazy(()=>import('../404/404'))
 const Privacy = lazy(()=>import('../privacy/main'))
 
 interface routeGenerateParam{

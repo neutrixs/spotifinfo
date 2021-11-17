@@ -1,6 +1,6 @@
 import * as React from 'react';
 import getTopTracks from './getTopTracks';
-import '../../../style/top/topTracks.scss'
+import './topTracks.scss'
 
 interface props{
     selectedType:0|1

@@ -1,7 +1,7 @@
 import * as React from 'react';
-import '../../style/loggedOut/loginNavbar.scss'
-import * as spotifyLogo from '../../img/spotify_logo.png'
-import * as spotifyLogoForLight from '../../img/Spotify_Icon_RGB_Black.png'
+import './loginButton.scss'
+import * as spotifyLogo from '../../../img/spotify_logo.png'
+import * as spotifyLogoForLight from '../../../img/Spotify_Icon_RGB_Black.png'
 
 interface props{
     isDark:boolean

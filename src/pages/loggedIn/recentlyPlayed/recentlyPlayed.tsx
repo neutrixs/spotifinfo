@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {getToken} from '../../base/functions'
-import '../../../style/loggedIn/recentlyPlayed.scss'
+import './recentlyPlayed.scss'
 import { spotifyRecentlyPlayedType, artists } from '../types/spotifyRecentlyPlayed'
 
 interface props{

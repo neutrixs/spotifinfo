@@ -2,7 +2,7 @@ import * as React from 'react';
 import { NowPlaying } from '../../script/loggedIn/nowPlaying/nowPlaying';
 import './main.scss'
 import { ReCaptchaBadge } from '../base/reCaptchaBadge'
-import { RecentlyPlayed } from '../../script/loggedIn/recentlyPlayed/recentlyPlayed'
+import { RecentlyPlayed } from './recentlyPlayed/recentlyPlayed'
 
 interface states{
     additionalPageStyle:string,

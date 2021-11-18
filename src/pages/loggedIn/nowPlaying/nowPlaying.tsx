@@ -6,6 +6,8 @@ import { props, NowPlayingState } from '../types/nowPlayingTypes'
 import {listener as sideTextListener} from './modules/nowPlayingSideText'
 import {colour} from './modules/colour__obfu'
 
+const nowPlayingTimeoutDuration = 600000 // because rip my api key if i don't do this
+
 export class NowPlaying extends React.Component<props,NowPlayingState>{
     constructor(props:props){
         super(props)
@@ -32,6 +34,7 @@ export class NowPlaying extends React.Component<props,NowPlayingState>{
 
     _sideTextListener = sideTextListener.bind(this)
     _colour = colour.bind(this)
+    _timeout = setTimeout(this.stopNowPlayingInterval.bind(this),nowPlayingTimeoutDuration)
 
     componentDidMount(){
         this.getNowPlaying()
@@ -57,8 +60,8 @@ export class NowPlaying extends React.Component<props,NowPlayingState>{
     }
 
     componentWillUnmount(){
-        clearInterval(this.state.nowPlayingInterval)
-        clearInterval(this.state.nowPlayingProgressInterval)
+        this.stopNowPlayingInterval()
+        clearTimeout(this._timeout)
 
         window.removeEventListener('resize',this._sideTextListener)
         const img = document.getElementById('albumArt') as HTMLImageElement
@@ -71,6 +74,11 @@ export class NowPlaying extends React.Component<props,NowPlayingState>{
 
     async getNowPlaying(){
         await getNowPlaying.bind(this)()
+    }
+
+    stopNowPlayingInterval(){
+        clearInterval(this.state.nowPlayingInterval)
+        clearInterval(this.state.nowPlayingProgressInterval)
     }
 
     setPalette(dark:boolean):string{

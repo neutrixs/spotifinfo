@@ -11,7 +11,13 @@ const getToken = async function(){
         const token = await window.grecaptcha.execute('6Ld9VmMcAAAAAK48XrvY1T8vcjjNBHN4tkRipg5C',{action:'getToken'})
 
         let res
-        res = await fetch('/gettoken?reCAPTCHAToken='+encodeURIComponent(token))
+        res = await fetch('/gettoken',{
+            method:'POST',
+            headers:{
+                'Content-Type':'application/x-www-form-urlencoded'
+            },
+            body:'reCAPTCHAToken='+encodeURIComponent(token)
+        })
         res = await res.json()
 
         if(res.relogback){

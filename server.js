@@ -45,9 +45,6 @@ app.get(/^\//,(req,res)=>{
         case '/callback':
             require('./dynamic/callback')(req,res,db,data)
         return
-        case '/gettoken':
-            require('./dynamic/gettoken')(req,res,db,data)
-        return
         case '/proxy':
             require('./dynamic/proxy/proxy')(req,res)
         return

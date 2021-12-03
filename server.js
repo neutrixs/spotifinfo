@@ -18,6 +18,7 @@ if(process.argv.includes('--devmode')) {
 app.disable('view cache')
 
 app.use(cookie_parser())
+app.use(express.urlencoded({extended:true}))
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 app.set('views', __dirname+'/public')
@@ -52,6 +53,9 @@ app.get(/^\//,(req,res)=>{
         return
     }
     res.status(404).render('meaningOfLife.html')
+})
+app.post('/gettoken',(req,res)=>{
+    require('./dynamic/gettoken')(req,res,db,data)
 })
 app.post('/getdata',(req,res)=>{
     require('./dynamic/getdata')(req,res,data)

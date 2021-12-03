@@ -10,9 +10,11 @@ const relogback = {
 
 async function gettoken(req,res,db,data){
 
-    if(!req.query.reCAPTCHAToken) return res.status(400).send('Bad Request')
+    if(!req.query.reCAPTCHAToken && !req.body.reCAPTCHAToken) return res.status(400).send('Bad Request')
 
-    const captchaCheck = await checkReCAPTCHA(req.query.reCAPTCHAToken,req)
+    const reCAPTCHAToken = req.body.reCAPTCHAToken || req.query.reCAPTCHAToken
+
+    const captchaCheck = await checkReCAPTCHA(reCAPTCHAToken,req)
     if(captchaCheck == null){
         res.status(400).send('Bad Request')
         return

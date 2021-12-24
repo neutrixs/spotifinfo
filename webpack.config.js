@@ -118,7 +118,8 @@ const config = ()=> ({
         historyApiFallback:true,
         allowedHosts: ['192.168.1.50','localhost'],
         proxy:{
-            '/gettoken':'http://192.168.1.50'
+            '/gettoken':'http://192.168.1.50',
+            '/login':'http://192.168.1.50'
         }
     }
 })

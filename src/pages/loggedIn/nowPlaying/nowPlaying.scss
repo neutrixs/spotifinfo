@@ -39,10 +39,13 @@
             cursor: pointer;
             margin-bottom: 0;
             overflow-wrap:break-word;
+            width: max-content;
         }
         #artists{
             margin-top: 0.5em;
             overflow-wrap: break-word;
+            width: max-content;
+            max-width: 100%;
         }
         #progress{
             font-family: 'JetBrains Mono', monospace;

@@ -1,12 +1,13 @@
 import {NowPlaying} from '../nowPlaying'
 import {indexMostSaturated,autoAdjust} from './colourModule__obfu'
-const colorthief = new window.ColorThief()
+import {default as colorThiefModule} from 'colorthief'
+const colorThief = new colorThiefModule()
 
 type rgbArray = [number,number,number]
 
 function colour(this:NowPlaying){
-    const img = document.getElementById('albumArt')
-    const palette:rgbArray[] = colorthief.getPalette(img,5)
+    const img = document.getElementById('albumArt') as HTMLImageElement
+    const palette:rgbArray[] = colorThief.getPalette(img,5)
     const indexNo = indexMostSaturated([...palette])
     const saturatedPalette = palette[indexNo]
 

@@ -30,6 +30,7 @@ const config = ()=> ({
         path: path.resolve(__dirname,"public"),
         clean:true
     },
+    target: ['web','es6'],
     optimization: {
         minimizer:[
             new TerserPlugin({

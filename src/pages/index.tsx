@@ -1,83 +1,38 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import * as React from 'react'
+import { useState, useEffect } from 'react'
+import { render } from 'react-dom'
+import { BrowserRouter } from 'react-router-dom'
+
 import { Navbar } from './base/navbar/navbar'
-import { BrowserRouter as Router } from 'react-router-dom'
-import { RouteGenerate } from './base/routeGenerate'
+
 import './base.scss'
 
-declare global{
-    interface Window{
-        currentFetch:boolean,
-        grecaptcha:any,
-        ColorThief:any
-    }
-}
-window.currentFetch = false
+function Main() {
+    const isLoggedOut = checkIsLoggedOut()
 
-function isLoggedOut():boolean{
+    const [isDark, setIsDark] = useState<boolean>(checkIsDark())
+
+    useEffect(() => {
+        localStorage.setItem('isDark', isDark.toString())
+    }, [])
+
+    return (
+        <BrowserRouter>
+            <div className={'fake ' + (!isDark ? 'fakeLight' : '')}>
+                
+            </div>
+        </BrowserRouter>
+    )
+}
+
+function checkIsDark(): boolean {
+    const dark = localStorage.getItem('isDark')
+
+    return dark == 'true' ? true : dark == 'false' ? false : true
+}
+
+function checkIsLoggedOut(): boolean {
     return document.cookie.indexOf('state=') == -1 || document.cookie.indexOf('uname=') == -1
 }
 
-interface states{
-    isDark:boolean
-}
-
-class Main extends React.Component<{},states>{
-    constructor(props:{}){
-        super(props)
-
-        this.state = {
-            /**
-             * determine if the theme is dark (defaults to dark theme if it doesn't exist)
-             */
-            isDark: (():boolean=>{
-                const isDark = localStorage.getItem('isDark')
-
-                if(isDark != 'true' && isDark != 'false') return true
-
-                return isDark == 'true'
-            })()
-        }
-
-        this.toggleTheme = this.toggleTheme.bind(this)
-    }
-
-    componentDidMount(){
-        localStorage.setItem('isDark', this.state.isDark.toString())
-    }
-
-    toggleTheme(){
-        this.setState(prevState => {
-            localStorage.setItem('isDark', (!prevState.isDark).toString())
-
-            return {
-                isDark: !prevState.isDark
-            }
-        })
-    }
-
-    render(){
-        return(
-            <div 
-                className={
-                    'fake '+
-                    (!this.state.isDark ? 'fakeLight ' : '')
-                }
-            >
-                <Router>
-                    <Navbar 
-                        isLoggedOut={isLoggedOut()}
-                        isDark={this.state.isDark}
-                        toggleTheme={this.toggleTheme}
-                    />
-                    <RouteGenerate 
-                        isLoggedOut={isLoggedOut()} 
-                        isDark={this.state.isDark}
-                    />
-                </Router>
-            </div>
-        )
-    }
-}
-
-ReactDOM.render(<Main />,document.getElementById('root'))
+render(<Main />, document.getElementById('root'))

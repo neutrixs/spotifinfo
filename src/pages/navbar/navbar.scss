@@ -1,0 +1,34 @@
+$navbar-dark: #505050;
+$navbar-light: #e1e1e1;
+
+#navbar {
+    background-color: $navbar-dark;
+    box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.6);
+
+    top: 0;
+    height: 4rem;
+    position: sticky;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+
+    &.light {
+        background-color: $navbar-light;
+    }
+
+    a {
+        color: inherit !important;
+        text-decoration: inherit !important;
+    }
+}
+
+#leftNavbar {
+    display: flex;
+    flex-direction: row;
+    padding: 0 0.5rem;
+
+    span {
+        margin: 0 1rem;
+    }
+}

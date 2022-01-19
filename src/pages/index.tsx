@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { render } from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
 
-import { Navbar } from './base/navbar/navbar'
+import Navbar from './navbar/navbar'
 
 import './base.scss'
 
@@ -11,6 +11,9 @@ function Main() {
     const isLoggedOut = checkIsLoggedOut()
 
     const [isDark, setIsDark] = useState<boolean>(checkIsDark())
+    const toggleTheme = () => {
+        setIsDark(!isDark)
+    }
 
     useEffect(() => {
         localStorage.setItem('isDark', isDark.toString())
@@ -19,7 +22,7 @@ function Main() {
     return (
         <BrowserRouter>
             <div className={'fake ' + (!isDark ? 'fakeLight' : '')}>
-                
+                <Navbar isLoggedOut={isLoggedOut} toggleTheme={toggleTheme} isDark={isDark} />
             </div>
         </BrowserRouter>
     )

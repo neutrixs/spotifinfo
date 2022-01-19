@@ -1,6 +1,8 @@
 import * as React from 'react'
 import { NavLink } from 'react-router-dom'
 
+import NavbarRight from './navbarRight'
+
 import './navbar.scss'
 
 interface props {
@@ -39,6 +41,7 @@ export default function Navbar({ isLoggedOut, toggleTheme, isDark }: props) {
                 {privacyPolicyText()}
                 {topTracksText()}
             </div>
+            {!isLoggedOut ? <NavbarRight isDark={isDark} toggleTheme={toggleTheme} /> : null}
         </div>
     )
 }

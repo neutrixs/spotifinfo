@@ -1,0 +1,19 @@
+#navbarRight {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 1.5em;
+    cursor: pointer;
+
+    img:first-child {
+        height: 2em;
+        border-radius: 1em;
+        margin-right: 1em;
+    }
+
+    img:last-child {
+        height: 1em;
+        transition-property: transform;
+        transition-duration: 100ms;
+    }
+}

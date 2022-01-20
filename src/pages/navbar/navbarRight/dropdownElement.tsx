@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 import './dropdownElement.scss'
 
-import * as checkmark from '../../svg/check.svg'
+import * as checkmark from '../../../svg/check.svg'
 
 interface props {
     isDark: boolean

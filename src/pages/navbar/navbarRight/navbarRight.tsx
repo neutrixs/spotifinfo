@@ -4,9 +4,9 @@ import { NavLink } from 'react-router-dom'
 
 import DropdownElement from './dropdownElement'
 
-import * as defaultProfilePic from '../../svg/profile_pic.svg'
-import * as dropdownIconForDark from '../../svg/dropdown.svg'
-import * as dropdownIconForLight from '../../svg/dropdown_for_light.svg'
+import * as defaultProfilePic from '../../../svg/profile_pic.svg'
+import * as dropdownIconForDark from '../../../svg/dropdown.svg'
+import * as dropdownIconForLight from '../../../svg/dropdown_for_light.svg'
 
 import './navbarRight.scss'
 

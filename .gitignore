@@ -81,3 +81,5 @@ ssh/id_rsa.pub
 SECRET/reCAPTCHASecret.txt
 public/
 *.ignore.*
+cwebp.exe
+dwebp.exe

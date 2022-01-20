@@ -1,12 +1,12 @@
 {
     "compilerOptions": {
-      "outDir": "./public",
-      "noImplicitAny": true,
-      "module": "esnext",
-      "target": "es6",
-      "jsx": "react",
-      "allowJs": true,
-      "moduleResolution": "node"
+        "outDir": "./public",
+        "noImplicitAny": true,
+        "module": "esnext",
+        "target": "es6",
+        "jsx": "react",
+        "allowJs": true,
+        "moduleResolution": "node"
     },
-    "include":["src","index.d.ts"]
-  }
+    "include": ["src/pages/index.tsx", "index.d.ts"]
+}

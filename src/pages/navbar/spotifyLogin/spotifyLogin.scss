@@ -1,0 +1,14 @@
+#login {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-right: 1.5em;
+    cursor: pointer;
+
+    img {
+        width: 2em;
+        margin: 0 1em;
+    }
+}

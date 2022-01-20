@@ -2,6 +2,7 @@ import * as React from 'react'
 import { NavLink } from 'react-router-dom'
 
 import NavbarRight from './navbarRight/navbarRight'
+import SpotifyLogin from './spotifyLogin/spotifyLogin'
 
 import './navbar.scss'
 
@@ -41,7 +42,7 @@ export default function Navbar({ isLoggedOut, toggleTheme, isDark }: props) {
                 {privacyPolicyText()}
                 {topTracksText()}
             </div>
-            {!isLoggedOut ? <NavbarRight isDark={isDark} toggleTheme={toggleTheme} /> : null}
+            {!isLoggedOut ? <NavbarRight isDark={isDark} toggleTheme={toggleTheme} /> : <SpotifyLogin isDark={isDark} />}
         </div>
     )
 }

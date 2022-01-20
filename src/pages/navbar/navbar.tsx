@@ -33,7 +33,7 @@ export default function Navbar({ isLoggedOut, toggleTheme, isDark }: props) {
     }
 
     return (
-        <div id="navbar">
+        <div id="navbar" className={!isDark ? 'light' : ''}>
             <div id="leftNavbar">
                 <NavLink to="/">
                     <span>Home</span>

@@ -23,5 +23,26 @@ $navbar-light: #e1e1e1;
     span,
     p {
         margin: 0.5em 0;
+        width: max-content;
+    }
+
+    #logOut {
+        cursor: pointer;
+    }
+
+    #darkmode {
+        cursor: pointer;
+
+        p {
+            vertical-align: middle;
+            display: inline-block;
+        }
+
+        img {
+            width: 1em;
+            margin-left: 0.5em;
+            vertical-align: middle;
+            display: inline-block;
+        }
     }
 }

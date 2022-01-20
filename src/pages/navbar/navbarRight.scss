@@ -1,8 +1,15 @@
+$navbar-dark: #505050;
+$navbar-light: #e1e1e1;
+
 #navbarRight {
+    position: relative;
+    margin-right: 1.5em;
+}
+
+#nonFloating {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-right: 1.5em;
     cursor: pointer;
 
     img:first-child {
@@ -11,9 +18,33 @@
         margin-right: 1em;
     }
 
-    img:last-child {
+    img:nth-child(2) {
         height: 1em;
         transition-property: transform;
         transition-duration: 100ms;
+    }
+}
+
+#dropdownElement {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    padding: 0.5em 1em;
+    right: 0;
+    top: 3.5em;
+
+    background-color: $navbar-dark;
+    border-radius: 0.5em;
+    box-shadow: 0.1em 0.1em 0.2em rgba(0, 0, 0, 0.6);
+
+    cursor: initial;
+
+    &.light {
+        background-color: $navbar-light;
+    }
+
+    span,
+    p {
+        margin: 0;
     }
 }

@@ -12,6 +12,11 @@ interface props {
     isDark: boolean
 }
 
+interface dropdownElementProps {
+    isDark: boolean
+    toggleTheme: () => void
+}
+
 export default function NavbarRight({ toggleTheme, isDark }: props) {
     const [profilePicURL, setProfilePicURL] = useState<string>('')
     const [isOpened, setIsOpened] = useState<boolean>(false)
@@ -25,14 +30,23 @@ export default function NavbarRight({ toggleTheme, isDark }: props) {
     }
 
     return (
-        <div id="navbarRight" tabIndex={0} role="button" onClick={onClick} onKeyPress={onClickKeyboard}>
-            <img src={profilePicURL ? profilePicURL : defaultProfilePic} />
-            <img
-                src={isDark ? dropdownIconForDark : dropdownIconForLight}
-                style={{
-                    transform: isOpened ? 'rotate(180deg)' : 'initial',
-                }}
-            />
+        <div id="navbarRight">
+            <div id="nonFloating" tabIndex={0} role="button" onClick={onClick} onKeyPress={onClickKeyboard}>
+                <img src={profilePicURL ? profilePicURL : defaultProfilePic} />
+                <img
+                    src={isDark ? dropdownIconForDark : dropdownIconForLight}
+                    style={{
+                        transform: isOpened ? 'rotate(180deg)' : 'initial',
+                    }}
+                />
+            </div>
+            {isOpened ? <DropdownElement isDark={isDark} toggleTheme={toggleTheme} /> : null}
         </div>
+    )
+}
+
+function DropdownElement({ isDark, toggleTheme }: dropdownElementProps) {
+    return (
+        <div id="dropdownElement"></div>
     )
 }

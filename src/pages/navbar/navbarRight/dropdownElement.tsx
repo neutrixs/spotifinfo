@@ -1,6 +1,8 @@
 import * as React from 'react'
 import { NavLink } from 'react-router-dom'
 
+import logout from '../../logout'
+
 import './dropdownElement.scss'
 
 import * as checkmark from '../../../svg/check.svg'
@@ -11,6 +13,11 @@ interface props {
 }
 
 export default function DropdownElement({ isDark, toggleTheme }: props) {
+    function darkModeOnKeyPress(e: React.KeyboardEvent<HTMLDivElement>) {
+        if (e.key !== 'Enter') return
+        toggleTheme()
+    }
+
     return (
         <div id="dropdownElement" className={!isDark ? 'light' : ''}>
             <NavLink to="/account">
@@ -19,11 +26,20 @@ export default function DropdownElement({ isDark, toggleTheme }: props) {
             <NavLink to="/privacy">
                 <p>Privacy Policy</p>
             </NavLink>
-            {
-                //TODO: add logout function
-            }
-            <p id="logOut">Logout</p>
-            <div id="darkmode" onClick={toggleTheme}>
+            <p
+                id="logOut"
+                role="button"
+                tabIndex={0}
+                onClick={() => {
+                    logout(true)
+                }}
+                onKeyPress={e => {
+                    logout(true, e)
+                }}
+            >
+                Logout
+            </p>
+            <div id="darkmode" role="button" tabIndex={0} onClick={toggleTheme} onKeyPress={darkModeOnKeyPress}>
                 <p>Dark Mode</p>
                 {isDark ? <img src={checkmark} /> : null}
             </div>

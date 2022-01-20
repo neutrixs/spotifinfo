@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { NavLink } from 'react-router-dom'
 
-import NavbarRight from './navbarRight'
+import NavbarRight from './navbarRight/navbarRight'
 
 import './navbar.scss'
 

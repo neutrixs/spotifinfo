@@ -1,5 +1,8 @@
 import * as React from 'react'
 import { useState } from 'react'
+import { NavLink } from 'react-router-dom'
+
+import DropdownElement from './dropdownElement'
 
 import * as defaultProfilePic from '../../svg/profile_pic.svg'
 import * as dropdownIconForDark from '../../svg/dropdown.svg'
@@ -10,11 +13,6 @@ import './navbarRight.scss'
 interface props {
     toggleTheme: () => void
     isDark: boolean
-}
-
-interface dropdownElementProps {
-    isDark: boolean
-    toggleTheme: () => void
 }
 
 export default function NavbarRight({ toggleTheme, isDark }: props) {
@@ -42,11 +40,5 @@ export default function NavbarRight({ toggleTheme, isDark }: props) {
             </div>
             {isOpened ? <DropdownElement isDark={isDark} toggleTheme={toggleTheme} /> : null}
         </div>
-    )
-}
-
-function DropdownElement({ isDark, toggleTheme }: dropdownElementProps) {
-    return (
-        <div id="dropdownElement"></div>
     )
 }

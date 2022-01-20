@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { NavLink } from 'react-router-dom'
 
-import logout from '../../logout'
+import logout from '../../other/logout'
 
 import './dropdownElement.scss'
 

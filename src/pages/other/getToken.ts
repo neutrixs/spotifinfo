@@ -38,9 +38,9 @@ export default async function getToken() {
             body: postParam.toString(),
         })
 
-        const dataResponse = await rawResponse.json() as response
+        const dataResponse = (await rawResponse.json()) as response
 
-        if(dataResponse.relogback){
+        if (dataResponse.relogback) {
             logout(false)
             return
         }

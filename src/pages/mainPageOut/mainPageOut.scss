@@ -1,0 +1,21 @@
+#mainPageOut {
+    margin: 0 10em;
+
+    &.mobile {
+        margin: 0;
+    }
+
+    .content {
+        padding: 1.5em;
+
+        img {
+            width: 20em;
+            vertical-align: top;
+            margin-right: 1.5em;
+        }
+
+        div {
+            display: inline-block;
+        }
+    }
+}

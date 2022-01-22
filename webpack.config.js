@@ -10,8 +10,10 @@ let devMode = false
 module.exports = function(env,argv){
     console.log(argv)
     devMode = argv.mode == "development"
-    console.log(devMode)
-    return config()
+
+    const nameOrContentHash = devMode ? '[name]' : '[contenthash]'
+
+    return config(nameOrContentHash)
 }
 
 const mangleNormal = {
@@ -20,13 +22,13 @@ const mangleNormal = {
     }
 }
 
-const config = ()=> ({
+const config = (nameOrContentHash)=> ({
     mode: devMode ? "development" : "production",
     entry: {
         "index":'./src/pages/index.tsx'
     },
     output: {
-        filename:"assets/[contenthash].js",
+        filename:`assets/${nameOrContentHash}.js`,
         path: path.resolve(__dirname,"public"),
         clean:true
     },
@@ -70,7 +72,7 @@ const config = ()=> ({
                 test: /\.(png|jpe?g|gif|jp2|webp|svg|otf|md)$/,
                 loader: 'file-loader',
                 options: {
-                    name: 'assets/[contenthash].[ext]',
+                    name: `assets/${nameOrContentHash}.[ext]`,
                     esModule:false
                 },
             },
@@ -106,7 +108,7 @@ const config = ()=> ({
             publicPath:'/'
         }),
         new MiniCssExtractPlugin({
-            filename:'assets/[contenthash].css'
+            filename:`assets/${nameOrContentHash}.css`
         })
     ],
     resolve: {
@@ -115,7 +117,7 @@ const config = ()=> ({
     devServer: {
         host:'192.168.1.50',
         static: './public',
-        hot:false,
+        hot:true,
         historyApiFallback:true,
         allowedHosts: ['192.168.1.50','localhost'],
         proxy:{

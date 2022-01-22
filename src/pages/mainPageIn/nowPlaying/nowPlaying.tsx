@@ -19,11 +19,11 @@ export default function NowPlaying({ isDark, isMobile }: props) {
     const [albumURL, setAlbumURL] = useState<string>('')
     const [progress, setProgress] = useState<string>('')
     const [sideText, setSideText] = useState<boolean>(sideTextDetectBoolean(isMobile))
+    const [isPlaying, setIsPlaying] = useState<boolean>(false)
     const [songTitle, setSongTitle] = useState<string>('')
     const [showNowPlaying, setShowNowPlaying] = useState<boolean>(false)
     const [backgroundColour, setBackgroundColour] = useState<string>('')
 
-    const [isPlaying, setIsPlaying] = useState<boolean>(false)
     const [currentMs, setCurrentMs] = useState<number>(0)
     const [totalMs, setTotalMs] = useState<number>(0)
 

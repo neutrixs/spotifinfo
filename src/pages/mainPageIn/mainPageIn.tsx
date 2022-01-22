@@ -27,7 +27,7 @@ export default function MainPageIn({ isDark }: props) {
     }
 
     return (
-        <div id="mainPageIn">
+        <div id="mainPageIn" className={isMobile ? 'mobile ' : ''}>
             <div className="content">
                 <NowPlaying isDark={isDark} isMobile={isMobile} />
             </div>

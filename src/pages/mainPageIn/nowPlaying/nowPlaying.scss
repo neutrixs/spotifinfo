@@ -17,4 +17,16 @@
         margin-top: 0;
         font-weight: 600;
     }
+
+    #albumArt {
+        display: inline-block;
+        margin-right: 1.5em;
+        width: 20em;
+        height: 20em;
+        box-shadow: 0 0.2em 0.4em rgba(0, 0, 0, 0.6);
+
+        img {
+            display: block;
+        }
+    }
 }

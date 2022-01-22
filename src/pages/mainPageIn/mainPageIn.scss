@@ -1,5 +1,7 @@
 #mainPageIn {
     margin: 0 10em;
+    transition-property: margin;
+    transition-duration: 300ms;
 
     &.mobile {
         margin: 0;

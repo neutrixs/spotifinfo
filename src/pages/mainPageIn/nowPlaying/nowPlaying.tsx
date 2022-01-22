@@ -24,6 +24,9 @@ export default function NowPlaying({ isDark, isMobile }: props) {
             <a id="albumArt" href={albumURL}>
                 <img src={artURL} />
             </a>
+            <div id="npInfoHolder">
+                <p className="title">{songTitle}</p>
+            </div>
         </div>
     )
 

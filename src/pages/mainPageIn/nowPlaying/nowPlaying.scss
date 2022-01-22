@@ -37,6 +37,10 @@
         width: max-content;
         max-width: 100%;
 
+        &.side {
+            max-width: calc(100% - 21.5em);
+        }
+
         .title {
             font-size: 1.5em;
             font-weight: 600;

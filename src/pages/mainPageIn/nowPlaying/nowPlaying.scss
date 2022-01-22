@@ -42,9 +42,16 @@
         }
 
         .title {
+            max-width: 100%;
             font-size: 1.5em;
             font-weight: 600;
             margin-bottom: 0;
+            overflow-wrap: break-word;
+        }
+
+        .artists {
+            margin-top: 0.5em;
+            max-width: 100%;
             overflow-wrap: break-word;
         }
     }

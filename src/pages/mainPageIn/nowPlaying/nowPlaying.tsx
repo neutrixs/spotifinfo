@@ -19,6 +19,8 @@ export default function NowPlaying({ isDark, isMobile }: props) {
     const [albumURL, setAlbumURL] = useState<string>('')
     const [artURL, setArtURL] = useState<string>('')
     const [songTitle, setSongTitle] = useState<string>('')
+    const [songURL, setSongURL] = useState<string>('')
+    const [artists, setArtists] = useState<JSX.Element[]>([])
     const [sideText, setSideText] = useState<boolean>(sideTextDetectBoolean(isMobile))
 
     useEffect(() => {
@@ -40,7 +42,10 @@ export default function NowPlaying({ isDark, isMobile }: props) {
                 <img src={artURL} />
             </a>
             <div id="npInfoHolder" className={sideText ? 'side ' : ''}>
-                <p className="title">{songTitle}</p>
+                <a className="title" href={songURL}>
+                    {songTitle}
+                </a>
+                <p className="artists">{artists}</p>
             </div>
         </div>
     )

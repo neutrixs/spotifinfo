@@ -29,6 +29,8 @@
 
         img {
             display: block;
+            width: inherit;
+            height: inherit;
         }
     }
 
@@ -50,6 +52,7 @@
             margin-top: 1em;
             margin-bottom: 0;
             overflow-wrap: break-word;
+            display: block;
         }
 
         .artists {

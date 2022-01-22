@@ -1,0 +1,11 @@
+#mainPageIn {
+    margin: 0 10em;
+
+    &.mobile {
+        margin: 0;
+    }
+
+    .content {
+        padding: 1.5em;
+    }
+}

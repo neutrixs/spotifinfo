@@ -6,6 +6,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Navbar from './navbar/navbar'
 
 const MainPageOut = lazy(() => import('./mainPageOut/mainPageOut'))
+const MainPageIn = lazy(() => import('./mainPageIn/mainPageIn'))
 
 import './base.scss'
 
@@ -30,7 +31,11 @@ function Main() {
             )
         }
 
-        //TODO: add mainPageIn
+        return (
+            <Suspense fallback={null}>
+                <MainPageIn isDark={isDark} />
+            </Suspense>
+        )
     }
 
     return (

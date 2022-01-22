@@ -21,6 +21,7 @@ export default function NowPlaying({ isDark, isMobile }: props) {
     const [songTitle, setSongTitle] = useState<string>('')
     const [songURL, setSongURL] = useState<string>('')
     const [artists, setArtists] = useState<JSX.Element[]>([])
+    const [progress, setProgress] = useState<string>('')
     const [sideText, setSideText] = useState<boolean>(sideTextDetectBoolean(isMobile))
 
     useEffect(() => {
@@ -46,6 +47,7 @@ export default function NowPlaying({ isDark, isMobile }: props) {
                     {songTitle}
                 </a>
                 <p className="artists">{artists}</p>
+                <p className="progress">{progress}</p>
             </div>
         </div>
     )

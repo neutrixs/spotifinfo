@@ -2,8 +2,6 @@ import * as React from 'react'
 
 import getToken from '../../other/getToken'
 
-import { nowPlayingStatus } from './nowPlaying'
-
 import spotifyPlaybackState from '../../types/spotifyPlaybackState'
 
 interface props {
@@ -17,7 +15,7 @@ interface props {
     setSongTitle: React.Dispatch<React.SetStateAction<string>>
     setShowNowPlaying: React.Dispatch<React.SetStateAction<boolean>>
     setBackgroundColour: React.Dispatch<React.SetStateAction<string>>
-    setNowPlayingStatus: React.Dispatch<React.SetStateAction<nowPlayingStatus>>
+    setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export default async function getNowPlaying(thisProps: props) {
@@ -57,6 +55,8 @@ export default async function getNowPlaying(thisProps: props) {
     thisProps.setSongURL(data.item.external_urls.spotify)
 
     parseArtists(data, thisProps.setArtists)
+
+    thisProps.setIsPlaying(data.is_playing)
 }
 
 function parseArtists(data: spotifyPlaybackState, setArtists: props['setArtists']) {

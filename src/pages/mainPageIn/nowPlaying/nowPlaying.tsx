@@ -12,8 +12,6 @@ interface props {
     isMobile: boolean
 }
 
-export type nowPlayingStatus = 'Now Playing:' | 'Last Played Song' | ''
-
 export default function NowPlaying({ isDark, isMobile }: props) {
     const [artURL, setArtURL] = useState<string>('')
     const [songURL, setSongURL] = useState<string>('')
@@ -24,7 +22,6 @@ export default function NowPlaying({ isDark, isMobile }: props) {
     const [songTitle, setSongTitle] = useState<string>('')
     const [showNowPlaying, setShowNowPlaying] = useState<boolean>(true) //TODO: change to false after testing done
     const [backgroundColour, setBackgroundColour] = useState<string>('')
-    const [nowPlayingStatus, setNowPlayingStatus] = useState<nowPlayingStatus>('Now Playing:')
 
     const [isPlaying, setIsPlaying] = useState<boolean>(false)
     const [currentMs, setCurrentMs] = useState<number>(0)
@@ -59,13 +56,13 @@ export default function NowPlaying({ isDark, isMobile }: props) {
             setSongTitle,
             setShowNowPlaying,
             setBackgroundColour,
-            setNowPlayingStatus,
+            setIsPlaying,
         })
     }
 
     const element = (
         <div id="nowPlaying" className={isMobile ? 'mobile ' : ''} style={{ backgroundColor: backgroundColour }}>
-            <p className="status">{nowPlayingStatus}</p>
+            <p className="status">{isPlaying ? 'Now Playing:' : 'Last Played Song:'}</p>
             <a id="albumArt" href={albumURL}>
                 <img src={artURL} />
             </a>

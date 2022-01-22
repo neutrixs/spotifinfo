@@ -1,5 +1,7 @@
 import * as React from 'react'
 
+import getToken from '../../other/getToken'
+
 import { nowPlayingStatus } from './nowPlaying'
 
 interface props {
@@ -16,4 +18,14 @@ interface props {
     setNowPlayingStatus: React.Dispatch<React.SetStateAction<nowPlayingStatus>>
 }
 
-export default function getNowPlaying(thisProps: props) {}
+export default async function getNowPlaying(thisProps: props) {
+    const token = localStorage.getItem('token')
+
+    if(!token){
+        await getToken()
+        getNowPlaying(thisProps)
+        return
+    }
+
+    const rawResponse = await fetch('https://api.spotify.com/v1/me/player')
+}

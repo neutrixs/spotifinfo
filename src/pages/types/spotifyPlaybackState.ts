@@ -109,4 +109,5 @@ export default interface spotifyPlaybackState {
         is_local: boolean
     }
     currently_playing_type: 'track' | 'episode' | 'ad' | 'unknown'
+    //actions:
 }

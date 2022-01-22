@@ -20,7 +20,7 @@ export default function NowPlaying({ isDark, isMobile }: props) {
     const [progress, setProgress] = useState<string>('')
     const [sideText, setSideText] = useState<boolean>(sideTextDetectBoolean(isMobile))
     const [songTitle, setSongTitle] = useState<string>('')
-    const [showNowPlaying, setShowNowPlaying] = useState<boolean>(true) //TODO: change to false after testing done
+    const [showNowPlaying, setShowNowPlaying] = useState<boolean>(false)
     const [backgroundColour, setBackgroundColour] = useState<string>('')
 
     const [isPlaying, setIsPlaying] = useState<boolean>(false)

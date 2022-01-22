@@ -41,6 +41,8 @@ export default async function getNowPlaying(thisProps: props) {
         return
     }
 
+    thisProps.setShowNowPlaying(true)
+
     if (statusCode == 400 || statusCode == 401 || statusCode == 403) {
         await getToken()
         getNowPlaying(thisProps)

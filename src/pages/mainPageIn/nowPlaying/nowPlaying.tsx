@@ -29,8 +29,10 @@ export default function NowPlaying({ isDark, isMobile }: props) {
     useEffect(() => {
         window.addEventListener('resize', callSideTextDetect)
         callGetNowPlaying()
-        const getNowPlayingInterval = setInterval(callGetNowPlaying,2000)
-        const stopAfter10Min = setTimeout(()=>{clearInterval(getNowPlayingInterval)},600000)
+        const getNowPlayingInterval = setInterval(callGetNowPlaying, 2000)
+        const stopAfter10Min = setTimeout(() => {
+            clearInterval(getNowPlayingInterval)
+        }, 600000)
 
         return function cleanup() {
             window.removeEventListener('resize', callSideTextDetect)

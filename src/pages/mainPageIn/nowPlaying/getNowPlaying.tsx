@@ -16,6 +16,4 @@ interface props {
     setNowPlayingStatus: React.Dispatch<React.SetStateAction<nowPlayingStatus>>
 }
 
-export default function getNowPlaying(thisProps: props) {
-    
-}
+export default function getNowPlaying(thisProps: props) {}

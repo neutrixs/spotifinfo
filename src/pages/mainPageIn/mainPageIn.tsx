@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react'
 
 import { mdHandler, mdHandlerBoolean } from '../other/mdHandler'
 
+import NowPlaying from './nowPlaying/nowPlaying'
+
 import './mainPageIn.scss'
 
 interface props {
@@ -26,7 +28,9 @@ export default function MainPageIn({ isDark }: props) {
 
     return (
         <div id="mainPageIn">
-            <div className="content">tet</div>
+            <div className="content">
+                <NowPlaying isDark={isDark} isMobile={isMobile} />
+            </div>
         </div>
     )
 }

@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react'
 
 import { sideTextDetectBoolean, sideTextDetect } from './sideText'
 
+import getNowPlaying from './getNowPlaying'
+
 import './nowPlaying.scss'
 
 interface props {
@@ -10,7 +12,7 @@ interface props {
     isMobile: boolean
 }
 
-type nowPlayingStatus = 'Now Playing:' | 'Last Played Song' | ''
+export type nowPlayingStatus = 'Now Playing:' | 'Last Played Song' | ''
 
 export default function NowPlaying({ isDark, isMobile }: props) {
     const [artURL, setArtURL] = useState<string>('')
@@ -26,14 +28,33 @@ export default function NowPlaying({ isDark, isMobile }: props) {
 
     useEffect(() => {
         window.addEventListener('resize', callSideTextDetect)
+        callGetNowPlaying()
+        const getNowPlayingInterval = setInterval(callGetNowPlaying,2000)
+        const stopAfter10Min = setTimeout(()=>{clearInterval(getNowPlayingInterval)},600000)
 
         return function cleanup() {
             window.removeEventListener('resize', callSideTextDetect)
+            clearInterval(getNowPlayingInterval)
+            clearTimeout(stopAfter10Min)
         }
     }, [])
 
     function callSideTextDetect() {
         sideTextDetect(isMobile, setSideText)
+    }
+
+    function callGetNowPlaying() {
+        getNowPlaying({
+            setArtURL,
+            setSongURL,
+            setArtists,
+            setAlbumURL,
+            setProgress,
+            setSongTitle,
+            setShowNowPlaying,
+            setBackgroundColour,
+            setNowPlayingStatus,
+        })
     }
 
     const element = (

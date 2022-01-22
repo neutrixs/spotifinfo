@@ -13,16 +13,16 @@ interface props {
 type nowPlayingStatus = 'Now Playing:' | 'Last Played Song' | ''
 
 export default function NowPlaying({ isDark, isMobile }: props) {
-    const [nowPlayingStatus, setNowPlayingStatus] = useState<nowPlayingStatus>('Now Playing:')
-    const [showNowPlaying, setShowNowPlaying] = useState<boolean>(true) //TODO: change to false after testing done
-    const [backgroundColour, setBackgroundColour] = useState<string>('')
-    const [albumURL, setAlbumURL] = useState<string>('')
     const [artURL, setArtURL] = useState<string>('')
-    const [songTitle, setSongTitle] = useState<string>('')
     const [songURL, setSongURL] = useState<string>('')
     const [artists, setArtists] = useState<JSX.Element[]>([])
+    const [albumURL, setAlbumURL] = useState<string>('')
     const [progress, setProgress] = useState<string>('')
     const [sideText, setSideText] = useState<boolean>(sideTextDetectBoolean(isMobile))
+    const [songTitle, setSongTitle] = useState<string>('')
+    const [showNowPlaying, setShowNowPlaying] = useState<boolean>(true) //TODO: change to false after testing done
+    const [backgroundColour, setBackgroundColour] = useState<string>('')
+    const [nowPlayingStatus, setNowPlayingStatus] = useState<nowPlayingStatus>('Now Playing:')
 
     useEffect(() => {
         window.addEventListener('resize', callSideTextDetect)

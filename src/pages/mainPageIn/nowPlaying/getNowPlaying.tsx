@@ -55,4 +55,22 @@ export default async function getNowPlaying(thisProps: props) {
     thisProps.setAlbumURL(data.item.album.external_urls.spotify)
     thisProps.setSongTitle(data.item.name)
     thisProps.setSongURL(data.item.external_urls.spotify)
+
+    parseArtists(data, thisProps.setArtists)
+}
+
+function parseArtists(data: spotifyPlaybackState, setArtists: props['setArtists']) {
+    const dataToAdd: JSX.Element[] = []
+    const artists = data.item.artists
+
+    for (let i = 0; i < artists.length; i++) {
+        dataToAdd.push(
+            <span key={`npartist${i}.${artists[i].id}`}>
+                <a href={artists[i].external_urls.spotify}>{artists[i].name}</a>
+                {i != artists.length - 1 ? <span>, </span> : null}
+            </span>
+        )
+    }
+
+    setArtists(dataToAdd)
 }

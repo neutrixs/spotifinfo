@@ -26,6 +26,10 @@ export default function NowPlaying({ isDark, isMobile }: props) {
     const [backgroundColour, setBackgroundColour] = useState<string>('')
     const [nowPlayingStatus, setNowPlayingStatus] = useState<nowPlayingStatus>('Now Playing:')
 
+    const [isPlaying, setIsPlaying] = useState<boolean>(false)
+    const [currentMs, setCurrentMs] = useState<number>(0)
+    const [totalMs, setTotalMs] = useState<number>(0)
+
     useEffect(() => {
         window.addEventListener('resize', callSideTextDetect)
         callGetNowPlaying()

@@ -4,6 +4,8 @@ import getToken from '../../other/getToken'
 
 import { nowPlayingStatus } from './nowPlaying'
 
+import spotifyPlaybackState from '../../types/spotifyPlaybackState'
+
 interface props {
     // lmao
 
@@ -21,11 +23,36 @@ interface props {
 export default async function getNowPlaying(thisProps: props) {
     const token = localStorage.getItem('token')
 
-    if(!token){
+    if (!token) {
         await getToken()
         getNowPlaying(thisProps)
         return
     }
 
-    const rawResponse = await fetch('https://api.spotify.com/v1/me/player')
+    const rawResponse = await fetch('https://api.spotify.com/v1/me/player', {
+        method: 'GET',
+        headers: {
+            Authorization: token,
+        },
+    })
+
+    const statusCode = rawResponse.status
+
+    if (statusCode == 204) {
+        thisProps.setShowNowPlaying(false)
+        return
+    }
+
+    if (statusCode == 400 || statusCode == 401 || statusCode == 403) {
+        await getToken()
+        getNowPlaying(thisProps)
+        return
+    }
+
+    const data = (await rawResponse.json()) as spotifyPlaybackState
+
+    thisProps.setArtURL(data.item.album.images[0].url)
+    thisProps.setAlbumURL(data.item.album.external_urls.spotify)
+    thisProps.setSongTitle(data.item.name)
+    thisProps.setSongURL(data.item.external_urls.spotify)
 }

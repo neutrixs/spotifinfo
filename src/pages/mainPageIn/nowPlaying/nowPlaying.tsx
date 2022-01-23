@@ -14,6 +14,8 @@ interface props {
     isMobile: boolean
 }
 
+type paletteType = [[number, number, number, number?], [number, number, number, number?]]
+
 export default function NowPlaying({ isDark, isMobile }: props) {
     const [artURL, setArtURL] = useState<string>('')
     const [songURL, setSongURL] = useState<string>('')
@@ -24,7 +26,13 @@ export default function NowPlaying({ isDark, isMobile }: props) {
     const [isPlaying, setIsPlaying] = useState<boolean>(false)
     const [songTitle, setSongTitle] = useState<string>('')
     const [showNowPlaying, setShowNowPlaying] = useState<boolean>(false)
-    const [backgroundColour, setBackgroundColour] = useState<string>('')
+
+    const [palette, setPalette] = useState<paletteType>([
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+    ])
+
+    const [paletteIndex, setPaletteIndex] = useState<0 | 1>(0)
 
     useEffect(() => {
         window.addEventListener('resize', callSideTextDetect)
@@ -45,6 +53,11 @@ export default function NowPlaying({ isDark, isMobile }: props) {
         }
     }, [])
 
+    useEffect(() => {
+        setPaletteIndex(isDark ? 0 : 1)
+        console.log(paletteIndex)
+    }, [isDark])
+
     function callSideTextDetect() {
         sideTextDetect(isMobile, setSideText)
     }
@@ -58,7 +71,7 @@ export default function NowPlaying({ isDark, isMobile }: props) {
             setProgress,
             setSongTitle,
             setShowNowPlaying,
-            setBackgroundColour,
+            setPalette,
             setIsPlaying,
         })
     }
@@ -68,7 +81,11 @@ export default function NowPlaying({ isDark, isMobile }: props) {
     }
 
     const element = (
-        <div id="nowPlaying" className={isMobile ? 'mobile ' : ''} style={{ backgroundColor: backgroundColour }}>
+        <div
+            id="nowPlaying"
+            className={isMobile ? 'mobile ' : ''}
+            style={{ backgroundColor: `rgba(${palette[paletteIndex].join(',')})` }}
+        >
             <p className="status">{isPlaying ? 'Now Playing:' : 'Last Played Song:'}</p>
             <a id="albumArt" href={albumURL}>
                 <img src={artURL} />
@@ -85,3 +102,5 @@ export default function NowPlaying({ isDark, isMobile }: props) {
 
     return showNowPlaying ? element : null
 }
+
+export { paletteType }

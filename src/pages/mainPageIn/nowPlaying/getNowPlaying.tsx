@@ -6,6 +6,8 @@ import spotifyPlaybackState from '../../types/spotifyPlaybackState'
 
 import { setCurrentMs, setTotalMs, setIsPlaying as updateProgressSetIsPlaying } from './updateProgress'
 
+import { paletteType } from './nowPlaying'
+
 interface props {
     // lmao
 
@@ -16,7 +18,7 @@ interface props {
     setProgress: React.Dispatch<React.SetStateAction<string>>
     setSongTitle: React.Dispatch<React.SetStateAction<string>>
     setShowNowPlaying: React.Dispatch<React.SetStateAction<boolean>>
-    setBackgroundColour: React.Dispatch<React.SetStateAction<string>>
+    setPalette: React.Dispatch<React.SetStateAction<paletteType>>
     setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>
 }
 

@@ -48,7 +48,7 @@ export default function NowPlaying({ isDark, isMobile }: props) {
 
         const updateProgressInterval = setInterval(callUpdateProgress, 100)
 
-        imageElement.current.addEventListener('load', callGetColour)
+        imageElement.current?.addEventListener('load', callGetColour)
 
         return function cleanup() {
             window.removeEventListener('resize', callSideTextDetect)
@@ -57,7 +57,7 @@ export default function NowPlaying({ isDark, isMobile }: props) {
 
             clearInterval(updateProgressInterval)
 
-            imageElement.current.removeEventListener('load', callGetColour)
+            imageElement.current?.removeEventListener('load', callGetColour)
         }
     }, [])
 
@@ -88,7 +88,7 @@ export default function NowPlaying({ isDark, isMobile }: props) {
     }
 
     function callGetColour() {
-        getColour(setPalette, imageElement.current)
+        if (imageElement.current) getColour(setPalette, imageElement.current)
     }
 
     return (

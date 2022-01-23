@@ -5,6 +5,8 @@ import { sideTextDetectBoolean, sideTextDetect } from './sideText'
 
 import getNowPlaying from './getNowPlaying'
 
+import updateProgress from './updateProgress'
+
 import './nowPlaying.scss'
 
 interface props {
@@ -24,9 +26,6 @@ export default function NowPlaying({ isDark, isMobile }: props) {
     const [showNowPlaying, setShowNowPlaying] = useState<boolean>(false)
     const [backgroundColour, setBackgroundColour] = useState<string>('')
 
-    const [currentMs, setCurrentMs] = useState<number>(0)
-    const [totalMs, setTotalMs] = useState<number>(0)
-
     useEffect(() => {
         window.addEventListener('resize', callSideTextDetect)
         callGetNowPlaying()
@@ -35,10 +34,14 @@ export default function NowPlaying({ isDark, isMobile }: props) {
             clearInterval(getNowPlayingInterval)
         }, 600000)
 
+        const updateProgressInterval = setInterval(callUpdateProgress, 100)
+
         return function cleanup() {
             window.removeEventListener('resize', callSideTextDetect)
             clearInterval(getNowPlayingInterval)
             clearTimeout(stopAfter10Min)
+
+            clearInterval(updateProgressInterval)
         }
     }, [])
 
@@ -58,6 +61,10 @@ export default function NowPlaying({ isDark, isMobile }: props) {
             setBackgroundColour,
             setIsPlaying,
         })
+    }
+
+    function callUpdateProgress() {
+        updateProgress(setProgress)
     }
 
     const element = (

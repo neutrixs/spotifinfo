@@ -4,6 +4,8 @@ import getToken from '../../other/getToken'
 
 import spotifyPlaybackState from '../../types/spotifyPlaybackState'
 
+import { setCurrentMs, setTotalMs, setIsPlaying as updateProgressSetIsPlaying } from './updateProgress'
+
 interface props {
     // lmao
 
@@ -59,6 +61,10 @@ export default async function getNowPlaying(thisProps: props) {
     parseArtists(data, thisProps.setArtists)
 
     thisProps.setIsPlaying(data.is_playing)
+
+    updateProgressSetIsPlaying(data.is_playing)
+    setCurrentMs(data.progress_ms)
+    setTotalMs(data.item.duration_ms)
 }
 
 function parseArtists(data: spotifyPlaybackState, setArtists: props['setArtists']) {

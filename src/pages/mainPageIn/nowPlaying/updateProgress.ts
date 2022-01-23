@@ -1,15 +1,15 @@
-export default function updateProgress(
-    isPlaying: boolean,
-    currentMs: number,
-    totalMs: number,
-    setCurrentMs: React.Dispatch<React.SetStateAction<number>>,
-    setProgress: React.Dispatch<React.SetStateAction<string>>
-) {
+let currentMs = 0
+let totalMs = 0
+let isPlaying = false
+
+export default function updateProgress(setProgress: React.Dispatch<React.SetStateAction<string>>) {
     if (!isPlaying) return
 
     const newMs = currentMs + 100
 
     if (newMs > totalMs) return
+
+    currentMs = newMs
 
     const currentMinute = Math.floor(currentMs / 60000)
     const s = Math.floor((currentMs % 60000) / 1000)
@@ -21,6 +21,19 @@ export default function updateProgress(
 
     const progress = `${currentMinute}:${currentSecond} / ${totalMinute}:${totalSecond}`
 
-    setCurrentMs(newMs)
     setProgress(progress)
 }
+
+function setCurrentMs(ms: number) {
+    currentMs = ms
+}
+
+function setTotalMs(ms: number) {
+    totalMs = ms
+}
+
+function setIsPlaying(isPlayingParam: boolean) {
+    isPlaying = isPlayingParam
+}
+
+export { setCurrentMs, setTotalMs, setIsPlaying }

@@ -1,11 +1,13 @@
 import * as React from 'react'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 import { sideTextDetectBoolean, sideTextDetect } from './sideText'
 
 import getNowPlaying from './getNowPlaying'
 
 import updateProgress from './updateProgress'
+
+import getColour from './colour/getColour'
 
 import './nowPlaying.scss'
 
@@ -34,6 +36,8 @@ export default function NowPlaying({ isDark, isMobile }: props) {
 
     const [paletteIndex, setPaletteIndex] = useState<0 | 1>(0)
 
+    const imageElement = useRef<HTMLImageElement>(null)
+
     useEffect(() => {
         window.addEventListener('resize', callSideTextDetect)
         callGetNowPlaying()
@@ -44,18 +48,21 @@ export default function NowPlaying({ isDark, isMobile }: props) {
 
         const updateProgressInterval = setInterval(callUpdateProgress, 100)
 
+        imageElement.current.addEventListener('load', callGetColour)
+
         return function cleanup() {
             window.removeEventListener('resize', callSideTextDetect)
             clearInterval(getNowPlayingInterval)
             clearTimeout(stopAfter10Min)
 
             clearInterval(updateProgressInterval)
+
+            imageElement.current.removeEventListener('load', callGetColour)
         }
     }, [])
 
     useEffect(() => {
         setPaletteIndex(isDark ? 0 : 1)
-        console.log(paletteIndex)
     }, [isDark])
 
     function callSideTextDetect() {
@@ -80,15 +87,22 @@ export default function NowPlaying({ isDark, isMobile }: props) {
         updateProgress(setProgress)
     }
 
-    const element = (
+    function callGetColour() {
+        getColour(setPalette, imageElement.current)
+    }
+
+    return (
         <div
             id="nowPlaying"
             className={isMobile ? 'mobile ' : ''}
-            style={{ backgroundColor: `rgba(${palette[paletteIndex].join(',')})` }}
+            style={{
+                backgroundColor: `rgba(${palette[paletteIndex].join(',')})`,
+                display: showNowPlaying ? '' : 'none',
+            }}
         >
             <p className="status">{isPlaying ? 'Now Playing:' : 'Last Played Song:'}</p>
             <a id="albumArt" href={albumURL}>
-                <img src={artURL} />
+                <img ref={imageElement} src={artURL} />
             </a>
             <div id="npInfoHolder" className={sideText ? 'side ' : ''}>
                 <a className="title" href={songURL}>
@@ -99,8 +113,6 @@ export default function NowPlaying({ isDark, isMobile }: props) {
             </div>
         </div>
     )
-
-    return showNowPlaying ? element : null
 }
 
 export { paletteType }

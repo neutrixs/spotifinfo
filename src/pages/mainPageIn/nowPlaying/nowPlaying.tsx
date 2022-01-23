@@ -102,7 +102,7 @@ export default function NowPlaying({ isDark, isMobile }: props) {
         >
             <p className="status">{isPlaying ? 'Now Playing:' : 'Last Played Song:'}</p>
             <a id="albumArt" href={albumURL}>
-                <img ref={imageElement} src={artURL} />
+                <img ref={imageElement} src={artURL} crossOrigin="anonymous" />
             </a>
             <div id="npInfoHolder" className={sideText ? 'side ' : ''}>
                 <a className="title" href={songURL}>

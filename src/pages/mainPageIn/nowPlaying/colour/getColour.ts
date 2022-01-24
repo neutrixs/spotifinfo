@@ -12,7 +12,7 @@ export default function getColour(setPalette: React.Dispatch<React.SetStateActio
     const selectedPalette = palettes[index]
 
     const darkPalette = autoAdjust(selectedPalette, 0.4, 0.02)
-    const lightPalette = autoAdjust(selectedPalette, 0.75, 0.02)
+    const lightPalette = autoAdjust(selectedPalette, 0.7, 0.02)
 
     setPalette([darkPalette, lightPalette])
 }

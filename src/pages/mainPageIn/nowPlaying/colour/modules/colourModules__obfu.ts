@@ -1,9 +1,13 @@
+type rgb = [number, number, number]
+
 /**
  * https://stackoverflow.com/a/9493060
  * h, s, l values are [0,1]
+ *
+ * @returns array of rgb [0,255]
  */
 
-function hslToRgb(h: number, s: number, l: number) {
+function hslToRgb(h: number, s: number, l: number): rgb {
     var r, g, b
 
     if (s == 0) {
@@ -63,6 +67,10 @@ function rgbToHsl(r: number, g: number, b: number) {
 
 type getPaletteReturnType = [number, number, number][]
 
+/**
+ * @param palettes array of array of rgb values [0,255]
+ */
+
 function getMostSaturated(palettes: getPaletteReturnType) {
     interface newEachPaletteType extends ReturnType<typeof rgbToHsl> {
         originalIndex: number
@@ -81,4 +89,53 @@ function getMostSaturated(palettes: getPaletteReturnType) {
     return palettesInHSL[0].originalIndex
 }
 
-export { getMostSaturated }
+/**
+ * @param rgbVal array of rgb values [0,255]
+ */
+
+function getLightness(rgbVal: rgb) {
+    const r = rgbVal[0] / 255
+    const g = rgbVal[1] / 255
+    const b = rgbVal[2] / 255
+
+    /**
+     * http://alienryderflex.com/hsp.html
+     * https://web.archive.org/web/20220107173803/http://alienryderflex.com/hsp.html
+     */
+
+    const lightness = Math.sqrt(0.299 * r ** 2 + 0.587 * g ** 2 + 0.114 * b ** 2)
+
+    return lightness
+}
+
+/**
+ *
+ * @param rgbVal array of rgb values [0,255]
+ * @param targetLightness target lightness [0,1]
+ * @param tolerance lightness difference tolerance [0,1]
+ */
+
+function autoAdjust(rgbVal: rgb, targetLightness: number, tolerance: number): rgb {
+    const lightness = getLightness(rgbVal)
+
+    if (targetLightness - tolerance < lightness && lightness < targetLightness + tolerance) return rgbVal
+
+    const shouldIncrease = lightness < targetLightness ? true : false
+
+    let currentRGBValue: rgb = [...rgbVal]
+
+    for (let i = 0; i < 100; i++) {
+        let HSLVal = rgbToHsl(currentRGBValue[0] / 255, currentRGBValue[1] / 255, currentRGBValue[2] / 255)
+        shouldIncrease ? (HSLVal.l += 0.01) : (HSLVal.l -= 0.01)
+
+        currentRGBValue = hslToRgb(HSLVal.h, HSLVal.s, HSLVal.l)
+
+        const newLightness = getLightness(currentRGBValue)
+
+        if (targetLightness - tolerance < newLightness && newLightness < targetLightness + tolerance) break
+    }
+
+    return currentRGBValue
+}
+
+export { getMostSaturated, autoAdjust }

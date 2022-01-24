@@ -1,6 +1,6 @@
 import colorThief from 'colorthief'
 import { paletteType } from '../nowPlaying'
-import { getMostSaturated } from './modules/colourModules__obfu'
+import { getMostSaturated, autoAdjust } from './modules/colourModules__obfu'
 
 export default function getColour(setPalette: React.Dispatch<React.SetStateAction<paletteType>>, element: HTMLImageElement) {
     const newColorThief = new colorThief()
@@ -11,5 +11,8 @@ export default function getColour(setPalette: React.Dispatch<React.SetStateActio
 
     const selectedPalette = palettes[index]
 
-    console.log(selectedPalette)
+    const darkPalette = autoAdjust(selectedPalette, 0.4, 0.02)
+    const lightPalette = autoAdjust(selectedPalette, 0.75, 0.02)
+
+    setPalette([darkPalette, lightPalette])
 }

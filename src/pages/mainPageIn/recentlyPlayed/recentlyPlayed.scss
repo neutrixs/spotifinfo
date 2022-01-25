@@ -8,12 +8,44 @@
 }
 
 .rPContainer {
-    p {
+    p.a {
         font-size: 1.5em;
         margin: 1em 0;
+        font-weight: 600;
     }
     div {
         width: 100%;
         margin: 1em 0;
+        display: flex;
+        align-items: center;
+        justify-content: left;
+
+        .artHolder {
+            margin-right: 1em;
+        }
+
+        img {
+            width: 3em;
+            display: block;
+        }
+
+        .infoHolder {
+            width: max-content;
+            min-width: 0;
+
+            p {
+                margin: 0;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                width: max-content;
+                max-width: 100%;
+            }
+
+            p:first-child {
+                font-weight: 600;
+                margin-bottom: 0.5em;
+            }
+        }
     }
 }

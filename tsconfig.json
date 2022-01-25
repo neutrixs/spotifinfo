@@ -8,5 +8,6 @@
         "allowJs": true,
         "moduleResolution": "node"
     },
-    "include": ["./src", "index.d.ts"]
+    "include": ["./src", "index.d.ts"],
+    "exclude": ["./src/**/*.ignore.tsx"]
 }

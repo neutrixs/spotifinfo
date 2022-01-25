@@ -23,6 +23,11 @@ interface props {
 }
 
 export default async function getNowPlaying(thisProps: props) {
+    if (localStorage.getItem('noNPFetch') == 'true') {
+        document.title = 'noNPFetch IS ENABLED!'
+        return
+    }
+
     const token = localStorage.getItem('token')
 
     if (!token) {

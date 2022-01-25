@@ -61,3 +61,54 @@ $LIGHTLIGHT: #808080;
         background-color: $DARKDARK;
     }
 }
+
+.loadingAnimationLight {
+    position: relative;
+    width: 1em;
+    height: 1em;
+    border-radius: 0.5em;
+    background-color: $LIGHTDARK;
+    color: $LIGHTDARK;
+    animation: dotFlashingLight 0.5s infinite linear alternate;
+    animation-delay: 0.25s;
+
+    &::before,
+    &::after {
+        content: '';
+        display: inline-block;
+        position: absolute;
+        top: 0;
+    }
+
+    &::before {
+        left: -1.5em;
+        width: 1em;
+        height: 1em;
+        border-radius: 0.5em;
+        background-color: $LIGHTDARK;
+        color: $LIGHTDARK;
+        animation: dotFlashingLight 0.5s infinite alternate;
+        animation-delay: 0s;
+    }
+
+    &::after {
+        left: 1.5em;
+        width: 1em;
+        height: 1em;
+        border-radius: 0.5em;
+        background-color: $LIGHTDARK;
+        color: $LIGHTDARK;
+        animation: dotFlashingLight 0.5s infinite alternate;
+        animation-delay: 0.5s;
+    }
+}
+
+@keyframes dotFlashingLight {
+    0% {
+        background-color: $LIGHTDARK;
+    }
+    50%,
+    100% {
+        background-color: $LIGHTLIGHT;
+    }
+}

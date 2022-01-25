@@ -14,6 +14,7 @@ interface props {
 
 export default function MainPageIn({ isDark }: props) {
     const [isMobile, setIsMobile] = useState<boolean>(mdHandlerBoolean())
+    const [getRecentlyPlayedFunc, setGetRecentlyPlayedFunc] = useState<() => void>(function () {})
 
     useEffect(() => {
         window.addEventListener('resize', callMDHandler)

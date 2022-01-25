@@ -8,5 +8,5 @@
         "allowJs": true,
         "moduleResolution": "node"
     },
-    "include": ["src/pages/index.tsx", "index.d.ts"]
+    "include": ["./src", "index.d.ts"]
 }

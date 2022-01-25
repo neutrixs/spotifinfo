@@ -19,4 +19,17 @@ export default async function getRecentlyPlayed(props: props) {
             authorization: localStorage.getItem('token'),
         },
     })
+
+    switch(rawResponse.status){
+        case 400:
+        case 401:
+        case 403:
+            await getToken()
+            await getRecentlyPlayed(props)
+        return
+    }
+
+    const data:JSX.Element[] = []
+
+    
 }

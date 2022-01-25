@@ -5,6 +5,8 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 import Navbar from './navbar/navbar'
 
+import Loading from './loading/loading'
+
 const MainPageOut = lazy(() => import('./mainPageOut/mainPageOut'))
 const MainPageIn = lazy(() => import('./mainPageIn/mainPageIn'))
 
@@ -25,14 +27,14 @@ function Main() {
     function getMainPageRouting() {
         if (isLoggedOut) {
             return (
-                <Suspense fallback={null}>
+                <Suspense fallback={<Loading isDark={isDark} />}>
                     <MainPageOut />
                 </Suspense>
             )
         }
 
         return (
-            <Suspense fallback={null}>
+            <Suspense fallback={<Loading isDark={isDark} />}>
                 <MainPageIn isDark={isDark} />
             </Suspense>
         )

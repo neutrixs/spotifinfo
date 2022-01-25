@@ -120,4 +120,7 @@ const config = nameOrContentHash => ({
             '/login': 'http://192.168.1.50',
         },
     },
+    performance: {
+        maxAssetSize: 512000,
+    },
 })

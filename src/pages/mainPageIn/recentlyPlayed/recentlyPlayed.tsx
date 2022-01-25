@@ -6,7 +6,7 @@ import getRecentlyPlayed from './getRecentlyPlayed'
 import './recentlyPlayed.scss'
 
 export default function RecentlyPlayed() {
-    const [showRecentlyPlayed, setShowRecentlyPlayed] = useState<boolean>(true) //TODO: change to false later
+    const [showRecentlyPlayed, setShowRecentlyPlayed] = useState<boolean>(false)
     const [recentlyPlayedData, setRecentlyPlayedData] = useState<JSX.Element[]>([])
 
     useEffect(() => {

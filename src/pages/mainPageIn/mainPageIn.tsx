@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { mdHandler, mdHandlerBoolean } from '../other/mdHandler'
 
 import NowPlaying from './nowPlaying/nowPlaying'
+import RecentlyPlayed from './recentlyPlayed/recentlyPlayed'
 
 import './mainPageIn.scss'
 
@@ -30,6 +31,7 @@ export default function MainPageIn({ isDark }: props) {
         <div id="mainPageIn" className={isMobile ? 'mobile ' : ''}>
             <div className="content">
                 <NowPlaying isDark={isDark} isMobile={isMobile} />
+                <RecentlyPlayed />
             </div>
         </div>
     )

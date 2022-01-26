@@ -6,6 +6,7 @@ import recentlyPlayedType from '../../types/spotifyRecentlyPlayed'
 interface props {
     setShowRecentlyPlayed: React.Dispatch<React.SetStateAction<boolean>>
     setRecentlyPlayedData: React.Dispatch<React.SetStateAction<JSX.Element[]>>
+    setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export default async function getRecentlyPlayed(props: props) {
@@ -68,5 +69,6 @@ export default async function getRecentlyPlayed(props: props) {
     }
 
     props.setShowRecentlyPlayed(true)
+    props.setIsLoading(false)
     props.setRecentlyPlayedData(dataToUpdate)
 }

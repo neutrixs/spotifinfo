@@ -5,12 +5,16 @@ import getRecentlyPlayed from './getRecentlyPlayed'
 
 import './recentlyPlayed.scss'
 
-export default function RecentlyPlayed() {
+interface props {
+    setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+export default function RecentlyPlayed({ setIsLoading }: props) {
     const [showRecentlyPlayed, setShowRecentlyPlayed] = useState<boolean>(false)
     const [recentlyPlayedData, setRecentlyPlayedData] = useState<JSX.Element[]>([])
 
     useEffect(() => {
-        getRecentlyPlayed({ setShowRecentlyPlayed: setShowRecentlyPlayed, setRecentlyPlayedData: setRecentlyPlayedData })
+        getRecentlyPlayed({ setShowRecentlyPlayed, setRecentlyPlayedData, setIsLoading })
     }, [])
 
     return (

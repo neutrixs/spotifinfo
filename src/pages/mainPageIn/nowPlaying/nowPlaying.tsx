@@ -14,11 +14,12 @@ import './nowPlaying.scss'
 interface props {
     isDark: boolean
     isMobile: boolean
+    setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 type paletteType = [[number, number, number, number?], [number, number, number, number?]]
 
-export default function NowPlaying({ isDark, isMobile }: props) {
+export default function NowPlaying({ isDark, isMobile, setIsLoading }: props) {
     const [artURL, setArtURL] = useState<string>('')
     const [songURL, setSongURL] = useState<string>('')
     const [artists, setArtists] = useState<JSX.Element[]>([])
@@ -80,6 +81,7 @@ export default function NowPlaying({ isDark, isMobile }: props) {
             setShowNowPlaying,
             setPalette,
             setIsPlaying,
+            setIsLoading,
         })
     }
 

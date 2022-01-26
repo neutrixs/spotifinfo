@@ -5,6 +5,7 @@ import { mdHandler, mdHandlerBoolean } from '../other/mdHandler'
 
 import NowPlaying from './nowPlaying/nowPlaying'
 import RecentlyPlayed from './recentlyPlayed/recentlyPlayed'
+import Loading from '../loading/loading'
 
 import './mainPageIn.scss'
 
@@ -13,8 +14,9 @@ interface props {
 }
 
 export default function MainPageIn({ isDark }: props) {
-    const [isMobile, setIsMobile] = useState<boolean>(mdHandlerBoolean())
+    const [isMobile, setIsMobile] = useState(mdHandlerBoolean())
     const [getRecentlyPlayedFunc, setGetRecentlyPlayedFunc] = useState<() => void>(function () {})
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
         window.addEventListener('resize', callMDHandler)
@@ -29,11 +31,14 @@ export default function MainPageIn({ isDark }: props) {
     }
 
     return (
-        <div id="mainPageIn" className={isMobile ? 'mobile ' : ''}>
-            <div className="content">
-                <NowPlaying isDark={isDark} isMobile={isMobile} />
-                <RecentlyPlayed />
+        <>
+            {isLoading ? <Loading isDark={isDark} /> : null}
+            <div id="mainPageIn" className={isMobile ? 'mobile ' : ''}>
+                <div className="content">
+                    <NowPlaying isDark={isDark} isMobile={isMobile} setIsLoading={setIsLoading} />
+                    <RecentlyPlayed setIsLoading={setIsLoading} />
+                </div>
             </div>
-        </div>
+        </>
     )
 }

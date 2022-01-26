@@ -20,6 +20,8 @@ interface props {
     setShowNowPlaying: React.Dispatch<React.SetStateAction<boolean>>
     setPalette: React.Dispatch<React.SetStateAction<paletteType>>
     setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>
+
+    setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export default async function getNowPlaying(thisProps: props) {
@@ -68,6 +70,7 @@ export default async function getNowPlaying(thisProps: props) {
     parseArtists(data, thisProps.setArtists)
 
     thisProps.setIsPlaying(data.is_playing)
+    thisProps.setIsLoading(false)
 
     updateProgressSetIsPlaying(data.is_playing)
     setCurrentMs(data.progress_ms)

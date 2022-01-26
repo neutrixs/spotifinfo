@@ -7,6 +7,8 @@ import NowPlaying from './nowPlaying/nowPlaying'
 import RecentlyPlayed from './recentlyPlayed/recentlyPlayed'
 import Loading from '../loading/loading'
 
+import RecaptchaBadge from '../recaptchaBadge/recaptchaBadge'
+
 import './mainPageIn.scss'
 
 interface props {
@@ -38,6 +40,7 @@ export default function MainPageIn({ isDark }: props) {
                     <NowPlaying isDark={isDark} isMobile={isMobile} setIsLoading={setIsLoading} />
                     <RecentlyPlayed setIsLoading={setIsLoading} />
                 </div>
+                <RecaptchaBadge isDark={isDark} overrideStyle={{ paddingTop: '1.5em' }} />
             </div>
         </>
     )

@@ -1,0 +1,20 @@
+#recaptchaBadge {
+    padding: 1.5em;
+    padding-top: 0;
+    font-size: 0.75em;
+
+    a {
+        color: hsl(220, 100%, 75%);
+        text-decoration: underline;
+    }
+
+    &.light {
+        a {
+            color: hsl(220, 100%, 50%);
+        }
+    }
+}
+
+.grecaptcha-badge {
+    visibility: hidden;
+}

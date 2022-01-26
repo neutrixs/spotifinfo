@@ -21,7 +21,10 @@ interface props {
     setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>
 
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
+    getRecentlyPlayedFunc: [() => void]
 }
+
+let currentSongID = ''
 
 export default async function getNowPlaying(thisProps: props) {
     if (localStorage.getItem('noNPFetch') == 'true') {
@@ -74,6 +77,11 @@ export default async function getNowPlaying(thisProps: props) {
     updateProgressSetIsPlaying(data.is_playing)
     setCurrentMs(data.progress_ms)
     setTotalMs(data.item.duration_ms)
+
+    if (data.item.id != currentSongID) {
+        thisProps.getRecentlyPlayedFunc[0]()
+    }
+    currentSongID = data.item.id
 }
 
 function parseArtists(data: spotifyPlaybackState, setArtists: props['setArtists']) {

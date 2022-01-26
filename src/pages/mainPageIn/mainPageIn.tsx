@@ -15,9 +15,14 @@ interface props {
     isDark: boolean
 }
 
+/**
+ * so that it passes by reference
+ */
+
+const getRecentlyPlayedFunc: [() => void] = [function () {}]
+
 export default function MainPageIn({ isDark }: props) {
     const [isMobile, setIsMobile] = useState(mdHandlerBoolean())
-    const [getRecentlyPlayedFunc, setGetRecentlyPlayedFunc] = useState<() => void>(function () {})
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
@@ -37,8 +42,13 @@ export default function MainPageIn({ isDark }: props) {
             {isLoading ? <Loading isDark={isDark} /> : null}
             <div id="mainPageIn" className={isMobile ? 'mobile ' : ''}>
                 <div className="content">
-                    <NowPlaying isDark={isDark} isMobile={isMobile} setIsLoading={setIsLoading} />
-                    <RecentlyPlayed setIsLoading={setIsLoading} />
+                    <NowPlaying
+                        isDark={isDark}
+                        isMobile={isMobile}
+                        setIsLoading={setIsLoading}
+                        getRecentlyPlayedFunc={getRecentlyPlayedFunc}
+                    />
+                    <RecentlyPlayed setIsLoading={setIsLoading} getRecentlyPlayedFunc={getRecentlyPlayedFunc} />
                 </div>
                 <RecaptchaBadge isDark={isDark} overrideStyle={{ paddingTop: '1.5em' }} />
             </div>

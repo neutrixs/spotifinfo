@@ -7,7 +7,6 @@ import spotifyPlaybackState from '../../types/spotifyPlaybackState'
 import { setCurrentMs, setTotalMs, setIsPlaying as updateProgressSetIsPlaying } from './updateProgress'
 
 import { paletteType } from './nowPlaying'
-
 interface props {
     // lmao
 
@@ -52,13 +51,13 @@ export default async function getNowPlaying(thisProps: props) {
         return
     }
 
-    thisProps.setShowNowPlaying(true)
-
     if (statusCode == 400 || statusCode == 401 || statusCode == 403) {
         await getToken()
         getNowPlaying(thisProps)
         return
     }
+
+    thisProps.setShowNowPlaying(true)
 
     const data = (await rawResponse.json()) as spotifyPlaybackState
 

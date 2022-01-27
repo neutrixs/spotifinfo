@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { mdHandlerBoolean, mdHandler } from '../other/mdHandler'
 
 import TypeSelector from './selectors/typeSelector'
+import RangeSelector from './selectors/rangeSelector'
 
 import './topPage.scss'
 
@@ -53,6 +54,7 @@ export default function TopPage({ isDark }: props) {
                 <p id="title">Top {selectedType == typeSelector.tracks ? 'Tracks' : 'Artists'}</p>
                 <div id="selectorsHolder">
                     <TypeSelector isDark={isDark} selectedType={selectedType} setSelectedType={setSelectedType} />
+                    <RangeSelector isDark={isDark} selectedRange={selectedRange} setSelectedRange={setSelectedRange} />
                 </div>
             </div>
         </div>

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { useState, useEffect, lazy, Suspense } from 'react'
 import { render } from 'react-dom'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 
 import Navbar from './navbar/navbar'
 
@@ -9,6 +9,7 @@ import Loading from './loading/loading'
 
 const MainPageOut = lazy(() => import('./mainPageOut/mainPageOut'))
 const MainPageIn = lazy(() => import('./mainPageIn/mainPageIn'))
+const TopPage = lazy(() => import('./topPage/topPage'))
 
 import './base.scss'
 
@@ -47,6 +48,11 @@ function Main() {
                 <Switch>
                     <Route exact path="/">
                         {getMainPageRouting()}
+                    </Route>
+                    <Route exact path="/top_tracks">
+                        <Suspense fallback={<Loading isDark={isDark} />}>
+                            {!isLoggedOut ? <TopPage isDark={isDark}></TopPage> : <Redirect to="/"></Redirect>}
+                        </Suspense>
                     </Route>
                 </Switch>
             </div>

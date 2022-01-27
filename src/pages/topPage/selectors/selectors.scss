@@ -1,0 +1,36 @@
+$dark: #505050;
+$light: #e1e1e1;
+
+@mixin selectorsChild {
+    text-align: center;
+    padding: 0.5em 0;
+    cursor: pointer;
+    border-radius: 0.25em;
+
+    &.selected {
+        background-color: $dark;
+        box-shadow: 0.1em 0.1em 0.2em rgba(0, 0, 0, 0.6);
+    }
+
+    &.selectedLight {
+        background-color: $light;
+    }
+}
+
+#typeSelector {
+    display: grid;
+    grid-template-columns: auto auto;
+
+    div {
+        @include selectorsChild();
+    }
+}
+
+#rangeSelector {
+    display: grid;
+    grid-template-columns: auto auto auto;
+
+    div {
+        @include selectorsChild();
+    }
+}

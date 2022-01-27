@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import { typeSelector as typeSelectorEnum } from '../topPage'
 
-import './typeSelector.scss'
+import './selectors.scss'
 
 interface props {
     isDark: boolean

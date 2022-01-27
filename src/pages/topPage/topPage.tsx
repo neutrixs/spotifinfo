@@ -4,6 +4,17 @@ interface props {
     isDark: boolean
 }
 
+enum typeSelector {
+    tracks,
+    artists,
+}
+
+enum rangeSelector {
+    allTime,
+    sixMonth,
+    oneMonth,
+}
+
 export default function TopPage({ isDark }: props) {
     return (
         <div id="topPage">
@@ -11,3 +22,5 @@ export default function TopPage({ isDark }: props) {
         </div>
     )
 }
+
+export { typeSelector, rangeSelector }

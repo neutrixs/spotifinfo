@@ -1,7 +1,9 @@
 import * as React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import Loading from '../../loading/loading'
+
+import getTopTracks from './getTopTracks'
 
 import { typeSelector, rangeSelector } from '../topPage'
 
@@ -17,6 +19,10 @@ interface props {
 export default function TopTracks({ selectedType, selectedRange, targetRange, isDark }: props) {
     const [data, setData] = useState<JSX.Element[]>([])
     const [isLoading, setIsLoading] = useState(true)
+
+    useEffect(() => {
+        getTopTracks(setData, targetRange, setIsLoading)
+    }, [])
 
     function isShow() {
         return selectedType == typeSelector.tracks && selectedRange == targetRange

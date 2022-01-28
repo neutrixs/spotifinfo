@@ -58,7 +58,12 @@ export default function TopPage({ isDark }: props) {
                     <RangeSelector isDark={isDark} selectedRange={selectedRange} setSelectedRange={setSelectedRange} />
                 </div>
 
-                <TopTracks targetRange={rangeSelector.allTime} selectedRange={selectedRange} selectedType={selectedType} />
+                <TopTracks
+                    targetRange={rangeSelector.allTime}
+                    selectedRange={selectedRange}
+                    selectedType={selectedType}
+                    isDark={isDark}
+                />
             </div>
         </div>
     )

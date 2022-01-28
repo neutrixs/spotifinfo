@@ -6,6 +6,8 @@ import { mdHandlerBoolean, mdHandler } from '../other/mdHandler'
 import TypeSelector from './selectors/typeSelector'
 import RangeSelector from './selectors/rangeSelector'
 
+import { setType, setRange } from './setTypeAndRange'
+
 import './topPage.scss'
 
 interface props {
@@ -24,15 +26,12 @@ enum rangeSelector {
 }
 
 export default function TopPage({ isDark }: props) {
-    const [selectedType, setSelectedType] = useState(typeSelector.tracks)
-    const [selectedRange, setSelectedRange] = useState(rangeSelector.allTime)
+    const [selectedType, setSelectedType] = useState(setType())
+    const [selectedRange, setSelectedRange] = useState(setRange())
     const [isMobile, setIsMobile] = useState(mdHandlerBoolean())
 
     useEffect(() => {
         window.addEventListener('resize', callMdHandler)
-
-        setTypeFromLS(setSelectedType)
-        setRangeFromLS(setSelectedRange)
 
         return function cleanup() {
             window.removeEventListener('resize', callMdHandler)
@@ -59,44 +58,6 @@ export default function TopPage({ isDark }: props) {
             </div>
         </div>
     )
-}
-
-function setTypeFromLS(setSelectedType: React.Dispatch<React.SetStateAction<typeSelector>>) {
-    const typeValueStr = localStorage.getItem('selectedType')
-
-    if (!typeValueStr) return
-
-    const typeValue = parseInt(typeValueStr)
-
-    if (!typeValue) return
-
-    switch (typeValue) {
-        case typeSelector.tracks:
-            setSelectedType(typeSelector.tracks)
-            return
-        case typeSelector.artists:
-            setSelectedType(typeSelector.artists)
-            return
-    }
-}
-
-function setRangeFromLS(setSelectedRange: React.Dispatch<React.SetStateAction<rangeSelector>>) {
-    const rangeValueStr = localStorage.getItem('selectedRange')
-
-    if (!rangeValueStr) return
-
-    const rangeValue = parseInt(rangeValueStr)
-
-    if (!rangeValue) return
-
-    switch (rangeValue) {
-        case rangeSelector.allTime:
-            setSelectedRange(rangeSelector.allTime)
-        case rangeSelector.sixMonth:
-            setSelectedRange(rangeSelector.sixMonth)
-        case rangeSelector.oneMonth:
-            setSelectedRange(rangeSelector.oneMonth)
-    }
 }
 
 export { typeSelector, rangeSelector }

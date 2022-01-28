@@ -6,6 +6,8 @@ import { mdHandlerBoolean, mdHandler } from '../other/mdHandler'
 import TypeSelector from './selectors/typeSelector'
 import RangeSelector from './selectors/rangeSelector'
 
+import TopTracks from './topTracks/topTracks'
+
 import { setType, setRange } from './setTypeAndRange'
 
 import './topPage.scss'
@@ -55,6 +57,8 @@ export default function TopPage({ isDark }: props) {
                     <TypeSelector isDark={isDark} selectedType={selectedType} setSelectedType={setSelectedType} />
                     <RangeSelector isDark={isDark} selectedRange={selectedRange} setSelectedRange={setSelectedRange} />
                 </div>
+
+                <TopTracks targetRange={rangeSelector.allTime} selectedRange={selectedRange} selectedType={selectedType} />
             </div>
         </div>
     )

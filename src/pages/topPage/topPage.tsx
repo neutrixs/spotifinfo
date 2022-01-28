@@ -64,6 +64,20 @@ export default function TopPage({ isDark }: props) {
                     selectedType={selectedType}
                     isDark={isDark}
                 />
+
+                <TopTracks
+                    targetRange={rangeSelector.sixMonth}
+                    selectedRange={selectedRange}
+                    selectedType={selectedType}
+                    isDark={isDark}
+                />
+
+                <TopTracks
+                    targetRange={rangeSelector.oneMonth}
+                    selectedRange={selectedRange}
+                    selectedType={selectedType}
+                    isDark={isDark}
+                />
             </div>
         </div>
     )

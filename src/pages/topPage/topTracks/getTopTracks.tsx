@@ -16,10 +16,13 @@ export default async function getTopTracks(
     switch (range) {
         case rangeSelector.allTime:
             rangeParsed = 'long_term'
+            break
         case rangeSelector.sixMonth:
             rangeParsed = 'medium_term'
+            break
         case rangeSelector.oneMonth:
             rangeParsed = 'short_term'
+            break
     }
 
     const param = new URLSearchParams()
@@ -50,12 +53,16 @@ export default async function getTopTracks(
 
     for (let i = 0; i < data.items.length; i++) {
         const currentData = data.items[i]
+        const key = `topTracks${range}${currentData.id}`
 
         dataToSet.push(
-            <div>
+            <div key={key}>
                 <div className="number">
                     <span>{i + 1}</span>
                 </div>
+                <a href={currentData.album.external_urls.spotify} className="artHolder">
+                    <img src={currentData.album.images[1].url} />
+                </a>
             </div>
         )
     }

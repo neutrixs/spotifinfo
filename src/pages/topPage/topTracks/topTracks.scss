@@ -17,4 +17,16 @@
         margin-right: 1em;
         font-family: 'JetBrains Mono', monospace;
     }
+
+    .artHolder {
+        display: inline-block;
+        width: 3em;
+        height: 3em;
+        margin-right: 1em;
+
+        img {
+            width: 3em;
+            display: block;
+        }
+    }
 }

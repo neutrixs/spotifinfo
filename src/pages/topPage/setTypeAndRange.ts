@@ -4,8 +4,6 @@ import { typeSelector, rangeSelector } from './topPage'
 function setType(): typeSelector {
     const typeValue = parseInt(localStorage.getItem('selectedType'))
 
-    console.log('what the fuck', typeValue)
-
     switch (typeValue) {
         case typeSelector.tracks:
             return typeSelector.tracks

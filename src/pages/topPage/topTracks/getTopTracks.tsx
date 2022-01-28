@@ -63,6 +63,10 @@ export default async function getTopTracks(
                 <a href={currentData.album.external_urls.spotify} className="artHolder">
                     <img src={currentData.album.images[1].url} />
                 </a>
+                <a href={currentData.external_urls.spotify} className="infoHolder">
+                    <p>{currentData.name}</p>
+                    <p>{currentData.artists.map(a => a.name).join(', ')}</p>
+                </a>
             </div>
         )
     }

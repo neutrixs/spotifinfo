@@ -5,6 +5,8 @@ import { typeSelector, rangeSelector } from '../topPage'
 
 import Loading from '../../loading/loading'
 
+import getTopArtists from './getTopArtists'
+
 interface props {
     selectedType: typeSelector
     selectedRange: rangeSelector
@@ -15,6 +17,10 @@ interface props {
 export default function TopArtists({ selectedType, selectedRange, targetRange, isDark }: props) {
     const [data, setData] = useState<JSX.Element[]>([])
     const [loading, setIsLoading] = useState(true)
+
+    useEffect(() => {
+        getTopArtists(targetRange, setData, setIsLoading)
+    }, [])
 
     function isShow() {
         return selectedType == typeSelector.artists && selectedRange == targetRange

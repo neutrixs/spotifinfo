@@ -7,6 +7,7 @@ import TypeSelector from './selectors/typeSelector'
 import RangeSelector from './selectors/rangeSelector'
 
 import TopTracks from './topTracks/topTracks'
+import TopArtists from './topArtists/topArtists'
 
 import { setType, setRange } from './setTypeAndRange'
 
@@ -76,6 +77,27 @@ export default function TopPage({ isDark }: props) {
                     targetRange={rangeSelector.oneMonth}
                     selectedRange={selectedRange}
                     selectedType={selectedType}
+                    isDark={isDark}
+                />
+
+                <TopArtists
+                    selectedType={selectedType}
+                    selectedRange={selectedRange}
+                    targetRange={rangeSelector.allTime}
+                    isDark={isDark}
+                />
+
+                <TopArtists
+                    selectedType={selectedType}
+                    selectedRange={selectedRange}
+                    targetRange={rangeSelector.sixMonth}
+                    isDark={isDark}
+                />
+
+                <TopArtists
+                    selectedType={selectedType}
+                    selectedRange={selectedRange}
+                    targetRange={rangeSelector.oneMonth}
                     isDark={isDark}
                 />
             </div>

@@ -9,6 +9,8 @@ import RangeSelector from './selectors/rangeSelector'
 import TopTracks from './topTracks/topTracks'
 import TopArtists from './topArtists/topArtists'
 
+import RecaptchaBadge from '../recaptchaBadge/recaptchaBadge'
+
 import { setType, setRange } from './setTypeAndRange'
 
 import './topPage.scss'
@@ -101,6 +103,8 @@ export default function TopPage({ isDark }: props) {
                     isDark={isDark}
                 />
             </div>
+
+            <RecaptchaBadge isDark={isDark} />
         </div>
     )
 }

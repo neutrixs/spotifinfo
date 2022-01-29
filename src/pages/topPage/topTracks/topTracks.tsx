@@ -7,7 +7,7 @@ import getTopTracks from './getTopTracks'
 
 import { typeSelector, rangeSelector } from '../topPage'
 
-import './topTracks.scss'
+import '../topTrAndAr.scss'
 
 interface props {
     selectedType: typeSelector

@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@600&display=swap');
 
-.topTracksHolder {
+@mixin topBoth {
     margin-top: 1.5em;
 
     & > div:not(.loadingAnimationHolder) {
@@ -27,6 +27,7 @@
 
         img {
             width: 3em;
+            height: 3em;
             display: block;
         }
     }
@@ -42,11 +43,24 @@
             white-space: nowrap;
             width: max-content;
             max-width: 100%;
-
-            &:first-child {
-                font-weight: 600;
-                margin-bottom: 0.5em;
-            }
         }
+    }
+}
+
+.topTracksHolder {
+    @include topBoth();
+
+    .infoHolder p:first-child {
+        font-weight: 600;
+        margin-bottom: 0.5em;
+    }
+}
+
+.topArtistsHolder {
+    @include topBoth();
+
+    .artHolder img {
+        border-radius: 1.5em;
+        object-fit: cover;
     }
 }

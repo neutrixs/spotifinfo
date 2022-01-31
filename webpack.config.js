@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const WebpackObfuscator = require('webpack-obfuscator')
+const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 let devMode = false
 
 module.exports = function (env, argv) {
@@ -114,6 +115,9 @@ const config = (nameOrContentHash, nameOrContentHashFiles) => ({
         }),
         new MiniCssExtractPlugin({
             filename: `assets/${nameOrContentHash}.css`,
+        }),
+        new ProgressBarPlugin({
+            format: '[:bar] :msg, :percent',
         }),
     ],
     resolve: {

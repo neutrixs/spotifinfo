@@ -48,7 +48,7 @@ const config = nameOrContentHash => ({
         splitChunks: {
             cacheGroups: {
                 vendors: {
-                    test: /[\\/]node_modules[\\/]/,
+                    test: /[\\/]node_modules[\\/](react|react-dom|react-dom-router)[\\/]/,
                     name: 'vendors',
                     chunks: 'all',
                 },

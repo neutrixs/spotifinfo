@@ -11,7 +11,7 @@ module.exports = function (env, argv) {
     console.log(argv)
     devMode = argv.mode == 'development'
 
-    const nameOrContentHash = devMode ? '[name]' : '[contenthash]'
+    const nameOrContentHash = devMode ? '[name]' : '[name].[contenthash]'
 
     return config(nameOrContentHash)
 }
@@ -45,6 +45,15 @@ const config = nameOrContentHash => ({
             }),
             new CssMinimizerPlugin(),
         ],
+        splitChunks: {
+            cacheGroups: {
+                vendors: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: 'vendors',
+                    chunks: 'all',
+                },
+            },
+        },
     },
     module: {
         rules: [

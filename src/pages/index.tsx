@@ -24,7 +24,7 @@ function Main() {
 
     useEffect(() => {
         localStorage.setItem('isDark', isDark.toString())
-    }, [])
+    }, [isDark])
 
     function getMainPageRouting() {
         if (isLoggedOut) {

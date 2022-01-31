@@ -12,8 +12,9 @@ module.exports = function (env, argv) {
     devMode = argv.mode == 'development'
 
     const nameOrContentHash = devMode ? '[name]' : '[name].[contenthash]'
+    const nameOrContentHashFiles = devMode ? '[name]' : '[contenthash]'
 
-    return config(nameOrContentHash)
+    return config(nameOrContentHash, nameOrContentHashFiles)
 }
 
 const mangleNormal = {
@@ -22,7 +23,7 @@ const mangleNormal = {
     },
 }
 
-const config = nameOrContentHash => ({
+const config = (nameOrContentHash, nameOrContentHashFiles) => ({
     mode: devMode ? 'development' : 'production',
     entry: {
         index: './src/pages/index.tsx',
@@ -74,7 +75,7 @@ const config = nameOrContentHash => ({
                 test: /\.(png|jpe?g|gif|jp2|webp|svg|otf|md)$/,
                 loader: 'file-loader',
                 options: {
-                    name: `assets/${nameOrContentHash}.[ext]`,
+                    name: `assets/${nameOrContentHashFiles}.[ext]`,
                     esModule: false,
                 },
             },

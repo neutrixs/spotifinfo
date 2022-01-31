@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { NavLink } from 'react-router-dom'
 
 import getToken from '../../other/getToken'
@@ -18,20 +18,46 @@ interface props {
     isDark: boolean
 }
 
+let dropdownIsTempLocked = false
+
 export default function NavbarRight({ toggleTheme, isDark }: props) {
     const [profilePicURL, setProfilePicURL] = useState<string>('')
     const [isOpened, setIsOpened] = useState<boolean>(false)
 
+    const dropdownElementRef = useRef<HTMLDivElement>(null)
+
     useEffect(() => {
         getProfile(setProfilePicURL)
+
+        dropdownElementRef.current.addEventListener('click', dropdownOnClick)
+        window.addEventListener('click', windowOnClick)
+
+        return function cleanup() {
+            dropdownElementRef.current.removeEventListener('click', dropdownOnClick)
+            window.removeEventListener('click', windowOnClick)
+        }
     }, [])
 
     function onClick() {
         setIsOpened(!isOpened)
+        dropdownIsTempLocked = true
     }
 
     function onClickKeyboard(e: React.KeyboardEvent<HTMLDivElement>) {
         if (e.key == 'Enter') setIsOpened(!isOpened)
+        dropdownIsTempLocked = true
+    }
+
+    function dropdownOnClick() {
+        dropdownIsTempLocked = true
+    }
+
+    function windowOnClick() {
+        if (!dropdownIsTempLocked) {
+            setIsOpened(false)
+        }
+
+        dropdownIsTempLocked = false
     }
 
     return (
@@ -45,7 +71,12 @@ export default function NavbarRight({ toggleTheme, isDark }: props) {
                     }}
                 />
             </div>
-            {isOpened ? <DropdownElement isDark={isDark} toggleTheme={toggleTheme} /> : null}
+            <DropdownElement
+                isDark={isDark}
+                isOpened={isOpened}
+                toggleTheme={toggleTheme}
+                dropdownElementRef={dropdownElementRef}
+            />
         </div>
     )
 }

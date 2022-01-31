@@ -9,17 +9,24 @@ import * as checkmark from '../../../svg/check.svg'
 
 interface props {
     isDark: boolean
+    isOpened: boolean
     toggleTheme: () => void
+    dropdownElementRef: React.MutableRefObject<HTMLDivElement>
 }
 
-export default function DropdownElement({ isDark, toggleTheme }: props) {
+export default function DropdownElement({ isDark, isOpened, toggleTheme, dropdownElementRef }: props) {
     function darkModeOnKeyPress(e: React.KeyboardEvent<HTMLDivElement>) {
         if (e.key !== 'Enter') return
         toggleTheme()
     }
 
     return (
-        <div id="dropdownElement" className={!isDark ? 'light' : ''}>
+        <div
+            id="dropdownElement"
+            ref={dropdownElementRef}
+            className={!isDark ? 'light' : ''}
+            style={{ display: !isOpened ? 'none' : '' }}
+        >
             <NavLink to="/account">
                 <p>Account Page</p>
             </NavLink>

@@ -11,6 +11,7 @@ const MainPageOut = lazy(() => import('./mainPageOut/mainPageOut'))
 const MainPageIn = lazy(() => import('./mainPageIn/mainPageIn'))
 const TopPage = lazy(() => import('./topPage/topPage'))
 const PrivacyPolicyPage = lazy(() => import('./privacyPolicy/privacyPolicy'))
+const AccountPage = lazy(() => import('./account/account'))
 const Page404 = lazy(() => import('./404/404'))
 
 import './base.scss'
@@ -59,6 +60,11 @@ function Main() {
                     <Route exact path="/privacy">
                         <Suspense fallback={<Loading isDark={isDark} />}>
                             <PrivacyPolicyPage isDark={isDark} />
+                        </Suspense>
+                    </Route>
+                    <Route exact path="/account">
+                        <Suspense fallback={<Loading isDark={isDark} />}>
+                            <AccountPage isDark={isDark} />
                         </Suspense>
                     </Route>
 

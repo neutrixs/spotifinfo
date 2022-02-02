@@ -33,7 +33,7 @@ const config = (nameOrContentHash, nameOrContentHashFiles) => ({
         },
         'module~0': ['react', 'react-dom', 'react-router-dom'],
         'module~1': 'react-markdown',
-        'module~2': 'colorthief',
+        'module~2': '@neutrixs/colorthief',
     },
     output: {
         filename: `assets/${nameOrContentHash}.js`,

@@ -1,4 +1,4 @@
-import colorThief from 'colorthief'
+import colorThief from '@neutrixs/colorthief'
 import { paletteType } from '../nowPlaying'
 import { getMostSaturated, autoAdjust } from './modules/colourModules__obfu'
 

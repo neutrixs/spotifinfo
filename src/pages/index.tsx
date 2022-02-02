@@ -26,6 +26,7 @@ function Main() {
 
     useEffect(() => {
         localStorage.setItem('isDark', isDark.toString())
+        document.body.classList[isDark ? 'remove' : 'add']('light')
     }, [isDark])
 
     function getMainPageRouting() {
@@ -46,35 +47,33 @@ function Main() {
 
     return (
         <BrowserRouter>
-            <div className={'fake ' + (!isDark ? 'fakeLight' : '')}>
-                <Navbar isLoggedOut={isLoggedOut} toggleTheme={toggleTheme} isDark={isDark} />
-                <Switch>
-                    <Route exact path="/">
-                        {getMainPageRouting()}
-                    </Route>
-                    <Route exact path="/top_tracks">
-                        <Suspense fallback={<Loading isDark={isDark} />}>
-                            {!isLoggedOut ? <TopPage isDark={isDark}></TopPage> : <Redirect to="/"></Redirect>}
-                        </Suspense>
-                    </Route>
-                    <Route exact path="/privacy">
-                        <Suspense fallback={<Loading isDark={isDark} />}>
-                            <PrivacyPolicyPage isDark={isDark} />
-                        </Suspense>
-                    </Route>
-                    <Route exact path="/account">
-                        <Suspense fallback={<Loading isDark={isDark} />}>
-                            <AccountPage isDark={isDark} />
-                        </Suspense>
-                    </Route>
+            <Navbar isLoggedOut={isLoggedOut} toggleTheme={toggleTheme} isDark={isDark} />
+            <Switch>
+                <Route exact path="/">
+                    {getMainPageRouting()}
+                </Route>
+                <Route exact path="/top_tracks">
+                    <Suspense fallback={<Loading isDark={isDark} />}>
+                        {!isLoggedOut ? <TopPage isDark={isDark}></TopPage> : <Redirect to="/"></Redirect>}
+                    </Suspense>
+                </Route>
+                <Route exact path="/privacy">
+                    <Suspense fallback={<Loading isDark={isDark} />}>
+                        <PrivacyPolicyPage isDark={isDark} />
+                    </Suspense>
+                </Route>
+                <Route exact path="/account">
+                    <Suspense fallback={<Loading isDark={isDark} />}>
+                        <AccountPage isDark={isDark} />
+                    </Suspense>
+                </Route>
 
-                    <Route>
-                        <Suspense fallback={null}>
-                            <Page404 />
-                        </Suspense>
-                    </Route>
-                </Switch>
-            </div>
+                <Route>
+                    <Suspense fallback={null}>
+                        <Page404 />
+                    </Suspense>
+                </Route>
+            </Switch>
         </BrowserRouter>
     )
 }

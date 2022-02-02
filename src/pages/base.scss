@@ -7,39 +7,35 @@ $background-light: #ffffff;
 $navbar-dark: #505050;
 $navbar-light: #e1e1e1;
 
-a, span, p{
+a,
+span,
+p {
     color: inherit;
     text-decoration: inherit;
 }
 
-body{
-    margin:0;
+body {
+    margin: 0;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
-    font-family: 'Inter',sans-serif;
+    font-family: 'Inter', sans-serif;
     color: $font-dark;
     background-color: $font-light;
+
+    &.light {
+        background-color: $background-light;
+        color: $font-light;
+    }
 }
-.none{
+.none {
     display: none;
 }
 
-.fake{
-    min-height: 100vh;
-    min-width: 24.5em;
-    height: max-content;
-}
-
-.fakeLight{
-    background-color: $background-light;
-    color: $font-light;
-}
-
-#page{
+#page {
     margin-left: 10em;
     margin-right: 10em;
     min-width: 24.5em;
 }
-.pageMobile{
+.pageMobile {
     margin: 0 !important;
 }

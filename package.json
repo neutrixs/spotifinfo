@@ -26,7 +26,7 @@
     "@types/react": "^17.0.30",
     "@types/react-dom": "^17.0.9",
     "@types/react-router-dom": "^5.3.1",
-    "colorthief": "github:neutrixs/color-thief",
+    "colorthief": "github:neutrixs/color-thief#abcc2f66c21092e47cdb2fc045307c410cbe2127",
     "copy-webpack-plugin": "^9.0.1",
     "css-loader": "^6.4.0",
     "css-minimizer-webpack-plugin": "^3.1.1",

@@ -14,8 +14,8 @@ export default async function getColour(
 
     const selectedPalette = palettes[index]
 
-    const darkPalette = autoAdjust(selectedPalette, 0.4, 0.02)
-    const lightPalette = autoAdjust(selectedPalette, 0.7, 0.02)
+    const darkPalette = autoAdjust(selectedPalette, 0.4, 0.02, 0.8)
+    const lightPalette = autoAdjust(selectedPalette, 0.7, 0.02, 0.8)
 
     setPalette([darkPalette, lightPalette])
 }

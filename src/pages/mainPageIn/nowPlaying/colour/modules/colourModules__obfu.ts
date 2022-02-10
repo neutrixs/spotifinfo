@@ -113,9 +113,10 @@ function getLightness(rgbVal: rgb) {
  * @param rgbVal array of rgb values [0,255]
  * @param targetLightness target lightness [0,1]
  * @param tolerance lightness difference tolerance [0,1]
+ * @param maxSaturation [0,1]
  */
 
-function autoAdjust(rgbVal: rgb, targetLightness: number, tolerance: number): rgb {
+function autoAdjust(rgbVal: rgb, targetLightness: number, tolerance: number, maxSaturation: number): rgb {
     const lightness = getLightness(rgbVal)
 
     if (targetLightness - tolerance < lightness && lightness < targetLightness + tolerance) return rgbVal
@@ -134,6 +135,12 @@ function autoAdjust(rgbVal: rgb, targetLightness: number, tolerance: number): rg
 
         if (targetLightness - tolerance < newLightness && newLightness < targetLightness + tolerance) break
     }
+
+    const HSLVal = rgbToHsl(currentRGBValue[0] / 255, currentRGBValue[1] / 255, currentRGBValue[2] / 255)
+
+    HSLVal.s > maxSaturation ? (HSLVal.s = maxSaturation) : null
+
+    currentRGBValue = hslToRgb(HSLVal.h, HSLVal.s, HSLVal.l)
 
     return currentRGBValue
 }

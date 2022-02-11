@@ -1,0 +1,29 @@
+nav {
+    min-height: 4.25rem;
+    position: sticky;
+    top: 0;
+    line-height: 1.25rem;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    background-color: hsla(240, 14%, 25%);
+
+    .pageLink {
+        margin: 0.5rem;
+        padding: 1rem;
+        border-radius: 0.5rem;
+
+        display: inline-block;
+
+        &:hover {
+            background-color: hsla(210, 70%, 50%, 0.5) !important;
+        }
+    }
+
+    .active {
+        background-color: hsla(210, 70%, 50%);
+    }
+}

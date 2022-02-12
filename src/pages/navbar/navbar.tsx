@@ -55,10 +55,7 @@ export default function Navbar({ isLoggedOut, isDark, toggleTheme }: props) {
                 <NavLink exact to="/" className="pageLink">
                     <span>Home</span>
                 </NavLink>
-                {!isLoggedOut ? loggedInNavigation : null}
-                <NavLink exact to="/privacy" className="pageLink">
-                    <span>Privacy Policy</span>
-                </NavLink>
+                {isLoggedOut ? loggedOutNavigation : loggedInNavigation}
             </div>
         </nav>
     )
@@ -73,6 +70,12 @@ const loggedInNavigation = (
             <span>Account</span>
         </NavLink>
     </>
+)
+
+const loggedOutNavigation = (
+    <NavLink exact to="/privacy" className="pageLink">
+        <span>Privacy Policy</span>
+    </NavLink>
 )
 
 const getWindowSizeInEM = () => window.innerWidth / parseFloat(getComputedStyle(document.body).fontSize)

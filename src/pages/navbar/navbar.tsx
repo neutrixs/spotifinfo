@@ -13,7 +13,7 @@ interface props {
 export default function Navbar({ isLoggedOut, isDark, toggleTheme }: props) {
     return (
         <nav>
-            <div>
+            <div className="linksHolder">
                 <NavLink exact to="/" className="pageLink">
                     <span>Home</span>
                 </NavLink>

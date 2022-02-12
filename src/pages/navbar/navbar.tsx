@@ -14,8 +14,8 @@ export default function Navbar({ isLoggedOut, isDark, toggleTheme }: props) {
     const linksHolder = useRef<HTMLDivElement>(null)
     const [isOverflowed, setIsOverflowed] = useState(false)
 
-    const linksHolderLeftShadow = '0.8rem 0 0.4rem -0.4rem #00000080 inset'
-    const linksHolderRightShadow = '-0.8rem 0 0.4rem -0.4rem #00000080 inset'
+    const linksHolderLeftShadow = '0.8rem 0 0.4rem -0.4rem #00000060 inset'
+    const linksHolderRightShadow = '-0.8rem 0 0.4rem -0.4rem #00000060 inset'
 
     const [shadowLeftActive, setShadowLeftActive] = useState(false)
     const [shadowRightActive, setShadowRightActive] = useState(false)

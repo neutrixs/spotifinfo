@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 
+import NavbarRight from './navbarRight/navbarRight'
+
 import { NavLink } from 'react-router-dom'
 
 import './navbar.scss'
@@ -57,6 +59,7 @@ export default function Navbar({ isLoggedOut, isDark, toggleTheme }: props) {
                 </NavLink>
                 {isLoggedOut ? loggedOutNavigation : loggedInNavigation}
             </div>
+            {isLoggedOut ? null : <NavbarRight isDark={isDark} toggleTheme={toggleTheme} />}
         </nav>
     )
 }

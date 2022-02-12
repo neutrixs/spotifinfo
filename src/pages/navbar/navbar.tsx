@@ -33,9 +33,7 @@ export default function Navbar({ isLoggedOut, isDark, toggleTheme }: props) {
 
     function linksHolderOnScroll() {
         setShadowLeftActive(linksHolder.current.scrollLeft > 0)
-        setShadowRightActive(
-            linksHolder.current.scrollLeft + linksHolder.current.clientWidth != linksHolder.current.scrollWidth
-        )
+        setShadowRightActive(linksHolder.current.scrollLeft + linksHolder.current.clientWidth < linksHolder.current.scrollWidth)
     }
 
     function getShadowBoxStyle() {

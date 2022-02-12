@@ -8,6 +8,11 @@ nav {
     align-items: center;
 
     background-color: hsla(240, 14%, 25%);
+    box-shadow: 0 0.1rem 0.2rem hsla(0, 0, 0, 0.6);
+
+    &.light {
+        background-color: hsla(240, 14%, 80%);
+    }
 }
 
 .linksHolder {
@@ -26,6 +31,7 @@ nav {
     .pageLink {
         margin: 0.25rem;
         padding: 1rem;
+        padding-bottom: 0.8rem;
         border-bottom: 0.2rem solid transparent;
 
         display: inline-block;

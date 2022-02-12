@@ -45,7 +45,7 @@ export default function Navbar({ isLoggedOut, isDark, toggleTheme }: props) {
     }
 
     return (
-        <nav>
+        <nav className={!isDark ? 'light' : ''}>
             <div
                 className="linksHolder"
                 ref={linksHolder}

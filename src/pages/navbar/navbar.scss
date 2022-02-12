@@ -8,6 +8,20 @@ nav {
     align-items: center;
 
     background-color: hsla(240, 14%, 25%);
+}
+
+.linksHolder {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    overflow-x: scroll;
+
+    scrollbar-width: none; /* Firefox */
+    &::-webkit-scrollbar {
+        display: none; /* Safari and Chrome */
+    }
 
     .pageLink {
         margin: 0.5rem;
@@ -27,19 +41,5 @@ nav {
 
     .active {
         background-color: hsla(210, 70%, 50%);
-    }
-}
-
-.linksHolder {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-
-    overflow-x: scroll;
-
-    scrollbar-width: none; /* Firefox */
-    &::-webkit-scrollbar {
-        display: none; /* Safari and Chrome */
     }
 }

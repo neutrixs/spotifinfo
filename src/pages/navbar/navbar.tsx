@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 import { NavLink } from 'react-router-dom'
 
@@ -11,9 +11,49 @@ interface props {
 }
 
 export default function Navbar({ isLoggedOut, isDark, toggleTheme }: props) {
+    const linksHolder = useRef<HTMLDivElement>(null)
+    const [isOverflowed, setIsOverflowed] = useState(false)
+
+    const linksHolderLeftShadow = '0.8rem 0 0.4rem -0.4rem #00000080 inset'
+    const linksHolderRightShadow = '-0.8rem 0 0.4rem -0.4rem #00000080 inset'
+
+    const [shadowLeftActive, setShadowLeftActive] = useState(false)
+    const [shadowRightActive, setShadowRightActive] = useState(false)
+
+    useEffect(() => {
+        setIsOverflowed(detectOverflow(linksHolder.current))
+        linksHolderOnScroll()
+
+        window.addEventListener('resize', linksHolderOnScroll)
+
+        return () => {
+            window.removeEventListener('resize', linksHolderOnScroll)
+        }
+    }, [])
+
+    function linksHolderOnScroll() {
+        setShadowLeftActive(linksHolder.current.scrollLeft > 0)
+        setShadowRightActive(
+            linksHolder.current.scrollLeft + linksHolder.current.clientWidth != linksHolder.current.scrollWidth
+        )
+    }
+
+    function getShadowBoxStyle() {
+        const bruh = [shadowLeftActive ? linksHolderLeftShadow : '', shadowRightActive ? linksHolderRightShadow : '']
+            .filter(Boolean)
+            .join(',')
+
+        return bruh
+    }
+
     return (
         <nav>
-            <div className="linksHolder">
+            <div
+                className="linksHolder"
+                ref={linksHolder}
+                onScroll={linksHolderOnScroll}
+                style={{ boxShadow: getShadowBoxStyle() }}
+            >
                 <NavLink exact to="/" className="pageLink">
                     <span>Home</span>
                 </NavLink>
@@ -38,3 +78,5 @@ const loggedInNavigation = (
 )
 
 const getWindowSizeInEM = () => window.innerWidth / parseFloat(getComputedStyle(document.body).fontSize)
+
+const detectOverflow = (element: HTMLDivElement) => element.scrollWidth > element.clientWidth

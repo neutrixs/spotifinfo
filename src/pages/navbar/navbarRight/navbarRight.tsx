@@ -1,4 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+
+import getToken from '../../other/getToken'
+import spotifyCurrentUser from '../../types/spotifyCurrentUser'
 
 import './navbarRight.scss'
 
@@ -16,6 +19,10 @@ interface props {
 export default function NavbarRight({ isDark, toggleTheme }: props) {
     const [profilePicURL, setProfilePicURL] = useState<string>(defaultProfilePic)
     const [dropdownOpen, setDropdownOpen] = useState(false)
+
+    useEffect(() => {
+        getProfilePicURL(setProfilePicURL)
+    }, [])
 
     function themeSwitcherOnClick(e?: React.KeyboardEvent<HTMLDivElement>) {
         if (e && e?.key != 'Enter') return
@@ -67,4 +74,25 @@ export default function NavbarRight({ isDark, toggleTheme }: props) {
             </div>
         </div>
     )
+}
+
+async function getProfilePicURL(setProfilePicURL: React.Dispatch<React.SetStateAction<string>>) {
+    const rawResponse = await fetch('https://api.spotify.com/v1/me', {
+        headers: {
+            Authorization: localStorage.getItem('token') || '',
+        },
+    })
+
+    switch (rawResponse.status) {
+        case 400:
+        case 401:
+        case 403:
+            await getToken()
+            await getProfilePicURL(setProfilePicURL)
+            return
+    }
+
+    const response = (await rawResponse.json()) as spotifyCurrentUser
+
+    setProfilePicURL(response.images[0].url)
 }

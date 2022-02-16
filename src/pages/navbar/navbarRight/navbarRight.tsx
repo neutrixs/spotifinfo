@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 import getToken from '../../other/getToken'
 import spotifyCurrentUser from '../../types/spotifyCurrentUser'
+import Dropdown from './dropdown'
 
 import './navbarRight.scss'
 
@@ -71,6 +72,7 @@ export default function NavbarRight({ isDark, toggleTheme }: props) {
                         />
                     </div>
                 </div>
+                <Dropdown isShowDropdown={dropdownOpen} isDark={isDark} />
             </div>
         </div>
     )

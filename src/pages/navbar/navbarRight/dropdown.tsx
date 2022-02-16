@@ -23,7 +23,7 @@ export default function Dropdown({ isShowDropdown, isDark }: props) {
                     logout(true)
                 }}
                 onKeyPress={e => {
-                    if (e.key === 'Enter') return
+                    if (e.key != 'Enter') return
                     logout(true)
                 }}
             >

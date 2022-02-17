@@ -14,7 +14,6 @@ interface props {
 
 export default function Navbar({ isLoggedOut, isDark, toggleTheme }: props) {
     const linksHolder = useRef<HTMLDivElement>(null)
-    const [isOverflowed, setIsOverflowed] = useState(false)
 
     const linksHolderLeftShadow = '0.8rem 0 0.4rem -0.4rem #00000060 inset'
     const linksHolderRightShadow = '-0.8rem 0 0.4rem -0.4rem #00000060 inset'
@@ -23,7 +22,6 @@ export default function Navbar({ isLoggedOut, isDark, toggleTheme }: props) {
     const [shadowRightActive, setShadowRightActive] = useState(false)
 
     useEffect(() => {
-        setIsOverflowed(detectOverflow(linksHolder.current))
         linksHolderOnScroll()
 
         window.addEventListener('resize', linksHolderOnScroll)

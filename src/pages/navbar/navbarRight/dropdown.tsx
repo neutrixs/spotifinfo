@@ -7,11 +7,16 @@ import './dropdown.scss'
 interface props {
     isShowDropdown: boolean
     isDark: boolean
+    dropdownRef: React.MutableRefObject<HTMLDivElement>
 }
 
-export default function Dropdown({ isShowDropdown, isDark }: props) {
+export default function Dropdown({ isShowDropdown, isDark, dropdownRef }: props) {
     return (
-        <div className={'dropdownElement ' + (!isDark ? 'light' : '')} style={{ display: !isShowDropdown ? 'none' : '' }}>
+        <div
+            className={'dropdownElement ' + (!isDark ? 'light' : '')}
+            style={{ display: !isShowDropdown ? 'none' : '' }}
+            ref={dropdownRef}
+        >
             <NavLink to="/privacy">
                 <span>Privacy Policy</span>
             </NavLink>

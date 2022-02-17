@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 import getToken from '../../other/getToken'
 import spotifyCurrentUser from '../../types/spotifyCurrentUser'
@@ -17,12 +17,24 @@ interface props {
     toggleTheme: () => void
 }
 
+let dropdownLocked = false
+
 export default function NavbarRight({ isDark, toggleTheme }: props) {
     const [profilePicURL, setProfilePicURL] = useState<string>(defaultProfilePic)
     const [dropdownOpen, setDropdownOpen] = useState(false)
 
+    const dropdownRef = useRef<HTMLDivElement>(null)
+
     useEffect(() => {
         getProfilePicURL(setProfilePicURL)
+
+        dropdownRef.current.addEventListener('click', dropdownOnClick)
+        window.addEventListener('click', windowOnClick)
+
+        return () => {
+            dropdownRef.current.removeEventListener('click', dropdownOnClick)
+            window.removeEventListener('click', windowOnClick)
+        }
     }, [])
 
     function themeSwitcherOnClick(e?: React.KeyboardEvent<HTMLDivElement>) {
@@ -31,10 +43,21 @@ export default function NavbarRight({ isDark, toggleTheme }: props) {
         toggleTheme()
     }
 
-    function dropdownOnClick(e?: React.KeyboardEvent<HTMLDivElement>) {
+    function dropdownHolderOnClick(e?: React.KeyboardEvent<HTMLDivElement>) {
         if (e && e?.key != 'Enter') return
 
+        dropdownLocked = true
         setDropdownOpen(!dropdownOpen)
+    }
+
+    function dropdownOnClick() {
+        dropdownLocked = true
+    }
+
+    function windowOnClick() {
+        if (!dropdownLocked) setDropdownOpen(false)
+
+        dropdownLocked = false
     }
 
     return (
@@ -56,10 +79,10 @@ export default function NavbarRight({ isDark, toggleTheme }: props) {
                 <div
                     id="dropdownHolder"
                     onClick={() => {
-                        dropdownOnClick()
+                        dropdownHolderOnClick()
                     }}
                     onKeyPress={e => {
-                        dropdownOnClick(e)
+                        dropdownHolderOnClick(e)
                     }}
                 >
                     <div id="profilePic">
@@ -72,7 +95,7 @@ export default function NavbarRight({ isDark, toggleTheme }: props) {
                         />
                     </div>
                 </div>
-                <Dropdown isShowDropdown={dropdownOpen} isDark={isDark} />
+                <Dropdown isShowDropdown={dropdownOpen} isDark={isDark} dropdownRef={dropdownRef} />
             </div>
         </div>
     )

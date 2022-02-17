@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 
-import getToken from '../../other/getToken'
-import spotifyCurrentUser from '../../types/spotifyCurrentUser'
+import getToken from '../../../pages/other/getToken'
+import spotifyCurrentUser from '../../../pages/types/spotifyCurrentUser'
 import Dropdown from './dropdown'
 
 import './navbarRight.scss'

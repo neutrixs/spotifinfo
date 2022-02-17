@@ -3,7 +3,7 @@ import { useState, useEffect, lazy, Suspense } from 'react'
 import { render } from 'react-dom'
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 
-import Navbar from './navbar/navbar'
+import Navbar from '../components/navbar/navbar'
 
 import Loading from './loading/loading'
 

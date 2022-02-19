@@ -20,6 +20,10 @@
     margin: 0 !important;
     z-index: 10000;
 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(0.8);
@@ -49,6 +53,9 @@
         justify-content: space-between;
         align-items: center;
 
+        padding-bottom: 1rem;
+        border-bottom: 0.2rem solid;
+
         p {
             font-size: 2rem;
             font-weight: 600;
@@ -61,6 +68,12 @@
             margin-left: 1rem;
             cursor: pointer;
         }
+    }
+
+    .content {
+        flex: 1;
+        min-height: 0;
+        overflow-y: scroll;
     }
 }
 

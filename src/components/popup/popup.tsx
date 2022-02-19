@@ -50,6 +50,7 @@ export default function Popup({ setIsOpen, children, title, isDark }: props) {
                         }}
                     />
                 </div>
+                <div className="content">{children}</div>
             </div>
         </>
     )

@@ -9,7 +9,7 @@ export default function PrivacyButton({ isDark }: props) {
     const [privacyIsOpened, setPrivacyIsOpened] = useState(false)
 
     const popupElement = (
-        <Popup title="Privacy Policy" setIsOpen={setPrivacyIsOpened}>
+        <Popup title="Privacy Policy" setIsOpen={setPrivacyIsOpened} isDark={isDark}>
             <p>Lorem ipsum dolor sit amet</p>
         </Popup>
     )

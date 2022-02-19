@@ -3,14 +3,16 @@ import React, { ReactNode, useState, useEffect } from 'react'
 import './popup.scss'
 
 import xIcon from '../../svg/x.svg'
+import xIconLight from '../../svg/x_light.svg'
 
 interface props {
     children: ReactNode
     setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
     title: string
+    isDark: boolean
 }
 
-export default function Popup({ setIsOpen, children, title }: props) {
+export default function Popup({ setIsOpen, children, title, isDark }: props) {
     const [isFullyOpened, setIsFullyOpened] = useState(false)
 
     useEffect(() => {
@@ -32,11 +34,11 @@ export default function Popup({ setIsOpen, children, title }: props) {
                     closePopup()
                 }}
             />
-            <div className={'popup ' + (isFullyOpened ? 'show ' : '')}>
+            <div className={'popup ' + (isFullyOpened ? 'show ' : '') + (!isDark ? 'light ' : '')}>
                 <div className="topHolder">
                     <p>{title}</p>
                     <img
-                        src={xIcon}
+                        src={isDark ? xIcon : xIconLight}
                         role="button"
                         tabIndex={1}
                         onClick={() => {

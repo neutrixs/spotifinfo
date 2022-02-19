@@ -22,20 +22,21 @@
 
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(0.8);
 
     height: 80vh;
     width: 40rem;
     border-radius: 1rem;
-    padding: 1rem;
+    padding: 1.5rem;
 
-    transition: opacity 100ms ease-out;
+    transition: opacity, scale, 100ms ease-out;
     opacity: 0;
 
     background-color: hsl(240, 14%, 25%);
 
     &.show {
         opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
     }
 
     .topHolder {
@@ -49,12 +50,19 @@
             font-weight: 600;
             margin: 0;
         }
+
+        img {
+            width: 2rem;
+            height: 2rem;
+            margin-left: 1rem;
+            cursor: pointer;
+        }
     }
 }
 
-@media (max-width: 43rem) {
+@media (max-width: 44rem) {
     .popup {
-        width: calc(100% - 2rem);
+        width: calc(100% - 3rem);
         border-radius: 0;
     }
 }

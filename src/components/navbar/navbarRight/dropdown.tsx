@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import logout from '../../../pages/other/logout'
+import PrivacyButton from './privacyButton'
 
 import './dropdown.scss'
 
@@ -17,9 +18,7 @@ export default function Dropdown({ isShowDropdown, isDark, dropdownRef }: props)
             style={{ display: !isShowDropdown ? 'none' : '' }}
             ref={dropdownRef}
         >
-            <NavLink to="/privacy">
-                <span>Privacy Policy</span>
-            </NavLink>
+            <PrivacyButton />
             <div
                 id="logoutButton"
                 role="button"

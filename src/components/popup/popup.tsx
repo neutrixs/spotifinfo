@@ -18,7 +18,7 @@ export default function Popup({ setIsOpen, children, title }: props) {
     return (
         <>
             <div className={'popupBackground ' + (isFullyOpened ? 'show ' : '')} />
-            <div className="popup"></div>
+            <div className={'popup ' + (isFullyOpened ? 'show ' : '')}></div>
         </>
     )
 }

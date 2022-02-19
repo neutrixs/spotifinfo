@@ -1,22 +1,37 @@
 import React, { useState } from 'react'
+import Popup from '../../popup/popup'
 
-export default function PrivacyButton() {
+interface props {
+    isDark: boolean
+}
+
+export default function PrivacyButton({ isDark }: props) {
     const [privacyIsOpened, setPrivacyIsOpened] = useState(false)
 
+    const popupElement = (
+        <Popup title="Hello" setIsOpen={setPrivacyIsOpened}>
+            <p>Lorem ipsum dolor sit amet</p>
+        </Popup>
+    )
+
     return (
-        <div
-            role="button"
-            tabIndex={0}
-            onClick={() => {
-                setPrivacyIsOpened(true)
-            }}
-            onKeyPress={e => {
-                if (e.key != 'Enter') return
-                setPrivacyIsOpened(true)
-            }}
-            style={{ cursor: 'pointer' }}
-        >
-            <span>Privacy Policy</span>
-        </div>
+        <>
+            <div
+                role="button"
+                tabIndex={0}
+                onClick={() => {
+                    setPrivacyIsOpened(true)
+                }}
+                onKeyPress={e => {
+                    if (e.key != 'Enter') return
+                    setPrivacyIsOpened(true)
+                }}
+                style={{ cursor: 'pointer' }}
+            >
+                <span>Privacy Policy</span>
+            </div>
+
+            {privacyIsOpened ? popupElement : null}
+        </>
     )
 }

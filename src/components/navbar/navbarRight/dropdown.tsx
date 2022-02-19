@@ -18,7 +18,7 @@ export default function Dropdown({ isShowDropdown, isDark, dropdownRef }: props)
             style={{ display: !isShowDropdown ? 'none' : '' }}
             ref={dropdownRef}
         >
-            <PrivacyButton />
+            <PrivacyButton isDark={isDark} />
             <div
                 id="logoutButton"
                 role="button"

@@ -8,7 +8,14 @@
     transition: background-color 100ms ease-out;
     z-index: 9999;
 
+    margin: 0 !important;
+
     &.show {
         background-color: rgba(0, 0, 0, 0.5);
     }
+}
+
+.popup {
+    position: fixed;
+    margin: 0 !important;
 }

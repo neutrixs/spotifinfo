@@ -1,5 +1,7 @@
 import React, { ReactNode, useState, useEffect } from 'react'
 
+import './popup.scss'
+
 interface props {
     children: ReactNode
     setIsOpen: React.Dispatch<React.SetStateAction<boolean>>

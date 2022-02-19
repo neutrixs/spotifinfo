@@ -27,6 +27,7 @@
     height: 80vh;
     width: 40rem;
     border-radius: 1rem;
+    padding: 1rem;
 
     transition: opacity 100ms ease-out;
     opacity: 0;
@@ -35,5 +36,25 @@
 
     &.show {
         opacity: 1;
+    }
+
+    .topHolder {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        p {
+            font-size: 2rem;
+            font-weight: 600;
+            margin: 0;
+        }
+    }
+}
+
+@media (max-width: 43rem) {
+    .popup {
+        width: calc(100% - 2rem);
+        border-radius: 0;
     }
 }

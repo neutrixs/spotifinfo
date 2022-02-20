@@ -5,6 +5,8 @@ import Popup from '../../popup/popup'
 import privacyPolicyLink from '../../../files/privacyPolicyPop.md'
 import Loading from '../../../pages/loading/loading'
 
+import './privacyButton.scss'
+
 interface props {
     isDark: boolean
 }
@@ -14,9 +16,11 @@ export default function PrivacyButton({ isDark }: props) {
     const [privacyPolicyElement, setPrivacyPolicyElement] = useState<JSX.Element>(null)
 
     const popupElement = (
-        <Popup title="Privacy Policy" setIsOpen={setPrivacyIsOpened} isDark={isDark}>
-            {privacyPolicyElement ?? <Loading isDark={isDark} />}
-        </Popup>
+        <div id="privacyPolicyPopupHolder" className={!isDark ? 'light ' : ''}>
+            <Popup title="Privacy Policy" setIsOpen={setPrivacyIsOpened} isDark={isDark}>
+                {privacyPolicyElement ?? <Loading isDark={isDark} />}
+            </Popup>
+        </div>
     )
 
     useEffect(() => {
@@ -28,7 +32,7 @@ export default function PrivacyButton({ isDark }: props) {
     }, [])
 
     return (
-        <>
+        <div>
             <div
                 role="button"
                 tabIndex={0}
@@ -45,6 +49,6 @@ export default function PrivacyButton({ isDark }: props) {
             </div>
 
             {privacyIsOpened ? popupElement : null}
-        </>
+        </div>
     )
 }

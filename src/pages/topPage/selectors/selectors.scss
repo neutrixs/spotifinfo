@@ -1,5 +1,5 @@
-$dark: #505050;
-$light: #e1e1e1;
+$dark: hsl(240, 14%, 25%);
+$light: hsl(240, 14%, 80%);
 
 @mixin selectorsChild {
     text-align: center;

@@ -119,5 +119,5 @@ async function getProfilePicURL(setProfilePicURL: React.Dispatch<React.SetStateA
 
     const response = (await rawResponse.json()) as spotifyCurrentUser
 
-    setProfilePicURL(response.images[0].url)
+    setProfilePicURL(response.images[0]?.url ?? defaultProfilePic)
 }

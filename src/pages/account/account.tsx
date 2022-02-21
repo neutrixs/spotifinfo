@@ -11,6 +11,8 @@ import spotifyCurrentUser from '../types/spotifyCurrentUser'
 
 import { mdHandler, mdHandlerBoolean } from '../other/mdHandler'
 
+import defaultProfilePic from '../../svg/profile_pic.svg'
+
 import './account.scss'
 
 interface props {
@@ -27,6 +29,8 @@ export default function AccountPage({ isDark }: props) {
     const [id, setId] = useState('')
     const [followers, setFollowers] = useState(0)
     const [plan, setPlan] = useState('')
+
+    const [isUsingDefaultPFP, setIsUsingDefaultPFP] = useState(false)
 
     useEffect(() => {
         window.addEventListener('resize', callMdHandler)
@@ -57,7 +61,12 @@ export default function AccountPage({ isDark }: props) {
 
         const data = (await rawResponse.json()) as spotifyCurrentUser
 
-        setProfilePicURL(data.images[0].url)
+        setProfilePicURL(data.images[0]?.url ?? defaultProfilePic)
+
+        if (!data.images[0]?.url) {
+            setIsUsingDefaultPFP(true)
+        }
+
         setUsername(data.display_name)
         setEmail(data.email)
         setId(data.id)
@@ -76,7 +85,7 @@ export default function AccountPage({ isDark }: props) {
             {isLoading ? <Loading isDark={isDark} /> : null}
             <div id="content" style={{ display: isLoading ? 'none' : '' }}>
                 <p id="title">Your Account</p>
-                <img src={profilePicURL} />
+                <img src={profilePicURL} style={{ borderRadius: isUsingDefaultPFP ? '50%' : '' }} />
                 <div id="infoHolder">
                     <p id="username">{username}</p>
                     <p className="info">

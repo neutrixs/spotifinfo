@@ -11,6 +11,8 @@ import getColour from './colour/getColour'
 
 import './nowPlaying.scss'
 
+let isMobileWithActualVariable = false
+
 interface props {
     isDark: boolean
     isMobile: boolean
@@ -67,8 +69,12 @@ export default function NowPlaying({ isDark, isMobile, setIsLoading, getRecently
         setPaletteIndex(isDark ? 0 : 1)
     }, [isDark])
 
+    useEffect(() => {
+        isMobileWithActualVariable = isMobile
+    }, [isMobile])
+
     function callSideTextDetect() {
-        sideTextDetect(isMobile, setSideText)
+        sideTextDetect(isMobileWithActualVariable, setSideText)
     }
 
     function callGetNowPlaying() {
@@ -83,7 +89,7 @@ export default function NowPlaying({ isDark, isMobile, setIsLoading, getRecently
             setPalette,
             setIsPlaying,
             setIsLoading,
-            getRecentlyPlayedFunc
+            getRecentlyPlayedFunc,
         })
     }
 

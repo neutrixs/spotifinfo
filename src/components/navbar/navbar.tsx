@@ -53,7 +53,7 @@ export default function Navbar({ isLoggedOut, isDark, toggleTheme }: props) {
                 onScroll={linksHolderOnScroll}
                 style={{ boxShadow: getShadowBoxStyle() }}
             >
-                <NavLink exact to="/" className="pageLink">
+                <NavLink to="/" className="pageLink">
                     <span>Home</span>
                 </NavLink>
                 {isLoggedOut ? loggedOutNavigation : loggedInNavigation}
@@ -65,17 +65,17 @@ export default function Navbar({ isLoggedOut, isDark, toggleTheme }: props) {
 
 const loggedInNavigation = (
     <>
-        <NavLink exact to="/top_tracks" className="pageLink">
+        <NavLink to="/top_tracks" className="pageLink">
             <span>Top Tracks</span>
         </NavLink>
-        <NavLink exact to="/account" className="pageLink">
+        <NavLink to="/account" className="pageLink">
             <span>Account</span>
         </NavLink>
     </>
 )
 
 const loggedOutNavigation = (
-    <NavLink exact to="/privacy" className="pageLink">
+    <NavLink to="/privacy" className="pageLink">
         <span>Privacy Policy</span>
     </NavLink>
 )

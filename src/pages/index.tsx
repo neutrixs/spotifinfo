@@ -1,28 +1,46 @@
-import * as React from 'react'
-import { useState, useEffect, lazy, Suspense } from 'react'
+import React, { useState, lazy, Suspense, useEffect } from 'react'
 import { render } from 'react-dom'
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+
+import './base.scss'
 
 import Navbar from '../components/navbar/navbar'
-
 import Loading from './loading/loading'
+
+import Page404 from './404/404'
 
 const MainPageOut = lazy(() => import('./mainPageOut/mainPageOut'))
 const MainPageIn = lazy(() => import('./mainPageIn/mainPageIn'))
 const TopPage = lazy(() => import('./topPage/topPage'))
-const PrivacyPolicyPage = lazy(() => import('./privacyPolicy/privacyPolicy'))
 const AccountPage = lazy(() => import('./account/account'))
-const Page404 = lazy(() => import('./404/404'))
+const PrivacyPage = lazy(() => import('./privacyPolicy/privacyPolicy'))
 
-import './base.scss'
+//
+
+const checkIsLoggedOut = () => document.cookie.indexOf('state=') == -1 || document.cookie.indexOf('uname=') == -1
+
+const checkIsDark = () => {
+    const dark = localStorage.getItem('isDark')
+
+    return dark == 'false' ? false : true
+}
+
+function useDark() {
+    const [isDark, setIsDark] = useState(checkIsDark())
+
+    function toggleDark() {
+        setIsDark(prevState => !prevState)
+    }
+
+    return { isDark, toggleDark }
+}
+
+//
 
 function Main() {
     const isLoggedOut = checkIsLoggedOut()
 
-    const [isDark, setIsDark] = useState<boolean>(checkIsDark())
-    const toggleTheme = () => {
-        setIsDark(!isDark)
-    }
+    const { isDark, toggleDark } = useDark()
 
     useEffect(() => {
         localStorage.setItem('isDark', isDark.toString())
@@ -30,62 +48,58 @@ function Main() {
     }, [isDark])
 
     function getMainPageRouting() {
+        let pageElement = null
+
         if (isLoggedOut) {
-            return (
-                <Suspense fallback={<Loading isDark={isDark} />}>
-                    <MainPageOut />
-                </Suspense>
-            )
+            pageElement = <MainPageOut />
+        } else {
+            pageElement = <MainPageIn isDark={isDark} />
         }
 
+        return <Suspense fallback={<Loading isDark={isDark} />}>{pageElement}</Suspense>
+    }
+
+    function getTopTracksRouting() {
+        if (isLoggedOut) {
+            return <Navigate to="/" />
+        }
         return (
             <Suspense fallback={<Loading isDark={isDark} />}>
-                <MainPageIn isDark={isDark} />
+                <TopPage isDark={isDark} />
+            </Suspense>
+        )
+    }
+
+    function getAccountPageRouting() {
+        if (isLoggedOut) {
+            return <Navigate to="/" />
+        }
+        return (
+            <Suspense fallback={<Loading isDark={isDark} />}>
+                <AccountPage isDark={isDark} />
             </Suspense>
         )
     }
 
     return (
         <BrowserRouter>
-            <Navbar isLoggedOut={isLoggedOut} toggleTheme={toggleTheme} isDark={isDark} />
-            <Switch>
-                <Route exact path="/">
-                    {getMainPageRouting()}
-                </Route>
-                <Route exact path="/top_tracks">
-                    <Suspense fallback={<Loading isDark={isDark} />}>
-                        {!isLoggedOut ? <TopPage isDark={isDark}></TopPage> : <Redirect to="/"></Redirect>}
-                    </Suspense>
-                </Route>
-                <Route exact path="/privacy">
-                    <Suspense fallback={<Loading isDark={isDark} />}>
-                        <PrivacyPolicyPage isDark={isDark} />
-                    </Suspense>
-                </Route>
-                <Route exact path="/account">
-                    <Suspense fallback={<Loading isDark={isDark} />}>
-                        <AccountPage isDark={isDark} />
-                    </Suspense>
-                </Route>
-
-                <Route>
-                    <Suspense fallback={null}>
-                        <Page404 />
-                    </Suspense>
-                </Route>
-            </Switch>
+            <Navbar isLoggedOut={isLoggedOut} isDark={isDark} toggleTheme={toggleDark} />
+            <Routes>
+                <Route path="/" element={getMainPageRouting()} />
+                <Route path="/top_tracks" element={getTopTracksRouting()} />
+                <Route path="/account" element={getAccountPageRouting()} />
+                <Route
+                    path="/privacy"
+                    element={
+                        <Suspense fallback={<Loading isDark={isDark} />}>
+                            <PrivacyPage isDark={isDark} />
+                        </Suspense>
+                    }
+                />
+                <Route path="*" element={<Page404 />} />
+            </Routes>
         </BrowserRouter>
     )
-}
-
-function checkIsDark(): boolean {
-    const dark = localStorage.getItem('isDark')
-
-    return dark == 'true' ? true : dark == 'false' ? false : true
-}
-
-function checkIsLoggedOut(): boolean {
-    return document.cookie.indexOf('state=') == -1 || document.cookie.indexOf('uname=') == -1
 }
 
 render(<Main />, document.getElementById('root'))

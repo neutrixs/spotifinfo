@@ -20,6 +20,7 @@ $LIGHTLIGHT: #808080;
     color: $DARKLIGHT;
     animation: dotFlashingDark 0.5s infinite linear alternate;
     animation-delay: 0.25s;
+    z-index: -1;
 
     &::before,
     &::after {

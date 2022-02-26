@@ -66,9 +66,20 @@ const config = (nameOrContentHash, nameOrContentHashFiles) => ({
                 use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
             },
             {
-                test: /\.tsx?$/,
-                use: 'ts-loader',
-                exclude: /node_modules/,
+                test: /\.tsx$/,
+                loader: 'esbuild-loader',
+                options: {
+                    loader: 'tsx',
+                    target: 'es6',
+                },
+            },
+            {
+                test: /\.ts$/,
+                loader: 'esbuild-loader',
+                options: {
+                    loader: 'ts',
+                    target: 'es6',
+                },
             },
             {
                 test: /\.(png|jpe?g|gif|jp2|webp|svg|otf|md)$/,

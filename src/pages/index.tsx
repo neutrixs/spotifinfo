@@ -81,6 +81,18 @@ function Main() {
         )
     }
 
+    function getPrivacyPageRouting() {
+        if (isLoggedOut) {
+            return (
+                <Suspense fallback={<Loading isDark={isDark} />}>
+                    <PrivacyPage isDark={isDark} />
+                </Suspense>
+            )
+        }
+
+        return <Navigate to="/?dropdown&privacy" />
+    }
+
     return (
         <BrowserRouter>
             <Navbar isLoggedOut={isLoggedOut} isDark={isDark} toggleTheme={toggleDark} />
@@ -88,14 +100,7 @@ function Main() {
                 <Route path="/" element={getMainPageRouting()} />
                 <Route path="/top_tracks" element={getTopTracksRouting()} />
                 <Route path="/account" element={getAccountPageRouting()} />
-                <Route
-                    path="/privacy"
-                    element={
-                        <Suspense fallback={<Loading isDark={isDark} />}>
-                            <PrivacyPage isDark={isDark} />
-                        </Suspense>
-                    }
-                />
+                <Route path="/privacy" element={getPrivacyPageRouting()} />
                 <Route path="*" element={<Page404 />} />
             </Routes>
         </BrowserRouter>

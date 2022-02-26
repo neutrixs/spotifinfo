@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
 import Popup from '../../popup/popup'
 
@@ -14,6 +15,7 @@ interface props {
 export default function PrivacyButton({ isDark }: props) {
     const [privacyIsOpened, setPrivacyIsOpened] = useState(false)
     const [privacyPolicyElement, setPrivacyPolicyElement] = useState<JSX.Element>(null)
+    const [searchParams, setSearchParams] = useSearchParams()
 
     const popupElement = (
         <div id="privacyPolicyPopupHolder" className={!isDark ? 'light ' : ''}>
@@ -30,6 +32,14 @@ export default function PrivacyButton({ isDark }: props) {
             setPrivacyPolicyElement(<ReactMarkdown>{text}</ReactMarkdown>)
         })()
     }, [])
+
+    useEffect(() => {
+        if (searchParams.get('privacy') === null) return
+
+        setPrivacyIsOpened(true)
+        searchParams.delete('privacy')
+        setSearchParams(searchParams)
+    }, [searchParams])
 
     return (
         <div>

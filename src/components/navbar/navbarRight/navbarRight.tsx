@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { useSearchParams } from 'react-router-dom'
 
 import getToken from '../../../pages/other/getToken'
 import spotifyCurrentUser from '../../../pages/types/spotifyCurrentUser'
@@ -22,6 +23,7 @@ let dropdownLocked = false
 export default function NavbarRight({ isDark, toggleTheme }: props) {
     const [profilePicURL, setProfilePicURL] = useState<string>(defaultProfilePic)
     const [dropdownOpen, setDropdownOpen] = useState(false)
+    const [searchParams, setSearchParams] = useSearchParams()
 
     const dropdownRef = useRef<HTMLDivElement>(null)
 
@@ -36,6 +38,14 @@ export default function NavbarRight({ isDark, toggleTheme }: props) {
             window.removeEventListener('click', windowOnClick)
         }
     }, [])
+
+    useEffect(() => {
+        if (searchParams.get('dropdown') === null) return
+
+        setDropdownOpen(true)
+        searchParams.delete('dropdown')
+        setSearchParams(searchParams)
+    }, [searchParams])
 
     function themeSwitcherOnClick(e?: React.KeyboardEvent<HTMLDivElement>) {
         if (e && e?.key != 'Enter') return

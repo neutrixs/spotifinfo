@@ -5,7 +5,7 @@ import './privacyText.scss'
 
 import Loading from '../loading/loading'
 
-import privacyPolicyURL from './privacyPolicy_a.md'
+import privacyPolicyURL from './privacyPolicy.md'
 
 interface props {
     isDark: boolean

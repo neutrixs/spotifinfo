@@ -3,14 +3,15 @@
     line-height: 1.5em;
     user-select: text;
 
-    a {
-        color: hsl(220, 100%, 75%);
-        text-decoration: underline;
+    hr {
+        border: none;
+        height: 0.2rem;
+        background-color: #dfdfdf;
     }
 
     &.light {
-        a {
-            color: hsl(220, 100%, 50%);
+        hr {
+            background-color: #202020;
         }
     }
 }

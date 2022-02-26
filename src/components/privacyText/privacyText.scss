@@ -1,4 +1,4 @@
-#privacyPolicyPopupHolder {
+#privacyText {
     a {
         color: hsl(220, 100%, 75%);
         text-decoration: underline;
@@ -12,7 +12,7 @@
 
     &.light {
         a {
-            color: hsl(220, 100%, 35%);
+            color: hsl(220, 100%, 50%);
         }
 
         hr {

@@ -6,6 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const WebpackObfuscator = require('webpack-obfuscator')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
+const { ESBuildMinifyPlugin } = require('esbuild-loader')
 let devMode = false
 
 module.exports = function (env, argv) {
@@ -16,12 +17,6 @@ module.exports = function (env, argv) {
     const nameOrContentHashFiles = devMode ? '[name]' : '[contenthash]'
 
     return config(nameOrContentHash, nameOrContentHashFiles)
-}
-
-const mangleNormal = {
-    properties: {
-        regex: /(^_)[^\s]+/,
-    },
 }
 
 const config = (nameOrContentHash, nameOrContentHashFiles) => ({
@@ -43,15 +38,10 @@ const config = (nameOrContentHash, nameOrContentHashFiles) => ({
     target: ['web', 'es6'],
     optimization: {
         minimizer: [
-            new TerserPlugin({
-                terserOptions: {
-                    /*mangle:{
-                        properties:true,
-                    }*/
-                    mangle: devMode ? false : mangleNormal,
-                },
+            new ESBuildMinifyPlugin({
+                target: 'es6',
+                css: true,
             }),
-            new CssMinimizerPlugin(),
         ],
         runtimeChunk: 'single',
     },

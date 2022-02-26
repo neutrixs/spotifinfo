@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 
 import { typeSelector, rangeSelector } from '../topPage'
 
-import Loading from '../../loading/loading'
+import Loading from '../../../components/loading/loading'
 
 import getTopArtists from './getTopArtists'
 

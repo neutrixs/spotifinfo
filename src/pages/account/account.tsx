@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 
 import RecaptchaBadge from '../recaptchaBadge/recaptchaBadge'
 
-import Loading from '../loading/loading'
+import Loading from '../../components/loading/loading'
 
 import getToken from '../other/getToken'
 

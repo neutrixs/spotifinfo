@@ -5,7 +5,7 @@ import { mdHandler, mdHandlerBoolean } from '../other/mdHandler'
 
 import NowPlaying from './nowPlaying/nowPlaying'
 import RecentlyPlayed from './recentlyPlayed/recentlyPlayed'
-import Loading from '../loading/loading'
+import Loading from '../../components/loading/loading'
 
 import RecaptchaBadge from '../recaptchaBadge/recaptchaBadge'
 

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { useState, useEffect } from 'react'
 
-import Loading from '../../loading/loading'
+import Loading from '../../../components/loading/loading'
 
 import getTopTracks from './getTopTracks'
 

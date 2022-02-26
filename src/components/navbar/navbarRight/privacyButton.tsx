@@ -4,7 +4,7 @@ import ReactMarkdown from 'react-markdown'
 import Popup from '../../popup/popup'
 
 import privacyPolicyLink from '../../../files/privacyPolicyPop.md'
-import Loading from '../../../pages/loading/loading'
+import Loading from '../../loading/loading'
 
 import './privacyButton.scss'
 

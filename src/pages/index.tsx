@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import './base.scss'
 
 import Navbar from '../components/navbar/navbar'
-import Loading from './loading/loading'
+import Loading from './../components/loading/loading'
 
 import Page404 from './404/404'
 

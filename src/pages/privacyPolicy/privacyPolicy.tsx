@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 
 import ReactMarkdown from 'react-markdown'
 
-import Loading from '../loading/loading'
+import Loading from '../../components/loading/loading'
 
 import * as privacyPolicyTextURL from './privacyPolicy.md'
 

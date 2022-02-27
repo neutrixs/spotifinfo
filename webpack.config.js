@@ -20,7 +20,7 @@ module.exports = function (env, argv) {
 const config = (nameOrContentHash, nameOrContentHashFiles) => ({
     mode: devMode ? 'development' : 'production',
     entry: {
-        index: {
+        main: {
             import: './src/pages/index.tsx',
             dependOn: ['module~0', 'module~1', 'module~2'],
         },

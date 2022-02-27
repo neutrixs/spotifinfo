@@ -7,7 +7,7 @@ import Loading from '../../components/loading/loading'
 
 import getToken from '../other/getToken'
 
-import spotifyCurrentUser from '../types/spotifyCurrentUser'
+import spotifyCurrentUser from '../../types/spotifyCurrentUser'
 
 import { mdHandler, mdHandlerBoolean } from '../other/mdHandler'
 

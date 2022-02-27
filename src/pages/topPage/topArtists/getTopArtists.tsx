@@ -4,7 +4,7 @@ import getToken from '../../other/getToken'
 
 import { rangeSelector } from '../topPage'
 
-import spotifyTopArtistsType from '../../types/spotifyTopArtists'
+import spotifyTopArtistsType from '../../../types/spotifyTopArtists'
 
 export default async function getTopArtists(
     range: rangeSelector,

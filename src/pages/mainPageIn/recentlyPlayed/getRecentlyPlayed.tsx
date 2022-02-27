@@ -1,7 +1,7 @@
 import * as React from 'react'
 import getToken from '../../other/getToken'
 
-import recentlyPlayedType from '../../types/spotifyRecentlyPlayed'
+import recentlyPlayedType from '../../../types/spotifyRecentlyPlayed'
 
 interface props {
     setShowRecentlyPlayed: React.Dispatch<React.SetStateAction<boolean>>

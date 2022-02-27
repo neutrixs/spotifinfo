@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import getToken from '../../other/getToken'
 
-import spotifyPlaybackState from '../../types/spotifyPlaybackState'
+import spotifyPlaybackState from '../../../types/spotifyPlaybackState'
 
 import { setCurrentMs, setTotalMs, setIsPlaying as updateProgressSetIsPlaying } from './updateProgress'
 

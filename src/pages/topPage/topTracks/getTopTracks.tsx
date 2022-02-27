@@ -4,7 +4,7 @@ import { rangeSelector } from '../topPage'
 
 import getToken from '../../other/getToken'
 
-import topTracksType from '../../types/spotifyTopTracks'
+import topTracksType from '../../../types/spotifyTopTracks'
 
 export default async function getTopTracks(
     setData: React.Dispatch<React.SetStateAction<JSX.Element[]>>,

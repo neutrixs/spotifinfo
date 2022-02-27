@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { useSearchParams } from 'react-router-dom'
 
 import getToken from '../../../pages/other/getToken'
-import spotifyCurrentUser from '../../../pages/types/spotifyCurrentUser'
+import spotifyCurrentUser from '../../../types/spotifyCurrentUser'
 import Dropdown from './dropdown'
 
 import './navbarRight.scss'

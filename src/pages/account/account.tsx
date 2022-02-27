@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { useState, useEffect } from 'react'
 
-import RecaptchaBadge from '../recaptchaBadge/recaptchaBadge'
+import RecaptchaBadge from '../../components/recaptchaBadge/recaptchaBadge'
 
 import Loading from '../../components/loading/loading'
 

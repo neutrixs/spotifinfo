@@ -9,7 +9,7 @@ import RangeSelector from './selectors/rangeSelector'
 import TopTracks from './topTracks/topTracks'
 import TopArtists from './topArtists/topArtists'
 
-import RecaptchaBadge from '../recaptchaBadge/recaptchaBadge'
+import RecaptchaBadge from '../../components/recaptchaBadge/recaptchaBadge'
 
 import { setType, setRange } from './setTypeAndRange'
 

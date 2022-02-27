@@ -7,7 +7,7 @@ import NowPlaying from './nowPlaying/nowPlaying'
 import RecentlyPlayed from './recentlyPlayed/recentlyPlayed'
 import Loading from '../../components/loading/loading'
 
-import RecaptchaBadge from '../recaptchaBadge/recaptchaBadge'
+import RecaptchaBadge from '../../components/recaptchaBadge/recaptchaBadge'
 
 import './mainPageIn.scss'
 

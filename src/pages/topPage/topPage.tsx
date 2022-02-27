@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { useState, useEffect } from 'react'
 
-import { mdHandlerBoolean, mdHandler } from '../other/mdHandler'
+import { mdHandlerBoolean, mdHandler } from '../../scripts/mdHandler'
 
 import TypeSelector from './selectors/typeSelector'
 import RangeSelector from './selectors/rangeSelector'

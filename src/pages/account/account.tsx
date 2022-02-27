@@ -5,11 +5,11 @@ import RecaptchaBadge from '../../components/recaptchaBadge/recaptchaBadge'
 
 import Loading from '../../components/loading/loading'
 
-import getToken from '../other/getToken'
+import getToken from '../../scripts/getToken'
 
 import spotifyCurrentUser from '../../types/spotifyCurrentUser'
 
-import { mdHandler, mdHandlerBoolean } from '../other/mdHandler'
+import { mdHandler, mdHandlerBoolean } from '../../scripts/mdHandler'
 
 import defaultProfilePic from '../../svg/profile_pic.svg'
 

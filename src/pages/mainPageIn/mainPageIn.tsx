@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { useState, useEffect } from 'react'
 
-import { mdHandler, mdHandlerBoolean } from '../other/mdHandler'
+import { mdHandler, mdHandlerBoolean } from '../../scripts/mdHandler'
 
 import NowPlaying from './nowPlaying/nowPlaying'
 import RecentlyPlayed from './recentlyPlayed/recentlyPlayed'

@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { useState, useEffect } from 'react'
 
-import detectWEBPSupport from '../other/detectWEBPSupport'
-import { mdHandler, mdHandlerBoolean } from '../other/mdHandler'
+import detectWEBPSupport from '../../scripts/detectWEBPSupport'
+import { mdHandler, mdHandlerBoolean } from '../../scripts/mdHandler'
 
 import './mainPageOut.scss'
 

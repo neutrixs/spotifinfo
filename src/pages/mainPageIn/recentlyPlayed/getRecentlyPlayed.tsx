@@ -1,5 +1,5 @@
 import * as React from 'react'
-import getToken from '../../other/getToken'
+import getToken from '../../../scripts/getToken'
 
 import recentlyPlayedType from '../../../types/spotifyRecentlyPlayed'
 

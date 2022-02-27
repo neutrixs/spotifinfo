@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import logout from '../../../pages/other/logout'
+import logout from '../../../scripts/logout'
 import PrivacyButton from './privacyButton'
 
 import './dropdown.scss'

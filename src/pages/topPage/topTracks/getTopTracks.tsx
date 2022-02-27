@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import { rangeSelector } from '../topPage'
 
-import getToken from '../../other/getToken'
+import getToken from '../../../scripts/getToken'
 
 import topTracksType from '../../../types/spotifyTopTracks'
 

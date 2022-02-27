@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useSearchParams } from 'react-router-dom'
 
-import getToken from '../../../pages/other/getToken'
+import getToken from '../../../scripts/getToken'
 import spotifyCurrentUser from '../../../types/spotifyCurrentUser'
 import Dropdown from './dropdown'
 

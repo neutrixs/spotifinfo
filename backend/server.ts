@@ -1,11 +1,15 @@
 const dev = process.argv.includes('--devmode')
 import express from 'express'
 import cookieParser from 'cookie-parser'
+import dbCheck from './scripts/dbCheck.js'
 
 const app = express()
 
 //TODO: import config
-//TODO: add DB checker
+
+dbCheck()
+
+//
 
 if (dev) {
     app.use(express.static('./public')) //relative to project root

@@ -10,5 +10,5 @@
         "allowSyntheticDefaultImports": true
     },
     "include": ["./src", "index.d.ts"],
-    "exclude": ["./src/**/*.ignore.tsx"]
+    "exclude": ["./src/**/*.ignore.tsx", "./backend"]
 }

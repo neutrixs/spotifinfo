@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "strict": true,
+        "target": "ES2021",
+        "module": "ESNext",
+        "moduleResolution": "Node",
+        "allowSyntheticDefaultImports": true,
+        "watch": true,
+        "outDir": "./dist"
+    },
+    "include": ["./server.ts"]
+}

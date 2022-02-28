@@ -6,7 +6,7 @@
         "moduleResolution": "Node",
         "allowSyntheticDefaultImports": true,
         "watch": true,
-        "outDir": "./dist"
+        "outDir": "../dist"
     },
     "include": ["./server.ts"]
 }

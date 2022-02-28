@@ -5,8 +5,6 @@ import dbCheck from './scripts/dbCheck.js'
 
 const app = express()
 
-//TODO: import config
-
 dbCheck()
 
 //

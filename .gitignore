@@ -83,3 +83,4 @@ public/
 *.ignore.*
 cwebp.exe
 dwebp.exe
+dist/

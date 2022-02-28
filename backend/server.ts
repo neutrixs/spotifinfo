@@ -4,6 +4,7 @@ import cookieParser from 'cookie-parser'
 import dbCheck from './scripts/dbCheck.js'
 
 import loginHandler from './api/login.js'
+import callback from './api/callback.js'
 
 const app = express()
 
@@ -21,6 +22,9 @@ app.get(/^\//, (req, res) => {
     switch (req.path) {
         case '/login':
             loginHandler(req, res)
+            return
+        case '/callback':
+            callback(req, res)
             return
     }
 })

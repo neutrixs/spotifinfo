@@ -2,7 +2,7 @@
     "compilerOptions": {
         "strict": true,
         "target": "ES2021",
-        "module": "ESNext",
+        "module": "ES2015",
         "moduleResolution": "Node",
         "allowSyntheticDefaultImports": true,
         "watch": true,

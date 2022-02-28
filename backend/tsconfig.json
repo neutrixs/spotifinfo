@@ -7,6 +7,5 @@
         "allowSyntheticDefaultImports": true,
         "watch": true,
         "outDir": "../dist"
-    },
-    "include": ["./server.ts"]
+    }
 }

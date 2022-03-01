@@ -60,40 +60,7 @@ export default async function getToken(req: Request, res: Response) {
         return
     }
 
-    const basicAuthorization =
-        'Basic ' + Buffer.from(currentConfig.client_id + ':' + currentConfig.client_secret).toString('base64')
-
-    const tokenRefreshBody = new URLSearchParams()
-    tokenRefreshBody.append('grant_type', 'refresh_token')
-    tokenRefreshBody.append('refresh_token', refreshToken)
-
-    const tokenRefreshRequest = await nodeFetch('https://accounts.spotify.com/api/token', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-            Authorization: basicAuthorization,
-        },
-        body: tokenRefreshBody.toString(),
-    })
-
-    if (tokenRefreshRequest.status !== 200) {
-        res.status(404).json({
-            success: false,
-            relogback: true,
-            'error-codes': [],
-        })
-        return
-    }
-
-    const newToken = (await tokenRefreshRequest.json()) as refreshTokenType
-
-    res.json({
-        success: true,
-        data: {
-            token: 'Bearer ' + newToken.access_token,
-            validuntil: +new Date() + newToken.expires_in * 1000,
-        },
-    })
+    getNewToken(res, refreshToken)
 }
 
 function getRefreshToken(state: string): string | null {
@@ -105,4 +72,40 @@ function getRefreshToken(state: string): string | null {
     if (!currentDB) return null
 
     return currentDB.refresh_token
+}
+
+async function getNewToken(res: Response, refreshToken: string) {
+    const authorization = 'Basic ' + Buffer.from(currentConfig.client_id + ':' + currentConfig.client_secret).toString('base64')
+
+    const body = new URLSearchParams()
+    body.append('grant_type', 'refresh_token')
+    body.append('refresh_token', refreshToken)
+
+    const rawResponse = await nodeFetch('https://accounts.spotify.com/api/token', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            authorization,
+        },
+        body,
+    })
+
+    if (!rawResponse.ok) {
+        res.status(404).json({
+            success: false,
+            relogback: true,
+            'error-codes': [],
+        })
+        return
+    }
+
+    const newToken = (await rawResponse.json()) as refreshTokenType
+
+    res.json({
+        success: true,
+        data: {
+            token: 'Bearer ' + newToken.access_token,
+            validuntil: +new Date() + newToken.expires_in * 1000,
+        },
+    })
 }

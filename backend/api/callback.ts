@@ -5,7 +5,7 @@ import config from '../config.js'
 
 import { requestAccessToken } from '../types/spotifyAPITypes.js'
 import databaseTypes from '../types/databaseTypes.js'
-import spotifyCurrentUser from '../../src/types/spotifyCurrentUser'
+import spotifyCurrentUser from '../types/spotifyCurrentUser'
 
 const dev = process.argv.includes('--devmode')
 const currentConfig = config[dev ? 'dev' : 'prod']

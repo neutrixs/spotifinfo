@@ -7,6 +7,7 @@ import dbCheck from './scripts/dbCheck.js'
 import loginHandler from './api/login.js'
 import callback from './api/callback.js'
 import gettokenApi from './api/gettokenhuh.js'
+import getdataApi from './api/getdata.js'
 
 const app = express()
 
@@ -38,6 +39,10 @@ app.get(/^\//, (req, res, next) => {
 
 app.post('/gettoken', (req, res) => {
     gettokenApi(req, res)
+})
+
+app.post('/getdata', (req, res) => {
+    getdataApi(req, res)
 })
 
 app.get(/^\//, (req, res) => {

@@ -15,18 +15,19 @@ export default async function callback(req: Request, res: Response) {
 
     if (!req.query['code'] || !req.query['state']) return res.redirect('/')
 
+    const authorization = 'Basic ' + Buffer.from(currentConfig.client_id + ':' + currentConfig.client_secret).toString('base64')
+
     const param = new URLSearchParams()
     param.append('grant_type', 'authorization_code')
     param.append('code', req.query['code'] as string)
     param.append('redirect_uri', currentConfig.redirect_uri)
-    param.append('client_id', currentConfig.client_id)
-    param.append('client_secret', currentConfig.client_secret)
 
     const response = await nodeFetch('https://accounts.spotify.com/api/token', {
         method: 'POST',
         body: param.toString(),
         headers: {
             'content-type': 'application/x-www-form-urlencoded',
+            authorization,
         },
     })
 

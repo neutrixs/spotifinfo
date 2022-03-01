@@ -1,11 +1,12 @@
 const dev = process.argv.includes('--devmode')
-import express from 'express'
+import express, { urlencoded } from 'express'
 import cookieParser from 'cookie-parser'
 import { renderFile } from 'ejs'
 import dbCheck from './scripts/dbCheck.js'
 
 import loginHandler from './api/login.js'
 import callback from './api/callback.js'
+import gettokenApi from './api/gettoken.js'
 
 const app = express()
 
@@ -18,6 +19,7 @@ if (dev) {
 }
 
 app.use(cookieParser())
+app.use(urlencoded({ extended: true }))
 app.engine('html', renderFile)
 app.set('view engine', 'html')
 app.set('views', './public')
@@ -32,6 +34,10 @@ app.get(/^\//, (req, res, next) => {
             return
     }
     next()
+})
+
+app.post('/gettoken', (req, res) => {
+    gettokenApi(req, res)
 })
 
 app.get(/^\//, (req, res) => {

@@ -4,6 +4,7 @@ import nodeFetch from 'node-fetch'
 import recaptchaVerifyType from '../types/recaptchaVerifyType.js'
 import config from '../config.js'
 import databaseTypes from '../types/databaseTypes.js'
+import { requestRefreshToken as refreshTokenType } from '../types/spotifyAPITypes.js'
 
 const dev = process.argv.includes('--devmode')
 const currentConfig = config[dev ? 'dev' : 'prod']
@@ -56,7 +57,43 @@ export default async function getToken(req: Request, res: Response) {
             'error-codes': ['state-not-found'],
             relogback: true,
         })
+        return
     }
+
+    const basicAuthorization =
+        'Basic ' + Buffer.from(currentConfig.client_id + ':' + currentConfig.client_secret).toString('base64')
+
+    const tokenRefreshBody = new URLSearchParams()
+    tokenRefreshBody.append('grant_type', 'refresh_token')
+    tokenRefreshBody.append('refresh_token', refreshToken)
+
+    const tokenRefreshRequest = await nodeFetch('https://accounts.spotify.com/api/token', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            Authorization: basicAuthorization,
+        },
+        body: tokenRefreshBody.toString(),
+    })
+
+    if (tokenRefreshRequest.status !== 200) {
+        res.status(404).json({
+            success: false,
+            relogback: true,
+            'error-codes': [],
+        })
+        return
+    }
+
+    const newToken = (await tokenRefreshRequest.json()) as refreshTokenType
+
+    res.json({
+        success: true,
+        data: {
+            token: 'Bearer ' + newToken.access_token,
+            validuntil: +new Date() + newToken.expires_in * 1000,
+        },
+    })
 }
 
 function getRefreshToken(state: string): string | null {

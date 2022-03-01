@@ -67,3 +67,7 @@ const PORT = process.env.PORT || 80
 app.listen(PORT, () => {
     console.log('Listening on port ' + PORT)
 })
+
+process.on('uncaughtException', e => {
+    console.error(e)
+})

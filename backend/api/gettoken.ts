@@ -3,6 +3,7 @@ import { readFileSync } from 'fs'
 import nodeFetch from 'node-fetch'
 import recaptchaVerifyType from '../types/recaptchaVerifyType.js'
 import config from '../config.js'
+import databaseTypes from '../types/databaseTypes.js'
 
 const dev = process.argv.includes('--devmode')
 const currentConfig = config[dev ? 'dev' : 'prod']
@@ -44,4 +45,27 @@ export default async function getToken(req: Request, res: Response) {
             'error-codes': ['low-score'],
         })
     }
+
+    // request new token to spotify api
+
+    const refreshToken = getRefreshToken(req.cookies['state'])
+
+    if (!refreshToken) {
+        res.status(404).json({
+            success: false,
+            'error-codes': ['state-not-found'],
+            relogback: true,
+        })
+    }
+}
+
+function getRefreshToken(state: string): string | null {
+    const rawDB = readFileSync('./db/data.json', { encoding: 'utf-8' })
+    const DB = JSON.parse(rawDB) as databaseTypes
+
+    const currentDB = DB[state]
+
+    if (!currentDB) return null
+
+    return currentDB.refresh_token
 }

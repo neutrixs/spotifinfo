@@ -6,7 +6,7 @@ import dbCheck from './scripts/dbCheck.js'
 
 import loginHandler from './api/login.js'
 import callback from './api/callback.js'
-import gettokenApi from './api/gettoken.js'
+import gettokenApi from './api/gettokenhuh.js'
 
 const app = express()
 

@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import { readFileSync } from 'fs'
-import nodeFetch from 'node-fetch'
+import axios from 'axios'
 import recaptchaVerifyType from '../types/recaptchaVerifyType.js'
 import config from '../config.js'
 import databaseTypes from '../types/databaseTypes.js'
@@ -25,15 +25,16 @@ export default async function getToken(req: Request, res: Response) {
     params.append('response', req.body['reCAPTCHAToken'])
     params.append('remoteip', req.ip)
 
-    const apiResponse = await nodeFetch('https://www.google.com/recaptcha/api/siteverify', {
+    const apiResponse = await axios({
+        url: 'https://www.google.com/recaptcha/api/siteverify',
         method: 'POST',
-        body: params.toString(),
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
         },
+        data: params.toString(),
     })
 
-    const parsedApiResponse = (await apiResponse.json()) as recaptchaVerifyType
+    const parsedApiResponse = apiResponse.data as recaptchaVerifyType
 
     if (!parsedApiResponse.success) {
         res.status(400).json(parsedApiResponse)
@@ -81,16 +82,26 @@ async function getNewToken(res: Response, refreshToken: string) {
     body.append('grant_type', 'refresh_token')
     body.append('refresh_token', refreshToken)
 
-    const rawResponse = await nodeFetch('https://accounts.spotify.com/api/token', {
+    // const rawResponse = await nodeFetch('https://accounts.spotify.com/api/token', {
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-Type': 'application/x-www-form-urlencoded',
+    //         authorization,
+    //     },
+    //     body,
+    // })
+
+    const rawResponse = await axios({
+        url: 'https://accounts.spotify.com/api/token',
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
             authorization,
         },
-        body,
+        data: body.toString(),
     })
 
-    if (!rawResponse.ok) {
+    if (rawResponse.status < 200 || rawResponse.status > 299) {
         res.status(404).json({
             success: false,
             relogback: true,
@@ -99,7 +110,7 @@ async function getNewToken(res: Response, refreshToken: string) {
         return
     }
 
-    const newToken = (await rawResponse.json()) as refreshTokenType
+    const newToken = rawResponse.data as refreshTokenType
 
     res.json({
         success: true,

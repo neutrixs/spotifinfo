@@ -1,4 +1,4 @@
-import nodeFetch from 'node-fetch'
+import axios from 'axios'
 import { Request, Response } from 'express'
 import { readFileSync, writeFileSync } from 'fs'
 import config from '../config.js'
@@ -22,13 +22,14 @@ export default async function callback(req: Request, res: Response) {
     param.append('code', req.query['code'] as string)
     param.append('redirect_uri', currentConfig.redirect_uri)
 
-    const response = await nodeFetch('https://accounts.spotify.com/api/token', {
+    const response = await axios({
+        url: 'https://accounts.spotify.com/api/token',
         method: 'POST',
-        body: param.toString(),
         headers: {
             'content-type': 'application/x-www-form-urlencoded',
             authorization,
         },
+        data: param,
     })
 
     if (response.status != 200) {
@@ -38,7 +39,7 @@ export default async function callback(req: Request, res: Response) {
         return
     }
 
-    const jsonResponse = (await response.json()) as requestAccessToken
+    const jsonResponse = response.data as requestAccessToken
 
     writeToDB(req.query['state'] as string, jsonResponse.refresh_token, +new Date())
 
@@ -47,14 +48,15 @@ export default async function callback(req: Request, res: Response) {
      * This is just to support the web client which still needs it
      */
 
-    const userInfoRequestRaw = await nodeFetch('https://api.spotify.com/v1/me', {
+    const userInfoRequestRaw = await axios({
+        url: 'https://api.spotify.com/v1/me',
         method: 'GET',
         headers: {
             Authorization: 'Bearer ' + jsonResponse.access_token,
         },
     })
 
-    const userInfo = (await userInfoRequestRaw.json()) as spotifyCurrentUser
+    const userInfo = (await userInfoRequestRaw.data) as spotifyCurrentUser
 
     const username = userInfo.id
 

@@ -2,9 +2,8 @@
     "compilerOptions": {
         "strict": true,
         "target": "ES2021",
-        "module": "ES2015",
+        "module": "CommonJS",
         "moduleResolution": "Node",
-        "allowSyntheticDefaultImports": true,
         "watch": true,
         "outDir": "../dist"
     }

@@ -1,6 +1,7 @@
 const dev = process.argv.includes('--devmode')
-import express, { urlencoded } from 'express'
-import cookieParser from 'cookie-parser'
+import * as express from 'express'
+import { urlencoded } from 'express'
+import * as cookieParser from 'cookie-parser'
 import { renderFile } from 'ejs'
 import dbCheck from './scripts/dbCheck.js'
 

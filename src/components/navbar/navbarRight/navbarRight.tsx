@@ -88,6 +88,8 @@ export default function NavbarRight({ isDark, toggleTheme }: props) {
             <div className="notTheThemeSwitcher">
                 <div
                     id="dropdownHolder"
+                    role="button"
+                    tabIndex={0}
                     onClick={() => {
                         dropdownHolderOnClick()
                     }}

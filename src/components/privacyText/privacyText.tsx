@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import ReactMarkdown from 'react-markdown'
 
 import './privacyText.scss'
 
@@ -20,6 +19,7 @@ export default function PrivacyText({ isDark }: props) {
     }, [])
 
     async function getPrivacyText() {
+        const { default: ReactMarkdown } = await import('react-markdown')
         const raw = await fetch(privacyPolicyURL)
         const text = await raw.text()
 

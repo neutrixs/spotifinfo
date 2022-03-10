@@ -1,4 +1,3 @@
-import colorThief from '@neutrixs/colorthief'
 import { paletteType } from '../nowPlaying'
 import { getMostSaturated, autoAdjust } from './modules/colourModules__obfu'
 
@@ -6,6 +5,7 @@ export default async function getColour(
     setPalette: React.Dispatch<React.SetStateAction<paletteType>>,
     element: HTMLImageElement
 ) {
+    const { default: colorThief } = await import('@neutrixs/colorthief')
     const newColorThief = new colorThief()
 
     const palettes = newColorThief.getPalette(element, 5)

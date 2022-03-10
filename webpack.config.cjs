@@ -19,13 +19,7 @@ module.exports = function (env, argv) {
 
 const config = (nameOrContentHash, nameOrContentHashFiles) => ({
     mode: devMode ? 'development' : 'production',
-    entry: {
-        main: {
-            import: './src/main.tsx',
-            dependOn: ['module~2'],
-        },
-        'module~2': '@neutrixs/colorthief',
-    },
+    entry: './src/main.tsx',
     output: {
         filename: `assets/${nameOrContentHash}.js`,
         path: path.resolve(__dirname, 'public'),

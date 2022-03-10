@@ -21,11 +21,9 @@ const config = (nameOrContentHash, nameOrContentHashFiles) => ({
     mode: devMode ? 'development' : 'production',
     entry: {
         main: {
-            import: './src/pages/index.tsx',
-            dependOn: ['module~0', 'module~1', 'module~2'],
+            import: './src/main.tsx',
+            dependOn: ['module~2'],
         },
-        'module~0': ['react', 'react-dom', 'react-router-dom'],
-        'module~1': 'react-markdown',
         'module~2': '@neutrixs/colorthief',
     },
     output: {

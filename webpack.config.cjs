@@ -11,13 +11,12 @@ module.exports = function (env, argv) {
     console.log(argv)
     devMode = argv.mode == 'development'
 
-    const nameOrContentHash = devMode ? '[name]' : '[name].[contenthash]'
-    const nameOrContentHashFiles = devMode ? '[name]' : '[contenthash]'
+    const nameOrContentHash = devMode ? '[name]' : '[contenthash]'
 
-    return config(nameOrContentHash, nameOrContentHashFiles)
+    return config(nameOrContentHash)
 }
 
-const config = (nameOrContentHash, nameOrContentHashFiles) => ({
+const config = nameOrContentHash => ({
     mode: devMode ? 'development' : 'production',
     entry: './src/main.tsx',
     output: {
@@ -65,7 +64,7 @@ const config = (nameOrContentHash, nameOrContentHashFiles) => ({
                 test: /\.(png|jpe?g|gif|jp2|webp|svg|otf|md)$/,
                 loader: 'file-loader',
                 options: {
-                    name: `assets/${nameOrContentHashFiles}.[ext]`,
+                    name: `assets/${nameOrContentHash}.[ext]`,
                     esModule: false,
                 },
             },

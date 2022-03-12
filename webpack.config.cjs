@@ -1,9 +1,10 @@
+// @ts-check
+
 const path = require('path')
 const CopyPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const WebpackObfuscator = require('webpack-obfuscator')
-const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const { ESBuildMinifyPlugin } = require('esbuild-loader')
 let devMode = false
 
@@ -15,6 +16,10 @@ module.exports = function (env, argv) {
 
     return config(nameOrContentHash)
 }
+
+/**
+ * @type { (nameOrContentHash: string) => import('webpack').Configuration }
+ */
 
 const config = nameOrContentHash => ({
     mode: devMode ? 'development' : 'production',
@@ -103,9 +108,6 @@ const config = nameOrContentHash => ({
         }),
         new MiniCssExtractPlugin({
             filename: `assets/${nameOrContentHash}.css`,
-        }),
-        new ProgressBarPlugin({
-            format: '[:bar] :msg, :percent',
         }),
     ],
     resolve: {

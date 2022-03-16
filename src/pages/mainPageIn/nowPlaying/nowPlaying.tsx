@@ -52,16 +52,12 @@ export default function NowPlaying({ isDark, isMobile, setIsLoading, getRecently
 
         const updateProgressInterval = setInterval(callUpdateProgress, 100)
 
-        imageElement.current?.addEventListener('load', callGetColour)
-
         return function cleanup() {
             window.removeEventListener('resize', callSideTextDetect)
             clearInterval(getNowPlayingInterval)
             clearTimeout(stopAfter10Min)
 
             clearInterval(updateProgressInterval)
-
-            imageElement.current?.removeEventListener('load', callGetColour)
         }
     }, [])
 
@@ -72,6 +68,10 @@ export default function NowPlaying({ isDark, isMobile, setIsLoading, getRecently
     useEffect(() => {
         isMobileWithActualVariable = isMobile
     }, [isMobile])
+
+    useEffect(() => {
+        artURL && getColour(setPalette, imageElement.current)
+    }, [artURL])
 
     function callSideTextDetect() {
         sideTextDetect(isMobileWithActualVariable, setSideText)
@@ -95,10 +95,6 @@ export default function NowPlaying({ isDark, isMobile, setIsLoading, getRecently
 
     function callUpdateProgress() {
         updateProgress(setProgress)
-    }
-
-    function callGetColour() {
-        if (imageElement.current) getColour(setPalette, imageElement.current)
     }
 
     return (

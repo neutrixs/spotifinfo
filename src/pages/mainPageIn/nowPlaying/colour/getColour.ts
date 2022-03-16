@@ -8,6 +8,8 @@ export default async function getColour(
     const { default: colorThief } = await import('@neutrixs/colorthief')
     const newColorThief = new colorThief()
 
+    await element.decode()
+
     const palettes = newColorThief.getPalette(element, 5)
 
     const index = getMostSaturated(palettes)

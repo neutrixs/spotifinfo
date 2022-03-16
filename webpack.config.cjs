@@ -124,7 +124,6 @@ const config = nameOrContentHash => ({
             '/login': 'http://192.168.1.50',
         },
     },
-    devtool: 'source-map',
     performance: {
         maxAssetSize: 512000,
     },

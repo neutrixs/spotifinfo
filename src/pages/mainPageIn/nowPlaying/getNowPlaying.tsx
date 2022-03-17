@@ -60,9 +60,14 @@ export default async function getNowPlaying(thisProps: props) {
         return
     }
 
-    thisProps.setShowNowPlaying(true)
-
     const data = (await rawResponse.json()) as spotifyPlaybackState
+
+    if (data.currently_playing_type != 'track') {
+        thisProps.setShowNowPlaying(false)
+        return
+    }
+
+    thisProps.setShowNowPlaying(true)
 
     thisProps.setArtURL(data.item.album.images[0].url)
     thisProps.setAlbumURL(data.item.album.external_urls.spotify)

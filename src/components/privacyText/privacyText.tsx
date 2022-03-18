@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from 'react'
 
 import './privacyText.scss'
+/**
+ * IF I REMOVE THAT THING ABOVE THE NAVLINK WILL ACT WEIRD
+ * DONT ASK ME WHY I HONESTLY DONT KNOW
+ * AND ITS ONLY ON CHROME AND EDGE
+ * FIREFOX WORKS FINE
+ */
+
+import style from './privacyText.module.scss'
 
 import Loading from '../loading/loading'
 
@@ -28,7 +36,7 @@ export default function PrivacyText({ isDark }: props) {
     }
 
     return (
-        <div id="privacyText" className={!isDark ? 'light ' : ''}>
+        <div className={style.privacyText + ' ' + (!isDark ? style.light : '')}>
             {isLoading ? <Loading isDark={isDark} /> : null}
             {textElement}
         </div>

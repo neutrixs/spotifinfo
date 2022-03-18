@@ -13,7 +13,7 @@ import { mdHandler, mdHandlerBoolean } from '../../scripts/mdHandler'
 
 import defaultProfilePic from '../../svg/profile_pic.svg'
 
-import './account.scss'
+import style from './account.module.scss'
 
 interface props {
     isDark: boolean
@@ -81,21 +81,21 @@ export default function AccountPage({ isDark }: props) {
     }
 
     return (
-        <div id="accountPageHolder" className={isMobile ? 'mobile' : ''}>
+        <div className={style.holder + ' ' + (isMobile ? style.mobile : '')}>
             {isLoading ? <Loading isDark={isDark} /> : null}
-            <div id="content" style={{ display: isLoading ? 'none' : '' }}>
-                <p id="title">Your Account</p>
+            <div className={style.content} style={{ display: isLoading ? 'none' : '' }}>
+                <p className={style.title}>Your Account</p>
                 <img src={profilePicURL} style={{ borderRadius: isUsingDefaultPFP ? '50%' : '' }} />
-                <div id="infoHolder">
-                    <p id="username">{username}</p>
-                    <p className="info">
-                        Email: <span className="copy">{email}</span>
+                <div>
+                    <p className={style.username}>{username}</p>
+                    <p className={style.info}>
+                        Email: <span className={style.copy}>{email}</span>
                     </p>
-                    <p className="info">
-                        ID: <span className="copy">{id}</span>
+                    <p className={style.info}>
+                        ID: <span className={style.copy}>{id}</span>
                     </p>
-                    <p className="info">Followers: {followers}</p>
-                    <p className="info">Plan: {plan}</p>
+                    <p className={style.info}>Followers: {followers}</p>
+                    <p className={style.info}>Plan: {plan}</p>
                 </div>
             </div>
             <RecaptchaBadge isDark={isDark} />

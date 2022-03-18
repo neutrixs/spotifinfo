@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import './privacyText.scss'
+// import './privacyText.scss'
 /**
  * IF I REMOVE THAT THING ABOVE THE NAVLINK WILL ACT WEIRD
  * DONT ASK ME WHY I HONESTLY DONT KNOW

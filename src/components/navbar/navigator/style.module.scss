@@ -1,0 +1,21 @@
+.pageLink {
+    margin: 0.25rem;
+    padding: 1rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 0.2rem solid transparent;
+    color: #dfdfdf;
+
+    display: inline-block;
+
+    &.light {
+        color: #202020;
+    }
+
+    &:hover {
+        border-bottom: 0.2rem solid hsla(210, 70%, 50%);
+    }
+}
+
+.active {
+    border-bottom: 0.2rem solid hsla(210, 70%, 50%);
+}

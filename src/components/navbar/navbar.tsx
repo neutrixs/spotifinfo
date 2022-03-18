@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 
 import NavbarRight from './navbarRight/navbarRight'
 import SpotifyLogin from './spotifyLogin/login'
+import Navigator from './navigator/navigator'
 
 import { NavLink } from 'react-router-dom'
 
@@ -53,32 +54,12 @@ export default function Navbar({ isLoggedOut, isDark, toggleTheme }: props) {
                 onScroll={linksHolderOnScroll}
                 style={{ boxShadow: getShadowBoxStyle() }}
             >
-                <NavLink to="/" className="pageLink">
-                    <span>Home</span>
-                </NavLink>
-                {isLoggedOut ? loggedOutNavigation : loggedInNavigation}
+                <Navigator isLoggedOut={isLoggedOut} isDark={isDark} />
             </div>
             {isLoggedOut ? <SpotifyLogin isDark={isDark} /> : <NavbarRight isDark={isDark} toggleTheme={toggleTheme} />}
         </nav>
     )
 }
-
-const loggedInNavigation = (
-    <>
-        <NavLink to="/top_tracks" className="pageLink">
-            <span>Top Tracks</span>
-        </NavLink>
-        <NavLink to="/account" className="pageLink">
-            <span>Account</span>
-        </NavLink>
-    </>
-)
-
-const loggedOutNavigation = (
-    <NavLink to="/privacy" className="pageLink">
-        <span>Privacy Policy</span>
-    </NavLink>
-)
 
 const getWindowSizeInEM = () => window.innerWidth / parseFloat(getComputedStyle(document.body).fontSize)
 

@@ -46,37 +46,37 @@
     &.light {
         background-color: hsl(240, 14%, 75%);
     }
+}
 
-    .topHolder {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
+.topHolder {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 
-        padding-bottom: 1rem;
-        border-bottom: 0.2rem solid;
+    padding-bottom: 1rem;
+    border-bottom: 0.2rem solid;
 
-        p {
-            font-size: 2rem;
-            font-weight: 600;
-            margin: 0;
-        }
-
-        img {
-            width: 2rem;
-            height: 2rem;
-            margin-left: 1rem;
-            cursor: pointer;
-        }
+    p {
+        font-size: 2rem;
+        font-weight: 600;
+        margin: 0;
     }
 
-    .content {
-        flex: 1;
-        min-height: 0;
-        overflow-y: scroll;
-        user-select: text;
-        overflow-wrap: break-word;
+    img {
+        width: 2rem;
+        height: 2rem;
+        margin-left: 1rem;
+        cursor: pointer;
     }
+}
+
+.content {
+    flex: 1;
+    min-height: 0;
+    overflow-y: scroll;
+    user-select: text;
+    overflow-wrap: break-word;
 }
 
 @media (max-width: 44rem) {

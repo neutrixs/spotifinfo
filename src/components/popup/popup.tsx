@@ -1,6 +1,6 @@
 import React, { ReactNode, useState, useEffect } from 'react'
 
-import './popup.scss'
+import style from './popup.module.scss'
 
 import xIcon from '../../svg/x.svg'
 import xIconLight from '../../svg/x_light.svg'
@@ -29,13 +29,13 @@ export default function Popup({ setIsOpen, children, title, isDark }: props) {
     return (
         <>
             <div
-                className={'popupBackground ' + (isFullyOpened ? 'show ' : '')}
+                className={style.popupBackground + ' ' + (isFullyOpened ? style.show : '')}
                 onClick={() => {
                     closePopup()
                 }}
             />
-            <div className={'popup ' + (isFullyOpened ? 'show ' : '') + (!isDark ? 'light ' : '')}>
-                <div className="topHolder">
+            <div className={style.popup + ' ' + (isFullyOpened ? style.show : '') + ' ' + (!isDark ? style.light : '')}>
+                <div className={style.topHolder}>
                     <p>{title}</p>
                     <img
                         src={isDark ? xIcon : xIconLight}
@@ -50,7 +50,7 @@ export default function Popup({ setIsOpen, children, title, isDark }: props) {
                         }}
                     />
                 </div>
-                <div className="content">{children}</div>
+                <div className={style.content}>{children}</div>
             </div>
         </>
     )

@@ -60,7 +60,3 @@ export default function Navbar({ isLoggedOut, isDark, toggleTheme }: props) {
         </nav>
     )
 }
-
-const getWindowSizeInEM = () => window.innerWidth / parseFloat(getComputedStyle(document.body).fontSize)
-
-const detectOverflow = (element: HTMLDivElement) => element.scrollWidth > element.clientWidth

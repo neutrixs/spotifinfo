@@ -54,9 +54,9 @@ export default function Navigator({ isLoggedOut, isDark }: props) {
     )
 
     return (
-        <div>
+        <>
             <a {...handleAll('/')}>Home</a>
             {isLoggedOut ? loggedOutNavigator : loggedInNavigator}
-        </div>
+        </>
     )
 }

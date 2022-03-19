@@ -56,7 +56,7 @@ export default async function getTopTracks(
         const key = `topTracks${range}${currentData.id}`
 
         dataToSet.push(
-            <div key={key}>
+            <div key={key} className="content">
                 <div className="number">
                     <span>{i + 1}</span>
                 </div>

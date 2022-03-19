@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 import ThemeSwitcher from './themeSwitcher/themeSwitcher'
 import Opener from './opener/opener'
+import Dropdown from './dropdown/dropdown'
 
 import style from './style.module.scss'
 
@@ -42,6 +43,7 @@ export default function NavbarRight({ isDark, toggleTheme }: props) {
         <div className={style.navbarRight}>
             <ThemeSwitcher isDark={isDark} toggleTheme={toggleTheme} />
             <Opener isLocked={isLocked} isDark={isDark} dropdownIsOpen={dropdownIsOpen} setDropdownIsOpen={setDropdownIsOpen} />
+            <Dropdown {...{ isDark, isLocked, dropdownIsOpen, setDropdownIsOpen }} />
         </div>
     )
 }

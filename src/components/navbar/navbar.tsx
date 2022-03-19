@@ -1,6 +1,6 @@
 import React from 'react'
 
-import NavbarRight from './navbarRightOld/navbarRight'
+import NavbarRight from './navbarRight/navbarRight'
 import SpotifyLogin from './spotifyLogin/login'
 import Navigator from './navigator/navigator'
 

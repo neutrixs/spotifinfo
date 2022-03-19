@@ -14,17 +14,3 @@ nav {
         background-color: hsla(240, 14%, 80%);
     }
 }
-
-.linksHolder {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-
-    overflow-x: scroll;
-
-    scrollbar-width: none; /* Firefox */
-    &::-webkit-scrollbar {
-        display: none; /* Safari and Chrome */
-    }
-}

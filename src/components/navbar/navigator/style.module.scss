@@ -20,3 +20,17 @@
 .active {
     border-bottom: 0.2rem solid hsla(210, 70%, 50%);
 }
+
+.linksHolder {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    overflow-x: scroll;
+
+    scrollbar-width: none; /* Firefox */
+    &::-webkit-scrollbar {
+        display: none; /* Safari and Chrome */
+    }
+}

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 
 import style from './style.module.scss'
@@ -11,6 +11,33 @@ interface props {
 export default function Navigator({ isLoggedOut, isDark }: props) {
     const location = useLocation()
     const navigate = useNavigate()
+    const linksHolder = useRef<HTMLDivElement>(null)
+
+    const linksHolderLeftShadow = '0.8rem 0 0.4rem -0.4rem #00000060 inset'
+    const linksHolderRightShadow = '-0.8rem 0 0.4rem -0.4rem #00000060 inset'
+
+    const [shadowLeftActive, setShadowLeftActive] = useState(false)
+    const [shadowRightActive, setShadowRightActive] = useState(false)
+
+    function linksHolderOnScroll() {
+        setShadowLeftActive(linksHolder.current.scrollLeft > 0)
+        setShadowRightActive(linksHolder.current.scrollLeft + linksHolder.current.clientWidth < linksHolder.current.scrollWidth)
+    }
+
+    function getShadowBoxStyle() {
+        return [shadowLeftActive ? linksHolderLeftShadow : '', shadowRightActive ? linksHolderRightShadow : '']
+            .filter(Boolean)
+            .join(',')
+    }
+
+    useEffect(() => {
+        linksHolderOnScroll()
+        window.addEventListener('resize', linksHolderOnScroll)
+
+        return () => {
+            window.removeEventListener('resize', linksHolderOnScroll)
+        }
+    }, [])
 
     function getAClassName(path: string) {
         const base = style.pageLink + ' '
@@ -54,9 +81,14 @@ export default function Navigator({ isLoggedOut, isDark }: props) {
     )
 
     return (
-        <>
+        <div
+            className={style.linksHolder}
+            ref={linksHolder}
+            onScroll={linksHolderOnScroll}
+            style={{ boxShadow: getShadowBoxStyle() }}
+        >
             <a {...handleAll('/')}>Home</a>
             {isLoggedOut ? loggedOutNavigator : loggedInNavigator}
-        </>
+        </div>
     )
 }

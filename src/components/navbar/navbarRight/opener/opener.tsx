@@ -40,6 +40,12 @@ export default function Opener({ isLocked, isDark, dropdownIsOpen, setDropdownIs
             <div className={style.profilePic}>
                 <img src={profilePicURL} />
             </div>
+            <div className={style.arrow}>
+                <img
+                    src={isDark ? dropdownIcon : dropdownIconLight}
+                    style={{ transform: dropdownIsOpen ? 'rotate(180deg)' : '' }}
+                />
+            </div>
         </div>
     )
 }

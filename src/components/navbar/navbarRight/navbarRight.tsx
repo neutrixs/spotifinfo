@@ -4,11 +4,10 @@ import { useSearchParams } from 'react-router-dom'
 import getToken from '../../../scripts/getToken'
 import spotifyCurrentUser from '../../../types/spotifyCurrentUser'
 import Dropdown from './dropdown'
+import ThemeSwitcher from './themeSwitcher/themeSwitcher'
 
 import './navbarRight.scss'
 
-import sunIcon from '../../../svg/light_mode.svg'
-import moonIcon from '../../../svg/dark_mode.svg'
 import defaultProfilePic from '../../../svg/profile_pic.svg'
 import dropdownIcon from '../../../svg/dropdown.svg'
 import dropdownIconLight from '../../../svg/dropdown_for_light.svg'
@@ -47,12 +46,6 @@ export default function NavbarRight({ isDark, toggleTheme }: props) {
         setSearchParams(searchParams)
     }, [searchParams])
 
-    function themeSwitcherOnClick(e?: React.KeyboardEvent<HTMLDivElement>) {
-        if (e && e?.key != 'Enter') return
-
-        toggleTheme()
-    }
-
     function dropdownHolderOnClick(e?: React.KeyboardEvent<HTMLDivElement>) {
         if (e && e?.key != 'Enter') return
 
@@ -72,19 +65,7 @@ export default function NavbarRight({ isDark, toggleTheme }: props) {
 
     return (
         <div id="navbarRight">
-            <div
-                id="themeSwitcher"
-                role="button"
-                tabIndex={0}
-                onClick={() => {
-                    themeSwitcherOnClick()
-                }}
-                onKeyPress={e => {
-                    themeSwitcherOnClick(e)
-                }}
-            >
-                <img src={isDark ? sunIcon : moonIcon} />
-            </div>
+            <ThemeSwitcher isDark={isDark} toggleTheme={toggleTheme} />
             <div className="notTheThemeSwitcher">
                 <div
                     id="dropdownHolder"

@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
 
+import PrivacyButton from './privacyButton/privacyButton'
+
 import logout from '../../../../scripts/logout'
 
 import style from './style.module.scss'
@@ -39,6 +41,7 @@ export default function Dropdown({ isLocked, isDark, dropdownIsOpen, setDropdown
             style={{ display: !dropdownIsOpen ? 'none' : '' }}
             onClick={dropdownOnClick}
         >
+            <PrivacyButton {...{ isDark }} />
             <div className={style.logoutButton} role="button" tabIndex={0} onClick={callLogout} onKeyPress={callLogout}>
                 <span>Logout</span>
             </div>

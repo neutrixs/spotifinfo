@@ -1,10 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React from 'react'
 
 import NavbarRight from './navbarRight/navbarRight'
 import SpotifyLogin from './spotifyLogin/login'
 import Navigator from './navigator/navigator'
-
-import { NavLink } from 'react-router-dom'
 
 import './navbar.scss'
 

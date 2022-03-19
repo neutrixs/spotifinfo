@@ -1,6 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import style from './style.module.scss'
+
+import getProfilePic from './getProfilePic'
 
 import defaultProfilePic from '../../../../svg/profile_pic.svg'
 import dropdownIcon from '../../../../svg/dropdown.svg'
@@ -17,6 +19,10 @@ interface props {
 
 export default function Opener({ isLocked, isDark, dropdownIsOpen, setDropdownIsOpen }: props) {
     const [profilePicURL, setProfilePicURL] = useState<string>(defaultProfilePic)
+
+    useEffect(() => {
+        getProfilePic(setProfilePicURL)
+    }, [])
 
     function openerOnClickOrPress() {
         isLocked.isLocked = true

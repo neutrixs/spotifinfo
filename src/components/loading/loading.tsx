@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import './loading.scss'
+import style from './loading.module.scss'
 
 interface props {
     isDark: boolean
@@ -9,8 +9,8 @@ interface props {
 
 export default function Loading({ isDark, overrideStyle }: props) {
     return (
-        <div className="loadingAnimationHolder" style={overrideStyle ?? null}>
-            <div className={'loadingAnimation ' + (!isDark ? 'loadingAnimationLight ' : '')}></div>
+        <div className={style.loadingAnimationHolder} style={overrideStyle ?? null}>
+            <div className={style.loadingAnimation + ' ' + (!isDark ? style.loadingAnimationLight : '')} />
         </div>
     )
 }

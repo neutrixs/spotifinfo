@@ -33,7 +33,7 @@ export default function PrivacyButton({ isDark }: props) {
     return (
         <div>
             <div role="button" tabIndex={0} onClick={openPrivacy} onKeyPress={openPrivacy}>
-                <span>Privacy Policy</span>
+                <span style={{ cursor: 'pointer' }}>Privacy Policy</span>
             </div>
             {isOpen ? privacyElement : null}
         </div>

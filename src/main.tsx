@@ -14,7 +14,7 @@ async function run() {
     const { render } = await reactDOMImport
     const { default: MainComponent } = await MainComponentImport
 
-    render(<MainComponent />, document.getElementById('root'))
+    render(<MainComponent />, document.getElementById('💀'))
 }
 
 run()

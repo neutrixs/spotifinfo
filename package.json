@@ -7,7 +7,7 @@
     "dev": "node ./dist/server.js --devmode",
     "build": "webpack build",
     "builddev": "webpack build --mode=development",
-    "start": "webpack serve --mode=development --port 81 --open",
+    "start": "webpack serve --mode=development --port 81",
     "buildandstart": "webpack build --mode=development && npm run dev",
     "deploy": "node ssh/ssh2.js",
     "deployToStatic": "cd ../spotifinfo_static && git fetch && git pull && rm -r ./public/* && cp -r ../spotifinfo/public/* ./public/ && git add . && git commit -m '.' && git push origin main"

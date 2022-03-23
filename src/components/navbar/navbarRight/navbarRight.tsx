@@ -41,8 +41,8 @@ export default function NavbarRight({ isDark, toggleTheme }: props) {
 
     return (
         <div className={style.navbarRight}>
-            <ThemeSwitcher isDark={isDark} toggleTheme={toggleTheme} />
-            <Opener isLocked={isLocked} isDark={isDark} dropdownIsOpen={dropdownIsOpen} setDropdownIsOpen={setDropdownIsOpen} />
+            <ThemeSwitcher {...{ isDark, toggleTheme }} />
+            <Opener {...{ dropdownIsOpen, isDark, isLocked, setDropdownIsOpen }} />
             <Dropdown {...{ isDark, isLocked, dropdownIsOpen, setDropdownIsOpen }} />
         </div>
     )

@@ -15,8 +15,8 @@ interface props {
 export default function Navbar({ isLoggedOut, isDark, toggleTheme }: props) {
     return (
         <nav className={style.nav + ' ' + (!isDark ? style.light : '')}>
-            <Navigator isLoggedOut={isLoggedOut} isDark={isDark} />
-            {isLoggedOut ? <SpotifyLogin isDark={isDark} /> : <NavbarRight isDark={isDark} toggleTheme={toggleTheme} />}
+            <Navigator {...{ isDark, isLoggedOut }} />
+            {isLoggedOut ? <SpotifyLogin isDark={isDark} /> : <NavbarRight {...{ isDark, toggleTheme }} />}
         </nav>
     )
 }

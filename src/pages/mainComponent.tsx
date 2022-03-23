@@ -27,11 +27,11 @@ const checkIsDark = () => {
 function useDark() {
     const [isDark, setIsDark] = useState(checkIsDark())
 
-    function toggleDark() {
+    function toggleTheme() {
         setIsDark(prevState => !prevState)
     }
 
-    return { isDark, toggleDark }
+    return { isDark, toggleTheme }
 }
 
 //
@@ -39,7 +39,7 @@ function useDark() {
 function Main() {
     const isLoggedOut = checkIsLoggedOut()
 
-    const { isDark, toggleDark } = useDark()
+    const { isDark, toggleTheme } = useDark()
 
     useEffect(() => {
         localStorage.setItem('isDark', isDark.toString())
@@ -94,7 +94,7 @@ function Main() {
 
     return (
         <BrowserRouter>
-            <Navbar isLoggedOut={isLoggedOut} isDark={isDark} toggleTheme={toggleDark} />
+            <Navbar {...{ isLoggedOut, isDark, toggleTheme }} />
             <Routes>
                 <Route path="/" element={getMainPageRouting()} />
                 <Route path="/top_tracks" element={getTopTracksRouting()} />

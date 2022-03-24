@@ -42,13 +42,8 @@ export default function MainPageIn({ isDark }: props) {
             {isLoading ? <Loading isDark={isDark} /> : null}
             <div id="mainPageIn" className={isMobile ? 'mobile ' : ''}>
                 <div className="content">
-                    <NowPlaying
-                        isDark={isDark}
-                        isMobile={isMobile}
-                        setIsLoading={setIsLoading}
-                        getRecentlyPlayedFunc={getRecentlyPlayedFunc}
-                    />
-                    <RecentlyPlayed setIsLoading={setIsLoading} getRecentlyPlayedFunc={getRecentlyPlayedFunc} />
+                    <NowPlaying {...{ getRecentlyPlayedFunc, isDark, isMobile, setIsLoading }} />
+                    <RecentlyPlayed {...{ getRecentlyPlayedFunc, setIsLoading }} />
                 </div>
                 <RecaptchaBadge isDark={isDark} overrideStyle={{ paddingTop: '1.5em' }} />
             </div>

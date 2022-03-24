@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import detectWEBPSupport from '../../scripts/detectWEBPSupport'
 import { mdHandler, mdHandlerBoolean } from '../../scripts/mdHandler'
 
-import './mainPageOut.scss'
+import style from './mainPageOut.module.scss'
 
 import * as turtle from '../../img/kinghd.png'
 import * as turtleWEBP from '../../img/kinghd.webp'
@@ -26,8 +26,8 @@ export default function MainPageOut() {
     }
 
     return (
-        <div id="mainPageOut" className={isMobile ? 'mobile ' : ''}>
-            <div className="content">
+        <div className={style.mainPageOut + ' ' + (isMobile ? style.mobile : '')}>
+            <div className={style.content}>
                 <img src={supportWEBP ? turtleWEBP : turtle} />
                 <div>
                     <p style={{ fontSize: '2em', fontWeight: 600 }}>Spotifinfo</p>

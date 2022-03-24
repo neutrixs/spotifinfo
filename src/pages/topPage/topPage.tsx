@@ -52,56 +52,29 @@ export default function TopPage({ isDark }: props) {
         mdHandler(setIsMobile)
     }
 
+    const topComponentProps = (range: keyof typeof rangeSelector) => ({
+        targetRange: rangeSelector[range],
+        selectedRange,
+        selectedType,
+        isDark,
+    })
+
     return (
         <div id="topPage" className={isMobile ? 'mobile' : ''}>
             <div id="content">
                 <p id="title">Top {selectedType == typeSelector.tracks ? 'Tracks' : 'Artists'}</p>
                 <div id="selectorsHolder">
-                    <TypeSelector isDark={isDark} selectedType={selectedType} setSelectedType={setSelectedType} />
-                    <RangeSelector isDark={isDark} selectedRange={selectedRange} setSelectedRange={setSelectedRange} />
+                    <TypeSelector {...{ isDark, selectedType, setSelectedType }} />
+                    <RangeSelector {...{ isDark, selectedRange, setSelectedRange }} />
                 </div>
 
-                <TopTracks
-                    targetRange={rangeSelector.allTime}
-                    selectedRange={selectedRange}
-                    selectedType={selectedType}
-                    isDark={isDark}
-                />
+                <TopTracks {...topComponentProps('allTime')} />
+                <TopTracks {...topComponentProps('sixMonth')} />
+                <TopTracks {...topComponentProps('oneMonth')} />
 
-                <TopTracks
-                    targetRange={rangeSelector.sixMonth}
-                    selectedRange={selectedRange}
-                    selectedType={selectedType}
-                    isDark={isDark}
-                />
-
-                <TopTracks
-                    targetRange={rangeSelector.oneMonth}
-                    selectedRange={selectedRange}
-                    selectedType={selectedType}
-                    isDark={isDark}
-                />
-
-                <TopArtists
-                    selectedType={selectedType}
-                    selectedRange={selectedRange}
-                    targetRange={rangeSelector.allTime}
-                    isDark={isDark}
-                />
-
-                <TopArtists
-                    selectedType={selectedType}
-                    selectedRange={selectedRange}
-                    targetRange={rangeSelector.sixMonth}
-                    isDark={isDark}
-                />
-
-                <TopArtists
-                    selectedType={selectedType}
-                    selectedRange={selectedRange}
-                    targetRange={rangeSelector.oneMonth}
-                    isDark={isDark}
-                />
+                <TopArtists {...topComponentProps('allTime')} />
+                <TopArtists {...topComponentProps('sixMonth')} />
+                <TopArtists {...topComponentProps('oneMonth')} />
             </div>
 
             <RecaptchaBadge isDark={isDark} />

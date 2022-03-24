@@ -9,7 +9,7 @@ import Loading from '../../components/loading/loading'
 
 import RecaptchaBadge from '../../components/recaptchaBadge/recaptchaBadge'
 
-import './mainPageIn.scss'
+import style from './mainPageIn.module.scss'
 
 interface props {
     isDark: boolean
@@ -40,7 +40,7 @@ export default function MainPageIn({ isDark }: props) {
     return (
         <>
             {isLoading ? <Loading isDark={isDark} /> : null}
-            <div id="mainPageIn" className={isMobile ? 'mobile ' : ''}>
+            <div className={style.mainPageIn + ' ' + (isMobile ? style.mobile : '')}>
                 <div className="content">
                     <NowPlaying {...{ getRecentlyPlayedFunc, isDark, isMobile, setIsLoading }} />
                     <RecentlyPlayed {...{ getRecentlyPlayedFunc, setIsLoading }} />

@@ -7,6 +7,8 @@ import Loading from '../../../components/loading/loading'
 
 import getTopArtists from './getTopArtists'
 
+import style from '../topTrAndAr.module.scss'
+
 interface props {
     selectedType: typeSelector
     selectedRange: rangeSelector

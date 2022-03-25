@@ -2,17 +2,14 @@ import * as React from 'react'
 import { useState, useEffect } from 'react'
 
 import RecaptchaBadge from '../../components/recaptchaBadge/recaptchaBadge'
-
 import Loading from '../../components/loading/loading'
-
 import getToken from '../../scripts/getToken'
-
 import spotifyCurrentUser from '../../types/spotifyCurrentUser'
 
 import { mdHandler, mdHandlerBoolean } from '../../scripts/mdHandler'
+import useDimension from '../../hooks/useDimension'
 
 import defaultProfilePic from '../../svg/profile_pic.svg'
-
 import style from './account.module.scss'
 
 interface props {
@@ -32,15 +29,15 @@ export default function AccountPage({ isDark }: props) {
 
     const [isUsingDefaultPFP, setIsUsingDefaultPFP] = useState(false)
 
+    const { width } = useDimension()
+
     useEffect(() => {
-        window.addEventListener('resize', callMdHandler)
-
         getData()
-
-        return function cleanup() {
-            window.removeEventListener('resize', callMdHandler)
-        }
     }, [])
+
+    useEffect(() => {
+        mdHandler(setIsMobile)
+    }, [width])
 
     async function getData() {
         const rawResponse = await fetch('https://api.spotify.com/v1/me', {
@@ -74,10 +71,6 @@ export default function AccountPage({ isDark }: props) {
         setPlan(data.product)
 
         setIsLoading(false)
-    }
-
-    function callMdHandler() {
-        mdHandler(setIsMobile)
     }
 
     return (

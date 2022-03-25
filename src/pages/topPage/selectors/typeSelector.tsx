@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import { typeSelector as typeSelectorEnum } from '../topPage'
 
-import './selectors.scss'
+import style from './selectors.module.scss'
 
 interface props {
     isDark: boolean
@@ -18,7 +18,7 @@ export default function TypeSelector({ isDark, selectedType, setSelectedType }: 
     }
 
     return (
-        <div id="typeSelector">
+        <div className={style.typeSelector}>
             <div
                 className={
                     (selectedType == typeSelectorEnum.tracks ? 'selected ' : '') +

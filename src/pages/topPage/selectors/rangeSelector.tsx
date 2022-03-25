@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import { rangeSelector as rangeSelectorEnum } from '../topPage'
 
-import './selectors.scss'
+import style from './selectors.module.scss'
 
 interface props {
     isDark: boolean

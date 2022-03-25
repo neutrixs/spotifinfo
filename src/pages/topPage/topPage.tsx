@@ -13,7 +13,7 @@ import RecaptchaBadge from '../../components/recaptchaBadge/recaptchaBadge'
 
 import { setType, setRange } from './setTypeAndRange'
 
-import './topPage.scss'
+import style from './topPage.module.scss'
 
 interface props {
     isDark: boolean
@@ -60,10 +60,10 @@ export default function TopPage({ isDark }: props) {
     })
 
     return (
-        <div id="topPage" className={isMobile ? 'mobile' : ''}>
-            <div id="content">
-                <p id="title">Top {selectedType == typeSelector.tracks ? 'Tracks' : 'Artists'}</p>
-                <div id="selectorsHolder">
+        <div className={style.topPage + ' ' + (isMobile ? style.mobile : '')}>
+            <div className={style.content}>
+                <p className={style.title}>Top {selectedType == typeSelector.tracks ? 'Tracks' : 'Artists'}</p>
+                <div className={style.selectorsHolder}>
                     <TypeSelector {...{ isDark, selectedType, setSelectedType }} />
                     <RangeSelector {...{ isDark, selectedRange, setSelectedRange }} />
                 </div>

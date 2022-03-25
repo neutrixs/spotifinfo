@@ -2,14 +2,11 @@ import * as React from 'react'
 import { useState, useEffect, useRef } from 'react'
 
 import { sideTextDetectBoolean, sideTextDetect } from './sideText'
-
 import getNowPlaying from './getNowPlaying'
-
 import updateProgress from './updateProgress'
-
 import getColour from './colour/getColour'
 
-import './nowPlaying.scss'
+import style from './np.module.scss'
 
 let isMobileWithActualVariable = false
 
@@ -99,23 +96,22 @@ export default function NowPlaying({ isDark, isMobile, setIsLoading, getRecently
 
     return (
         <div
-            id="nowPlaying"
-            className={isMobile ? 'mobile ' : ''}
+            className={style.holder + ' ' + (isMobile ? style.mobile : '')}
             style={{
                 backgroundColor: `rgba(${palette[paletteIndex].join(',')})`,
                 display: showNowPlaying ? '' : 'none',
             }}
         >
-            <p className="status">{isPlaying ? 'Now Playing:' : 'Last Played Song:'}</p>
-            <a id="albumArt" href={albumURL}>
+            <p className={style.status}>{isPlaying ? 'Now Playing:' : 'Last Played Song:'}</p>
+            <a className={style.albumArt} href={albumURL}>
                 <img ref={imageElement} src={artURL} crossOrigin="anonymous" />
             </a>
-            <div id="npInfoHolder" className={sideText ? 'side ' : ''}>
-                <a className="title" href={songURL}>
+            <div className={style.infoHolder + ' ' + (sideText ? style.side : '')}>
+                <a className={style.title} href={songURL}>
                     {songTitle}
                 </a>
-                <p className="artists">{artists}</p>
-                <p className="progress">{progress}</p>
+                <p className={style.artists}>{artists}</p>
+                <p className={style.progress}>{progress}</p>
             </div>
         </div>
     )

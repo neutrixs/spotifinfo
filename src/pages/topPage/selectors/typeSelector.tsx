@@ -17,38 +17,26 @@ export default function TypeSelector({ isDark, selectedType, setSelectedType }: 
         setSelectedType(enumToSet)
     }
 
+    function handleDiv(type: typeSelectorEnum): React.HtmlHTMLAttributes<HTMLDivElement> {
+        return {
+            className: selectedType == type ? (isDark ? style.selected : style.selectedLight) : '',
+            role: 'button',
+            tabIndex: 0,
+            onClick: _ => {
+                onClick(type)
+            },
+            onKeyPress: e => {
+                onClick(type, e)
+            },
+        }
+    }
+
     return (
         <div className={style.typeSelector}>
-            <div
-                className={
-                    (selectedType == typeSelectorEnum.tracks ? 'selected ' : '') +
-                    (selectedType == typeSelectorEnum.tracks && !isDark ? 'selectedLight ' : '')
-                }
-                role="button"
-                tabIndex={0}
-                onClick={() => {
-                    onClick(typeSelectorEnum.tracks)
-                }}
-                onKeyPress={e => {
-                    onClick(typeSelectorEnum.tracks, e)
-                }}
-            >
+            <div {...handleDiv(typeSelectorEnum.tracks)}>
                 <span>Top Tracks</span>
             </div>
-            <div
-                className={
-                    (selectedType == typeSelectorEnum.artists ? 'selected ' : '') +
-                    (selectedType == typeSelectorEnum.artists && !isDark ? 'selectedLight ' : '')
-                }
-                role="button"
-                tabIndex={0}
-                onClick={() => {
-                    onClick(typeSelectorEnum.artists)
-                }}
-                onKeyPress={e => {
-                    onClick(typeSelectorEnum.artists, e)
-                }}
-            >
+            <div {...handleDiv(typeSelectorEnum.artists)}>
                 <span>Top Artists</span>
             </div>
         </div>

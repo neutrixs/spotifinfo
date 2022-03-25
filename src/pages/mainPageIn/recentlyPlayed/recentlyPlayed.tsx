@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 
 import getRecentlyPlayed from './getRecentlyPlayed'
 
-import './recentlyPlayed.scss'
+import style from './recentlyPlayed.module.scss'
 
 interface props {
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
@@ -24,9 +24,9 @@ export default function RecentlyPlayed({ setIsLoading, getRecentlyPlayedFunc }: 
     }
 
     return (
-        <div id="recentlyPlayed" style={{ display: !showRecentlyPlayed ? 'none' : '' }}>
-            <p className="title">Recently Played:</p>
-            <div className="rPContainer">{recentlyPlayedData}</div>
+        <div className={style.sectionHolder} style={{ display: !showRecentlyPlayed ? 'none' : '' }}>
+            <p className={style.title}>Recently Played:</p>
+            <div className={style.container}>{recentlyPlayedData}</div>
         </div>
     )
 }

@@ -17,54 +17,29 @@ export default function RangeSelector({ isDark, selectedRange, setSelectedRange 
         setSelectedRange(enumToSet)
     }
 
+    function handleDiv(range: rangeSelectorEnum): React.HTMLAttributes<HTMLDivElement> {
+        return {
+            className: selectedRange == range ? (isDark ? style.selected : style.selectedLight) : '',
+            role: 'button',
+            tabIndex: 0,
+            onClick: _ => {
+                onClick(range)
+            },
+            onKeyPress: e => {
+                onClick(range, e)
+            },
+        }
+    }
+
     return (
-        <div id="rangeSelector">
-            <div
-                className={
-                    (selectedRange == rangeSelectorEnum.allTime ? 'selected ' : '') +
-                    (selectedRange == rangeSelectorEnum.allTime && !isDark ? 'selectedLight ' : '')
-                }
-                role="button"
-                tabIndex={0}
-                onClick={() => {
-                    onClick(rangeSelectorEnum.allTime)
-                }}
-                onKeyPress={e => {
-                    onClick(rangeSelectorEnum.allTime, e)
-                }}
-            >
+        <div className={style.rangeSelector}>
+            <div {...handleDiv(rangeSelectorEnum.allTime)}>
                 <span>All Time</span>
             </div>
-            <div
-                className={
-                    (selectedRange == rangeSelectorEnum.sixMonth ? 'selected ' : '') +
-                    (selectedRange == rangeSelectorEnum.sixMonth && !isDark ? 'selectedLight ' : '')
-                }
-                role="button"
-                tabIndex={0}
-                onClick={() => {
-                    onClick(rangeSelectorEnum.sixMonth)
-                }}
-                onKeyPress={e => {
-                    onClick(rangeSelectorEnum.sixMonth, e)
-                }}
-            >
+            <div {...handleDiv(rangeSelectorEnum.sixMonth)}>
                 <span>6 Months</span>
             </div>
-            <div
-                className={
-                    (selectedRange == rangeSelectorEnum.oneMonth ? 'selected ' : '') +
-                    (selectedRange == rangeSelectorEnum.oneMonth && !isDark ? 'selectedLight ' : '')
-                }
-                role="button"
-                tabIndex={0}
-                onClick={() => {
-                    onClick(rangeSelectorEnum.oneMonth)
-                }}
-                onKeyPress={e => {
-                    onClick(rangeSelectorEnum.oneMonth, e)
-                }}
-            >
+            <div {...handleDiv(rangeSelectorEnum.oneMonth)}>
                 <span>1 Month</span>
             </div>
         </div>

@@ -6,6 +6,8 @@ import { rangeSelector } from '../topPage'
 
 import spotifyTopArtistsType from '../../../types/spotifyTopArtists'
 
+import style from '../topTrAndAr.module.scss'
+
 export default async function getTopArtists(
     range: rangeSelector,
     setData: React.Dispatch<React.SetStateAction<JSX.Element[]>>,
@@ -56,14 +58,14 @@ export default async function getTopArtists(
         const key = `topArtists${range}${currentData.id}`
 
         dataToSet.push(
-            <div key={key} className="content">
-                <div className="number">
+            <div key={key} className={style.content}>
+                <div className={style.number}>
                     <span>{i + 1}</span>
                 </div>
-                <a href={currentData.external_urls.spotify} className="artHolder">
+                <a href={currentData.external_urls.spotify} className={style.artHolder}>
                     <img src={currentData.images[1].url} alt="" />
                 </a>
-                <a href={currentData.external_urls.spotify} className="infoHolder">
+                <a href={currentData.external_urls.spotify} className={style.infoHolder}>
                     <p>{currentData.name}</p>
                 </a>
             </div>

@@ -29,7 +29,7 @@ export default function TopArtists({ selectedType, selectedRange, targetRange, i
     }
 
     return (
-        <div className="topArtistsHolder" style={{ display: !isShow() ? 'none' : '' }}>
+        <div className={style.topArtistsHolder} style={{ display: !isShow() ? 'none' : '' }}>
             {loading ? <Loading isDark={isDark} overrideStyle={{ maxWidth: '30em' }} /> : data}
         </div>
     )

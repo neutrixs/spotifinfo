@@ -6,6 +6,8 @@ import getToken from '../../../scripts/getToken'
 
 import topTracksType from '../../../types/spotifyTopTracks'
 
+import style from '../topTrAndAr.module.scss'
+
 export default async function getTopTracks(
     setData: React.Dispatch<React.SetStateAction<JSX.Element[]>>,
     range: rangeSelector,
@@ -56,14 +58,14 @@ export default async function getTopTracks(
         const key = `topTracks${range}${currentData.id}`
 
         dataToSet.push(
-            <div key={key} className="content">
-                <div className="number">
+            <div key={key} className={style.content}>
+                <div className={style.number}>
                     <span>{i + 1}</span>
                 </div>
-                <a href={currentData.album.external_urls.spotify} className="artHolder">
+                <a href={currentData.album.external_urls.spotify} className={style.artHolder}>
                     <img src={currentData.album.images[1].url} />
                 </a>
-                <a href={currentData.external_urls.spotify} className="infoHolder">
+                <a href={currentData.external_urls.spotify} className={style.infoHolder}>
                     <p>{currentData.name}</p>
                     <p>{currentData.artists.map(a => a.name).join(', ')}</p>
                 </a>

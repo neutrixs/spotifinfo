@@ -66,12 +66,16 @@ const config = nameOrContentHash => ({
                 },
             },
             {
-                test: /\.(png|jpe?g|gif|jp2|webp|svg|otf|md)$/,
+                test: /\.(png|jpe?g|gif|jp2|webp|otf|md)$/,
                 loader: 'file-loader',
                 options: {
                     name: `assets/${nameOrContentHash}.[ext]`,
                     esModule: false,
                 },
+            },
+            {
+                test: /\.svg$/,
+                type: 'asset/inline',
             },
             !devMode
                 ? {

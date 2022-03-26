@@ -3,27 +3,22 @@ import { useState, useEffect } from 'react'
 
 import detectWEBPSupport from '../../scripts/detectWEBPSupport'
 import { mdHandler, mdHandlerBoolean } from '../../scripts/mdHandler'
+import useDimension from '../../hooks/useDimension'
 
 import style from './mainPageOut.module.scss'
 
-import * as turtle from '../../img/kinghd.png'
-import * as turtleWEBP from '../../img/kinghd.webp'
+import turtle from '../../img/kinghd.png'
+import turtleWEBP from '../../img/kinghd.webp'
 
 export default function MainPageOut() {
     const supportWEBP = detectWEBPSupport()
     const [isMobile, setIsMobile] = useState<boolean>(mdHandlerBoolean())
 
+    const { width } = useDimension()
+
     useEffect(() => {
-        window.addEventListener('resize', callMDHandler)
-
-        return function cleanup() {
-            window.removeEventListener('resize', callMDHandler)
-        }
-    }, [])
-
-    function callMDHandler() {
         mdHandler(setIsMobile)
-    }
+    }, [width])
 
     return (
         <div className={style.mainPageOut + ' ' + (isMobile ? style.mobile : '')}>

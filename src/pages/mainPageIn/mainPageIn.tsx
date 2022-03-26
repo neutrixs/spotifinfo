@@ -1,13 +1,13 @@
 import * as React from 'react'
 import { useState, useEffect } from 'react'
 
-import { mdHandler, mdHandlerBoolean } from '../../scripts/mdHandler'
-
 import NowPlaying from './nowPlaying/nowPlaying'
 import RecentlyPlayed from './recentlyPlayed/recentlyPlayed'
 import Loading from '../../components/loading/loading'
-
 import RecaptchaBadge from '../../components/recaptchaBadge/recaptchaBadge'
+
+import { mdHandler, mdHandlerBoolean } from '../../scripts/mdHandler'
+import useDimension from '../../hooks/useDimension'
 
 import style from './mainPageIn.module.scss'
 
@@ -25,17 +25,11 @@ export default function MainPageIn({ isDark }: props) {
     const [isMobile, setIsMobile] = useState(mdHandlerBoolean())
     const [isLoading, setIsLoading] = useState(true)
 
+    const { width } = useDimension()
+
     useEffect(() => {
-        window.addEventListener('resize', callMDHandler)
-
-        return function cleanup() {
-            window.removeEventListener('resize', callMDHandler)
-        }
-    }, [])
-
-    function callMDHandler() {
         mdHandler(setIsMobile)
-    }
+    }, [width])
 
     return (
         <>

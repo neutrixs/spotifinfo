@@ -1,17 +1,15 @@
 import * as React from 'react'
 import { useState, useEffect } from 'react'
 
-import { mdHandlerBoolean, mdHandler } from '../../scripts/mdHandler'
-
 import TypeSelector from './selectors/typeSelector'
 import RangeSelector from './selectors/rangeSelector'
-
 import TopTracks from './topTracks/topTracks'
 import TopArtists from './topArtists/topArtists'
-
 import RecaptchaBadge from '../../components/recaptchaBadge/recaptchaBadge'
 
+import { mdHandlerBoolean, mdHandler } from '../../scripts/mdHandler'
 import { setType, setRange } from './setTypeAndRange'
+import useDimension from '../../hooks/useDimension'
 
 import style from './topPage.module.scss'
 
@@ -35,22 +33,16 @@ export default function TopPage({ isDark }: props) {
     const [selectedRange, setSelectedRange] = useState(setRange())
     const [isMobile, setIsMobile] = useState(mdHandlerBoolean())
 
-    useEffect(() => {
-        window.addEventListener('resize', callMdHandler)
+    const { width } = useDimension()
 
-        return function cleanup() {
-            window.removeEventListener('resize', callMdHandler)
-        }
-    }, [])
+    useEffect(() => {
+        mdHandler(setIsMobile)
+    }, [width])
 
     useEffect(() => {
         localStorage.setItem('selectedType', selectedType.toString())
         localStorage.setItem('selectedRange', selectedRange.toString())
     }, [selectedRange, selectedType])
-
-    function callMdHandler() {
-        mdHandler(setIsMobile)
-    }
 
     const topComponentProps = (range: keyof typeof rangeSelector) => ({
         targetRange: rangeSelector[range],

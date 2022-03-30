@@ -1,4 +1,5 @@
 import logout from './logout'
+import { fullLoad } from 'grecaptcha-loader'
 
 interface responseData {
     token: string
@@ -24,32 +25,32 @@ export default async function getToken() {
 
     currentlyFetching = true
 
-    window.grecaptcha.ready(async () => {
-        const token = await window.grecaptcha.execute('6Ld9VmMcAAAAAK48XrvY1T8vcjjNBHN4tkRipg5C', { action: 'getToken' })
+    await fullLoad()
 
-        const postParam = new URLSearchParams()
-        postParam.append('reCAPTCHAToken', token)
+    const token = await window.grecaptcha.execute('6Ld9VmMcAAAAAK48XrvY1T8vcjjNBHN4tkRipg5C', { action: 'getToken' })
 
-        const rawResponse = await fetch('/gettoken', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: postParam.toString(),
-        })
+    const postParam = new URLSearchParams()
+    postParam.append('reCAPTCHAToken', token)
 
-        const dataResponse = (await rawResponse.json()) as response
-
-        if (dataResponse.relogback) {
-            logout(false)
-            return
-        }
-
-        localStorage.setItem('token', dataResponse.data.token)
-        localStorage.setItem('validuntil', dataResponse.data.validuntil.toString())
-
-        currentlyFetching = false
+    const rawResponse = await fetch('/gettoken', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: postParam.toString(),
     })
+
+    const dataResponse = (await rawResponse.json()) as response
+
+    if (dataResponse.relogback) {
+        logout(false)
+        return
+    }
+
+    localStorage.setItem('token', dataResponse.data.token)
+    localStorage.setItem('validuntil', dataResponse.data.validuntil.toString())
+
+    currentlyFetching = false
 }
 
 function sleep(ms: number) {

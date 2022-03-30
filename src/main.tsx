@@ -1,4 +1,4 @@
-import { load, setOptions } from 'grecaptcha-loader'
+import { partialLoad, setOptions } from 'grecaptcha-loader'
 
 async function run() {
     /**
@@ -7,7 +7,7 @@ async function run() {
      */
 
     setOptions({ render: '6Ld9VmMcAAAAAK48XrvY1T8vcjjNBHN4tkRipg5C' })
-    const loadRecaptcha = load()
+    const loadRecaptcha = partialLoad()
 
     const reactRouterDOMImport = import('react-router-dom')
     const reactImport = import('react')

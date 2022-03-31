@@ -43,7 +43,7 @@ function Main() {
 
     useEffect(() => {
         localStorage.setItem('isDark', isDark.toString())
-        document.body.classList[isDark ? 'remove' : 'add']('light')
+        document.body.classList[isDark ? 'remove' : 'add'](style.light)
     }, [isDark])
 
     useEffect(() => {

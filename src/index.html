@@ -4,13 +4,65 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <title>Spotifinfo</title>
+        <style>
+            .a {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 1.5em 0;
+            }
+            @keyframes b {
+                0% {
+                    background-color: #202020;
+                }
+                50%,
+                100% {
+                    background-color: #808080;
+                }
+            }
+            .c {
+                position: relative;
+                width: 1em;
+                height: 1em;
+                border-radius: 0.5em;
+                background-color: #202020;
+                color: #202020;
+                animation: b 0.5s infinite linear alternate;
+                animation-delay: 0.25s;
+            }
+            .c::before,
+            .c::after {
+                content: '';
+                display: inline-block;
+                position: absolute;
+                top: 0;
+                width: 1em;
+                height: 1em;
+                border-radius: 0.5em;
+                background-color: #202020;
+                color: #202020;
+                animation: b 0.5s infinite alternate;
+            }
+            .c::before {
+                left: -1.5em;
+                animation-delay: 0s;
+            }
+            .c::after {
+                left: 1.5em;
+                animation-delay: 0.5s;
+            }
+        </style>
     </head>
     <body>
         <noscript>Enjoy the nothingness with javascript disabled!</noscript>
-        <div id="💀"></div>
+        <div id="💀">
+            <div class="a">
+                <div class="c"></div>
+            </div>
+        </div>
         <script>
-            Array.from ||
-                (alert('< ES6 detected!!! use a real browser lmao'), (window.location.href = 'https://google.com/chrome'))
+            Array.from || (alert('< ES6 detected!!! use a real browser lmao'), (window.location.href = 'https://google.com/chrome'))
         </script>
     </body>
 </html>

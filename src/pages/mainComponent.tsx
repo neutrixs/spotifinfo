@@ -1,7 +1,7 @@
 import React, { useState, lazy, Suspense, useEffect } from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 
-import './base.scss'
+import style from './base.module.scss'
 
 import Navbar from '../components/navbar/navbar'
 import Loading from '../components/loading/loading'
@@ -45,6 +45,10 @@ function Main() {
         localStorage.setItem('isDark', isDark.toString())
         document.body.classList[isDark ? 'remove' : 'add']('light')
     }, [isDark])
+
+    useEffect(() => {
+        document.body.classList.add(style.body)
+    }, [])
 
     function getMainPageRouting() {
         let pageElement = null

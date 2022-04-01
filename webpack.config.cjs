@@ -66,7 +66,7 @@ const config = nameOrContentHash => ({
                 },
             },
             {
-                test: /\.(png|jpe?g|gif|jp2|webp|otf|md)$/,
+                test: /\.(png|jpe?g|gif|jp2|webp|otf)$/,
                 loader: 'file-loader',
                 options: {
                     name: `assets/${nameOrContentHash}.[ext]`,
@@ -76,6 +76,10 @@ const config = nameOrContentHash => ({
             {
                 test: /\.svg$/,
                 type: 'asset/inline',
+            },
+            {
+                test: /\.md$/,
+                type: 'asset/source',
             },
             !devMode
                 ? {

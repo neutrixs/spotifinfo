@@ -4,8 +4,6 @@ import style from './privacyText.module.scss'
 
 import Loading from '../loading/loading'
 
-import privacyPolicyText from './privacyPolicy.md'
-
 interface props {
     isDark: boolean
 }
@@ -15,10 +13,13 @@ export default function PrivacyText({ isDark }: props) {
     const [textElement, setTextElement] = useState<JSX.Element>(null)
 
     useEffect(() => {
-        import('react-markdown').then(({ default: ReactMarkdown }) => {
-            setTextElement(<ReactMarkdown>{privacyPolicyText}</ReactMarkdown>)
+        ;(async () => {
+            const { default: Markdown } = await import('react-markdown')
+            const { default: text } = await import('./privacyPolicy.md')
+
+            setTextElement(<Markdown>{text}</Markdown>)
             setIsLoading(false)
-        })
+        })()
     }, [])
 
     return (

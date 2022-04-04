@@ -14,8 +14,11 @@ export default function PrivacyText({ isDark }: props) {
 
     useEffect(() => {
         ;(async () => {
-            const { default: Markdown } = await import('react-markdown')
-            const { default: text } = await import('./privacyPolicy.md')
+            const markdownWait = import('react-markdown')
+            const textWait = import('./privacyPolicy.md')
+
+            const { default: Markdown } = await markdownWait
+            const { default: text } = await textWait
 
             setTextElement(<Markdown>{text}</Markdown>)
             setIsLoading(false)

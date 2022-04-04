@@ -20,7 +20,17 @@ async function run() {
     const { render } = await reactDOMImport
     const { default: MainComponent } = await MainComponentImport
 
-    render(<MainComponent />, document.getElementById('💀'))
+    const rootElement = document.createElement('div')
+    document.body.insertBefore(rootElement, document.body.firstChild)
+
+    render(<MainComponent />, rootElement)
+
+    cleanup()
+}
+
+function cleanup() {
+    const prevLoadingElement = document.getElementById('loading')
+    prevLoadingElement.parentElement.removeChild(prevLoadingElement)
 }
 
 run()

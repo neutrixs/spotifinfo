@@ -107,6 +107,10 @@ const config = nameOrContentHash => ({
                     from: './src/favicon.ico',
                     to: './favicon.ico',
                 },
+                {
+                    from: './src/img/nojs.webp',
+                    to: './assets/nojs.webp',
+                },
             ],
         }),
         new HtmlWebpackPlugin({

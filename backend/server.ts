@@ -25,6 +25,7 @@ app.use(urlencoded({ extended: true }))
 app.engine('html', renderFile)
 app.set('view engine', 'html')
 app.set('views', './public')
+app.disable('x-powered-by')
 
 app.get(/^\//, (req, res, next) => {
     switch (req.path) {

@@ -11,19 +11,20 @@ async function run() {
 
     const reactRouterDOMImport = import('react-router-dom')
     const reactImport = import('react')
-    const reactDOMImport = import('react-dom')
+    const reactDOMClientImport = import('react-dom/client')
     const MainComponentImport = import('./pages/mainComponent')
 
     await loadRecaptcha
     await reactRouterDOMImport
     const { default: React } = await reactImport
-    const { render } = await reactDOMImport
+    const { createRoot } = await reactDOMClientImport
     const { default: MainComponent } = await MainComponentImport
 
     const rootElement = document.createElement('div')
-    document.body.insertBefore(rootElement, document.body.firstChild)
+    const root = createRoot(rootElement)
 
-    render(<MainComponent />, rootElement)
+    root.render(<MainComponent />)
+    document.body.insertBefore(rootElement, document.body.firstChild)
 
     cleanup()
 }

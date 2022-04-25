@@ -44,7 +44,6 @@ export default function TopPage() {
         targetRange: rangeSelector[range],
         selectedRange,
         selectedType,
-        isDark,
     })
 
     return (
@@ -52,8 +51,8 @@ export default function TopPage() {
             <div className={style.content}>
                 <p className={style.title}>Top {selectedType == typeSelector.tracks ? 'Tracks' : 'Artists'}</p>
                 <div className={style.selectorsHolder}>
-                    <TypeSelector {...{ isDark, selectedType, setSelectedType }} />
-                    <RangeSelector {...{ isDark, selectedRange, setSelectedRange }} />
+                    <TypeSelector {...{ selectedType, setSelectedType }} />
+                    <RangeSelector {...{ selectedRange, setSelectedRange }} />
                 </div>
 
                 <TopTracks {...topComponentProps('allTime')} />

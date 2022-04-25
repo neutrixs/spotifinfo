@@ -1,16 +1,18 @@
-import * as React from 'react'
+import React, { useContext } from 'react'
+import { ThemeContext } from '../../store'
 
 import { rangeSelector as rangeSelectorEnum } from '../topPage'
 
 import style from './selectors.module.scss'
 
 interface props {
-    isDark: boolean
     selectedRange: rangeSelectorEnum
     setSelectedRange: React.Dispatch<React.SetStateAction<rangeSelectorEnum>>
 }
 
-export default function RangeSelector({ isDark, selectedRange, setSelectedRange }: props) {
+export default function RangeSelector({ selectedRange, setSelectedRange }: props) {
+    const { isDark } = useContext(ThemeContext)
+
     function onClick(enumToSet: rangeSelectorEnum, e?: React.KeyboardEvent<HTMLDivElement>) {
         if (e && e?.key !== 'Enter') return
 

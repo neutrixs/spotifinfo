@@ -1,15 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { ThemeContext } from '../../../pages/store'
 
 import spotifyLogo from '../../../img/spotify_logo.png'
 import spotifyLogoLight from '../../../img/Spotify_Icon_RGB_Black.png'
 
 import style from './style.module.scss'
 
-interface props {
-    isDark: boolean
-}
-
-export default function Login({ isDark }: props) {
+export default function Login() {
+    const { isDark } = useContext(ThemeContext)
     const isForce = localStorage.getItem('force') === 'true'
 
     return (

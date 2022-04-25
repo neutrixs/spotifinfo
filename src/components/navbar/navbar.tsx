@@ -17,7 +17,7 @@ export default function Navbar({ isLoggedOut }: props) {
     return (
         <nav className={style.nav + ' ' + (!isDark ? style.light : '')}>
             <Navigator {...{ isDark, isLoggedOut }} />
-            {isLoggedOut ? <SpotifyLogin isDark={isDark} /> : <NavbarRight />}
+            {isLoggedOut ? <SpotifyLogin /> : <NavbarRight />}
         </nav>
     )
 }

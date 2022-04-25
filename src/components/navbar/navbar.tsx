@@ -12,12 +12,12 @@ interface props {
 }
 
 export default function Navbar({ isLoggedOut }: props) {
-    const { isDark, toggleTheme } = useContext(ThemeContext)
+    const { isDark } = useContext(ThemeContext)
 
     return (
         <nav className={style.nav + ' ' + (!isDark ? style.light : '')}>
             <Navigator {...{ isDark, isLoggedOut }} />
-            {isLoggedOut ? <SpotifyLogin isDark={isDark} /> : <NavbarRight {...{ isDark, toggleTheme }} />}
+            {isLoggedOut ? <SpotifyLogin isDark={isDark} /> : <NavbarRight />}
         </nav>
     )
 }

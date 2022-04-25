@@ -1,15 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
+import { ThemeContext } from '../../../pages/store'
 
 import ThemeSwitcher from './themeSwitcher/themeSwitcher'
 import Opener from './opener/opener'
 import Dropdown from './dropdown/dropdown'
 
 import style from './style.module.scss'
-
-interface props {
-    isDark: boolean
-    toggleTheme: () => void
-}
 
 /**
  * So that it passes by reference
@@ -19,7 +15,8 @@ const isLocked = {
     isLocked: false,
 }
 
-export default function NavbarRight({ isDark, toggleTheme }: props) {
+export default function NavbarRight() {
+    const { isDark, toggleTheme } = useContext(ThemeContext)
     const [dropdownIsOpen, setDropdownIsOpen] = useState(false)
 
     useEffect(() => {

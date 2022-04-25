@@ -33,7 +33,7 @@ export default function MainPageIn() {
             <div className={style.mainPageIn + ' ' + (isMobile ? style.mobile : '')}>
                 <NowPlaying {...{ getRecentlyPlayedFunc, isMobile, setIsLoading }} />
                 <RecentlyPlayed {...{ getRecentlyPlayedFunc, setIsLoading }} />
-                <RecaptchaBadge isDark={isDark} overrideStyle={{ paddingTop: '1.5em' }} />
+                <RecaptchaBadge overrideStyle={{ paddingTop: '1.5em' }} />
             </div>
         </>
     )

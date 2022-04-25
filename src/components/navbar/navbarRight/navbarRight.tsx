@@ -1,5 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react'
-import { ThemeContext } from '../../../pages/store'
+import React, { useEffect, useState } from 'react'
 
 import ThemeSwitcher from './themeSwitcher/themeSwitcher'
 import Opener from './opener/opener'
@@ -16,7 +15,6 @@ const isLocked = {
 }
 
 export default function NavbarRight() {
-    const { isDark } = useContext(ThemeContext)
     const [dropdownIsOpen, setDropdownIsOpen] = useState(false)
 
     useEffect(() => {
@@ -40,7 +38,7 @@ export default function NavbarRight() {
         <div className={style.navbarRight}>
             <ThemeSwitcher />
             <Opener {...{ dropdownIsOpen, isLocked, setDropdownIsOpen }} />
-            <Dropdown {...{ isDark, isLocked, dropdownIsOpen, setDropdownIsOpen }} />
+            <Dropdown {...{ isLocked, dropdownIsOpen, setDropdownIsOpen }} />
         </div>
     )
 }

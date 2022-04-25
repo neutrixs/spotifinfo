@@ -69,7 +69,7 @@ export default function TopPage({ isDark }: props) {
                 <TopArtists {...topComponentProps('oneMonth')} />
             </div>
 
-            <RecaptchaBadge isDark={isDark} />
+            <RecaptchaBadge />
         </div>
     )
 }

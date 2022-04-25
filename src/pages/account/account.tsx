@@ -91,7 +91,7 @@ export default function AccountPage({ isDark }: props) {
                     <p className={style.info}>Plan: {plan}</p>
                 </div>
             </div>
-            <RecaptchaBadge isDark={isDark} />
+            <RecaptchaBadge />
         </div>
     )
 }

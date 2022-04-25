@@ -1,5 +1,6 @@
 import React, { useState, lazy, Suspense, useEffect } from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import ThemeContext from './store'
 
 import style from './base.module.scss'
 
@@ -98,14 +99,16 @@ function Main() {
 
     return (
         <BrowserRouter>
-            <Navbar {...{ isLoggedOut, isDark, toggleTheme }} />
-            <Routes>
-                <Route path="/" element={getMainPageRouting()} />
-                <Route path="/top_tracks" element={getTopTracksRouting()} />
-                <Route path="/account" element={getAccountPageRouting()} />
-                <Route path="/privacy" element={getPrivacyPageRouting()} />
-                <Route path="*" element={<Page404 />} />
-            </Routes>
+            <ThemeContext.Provider value={{ isDark, toggleTheme }}>
+                <Navbar {...{ isLoggedOut, isDark, toggleTheme }} />
+                <Routes>
+                    <Route path="/" element={getMainPageRouting()} />
+                    <Route path="/top_tracks" element={getTopTracksRouting()} />
+                    <Route path="/account" element={getAccountPageRouting()} />
+                    <Route path="/privacy" element={getPrivacyPageRouting()} />
+                    <Route path="*" element={<Page404 />} />
+                </Routes>
+            </ThemeContext.Provider>
         </BrowserRouter>
     )
 }

@@ -80,7 +80,7 @@ function Main() {
         }
         return (
             <Suspense fallback={<Loading />}>
-                <AccountPage isDark={isDark} />
+                <AccountPage />
             </Suspense>
         )
     }
@@ -89,7 +89,7 @@ function Main() {
         if (isLoggedOut) {
             return (
                 <Suspense fallback={<Loading />}>
-                    <PrivacyPage isDark={isDark} />
+                    <PrivacyPage />
                 </Suspense>
             )
         }

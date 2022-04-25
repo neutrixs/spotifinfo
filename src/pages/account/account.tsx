@@ -12,11 +12,7 @@ import useDimension from '../../hooks/useDimension'
 import defaultProfilePic from '../../svg/profile_pic.svg'
 import style from './account.module.scss'
 
-interface props {
-    isDark: boolean
-}
-
-export default function AccountPage({ isDark }: props) {
+export default function AccountPage() {
     const [isMobile, setIsMobile] = useState(mdHandlerBoolean())
     const [isLoading, setIsLoading] = useState(true)
 

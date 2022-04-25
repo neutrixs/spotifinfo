@@ -13,10 +13,6 @@ import useDimension from '../../hooks/useDimension'
 
 import style from './topPage.module.scss'
 
-interface props {
-    isDark: boolean
-}
-
 enum typeSelector {
     tracks,
     artists,
@@ -28,7 +24,7 @@ enum rangeSelector {
     oneMonth,
 }
 
-export default function TopPage({ isDark }: props) {
+export default function TopPage() {
     const [selectedType, setSelectedType] = useState(setType())
     const [selectedRange, setSelectedRange] = useState(setRange())
     const [isMobile, setIsMobile] = useState(mdHandlerBoolean())

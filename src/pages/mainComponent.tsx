@@ -69,7 +69,7 @@ function Main() {
         }
         return (
             <Suspense fallback={<Loading />}>
-                <TopPage isDark={isDark} />
+                <TopPage />
             </Suspense>
         )
     }

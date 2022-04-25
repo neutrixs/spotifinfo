@@ -39,7 +39,7 @@ export default function NavbarRight() {
     return (
         <div className={style.navbarRight}>
             <ThemeSwitcher />
-            <Opener {...{ dropdownIsOpen, isDark, isLocked, setDropdownIsOpen }} />
+            <Opener {...{ dropdownIsOpen, isLocked, setDropdownIsOpen }} />
             <Dropdown {...{ isDark, isLocked, dropdownIsOpen, setDropdownIsOpen }} />
         </div>
     )

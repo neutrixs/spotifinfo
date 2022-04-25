@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { ThemeContext } from '../../pages/store'
 
 import NavbarRight from './navbarRight/navbarRight'
 import SpotifyLogin from './spotifyLogin/login'
@@ -8,11 +9,11 @@ import style from './navbar.module.scss'
 
 interface props {
     isLoggedOut: boolean
-    isDark: boolean
-    toggleTheme: () => void
 }
 
-export default function Navbar({ isLoggedOut, isDark, toggleTheme }: props) {
+export default function Navbar({ isLoggedOut }: props) {
+    const { isDark, toggleTheme } = useContext(ThemeContext)
+
     return (
         <nav className={style.nav + ' ' + (!isDark ? style.light : '')}>
             <Navigator {...{ isDark, isLoggedOut }} />

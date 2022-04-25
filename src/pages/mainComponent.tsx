@@ -100,7 +100,7 @@ function Main() {
     return (
         <BrowserRouter>
             <ThemeContext.Provider value={{ isDark, toggleTheme }}>
-                <Navbar {...{ isLoggedOut, isDark, toggleTheme }} />
+                <Navbar {...{ isLoggedOut }} />
                 <Routes>
                     <Route path="/" element={getMainPageRouting()} />
                     <Route path="/top_tracks" element={getTopTracksRouting()} />

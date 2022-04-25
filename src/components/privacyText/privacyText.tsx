@@ -1,16 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import { ThemeContext } from '../../pages/store'
 
 import style from './privacyText.module.scss'
 
 import Loading from '../loading/loading'
 
-interface props {
-    isDark: boolean
-}
-
-export default function PrivacyText({ isDark }: props) {
+export default function PrivacyText() {
     const [isLoading, setIsLoading] = useState(true)
     const [textElement, setTextElement] = useState<JSX.Element>(null)
+    const { isDark } = useContext(ThemeContext)
 
     useEffect(() => {
         ;(async () => {

@@ -14,7 +14,7 @@ export default function Privacy({ isDark }: props) {
         <div className={style.privacyPolicyHolder + ' ' + (!isDark ? style.light : '')}>
             <h1>Privacy Policy</h1>
             <hr />
-            <PrivacyText isDark={isDark} />
+            <PrivacyText />
         </div>
     )
 }

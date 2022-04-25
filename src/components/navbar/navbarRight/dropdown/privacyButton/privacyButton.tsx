@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { ThemeContext } from '../../../../../pages/store'
 
 import Popup from '../../../../../components/popup/popup'
 import PrivacyText from '../../../../../components/privacyText/privacyText'
@@ -8,11 +7,10 @@ import PrivacyText from '../../../../../components/privacyText/privacyText'
 export default function PrivacyButton() {
     const [isOpen, setIsOpen] = useState(false)
     const [searchParams, setSearchParams] = useSearchParams()
-    const { isDark } = useContext(ThemeContext)
 
     const privacyElement = (
-        <Popup title="Privacy Policy" {...{ isDark, setIsOpen }}>
-            <PrivacyText {...{ isDark }} />
+        <Popup title="Privacy Policy" {...{ setIsOpen }}>
+            <PrivacyText />
         </Popup>
     )
 

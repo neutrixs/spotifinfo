@@ -1,16 +1,18 @@
-import * as React from 'react'
+import React, { useContext } from 'react'
+import { ThemeContext } from '../../store'
 
 import { typeSelector as typeSelectorEnum } from '../topPage'
 
 import style from './selectors.module.scss'
 
 interface props {
-    isDark: boolean
     selectedType: typeSelectorEnum
     setSelectedType: React.Dispatch<React.SetStateAction<typeSelectorEnum>>
 }
 
-export default function TypeSelector({ isDark, selectedType, setSelectedType }: props) {
+export default function TypeSelector({ selectedType, setSelectedType }: props) {
+    const { isDark } = useContext(ThemeContext)
+
     function onClick(enumToSet: typeSelectorEnum, e?: React.KeyboardEvent<HTMLDivElement>) {
         if (e && e?.key !== 'Enter') return
 

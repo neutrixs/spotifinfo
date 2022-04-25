@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useContext } from 'react'
+import { ThemeContext } from '../../store'
 
 import { sideTextDetectBoolean, sideTextDetect } from './sideText'
 import getNowPlaying from './getNowPlaying'
@@ -11,7 +11,6 @@ import style from './np.module.scss'
 let isMobileWithActualVariable = false
 
 interface props {
-    isDark: boolean
     isMobile: boolean
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
     getRecentlyPlayedFunc: [() => void]
@@ -19,7 +18,7 @@ interface props {
 
 type paletteType = [[number, number, number, number?], [number, number, number, number?]]
 
-export default function NowPlaying({ isDark, isMobile, setIsLoading, getRecentlyPlayedFunc }: props) {
+export default function NowPlaying({ isMobile, setIsLoading, getRecentlyPlayedFunc }: props) {
     const [artURL, setArtURL] = useState<string>('')
     const [songURL, setSongURL] = useState<string>('')
     const [artists, setArtists] = useState<JSX.Element[]>([])
@@ -29,6 +28,7 @@ export default function NowPlaying({ isDark, isMobile, setIsLoading, getRecently
     const [isPlaying, setIsPlaying] = useState<boolean>(false)
     const [songTitle, setSongTitle] = useState<string>('')
     const [showNowPlaying, setShowNowPlaying] = useState<boolean>(false)
+    const { isDark } = useContext(ThemeContext)
 
     const [palette, setPalette] = useState<paletteType>([
         [0, 0, 0, 0],

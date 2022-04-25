@@ -1,4 +1,5 @@
-import React, { ReactNode, useState, useEffect } from 'react'
+import React, { ReactNode, useState, useEffect, useContext } from 'react'
+import { ThemeContext } from '../../pages/store'
 
 import style from './popup.module.scss'
 
@@ -9,11 +10,11 @@ interface props {
     children: ReactNode
     setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
     title: string
-    isDark: boolean
 }
 
-export default function Popup({ setIsOpen, children, title, isDark }: props) {
+export default function Popup({ setIsOpen, children, title }: props) {
     const [isFullyOpened, setIsFullyOpened] = useState(false)
+    const { isDark } = useContext(ThemeContext)
 
     useEffect(() => {
         setIsFullyOpened(true)

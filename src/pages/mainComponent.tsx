@@ -1,5 +1,6 @@
 import React, { useState, lazy, Suspense, useEffect } from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { ThemeContext, IsLoggedOutContext } from './store'
 
 import style from './base.module.scss'
 
@@ -38,7 +39,6 @@ function useDark() {
 
 function Main() {
     const isLoggedOut = checkIsLoggedOut()
-
     const { isDark, toggleTheme } = useDark()
 
     useEffect(() => {
@@ -56,10 +56,10 @@ function Main() {
         if (isLoggedOut) {
             pageElement = <MainPageOut />
         } else {
-            pageElement = <MainPageIn isDark={isDark} />
+            pageElement = <MainPageIn />
         }
 
-        return <Suspense fallback={<Loading isDark={isDark} />}>{pageElement}</Suspense>
+        return <Suspense fallback={<Loading />}>{pageElement}</Suspense>
     }
 
     function getTopTracksRouting() {
@@ -67,8 +67,8 @@ function Main() {
             return <Navigate to="/" />
         }
         return (
-            <Suspense fallback={<Loading isDark={isDark} />}>
-                <TopPage isDark={isDark} />
+            <Suspense fallback={<Loading />}>
+                <TopPage />
             </Suspense>
         )
     }
@@ -78,8 +78,8 @@ function Main() {
             return <Navigate to="/" />
         }
         return (
-            <Suspense fallback={<Loading isDark={isDark} />}>
-                <AccountPage isDark={isDark} />
+            <Suspense fallback={<Loading />}>
+                <AccountPage />
             </Suspense>
         )
     }
@@ -87,8 +87,8 @@ function Main() {
     function getPrivacyPageRouting() {
         if (isLoggedOut) {
             return (
-                <Suspense fallback={<Loading isDark={isDark} />}>
-                    <PrivacyPage isDark={isDark} />
+                <Suspense fallback={<Loading />}>
+                    <PrivacyPage />
                 </Suspense>
             )
         }
@@ -98,14 +98,18 @@ function Main() {
 
     return (
         <BrowserRouter>
-            <Navbar {...{ isLoggedOut, isDark, toggleTheme }} />
-            <Routes>
-                <Route path="/" element={getMainPageRouting()} />
-                <Route path="/top_tracks" element={getTopTracksRouting()} />
-                <Route path="/account" element={getAccountPageRouting()} />
-                <Route path="/privacy" element={getPrivacyPageRouting()} />
-                <Route path="*" element={<Page404 />} />
-            </Routes>
+            <ThemeContext.Provider value={{ isDark, toggleTheme }}>
+                <IsLoggedOutContext.Provider value={isLoggedOut}>
+                    <Navbar />
+                </IsLoggedOutContext.Provider>
+                <Routes>
+                    <Route path="/" element={getMainPageRouting()} />
+                    <Route path="/top_tracks" element={getTopTracksRouting()} />
+                    <Route path="/account" element={getAccountPageRouting()} />
+                    <Route path="/privacy" element={getPrivacyPageRouting()} />
+                    <Route path="*" element={<Page404 />} />
+                </Routes>
+            </ThemeContext.Provider>
         </BrowserRouter>
     )
 }

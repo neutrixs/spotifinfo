@@ -13,10 +13,9 @@ interface props {
     selectedType: typeSelector
     selectedRange: rangeSelector
     targetRange: rangeSelector
-    isDark: boolean
 }
 
-export default function TopTracks({ selectedType, selectedRange, targetRange, isDark }: props) {
+export default function TopTracks({ selectedType, selectedRange, targetRange }: props) {
     const [data, setData] = useState<JSX.Element[]>([])
     const [isLoading, setIsLoading] = useState(true)
 
@@ -30,7 +29,7 @@ export default function TopTracks({ selectedType, selectedRange, targetRange, is
 
     return (
         <div className={style.topTracksHolder} style={{ display: !isShow() ? 'none' : '' }}>
-            {isLoading ? <Loading isDark={isDark} overrideStyle={{ maxWidth: '30em' }} /> : data}
+            {isLoading ? <Loading overrideStyle={{ maxWidth: '30em' }} /> : data}
         </div>
     )
 }

@@ -13,10 +13,6 @@ import useDimension from '../../hooks/useDimension'
 
 import style from './topPage.module.scss'
 
-interface props {
-    isDark: boolean
-}
-
 enum typeSelector {
     tracks,
     artists,
@@ -28,7 +24,7 @@ enum rangeSelector {
     oneMonth,
 }
 
-export default function TopPage({ isDark }: props) {
+export default function TopPage() {
     const [selectedType, setSelectedType] = useState(setType())
     const [selectedRange, setSelectedRange] = useState(setRange())
     const [isMobile, setIsMobile] = useState(mdHandlerBoolean())
@@ -48,7 +44,6 @@ export default function TopPage({ isDark }: props) {
         targetRange: rangeSelector[range],
         selectedRange,
         selectedType,
-        isDark,
     })
 
     return (
@@ -56,8 +51,8 @@ export default function TopPage({ isDark }: props) {
             <div className={style.content}>
                 <p className={style.title}>Top {selectedType == typeSelector.tracks ? 'Tracks' : 'Artists'}</p>
                 <div className={style.selectorsHolder}>
-                    <TypeSelector {...{ isDark, selectedType, setSelectedType }} />
-                    <RangeSelector {...{ isDark, selectedRange, setSelectedRange }} />
+                    <TypeSelector {...{ selectedType, setSelectedType }} />
+                    <RangeSelector {...{ selectedRange, setSelectedRange }} />
                 </div>
 
                 <TopTracks {...topComponentProps('allTime')} />
@@ -69,7 +64,7 @@ export default function TopPage({ isDark }: props) {
                 <TopArtists {...topComponentProps('oneMonth')} />
             </div>
 
-            <RecaptchaBadge isDark={isDark} />
+            <RecaptchaBadge />
         </div>
     )
 }

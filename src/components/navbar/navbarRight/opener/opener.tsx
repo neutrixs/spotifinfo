@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import { ThemeContext } from '../../../../pages/store'
 
 import style from './style.module.scss'
 
@@ -12,13 +13,13 @@ interface props {
     isLocked: {
         isLocked: boolean
     }
-    isDark: boolean
     dropdownIsOpen: boolean
     setDropdownIsOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export default function Opener({ isLocked, isDark, dropdownIsOpen, setDropdownIsOpen }: props) {
+export default function Opener({ isLocked, dropdownIsOpen, setDropdownIsOpen }: props) {
     const [profilePicURL, setProfilePicURL] = useState<string>(defaultProfilePic)
+    const { isDark } = useContext(ThemeContext)
 
     useEffect(() => {
         getProfilePic(setProfilePicURL)

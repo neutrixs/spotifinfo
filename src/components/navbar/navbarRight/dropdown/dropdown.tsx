@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { useSearchParams } from 'react-router-dom'
+import { ThemeContext } from '../../../../pages/store'
 
 import PrivacyButton from './privacyButton/privacyButton'
 
@@ -11,13 +12,13 @@ interface props {
     isLocked: {
         isLocked: boolean
     }
-    isDark: boolean
     dropdownIsOpen: boolean
     setDropdownIsOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export default function Dropdown({ isLocked, isDark, dropdownIsOpen, setDropdownIsOpen }: props) {
+export default function Dropdown({ isLocked, dropdownIsOpen, setDropdownIsOpen }: props) {
     const [searchParams, setSearchParams] = useSearchParams()
+    const { isDark } = useContext(ThemeContext)
 
     function dropdownOnClick() {
         isLocked.isLocked = true
@@ -41,7 +42,7 @@ export default function Dropdown({ isLocked, isDark, dropdownIsOpen, setDropdown
             style={{ display: !dropdownIsOpen ? 'none' : '' }}
             onClick={dropdownOnClick}
         >
-            <PrivacyButton {...{ isDark }} />
+            <PrivacyButton />
             <div className={style.logoutButton} role="button" tabIndex={0} onClick={callLogout} onKeyPress={callLogout}>
                 <span>Logout</span>
             </div>

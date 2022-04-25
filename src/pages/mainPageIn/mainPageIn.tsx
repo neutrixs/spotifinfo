@@ -11,17 +11,13 @@ import useDimension from '../../hooks/useDimension'
 
 import style from './mainPageIn.module.scss'
 
-interface props {
-    isDark: boolean
-}
-
 /**
  * so that it passes by reference
  */
 
 const getRecentlyPlayedFunc: [() => void] = [function () {}]
 
-export default function MainPageIn({ isDark }: props) {
+export default function MainPageIn() {
     const [isMobile, setIsMobile] = useState(mdHandlerBoolean())
     const [isLoading, setIsLoading] = useState(true)
 
@@ -33,11 +29,11 @@ export default function MainPageIn({ isDark }: props) {
 
     return (
         <>
-            {isLoading ? <Loading isDark={isDark} /> : null}
+            {isLoading ? <Loading /> : null}
             <div className={style.mainPageIn + ' ' + (isMobile ? style.mobile : '')}>
-                <NowPlaying {...{ getRecentlyPlayedFunc, isDark, isMobile, setIsLoading }} />
+                <NowPlaying {...{ getRecentlyPlayedFunc, isMobile, setIsLoading }} />
                 <RecentlyPlayed {...{ getRecentlyPlayedFunc, setIsLoading }} />
-                <RecaptchaBadge isDark={isDark} overrideStyle={{ paddingTop: '1.5em' }} />
+                <RecaptchaBadge overrideStyle={{ paddingTop: '1.5em' }} />
             </div>
         </>
     )

@@ -1,16 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { ThemeContext } from '../../../../pages/store'
 
 import style from './style.module.scss'
 
 import sunIcon from '../../../../svg/light_mode.svg'
 import moonIcon from '../../../../svg/dark_mode.svg'
 
-interface props {
-    isDark: boolean
-    toggleTheme: () => void
-}
+export default function ThemeSwitcher() {
+    const { isDark, toggleTheme } = useContext(ThemeContext)
 
-export default function ThemeSwitcher({ isDark, toggleTheme }: props) {
     return (
         <div
             className={style.switcher}

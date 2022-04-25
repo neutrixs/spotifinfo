@@ -12,11 +12,7 @@ import useDimension from '../../hooks/useDimension'
 import defaultProfilePic from '../../svg/profile_pic.svg'
 import style from './account.module.scss'
 
-interface props {
-    isDark: boolean
-}
-
-export default function AccountPage({ isDark }: props) {
+export default function AccountPage() {
     const [isMobile, setIsMobile] = useState(mdHandlerBoolean())
     const [isLoading, setIsLoading] = useState(true)
 
@@ -75,7 +71,7 @@ export default function AccountPage({ isDark }: props) {
 
     return (
         <div className={style.holder + ' ' + (isMobile ? style.mobile : '')}>
-            {isLoading ? <Loading isDark={isDark} /> : null}
+            {isLoading ? <Loading /> : null}
             <div className={style.content} style={{ display: isLoading ? 'none' : '' }}>
                 <p className={style.title}>Your Account</p>
                 <img src={profilePicURL} style={{ borderRadius: isUsingDefaultPFP ? '50%' : '' }} />
@@ -91,7 +87,7 @@ export default function AccountPage({ isDark }: props) {
                     <p className={style.info}>Plan: {plan}</p>
                 </div>
             </div>
-            <RecaptchaBadge isDark={isDark} />
+            <RecaptchaBadge />
         </div>
     )
 }

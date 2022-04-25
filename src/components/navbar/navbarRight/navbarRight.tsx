@@ -6,11 +6,6 @@ import Dropdown from './dropdown/dropdown'
 
 import style from './style.module.scss'
 
-interface props {
-    isDark: boolean
-    toggleTheme: () => void
-}
-
 /**
  * So that it passes by reference
  */
@@ -19,7 +14,7 @@ const isLocked = {
     isLocked: false,
 }
 
-export default function NavbarRight({ isDark, toggleTheme }: props) {
+export default function NavbarRight() {
     const [dropdownIsOpen, setDropdownIsOpen] = useState(false)
 
     useEffect(() => {
@@ -41,9 +36,9 @@ export default function NavbarRight({ isDark, toggleTheme }: props) {
 
     return (
         <div className={style.navbarRight}>
-            <ThemeSwitcher {...{ isDark, toggleTheme }} />
-            <Opener {...{ dropdownIsOpen, isDark, isLocked, setDropdownIsOpen }} />
-            <Dropdown {...{ isDark, isLocked, dropdownIsOpen, setDropdownIsOpen }} />
+            <ThemeSwitcher />
+            <Opener {...{ dropdownIsOpen, isLocked, setDropdownIsOpen }} />
+            <Dropdown {...{ isLocked, dropdownIsOpen, setDropdownIsOpen }} />
         </div>
     )
 }

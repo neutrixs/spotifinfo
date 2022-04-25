@@ -16,7 +16,7 @@ const isLocked = {
 }
 
 export default function NavbarRight() {
-    const { isDark, toggleTheme } = useContext(ThemeContext)
+    const { isDark } = useContext(ThemeContext)
     const [dropdownIsOpen, setDropdownIsOpen] = useState(false)
 
     useEffect(() => {
@@ -38,7 +38,7 @@ export default function NavbarRight() {
 
     return (
         <div className={style.navbarRight}>
-            <ThemeSwitcher {...{ isDark, toggleTheme }} />
+            <ThemeSwitcher />
             <Opener {...{ dropdownIsOpen, isDark, isLocked, setDropdownIsOpen }} />
             <Dropdown {...{ isDark, isLocked, dropdownIsOpen, setDropdownIsOpen }} />
         </div>

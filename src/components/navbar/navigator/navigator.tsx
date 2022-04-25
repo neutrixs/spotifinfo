@@ -1,17 +1,18 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState, useContext } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
+import { ThemeContext } from '../../../pages/store'
 
 import style from './style.module.scss'
 
 interface props {
     isLoggedOut: boolean
-    isDark: boolean
 }
 
-export default function Navigator({ isLoggedOut, isDark }: props) {
+export default function Navigator({ isLoggedOut }: props) {
     const location = useLocation()
     const navigate = useNavigate()
     const linksHolder = useRef<HTMLDivElement>(null)
+    const { isDark } = useContext(ThemeContext)
 
     const linksHolderLeftShadow = '0.8rem 0 0.4rem -0.4rem #00000060 inset'
     const linksHolderRightShadow = '-0.8rem 0 0.4rem -0.4rem #00000060 inset'

@@ -30,7 +30,7 @@ export default function TopTracks({ selectedType, selectedRange, targetRange, is
 
     return (
         <div className={style.topTracksHolder} style={{ display: !isShow() ? 'none' : '' }}>
-            {isLoading ? <Loading isDark={isDark} overrideStyle={{ maxWidth: '30em' }} /> : data}
+            {isLoading ? <Loading overrideStyle={{ maxWidth: '30em' }} /> : data}
         </div>
     )
 }

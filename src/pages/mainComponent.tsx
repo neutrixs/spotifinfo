@@ -60,7 +60,7 @@ function Main() {
             pageElement = <MainPageIn />
         }
 
-        return <Suspense fallback={<Loading isDark={isDark} />}>{pageElement}</Suspense>
+        return <Suspense fallback={<Loading />}>{pageElement}</Suspense>
     }
 
     function getTopTracksRouting() {
@@ -68,7 +68,7 @@ function Main() {
             return <Navigate to="/" />
         }
         return (
-            <Suspense fallback={<Loading isDark={isDark} />}>
+            <Suspense fallback={<Loading />}>
                 <TopPage isDark={isDark} />
             </Suspense>
         )
@@ -79,7 +79,7 @@ function Main() {
             return <Navigate to="/" />
         }
         return (
-            <Suspense fallback={<Loading isDark={isDark} />}>
+            <Suspense fallback={<Loading />}>
                 <AccountPage isDark={isDark} />
             </Suspense>
         )
@@ -88,7 +88,7 @@ function Main() {
     function getPrivacyPageRouting() {
         if (isLoggedOut) {
             return (
-                <Suspense fallback={<Loading isDark={isDark} />}>
+                <Suspense fallback={<Loading />}>
                     <PrivacyPage isDark={isDark} />
                 </Suspense>
             )

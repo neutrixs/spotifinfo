@@ -25,7 +25,7 @@ export default function PrivacyText() {
 
     return (
         <div className={style.privacyText + ' ' + (!isDark ? style.light : '')}>
-            {isLoading ? <Loading isDark={isDark} /> : null}
+            {isLoading ? <Loading /> : null}
             {textElement}
         </div>
     )

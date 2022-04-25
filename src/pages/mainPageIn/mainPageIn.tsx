@@ -29,7 +29,7 @@ export default function MainPageIn() {
 
     return (
         <>
-            {isLoading ? <Loading isDark={isDark} /> : null}
+            {isLoading ? <Loading /> : null}
             <div className={style.mainPageIn + ' ' + (isMobile ? style.mobile : '')}>
                 <NowPlaying {...{ getRecentlyPlayedFunc, isDark, isMobile, setIsLoading }} />
                 <RecentlyPlayed {...{ getRecentlyPlayedFunc, setIsLoading }} />

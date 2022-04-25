@@ -75,7 +75,7 @@ export default function AccountPage({ isDark }: props) {
 
     return (
         <div className={style.holder + ' ' + (isMobile ? style.mobile : '')}>
-            {isLoading ? <Loading isDark={isDark} /> : null}
+            {isLoading ? <Loading /> : null}
             <div className={style.content} style={{ display: isLoading ? 'none' : '' }}>
                 <p className={style.title}>Your Account</p>
                 <img src={profilePicURL} style={{ borderRadius: isUsingDefaultPFP ? '50%' : '' }} />

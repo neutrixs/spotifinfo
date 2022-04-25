@@ -11,17 +11,13 @@ import useDimension from '../../hooks/useDimension'
 
 import style from './mainPageIn.module.scss'
 
-interface props {
-    isDark: boolean
-}
-
 /**
  * so that it passes by reference
  */
 
 const getRecentlyPlayedFunc: [() => void] = [function () {}]
 
-export default function MainPageIn({ isDark }: props) {
+export default function MainPageIn() {
     const [isMobile, setIsMobile] = useState(mdHandlerBoolean())
     const [isLoading, setIsLoading] = useState(true)
 

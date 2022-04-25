@@ -57,7 +57,7 @@ function Main() {
         if (isLoggedOut) {
             pageElement = <MainPageOut />
         } else {
-            pageElement = <MainPageIn isDark={isDark} />
+            pageElement = <MainPageIn />
         }
 
         return <Suspense fallback={<Loading isDark={isDark} />}>{pageElement}</Suspense>

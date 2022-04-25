@@ -42,7 +42,7 @@ export default function Dropdown({ isLocked, dropdownIsOpen, setDropdownIsOpen }
             style={{ display: !dropdownIsOpen ? 'none' : '' }}
             onClick={dropdownOnClick}
         >
-            <PrivacyButton {...{ isDark }} />
+            <PrivacyButton />
             <div className={style.logoutButton} role="button" tabIndex={0} onClick={callLogout} onKeyPress={callLogout}>
                 <span>Logout</span>
             </div>

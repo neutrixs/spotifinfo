@@ -13,10 +13,9 @@ interface props {
     selectedType: typeSelector
     selectedRange: rangeSelector
     targetRange: rangeSelector
-    isDark: boolean
 }
 
-export default function TopTracks({ selectedType, selectedRange, targetRange, isDark }: props) {
+export default function TopTracks({ selectedType, selectedRange, targetRange }: props) {
     const [data, setData] = useState<JSX.Element[]>([])
     const [isLoading, setIsLoading] = useState(true)
 

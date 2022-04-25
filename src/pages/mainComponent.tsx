@@ -1,6 +1,6 @@
 import React, { useState, lazy, Suspense, useEffect } from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import { ThemeContext } from './store'
+import { ThemeContext, IsLoggedOutContext } from './store'
 
 import style from './base.module.scss'
 
@@ -39,7 +39,6 @@ function useDark() {
 
 function Main() {
     const isLoggedOut = checkIsLoggedOut()
-
     const { isDark, toggleTheme } = useDark()
 
     useEffect(() => {
@@ -100,7 +99,9 @@ function Main() {
     return (
         <BrowserRouter>
             <ThemeContext.Provider value={{ isDark, toggleTheme }}>
-                <Navbar {...{ isLoggedOut }} />
+                <IsLoggedOutContext.Provider value={isLoggedOut}>
+                    <Navbar />
+                </IsLoggedOutContext.Provider>
                 <Routes>
                     <Route path="/" element={getMainPageRouting()} />
                     <Route path="/top_tracks" element={getTopTracksRouting()} />

@@ -13,7 +13,7 @@ export default function Navbar() {
 
     return (
         <nav className={style.nav + ' ' + (!isDark ? style.light : '')}>
-            <Navigator {...{ isLoggedOut }} />
+            <Navigator />
             {isLoggedOut ? <SpotifyLogin /> : <NavbarRight />}
         </nav>
     )

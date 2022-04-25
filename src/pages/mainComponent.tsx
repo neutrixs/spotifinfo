@@ -1,6 +1,6 @@
 import React, { useState, lazy, Suspense, useEffect } from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import ThemeContext from './store'
+import { ThemeContext } from './store'
 
 import style from './base.module.scss'
 

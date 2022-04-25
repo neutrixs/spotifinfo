@@ -5,6 +5,4 @@ const themeHooks = {
     toggleTheme: () => {},
 }
 
-const ThemeContext = createContext(themeHooks)
-
-export default ThemeContext
+export const ThemeContext = createContext(themeHooks)

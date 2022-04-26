@@ -10,9 +10,7 @@ import dropdownIcon from '../../../../svg/dropdown.svg'
 import dropdownIconLight from '../../../../svg/dropdown_for_light.svg'
 
 interface props {
-    isLocked: {
-        isLocked: boolean
-    }
+    isLocked: React.MutableRefObject<boolean>
     dropdownIsOpen: boolean
     setDropdownIsOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
@@ -26,7 +24,7 @@ export default function Opener({ isLocked, dropdownIsOpen, setDropdownIsOpen }: 
     }, [])
 
     function openerOnClickOrPress() {
-        isLocked.isLocked = true
+        isLocked.current = true
         setDropdownIsOpen(!dropdownIsOpen)
     }
 

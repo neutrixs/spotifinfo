@@ -21,7 +21,7 @@ interface props {
     setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>
 
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
-    getRecentlyPlayedFunc: [() => void]
+    getRecentlyPlayedRef: React.MutableRefObject<() => void>
 }
 
 let currentSongID = ''
@@ -84,7 +84,7 @@ export default async function getNowPlaying(thisProps: props) {
     setTotalMs(data.item.duration_ms)
 
     if (data.item.id != currentSongID) {
-        thisProps.getRecentlyPlayedFunc[0]()
+        thisProps.getRecentlyPlayedRef.current()
     }
     currentSongID = data.item.id
 }

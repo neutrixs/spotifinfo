@@ -9,9 +9,7 @@ import logout from '../../../../scripts/logout'
 import style from './style.module.scss'
 
 interface props {
-    isLocked: {
-        isLocked: boolean
-    }
+    isLocked: React.MutableRefObject<boolean>
     dropdownIsOpen: boolean
     setDropdownIsOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
@@ -21,7 +19,7 @@ export default function Dropdown({ isLocked, dropdownIsOpen, setDropdownIsOpen }
     const { isDark } = useContext(ThemeContext)
 
     function dropdownOnClick() {
-        isLocked.isLocked = true
+        isLocked.current = true
     }
 
     function callLogout() {

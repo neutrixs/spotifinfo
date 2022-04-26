@@ -13,12 +13,12 @@ let isMobileWithActualVariable = false
 interface props {
     isMobile: boolean
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
-    getRecentlyPlayedFunc: [() => void]
+    getRecentlyPlayedRef: React.MutableRefObject<() => void>
 }
 
 type paletteType = [[number, number, number, number?], [number, number, number, number?]]
 
-export default function NowPlaying({ isMobile, setIsLoading, getRecentlyPlayedFunc }: props) {
+export default function NowPlaying({ isMobile, setIsLoading, getRecentlyPlayedRef }: props) {
     const [artURL, setArtURL] = useState<string>('')
     const [songURL, setSongURL] = useState<string>('')
     const [artists, setArtists] = useState<JSX.Element[]>([])
@@ -86,7 +86,7 @@ export default function NowPlaying({ isMobile, setIsLoading, getRecentlyPlayedFu
             setPalette,
             setIsPlaying,
             setIsLoading,
-            getRecentlyPlayedFunc,
+            getRecentlyPlayedRef,
         })
     }
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 
 import ThemeSwitcher from './themeSwitcher/themeSwitcher'
 import Opener from './opener/opener'
@@ -6,16 +6,9 @@ import Dropdown from './dropdown/dropdown'
 
 import style from './style.module.scss'
 
-/**
- * So that it passes by reference
- */
-
-const isLocked = {
-    isLocked: false,
-}
-
 export default function NavbarRight() {
     const [dropdownIsOpen, setDropdownIsOpen] = useState(false)
+    const isLocked = useRef(false)
 
     useEffect(() => {
         window.addEventListener('click', windowOnClick)
@@ -26,8 +19,8 @@ export default function NavbarRight() {
     }, [])
 
     function windowOnClick() {
-        if (isLocked.isLocked) {
-            isLocked.isLocked = false
+        if (isLocked.current) {
+            isLocked.current = false
             return
         }
 

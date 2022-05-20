@@ -1,6 +1,7 @@
 import React, { useState, lazy, Suspense, useEffect } from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { ThemeContext, IsLoggedOutContext } from './store'
+import useCookie from '../hooks/useCookie'
 
 import style from './base.module.scss'
 
@@ -14,10 +15,6 @@ const MainPageIn = lazy(() => import('./mainPageIn/mainPageIn'))
 const TopPage = lazy(() => import('./topPage/topPage'))
 const AccountPage = lazy(() => import('./account/account'))
 const PrivacyPage = lazy(() => import('./privacyPolicy/privacyPolicy'))
-
-//
-
-const checkIsLoggedOut = () => document.cookie.indexOf('state=') == -1 || document.cookie.indexOf('uname=') == -1
 
 const checkIsDark = () => {
     const dark = localStorage.getItem('isDark')
@@ -38,7 +35,8 @@ function useDark() {
 //
 
 function Main() {
-    const isLoggedOut = checkIsLoggedOut()
+    const cookies = useCookie()
+    const isLoggedOut = !cookies.uname || !cookies.state
     const { isDark, toggleTheme } = useDark()
 
     useEffect(() => {

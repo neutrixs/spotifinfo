@@ -10,10 +10,12 @@ import spotifyCurrentUser from '../types/spotifyCurrentUser'
 const dev = process.argv.includes('--devmode')
 const currentConfig = config[dev ? 'dev' : 'prod']
 
-export default async function callback(req: Request, res: Response) {
-    if (req.query['error']) return res.redirect('/')
+const closeWindow = '<script>window.close();</script>'
 
-    if (!req.query['code'] || !req.query['state']) return res.redirect('/')
+export default async function callback(req: Request, res: Response) {
+    if (req.query['error']) return res.send(closeWindow)
+
+    if (!req.query['code'] || !req.query['state']) return res.status(400).send(closeWindow)
 
     const authorization = 'Basic ' + Buffer.from(currentConfig.client_id + ':' + currentConfig.client_secret).toString('base64')
 
@@ -64,7 +66,7 @@ export default async function callback(req: Request, res: Response) {
 
     res.cookie('uname', username, { expires })
     res.cookie('state', req.query['state'], { expires })
-    res.redirect('/')
+    res.send(`<script>localStorage.setItem('token', '${jsonResponse.access_token}');window.close();</script>`)
 }
 
 function writeToDB(state: string, refresh_token: string, dateadded: number) {

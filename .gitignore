@@ -78,7 +78,6 @@ typings/
 db/data.json
 ssh/id_rsa
 ssh/id_rsa.pub
-SECRET/reCAPTCHASecret.txt
 public/
 *.ignore.*
 cwebp.exe

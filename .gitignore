@@ -78,10 +78,10 @@ typings/
 db/data.json
 ssh/id_rsa
 ssh/id_rsa.pub
-SECRET/reCAPTCHASecret.txt
 public/
 *.ignore.*
 cwebp.exe
 dwebp.exe
 dist/
 TODO.txt
+env.sh

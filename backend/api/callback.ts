@@ -1,14 +1,10 @@
 import axios from 'axios'
 import { Request, Response } from 'express'
 import { readFileSync, writeFileSync } from 'fs'
-import config from '../config.js'
 
 import { requestAccessToken } from '../types/spotifyAPITypes.js'
 import databaseTypes from '../types/databaseTypes.js'
 import spotifyCurrentUser from '../types/spotifyCurrentUser'
-
-const dev = process.argv.includes('--devmode')
-const currentConfig = config[dev ? 'dev' : 'prod']
 
 const closeWindow = '<script>window.close();</script>'
 
@@ -17,12 +13,12 @@ export default async function callback(req: Request, res: Response) {
 
     if (!req.query['code'] || !req.query['state']) return res.status(400).send(closeWindow)
 
-    const authorization = 'Basic ' + Buffer.from(currentConfig.client_id + ':' + currentConfig.client_secret).toString('base64')
+    const authorization = 'Basic ' + Buffer.from(process.env.CLIENT_ID + ':' + process.env.CLIENT_SECRET).toString('base64')
 
     const param = new URLSearchParams()
     param.append('grant_type', 'authorization_code')
     param.append('code', req.query['code'] as string)
-    param.append('redirect_uri', currentConfig.redirect_uri)
+    param.append('redirect_uri', process.env.REDIRECT_URI || '')
 
     const response = await axios({
         url: 'https://accounts.spotify.com/api/token',

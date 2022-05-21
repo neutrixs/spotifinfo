@@ -4,12 +4,14 @@ import { urlencoded } from 'express'
 import * as cookieParser from 'cookie-parser'
 import { renderFile } from 'ejs'
 import dbCheck from './scripts/dbCheck.js'
+import checkEnv from './scripts/checkEnv.js'
 
 import loginHandler from './api/login.js'
 import callback from './api/callback.js'
 import gettokenApi from './api/gettoken.js'
 import getdataApi from './api/getdata.js'
 
+checkEnv('API_SCOPE', 'CLIENT_ID', 'CLIENT_SECRET', 'REDIRECT_URI', 'PASS', 'RECAPTCHA_SECRET')
 const app = express()
 
 dbCheck()

@@ -1,6 +1,0 @@
-export API_SCOPE=""
-export CLIENT_ID=""
-export CLIENT_SECRET=""
-export REDIRECT_URI=""
-export PASS=""
-export RECAPTCHA_SECRET=""

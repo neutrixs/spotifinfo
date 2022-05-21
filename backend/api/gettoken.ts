@@ -2,12 +2,8 @@ import { Request, Response } from 'express'
 import { readFileSync } from 'fs'
 import axios from 'axios'
 import recaptchaVerifyType from '../types/recaptchaVerifyType.js'
-import config from '../config.js'
 import databaseTypes from '../types/databaseTypes.js'
 import { requestRefreshToken as refreshTokenType } from '../types/spotifyAPITypes.js'
-
-const dev = process.argv.includes('--devmode')
-const currentConfig = config[dev ? 'dev' : 'prod']
 
 export default async function getToken(req: Request, res: Response) {
     if (!req.cookies['state'] || !req.body['reCAPTCHAToken']) {
@@ -76,7 +72,7 @@ function getRefreshToken(state: string): string | null {
 }
 
 async function getNewToken(res: Response, refreshToken: string) {
-    const authorization = 'Basic ' + Buffer.from(currentConfig.client_id + ':' + currentConfig.client_secret).toString('base64')
+    const authorization = 'Basic ' + Buffer.from(process.env.CLIENT_ID + ':' + process.env.CLIENT_SECRET).toString('base64')
 
     const body = new URLSearchParams()
     body.append('grant_type', 'refresh_token')

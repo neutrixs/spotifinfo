@@ -1,9 +1,4 @@
 import { Request, Response } from 'express'
-import config from '../config.js'
-
-const dev = process.argv.includes('--devmode')
-const configMode = dev ? 'dev' : 'prod'
-const currentConfig = config[configMode]
 
 export default async function login(req: Request, res: Response) {
     const isLoggedOut = !req.cookies['state'] || !req.cookies['uname']
@@ -16,9 +11,9 @@ export default async function login(req: Request, res: Response) {
     const query = new URLSearchParams()
     query.append('state', state)
     query.append('response_type', 'code')
-    query.append('client_id', currentConfig.client_id)
-    query.append('redirect_uri', currentConfig.redirect_uri)
-    query.append('scope', currentConfig.scope)
+    query.append('client_id', process.env.CLIENT_ID || '')
+    query.append('redirect_uri', process.env.REDIRECT_URI || '')
+    query.append('scope', process.env.API_SCOPE || '')
     query.append('show_dialog', showDialog.toString())
 
     res.redirect('https://accounts.spotify.com/authorize?' + query.toString())

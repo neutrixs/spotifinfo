@@ -14,7 +14,7 @@ export default async function getToken(req: Request, res: Response) {
 
     // check recaptcha response
 
-    const recaptchaSecret = readFileSync('./SECRET/reCAPTCHASecret.txt', { encoding: 'utf-8' })
+    const recaptchaSecret = process.env.RECAPTCHA_SECRET || ''
     const params = new URLSearchParams()
 
     params.append('secret', recaptchaSecret)

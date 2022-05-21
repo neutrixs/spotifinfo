@@ -85,3 +85,4 @@ cwebp.exe
 dwebp.exe
 dist/
 TODO.txt
+env.sh

@@ -6,14 +6,13 @@ import Loading from '../../components/loading/loading'
 import getToken from '../../scripts/getToken'
 import spotifyCurrentUser from '../../types/spotifyCurrentUser'
 
-import { mdHandler, mdHandlerBoolean } from '../../scripts/mdHandler'
-import useDimension from '../../hooks/useDimension'
+import useIsMobile from '../../hooks/useIsMobile'
 
 import defaultProfilePic from '../../svg/profile_pic.svg'
 import style from './account.module.scss'
 
 export default function AccountPage() {
-    const [isMobile, setIsMobile] = useState(mdHandlerBoolean())
+    const isMobile = useIsMobile(66.5)
     const [isLoading, setIsLoading] = useState(true)
 
     const [profilePicURL, setProfilePicURL] = useState('')
@@ -25,15 +24,9 @@ export default function AccountPage() {
 
     const [isUsingDefaultPFP, setIsUsingDefaultPFP] = useState(false)
 
-    const { width } = useDimension()
-
     useEffect(() => {
         getData()
     }, [])
-
-    useEffect(() => {
-        mdHandler(setIsMobile)
-    }, [width])
 
     async function getData() {
         const rawResponse = await fetch('https://api.spotify.com/v1/me', {

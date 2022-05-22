@@ -5,20 +5,21 @@ import { sideTextDetectBoolean, sideTextDetect } from './sideText'
 import getNowPlaying from './getNowPlaying'
 import updateProgress from './updateProgress'
 import getColour from './colour/getColour'
+import useIsMobile from '../../../hooks/useIsMobile'
 
 import style from './np.module.scss'
 
 let isMobileWithActualVariable = false
 
 interface props {
-    isMobile: boolean
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
     getRecentlyPlayedRef: React.MutableRefObject<() => void>
 }
 
 type paletteType = [[number, number, number, number?], [number, number, number, number?]]
 
-export default function NowPlaying({ isMobile, setIsLoading, getRecentlyPlayedRef }: props) {
+export default function NowPlaying({ setIsLoading, getRecentlyPlayedRef }: props) {
+    const isMobile = useIsMobile(66.5)
     const [artURL, setArtURL] = useState<string>('')
     const [songURL, setSongURL] = useState<string>('')
     const [artists, setArtists] = useState<JSX.Element[]>([])

@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { useState, useEffect } from 'react'
+import useIsMobile from '../../hooks/useIsMobile'
 
 import TypeSelector from './selectors/typeSelector'
 import RangeSelector from './selectors/rangeSelector'
@@ -7,9 +8,7 @@ import TopTracks from './topTracks/topTracks'
 import TopArtists from './topArtists/topArtists'
 import RecaptchaBadge from '../../components/recaptchaBadge/recaptchaBadge'
 
-import { mdHandlerBoolean, mdHandler } from '../../scripts/mdHandler'
 import { setType, setRange } from './setTypeAndRange'
-import useDimension from '../../hooks/useDimension'
 
 import style from './topPage.module.scss'
 
@@ -25,15 +24,9 @@ enum rangeSelector {
 }
 
 export default function TopPage() {
+    const isMobile = useIsMobile(66.5)
     const [selectedType, setSelectedType] = useState(setType())
     const [selectedRange, setSelectedRange] = useState(setRange())
-    const [isMobile, setIsMobile] = useState(mdHandlerBoolean())
-
-    const { width } = useDimension()
-
-    useEffect(() => {
-        mdHandler(setIsMobile)
-    }, [width])
 
     useEffect(() => {
         localStorage.setItem('selectedType', selectedType.toString())

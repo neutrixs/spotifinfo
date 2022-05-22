@@ -1,5 +1,5 @@
 import { paletteType } from '../nowPlaying'
-import { getMostSaturated, autoAdjust } from './modules/colourModules__obfu'
+import { getMostSaturated, autoAdjust } from './modules/colourModules'
 
 export default async function getColour(
     setPalette: React.Dispatch<React.SetStateAction<paletteType>>,

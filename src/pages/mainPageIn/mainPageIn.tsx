@@ -1,12 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react'
-
+import React, { useState, useRef } from 'react'
 import NowPlaying from './nowPlaying/nowPlaying'
 import RecentlyPlayed from './recentlyPlayed/recentlyPlayed'
 import Loading from '../../components/loading/loading'
 import RecaptchaBadge from '../../components/recaptchaBadge/recaptchaBadge'
-
 import useIsMobile from '../../hooks/useIsMobile'
-
 import style from './mainPageIn.module.scss'
 
 export default function MainPageIn() {

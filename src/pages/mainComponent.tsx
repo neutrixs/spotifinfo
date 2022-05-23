@@ -2,12 +2,9 @@ import React, { useState, lazy, Suspense, useEffect } from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { ThemeContext, IsLoggedOutContext } from './store'
 import useCookie from '../hooks/useCookie'
-
 import style from './base.module.scss'
-
 import Navbar from '../components/navbar/navbar'
 import Loading from '../components/loading/loading'
-
 import Page404 from './404/404'
 
 const MainPageOut = lazy(() => import('./mainPageOut/mainPageOut'))
@@ -16,14 +13,29 @@ const TopPage = lazy(() => import('./topPage/topPage'))
 const AccountPage = lazy(() => import('./account/account'))
 const PrivacyPage = lazy(() => import('./privacyPolicy/privacyPolicy'))
 
-const checkIsDark = () => {
-    const dark = localStorage.getItem('isDark')
-
-    return dark == 'false' ? false : true
-}
-
 function useDark() {
     const [isDark, setIsDark] = useState(checkIsDark())
+
+    useEffect(() => {
+        localStorage.setItem('isDark', isDark.toString())
+        const classList = document.body.classList
+
+        if (isDark) {
+            classList.remove(style.light)
+            return
+        }
+        classList.add(style.light)
+    }, [isDark])
+
+    function checkIsDark() {
+        const darkData = localStorage.getItem('isDark')
+
+        if (darkData == 'false') {
+            return false
+        }
+
+        return true
+    }
 
     function toggleTheme() {
         setIsDark(prevState => !prevState)
@@ -32,17 +44,10 @@ function useDark() {
     return { isDark, toggleTheme }
 }
 
-//
-
 function Main() {
     const cookies = useCookie()
     const isLoggedOut = !cookies.uname || !cookies.state
     const { isDark, toggleTheme } = useDark()
-
-    useEffect(() => {
-        localStorage.setItem('isDark', isDark.toString())
-        document.body.classList[isDark ? 'remove' : 'add'](style.light)
-    }, [isDark])
 
     useEffect(() => {
         document.body.classList.add(style.body)

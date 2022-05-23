@@ -26,7 +26,7 @@ export default interface spotifyPlaybackState {
     timestamp: number
     progress_ms: number
     is_playing: boolean
-    item: spotifyTrackItem
+    item: spotifyTrackItem | null
     currently_playing_type: 'track' | 'episode' | 'ad' | 'unknown'
     //actions:
 }

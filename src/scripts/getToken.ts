@@ -47,8 +47,8 @@ export default async function getToken() {
         return
     }
 
-    localStorage.setItem('token', dataResponse.data.token)
-    localStorage.setItem('validuntil', dataResponse.data.validuntil.toString())
+    localStorage.setItem('token', dataResponse.data?.token || '')
+    localStorage.setItem('validuntil', dataResponse.data?.validuntil.toString() || '')
 
     currentlyFetching = false
 }

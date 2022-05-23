@@ -32,7 +32,7 @@ export default function AccountPage() {
         const rawResponse = await fetch('https://api.spotify.com/v1/me', {
             method: 'GET',
             headers: {
-                Authorization: localStorage.getItem('token'),
+                Authorization: localStorage.getItem('token') || '',
             },
         })
 
@@ -53,11 +53,11 @@ export default function AccountPage() {
             setIsUsingDefaultPFP(true)
         }
 
-        setUsername(data.display_name)
-        setEmail(data.email)
+        setUsername(data.display_name || '')
+        setEmail(data.email || '')
         setId(data.id)
         setFollowers(data.followers.total)
-        setPlan(data.product)
+        setPlan(data.product || '')
 
         setIsLoading(false)
     }

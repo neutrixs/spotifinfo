@@ -18,6 +18,7 @@ export default function Navigator() {
     const [shadowRightActive, setShadowRightActive] = useState(false)
 
     function linksHolderOnScroll() {
+        if (!linksHolder.current) return
         setShadowLeftActive(linksHolder.current.scrollLeft > 0)
         setShadowRightActive(linksHolder.current.scrollLeft + linksHolder.current.clientWidth < linksHolder.current.scrollWidth)
     }

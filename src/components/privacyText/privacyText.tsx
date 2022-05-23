@@ -7,7 +7,7 @@ import Loading from '../loading/loading'
 
 export default function PrivacyText() {
     const [isLoading, setIsLoading] = useState(true)
-    const [textElement, setTextElement] = useState<JSX.Element>(null)
+    const [textElement, setTextElement] = useState<JSX.Element | null>(null)
     const { isDark } = useContext(ThemeContext)
 
     useEffect(() => {

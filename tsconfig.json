@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "noImplicitAny": true,
+        "strict": true,
         "module": "esnext",
         "target": "es6",
         "lib": ["DOM", "ES6"],

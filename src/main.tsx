@@ -31,7 +31,7 @@ async function run() {
 
 function cleanup() {
     const prevLoadingElement = document.getElementById('loading')
-    prevLoadingElement.parentElement.removeChild(prevLoadingElement)
+    prevLoadingElement?.parentElement?.removeChild(prevLoadingElement)
 }
 
 run()

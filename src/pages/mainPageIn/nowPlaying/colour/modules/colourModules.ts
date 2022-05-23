@@ -39,7 +39,7 @@ function hslToRgb(h: number, s: number, l: number): rgb {
 function rgbToHsl(r: number, g: number, b: number) {
     var max = Math.max(r, g, b),
         min = Math.min(r, g, b)
-    var h,
+    var h: any,
         s,
         l = (max + min) / 2
 
@@ -61,6 +61,9 @@ function rgbToHsl(r: number, g: number, b: number) {
         }
         h /= 6
     }
+
+    // i really don't understand what's going on but it still works anyway and i won't touch it
+    h = h as number
 
     return { h, s, l }
 }

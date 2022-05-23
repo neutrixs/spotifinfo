@@ -34,7 +34,7 @@ export default async function getTopTracks(
     const rawResponse = await fetch('https://api.spotify.com/v1/me/top/tracks?' + param.toString(), {
         method: 'GET',
         headers: {
-            Authorization: localStorage.getItem('token'),
+            Authorization: localStorage.getItem('token') || '',
         },
     })
 

@@ -34,7 +34,7 @@ export default async function getTopArtists(
     const rawResponse = await fetch('https://api.spotify.com/v1/me/top/artists?' + param.toString(), {
         method: 'GET',
         headers: {
-            Authorization: localStorage.getItem('token'),
+            Authorization: localStorage.getItem('token') || '',
         },
     })
 

@@ -11,7 +11,7 @@ export default function Loading({ overrideStyle }: props) {
     const { isDark } = useContext(ThemeContext)
 
     return (
-        <div className={style.loadingAnimationHolder} style={overrideStyle ?? null}>
+        <div className={style.loadingAnimationHolder} style={overrideStyle}>
             <div className={style.loadingAnimation + ' ' + (!isDark ? style.loadingAnimationLight : '')} />
         </div>
     )

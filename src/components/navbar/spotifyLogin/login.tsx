@@ -8,7 +8,7 @@ import style from './style.module.scss'
 
 export default function Login() {
     const { isDark } = useContext(ThemeContext)
-    const popupElement = useRef<Window>(null)
+    const popupElement = useRef<Window | null>(null)
     const isForce = localStorage.getItem('force') === 'true'
 
     function loginOnClick() {

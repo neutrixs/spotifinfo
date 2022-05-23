@@ -37,6 +37,7 @@ export default function NowPlaying({ setIsLoading, getRecentlyPlayedRef }: props
         if (!imageElement) return
 
         function callGetColour() {
+            if (!imageElement) return
             getColour(setPalette, imageElement)
         }
 
@@ -83,7 +84,7 @@ export default function NowPlaying({ setIsLoading, getRecentlyPlayedRef }: props
 
         const parsedResponse = (await response.json()) as spotifyPlaybackState
 
-        if (playbackData?.item?.id && playbackData.item.id != parsedResponse.item.id) {
+        if (playbackData?.item?.id && playbackData.item.id != parsedResponse.item?.id) {
             // FIXME: obviously doesn't run because this won't get latest hook update
             getRecentlyPlayedRef.current()
         }
@@ -91,15 +92,15 @@ export default function NowPlaying({ setIsLoading, getRecentlyPlayedRef }: props
         setPlaybackData(parsedResponse)
     }
 
-    function renderArtists(): JSX.Element | JSX.Element[] {
+    function renderArtists(): JSX.Element[] {
         if (!playbackData?.item) {
-            return null
+            return []
         }
 
         return playbackData.item.artists.map((artist, index) => (
             <span key={id + '.artists.' + artist.id}>
                 <a href={artist.external_urls.spotify}>{artist.name}</a>
-                {index != playbackData.item.artists.length - 1 ? <span>, </span> : null}
+                {index != (playbackData.item?.artists.length as number) - 1 ? <span>, </span> : null}
             </span>
         ))
     }

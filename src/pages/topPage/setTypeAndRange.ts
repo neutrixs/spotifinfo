@@ -2,7 +2,7 @@ import * as React from 'react'
 import { typeSelector, rangeSelector } from './topPage'
 
 function setType(): typeSelector {
-    const typeValue = parseInt(localStorage.getItem('selectedType'))
+    const typeValue = parseInt(localStorage.getItem('selectedType') || '')
 
     switch (typeValue) {
         case typeSelector.tracks:
@@ -15,7 +15,7 @@ function setType(): typeSelector {
 }
 
 function setRange(): rangeSelector {
-    const rangeValue = parseInt(localStorage.getItem('selectedRange'))
+    const rangeValue = parseInt(localStorage.getItem('selectedRange') || '')
 
     switch (rangeValue) {
         case rangeSelector.allTime:

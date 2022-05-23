@@ -21,7 +21,7 @@ export default async function getRecentlyPlayed(props: props) {
     const rawResponse = await fetch('https://api.spotify.com/v1/me/player/recently-played?limit=50', {
         method: 'GET',
         headers: {
-            authorization: localStorage.getItem('token'),
+            authorization: localStorage.getItem('token') || '',
         },
     })
 

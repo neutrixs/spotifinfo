@@ -34,7 +34,7 @@ app.get(/^\//, (req, res, next) => {
         case '/api/login':
             loginHandler(req, res)
             return
-        case '/callback':
+        case '/api/callback':
             callback(req, res)
             return
     }

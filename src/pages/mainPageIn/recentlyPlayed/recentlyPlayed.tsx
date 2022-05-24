@@ -7,16 +7,14 @@ import style from './recentlyPlayed.module.scss'
 
 interface props {
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
-    getRecentlyPlayedRef: React.MutableRefObject<() => void>
 }
 
-export default function RecentlyPlayed({ setIsLoading, getRecentlyPlayedRef }: props) {
+export default function RecentlyPlayed({ setIsLoading }: props) {
     const [showRecentlyPlayed, setShowRecentlyPlayed] = useState<boolean>(false)
     const [recentlyPlayedData, setRecentlyPlayedData] = useState<JSX.Element[]>([])
 
     useEffect(() => {
         callGetRecentlyPlayed()
-        getRecentlyPlayedRef.current = callGetRecentlyPlayed
     }, [])
 
     function callGetRecentlyPlayed() {

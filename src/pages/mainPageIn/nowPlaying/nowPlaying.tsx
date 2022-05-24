@@ -9,10 +9,9 @@ import style from './np.module.scss'
 
 interface props {
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
-    getRecentlyPlayedRef: React.MutableRefObject<() => void>
 }
 
-export default function NowPlaying({ setIsLoading, getRecentlyPlayedRef }: props) {
+export default function NowPlaying({ setIsLoading }: props) {
     const id = useId()
     const isMobile = useIsMobile(66.5)
     const { isDark } = useContext(ThemeContext)
@@ -83,11 +82,6 @@ export default function NowPlaying({ setIsLoading, getRecentlyPlayedRef }: props
         }
 
         const parsedResponse = (await response.json()) as spotifyPlaybackState
-
-        if (playbackData?.item?.id && playbackData.item.id != parsedResponse.item?.id) {
-            // FIXME: obviously doesn't run because this won't get latest hook update
-            getRecentlyPlayedRef.current()
-        }
 
         setPlaybackData(parsedResponse)
     }

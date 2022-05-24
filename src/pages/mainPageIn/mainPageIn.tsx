@@ -9,14 +9,13 @@ import style from './mainPageIn.module.scss'
 export default function MainPageIn() {
     const isMobile = useIsMobile(66.5)
     const [isLoading, setIsLoading] = useState(true)
-    const getRecentlyPlayedRef = useRef(() => {})
 
     return (
         <>
             {isLoading ? <Loading /> : null}
             <div className={style.mainPageIn + ' ' + (isMobile ? style.mobile : '')}>
-                <NowPlaying {...{ getRecentlyPlayedRef, setIsLoading }} />
-                <RecentlyPlayed {...{ getRecentlyPlayedRef, setIsLoading }} />
+                <NowPlaying {...{ setIsLoading }} />
+                <RecentlyPlayed {...{ setIsLoading }} />
                 <RecaptchaBadge overrideStyle={{ paddingTop: '1.5em' }} />
             </div>
         </>

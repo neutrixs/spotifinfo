@@ -137,6 +137,7 @@ const config = nameOrContentHash => ({
     },
     devServer: {
         host: '192.168.1.50',
+        port: process.env.WEBPACK_DEV_SERVER_PORT || 81,
         static: './public',
         hot: true,
         historyApiFallback: true,

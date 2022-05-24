@@ -41,7 +41,7 @@ app.get(/^\//, (req, res, next) => {
     next()
 })
 
-app.post('/gettoken', (req, res) => {
+app.post('/api/gettoken', (req, res) => {
     gettokenApi(req, res)
 })
 

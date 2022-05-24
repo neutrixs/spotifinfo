@@ -32,7 +32,7 @@ export default async function getToken() {
     const postParam = new URLSearchParams()
     postParam.append('reCAPTCHAToken', token)
 
-    const rawResponse = await fetch('/gettoken', {
+    const rawResponse = await fetch('/api/gettoken', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',

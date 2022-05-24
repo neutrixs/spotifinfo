@@ -7,11 +7,92 @@ import getToken from '../../../scripts/getToken'
 import getColour from './colour/getColour'
 import style from './np.module.scss'
 
+function useSideText(
+    imageElement: HTMLImageElement | null,
+    parentElement: HTMLDivElement | null,
+    playbackData: spotifyPlaybackState | null
+) {
+    const [isSideText, setIsSideText] = useState(checkIsSideText())
+    const { width: windowWidth } = useDimension()
+
+    // playbackData is also added to dependencies to detect changes to parent's 'display none' property
+    useLayoutEffect(() => {
+        setIsSideText(checkIsSideText())
+    }, [windowWidth, playbackData])
+
+    function checkIsSideText() {
+        // there's still nothing anyway so this is ok
+        if (!imageElement || !parentElement) {
+            return true
+        }
+
+        const pComputed = getComputedStyle(parentElement)
+
+        const imageElementWidth = imageElement.clientWidth
+        // this will be minus if display is none, but still works lol
+        const parentElementWidth =
+            parentElement.clientWidth - parseFloat(pComputed.paddingLeft) - parseFloat(pComputed.paddingRight)
+
+        return imageElementWidth / parentElementWidth < 0.5
+    }
+
+    return isSideText
+}
+
+function useProgress(playbackData: spotifyPlaybackState | null) {
+    const [currentPositionInS, setCurrentPositionInS] = useState(0)
+    const [trackLengthInS, setTrackLengthInS] = useState(0)
+    // using ref because this is used inside an interval
+    // which ofc doesn't get a latest state
+    const currentPositionInMS = useRef(0)
+    const trackLengthInMS = useRef(0)
+    const isPlaying = useRef(playbackData?.is_playing || false)
+
+    useEffect(() => {
+        currentPositionInMS.current = playbackData?.progress_ms || 0
+        trackLengthInMS.current = playbackData?.item?.duration_ms || 0
+        isPlaying.current = playbackData?.is_playing || false
+
+        setCurrentPositionInS(Math.floor(currentPositionInMS.current / 1000))
+        setTrackLengthInS(Math.floor(trackLengthInMS.current / 1000))
+    }, [playbackData])
+
+    useEffect(() => {
+        function update() {
+            if (!isPlaying.current) return
+
+            const newCurrentPosition = currentPositionInMS.current + 100
+            if (newCurrentPosition > trackLengthInMS.current) return
+
+            currentPositionInMS.current = newCurrentPosition
+            setCurrentPositionInS(Math.floor(currentPositionInMS.current / 1000))
+        }
+
+        update()
+        const interval = setInterval(update, 100)
+
+        return () => clearInterval(interval)
+    }, [])
+
+    function convertSecondToTimeFormat(s: number) {
+        const minute = Math.floor(s / 60)
+        const secondUnparsed = s % 60
+        const second = (secondUnparsed < 10 ? '0' : '') + secondUnparsed
+
+        return minute + ':' + second
+    }
+
+    const currentPosition = convertSecondToTimeFormat(currentPositionInS)
+    const trackLength = convertSecondToTimeFormat(trackLengthInS)
+
+    return { currentPosition, trackLength }
+}
+
 interface props {
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export default function NowPlaying({ setIsLoading }: props) {
+function NowPlaying({ setIsLoading }: props) {
     const id = useId()
     const isMobile = useIsMobile(66.5)
     const { isDark } = useContext(ThemeContext)
@@ -131,83 +212,4 @@ export default function NowPlaying({ setIsLoading }: props) {
     )
 }
 
-function useSideText(
-    imageElement: HTMLImageElement | null,
-    parentElement: HTMLDivElement | null,
-    playbackData: spotifyPlaybackState | null
-) {
-    const [isSideText, setIsSideText] = useState(checkIsSideText())
-    const { width: windowWidth } = useDimension()
-
-    // playbackData is also added to dependencies to detect changes to parent's 'display none' property
-    useLayoutEffect(() => {
-        setIsSideText(checkIsSideText())
-    }, [windowWidth, playbackData])
-
-    function checkIsSideText() {
-        // there's still nothing anyway so this is ok
-        if (!imageElement || !parentElement) {
-            return true
-        }
-
-        const pComputed = getComputedStyle(parentElement)
-
-        const imageElementWidth = imageElement.clientWidth
-        // this will be minus if display is none, but still works lol
-        const parentElementWidth =
-            parentElement.clientWidth - parseFloat(pComputed.paddingLeft) - parseFloat(pComputed.paddingRight)
-
-        return imageElementWidth / parentElementWidth < 0.5
-    }
-
-    return isSideText
-}
-
-function useProgress(playbackData: spotifyPlaybackState | null) {
-    const [currentPositionInS, setCurrentPositionInS] = useState(0)
-    const [trackLengthInS, setTrackLengthInS] = useState(0)
-    // using ref because this is used inside an interval
-    // which ofc doesn't get a latest state
-    const currentPositionInMS = useRef(0)
-    const trackLengthInMS = useRef(0)
-    const isPlaying = useRef(playbackData?.is_playing || false)
-
-    useEffect(() => {
-        currentPositionInMS.current = playbackData?.progress_ms || 0
-        trackLengthInMS.current = playbackData?.item?.duration_ms || 0
-        isPlaying.current = playbackData?.is_playing || false
-
-        setCurrentPositionInS(Math.floor(currentPositionInMS.current / 1000))
-        setTrackLengthInS(Math.floor(trackLengthInMS.current / 1000))
-    }, [playbackData])
-
-    useEffect(() => {
-        function update() {
-            if (!isPlaying.current) return
-
-            const newCurrentPosition = currentPositionInMS.current + 100
-            if (newCurrentPosition > trackLengthInMS.current) return
-
-            currentPositionInMS.current = newCurrentPosition
-            setCurrentPositionInS(Math.floor(currentPositionInMS.current / 1000))
-        }
-
-        update()
-        const interval = setInterval(update, 100)
-
-        return () => clearInterval(interval)
-    }, [])
-
-    function convertSecondToTimeFormat(s: number) {
-        const minute = Math.floor(s / 60)
-        const secondUnparsed = s % 60
-        const second = (secondUnparsed < 10 ? '0' : '') + secondUnparsed
-
-        return minute + ':' + second
-    }
-
-    const currentPosition = convertSecondToTimeFormat(currentPositionInS)
-    const trackLength = convertSecondToTimeFormat(trackLengthInS)
-
-    return { currentPosition, trackLength }
-}
+export default NowPlaying

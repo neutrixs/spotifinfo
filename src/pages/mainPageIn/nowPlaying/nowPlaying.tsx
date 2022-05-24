@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext, useId } from 'react'
+import React, { useState, useEffect, useLayoutEffect, useRef, useContext, useId } from 'react'
 import { ThemeContext } from '../../store'
 import useIsMobile from '../../../hooks/useIsMobile'
 import useDimension from '../../../hooks/useDimension'
@@ -140,7 +140,7 @@ function useSideText(
     const { width: windowWidth } = useDimension()
 
     // playbackData is also added to dependencies to detect changes to parent's 'display none' property
-    useEffect(() => {
+    useLayoutEffect(() => {
         setIsSideText(checkIsSideText())
     }, [windowWidth, playbackData])
 

@@ -28,8 +28,14 @@ export default function NowPlaying({ setIsLoading }: props) {
     useEffect(() => {
         getNowPlaying()
         const interval = setInterval(getNowPlaying, 2000)
+        const clearIntervalTimeout = setTimeout(() => {
+            clearInterval(interval)
+        }, 600000)
 
-        return () => clearInterval(interval)
+        return () => {
+            clearInterval(interval)
+            clearTimeout(clearIntervalTimeout)
+        }
     }, [])
 
     useEffect(() => {

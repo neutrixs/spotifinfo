@@ -45,7 +45,7 @@ app.post('/api/gettoken', (req, res) => {
     gettokenApi(req, res)
 })
 
-app.post('/getdata', (req, res) => {
+app.post('/api/getdata', (req, res) => {
     getdataApi(req, res)
 })
 

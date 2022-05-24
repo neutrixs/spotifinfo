@@ -17,7 +17,7 @@ export default function Login() {
         }
         if (popupElement.current) return
 
-        popupElement.current = window.open(`/login?force=${isForce}`, '', 'width=800, height=600')
+        popupElement.current = window.open(`/api/login?force=${isForce}`, '', 'width=800, height=600')
     }
 
     return (

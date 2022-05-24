@@ -31,7 +31,7 @@ app.disable('x-powered-by')
 
 app.get(/^\//, (req, res, next) => {
     switch (req.path) {
-        case '/login':
+        case '/api/login':
             loginHandler(req, res)
             return
         case '/callback':

@@ -144,7 +144,6 @@ const config = nameOrContentHash => ({
         allowedHosts: ['192.168.1.50', 'localhost'],
         proxy: {
             '/gettoken': 'http://192.168.1.50:' + process.env.PORT || '80',
-            '/login': 'http://192.168.1.50:' + process.env.PORT || '80',
             '/api/*': 'http://192.168.1.50:' + process.env.PORT || '80',
         },
     },

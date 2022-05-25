@@ -8,7 +8,7 @@
             "type": "pwa-chrome",
             "request": "attach",
             "name": "Launch Chrome against localhost",
-            "urlFilter": "http://192.168.1.50:81/*",
+            "urlFilter": "http://192.168.1.50:*/*",
             "webRoot": "${workspaceFolder}",
             "address": "localhost",
             "port": 6969

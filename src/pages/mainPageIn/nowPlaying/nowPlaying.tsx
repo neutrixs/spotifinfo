@@ -16,9 +16,11 @@ function useSideText(
     const { width: windowWidth } = useDimension()
 
     // playbackData is also added to dependencies to detect changes to parent's 'display none' property
+    // parentElement & imageElement added to detect when it's no longer null
+    // ofc it will no longer be null when playbackData is updated, but just in case...
     useLayoutEffect(() => {
         setIsSideText(checkIsSideText())
-    }, [windowWidth, playbackData])
+    }, [windowWidth, playbackData, parentElement, imageElement])
 
     function checkIsSideText() {
         // there's still nothing anyway so this is ok

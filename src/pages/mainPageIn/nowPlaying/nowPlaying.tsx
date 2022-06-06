@@ -199,7 +199,13 @@ function NowPlaying({ setIsLoading }: props) {
         >
             <p className={style.status}>{playbackData?.is_playing ? 'Now Playing:' : 'Last Played Song:'}</p>
             <a className={style.albumArt} href={playbackData?.item?.album.external_urls.spotify || ''}>
-                <img ref={setImageElement} src={playbackData?.item?.album.images[0].url || ''} crossOrigin="anonymous" />
+                <img
+                    ref={setImageElement}
+                    src={playbackData?.item?.album.images[0].url || ''}
+                    crossOrigin="anonymous"
+                    alt={playbackData?.item?.album.name ?? ''}
+                    title={playbackData?.item?.album.name ?? ''}
+                />
             </a>
             <div className={style.infoHolder + ' ' + (isSideText ? style.side : '')}>
                 <a className={style.title} href={playbackData?.item?.external_urls.spotify || ''}>

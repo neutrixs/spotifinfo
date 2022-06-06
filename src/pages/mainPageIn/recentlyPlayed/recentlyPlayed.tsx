@@ -71,7 +71,7 @@ function RecentlyPlayed({ setIsLoading }: props) {
             elementsToReturn.push(
                 <div className={style.track} key={elementKey + 'track'}>
                     <a className={style.artHolder} target="_blank" href={item.track.album.external_urls.spotify}>
-                        <img src={item.track.album.images[1].url} />
+                        <img src={item.track.album.images[1].url} alt={item.track.album.name} title={item.track.album.name} />
                     </a>
                     <a className={style.infoHolder} target="_blank" href={item.track.external_urls.spotify}>
                         <p>{item.track.name}</p>

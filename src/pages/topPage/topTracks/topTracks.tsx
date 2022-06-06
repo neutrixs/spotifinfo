@@ -64,7 +64,7 @@ export default function TopTracks({ selectedType, selectedRange, targetRange }: 
             <div key={id + i} className={style.content}>
                 <div className={style.number}>{i + 1}</div>
                 <a href={item.album.external_urls.spotify} className={style.artHolder}>
-                    <img src={item.album.images[1].url} />
+                    <img src={item.album.images[1].url} alt={item.album.name} title={item.album.name} />
                 </a>
                 <a href={item.external_urls.spotify} className={style.infoHolder}>
                     <p>{item.name}</p>

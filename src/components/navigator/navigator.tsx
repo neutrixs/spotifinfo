@@ -46,16 +46,26 @@ export default function Navigator({ children }: props) {
     }, [width])
 
     if (process.env.NODE_ENV !== 'production') {
-        // i have no idea why it's not an array
-        // ;(children as React.ReactElement[]).forEach(child => {
-        //     if (child.type !== NavigatorRoute) {
-        //         throw (
-        //             `<${typeof child.type == 'function' ? child.type.name : child.type}> ` +
-        //             `is not a valid child of Navigator. ` +
-        //             `Child of Navigator must be <${NavigatorRoute.name}>`
-        //         )
-        //     }
-        // })
+        // i really don't understand the type definition here
+
+        function loopOverChild(children: React.ReactElement[]) {
+            children.forEach(child => {
+                if (child.type == React.Fragment) {
+                    loopOverChild(child.props.children)
+                    return
+                }
+
+                if (child.type !== NavigatorRoute) {
+                    throw (
+                        `<${typeof child.type == 'function' ? child.type.name : child.type}> ` +
+                        `is not a valid child of Navigator. ` +
+                        `Child of Navigator must be <${NavigatorRoute.name}>`
+                    )
+                }
+            })
+        }
+
+        loopOverChild(children as React.ReactElement[])
     }
 
     function navigatorElementOnScroll() {

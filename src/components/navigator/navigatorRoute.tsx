@@ -22,6 +22,19 @@ export default function NavigatorRoute({ children, path }: props) {
         navigatorData.childElements.current[id] = elementRef.current
     }, [])
 
+    useEffect(() => {
+        if (!elementRef.current) return
+
+        elementRef.current.addEventListener('mouseover', () => navigatorData.setHoveredID(id))
+        elementRef.current.addEventListener('mouseout', () => navigatorData.setHoveredID(''))
+    }, [])
+
+    useEffect(() => {
+        if (location.pathname == path) {
+            navigatorData.setSelectedID(id)
+        }
+    }, [location])
+
     if (process.env.NODE_ENV !== 'production') {
         if (!navigatorData.initialized) {
             throw '<NavigatorRoute> should only be placed as a child of <Navigator>'

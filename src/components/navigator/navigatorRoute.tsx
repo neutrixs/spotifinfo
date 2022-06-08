@@ -1,4 +1,4 @@
-import React, { useId, useContext } from 'react'
+import React, { useId, useContext, useEffect, useRef } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { NavigatorContext } from './navigator'
 import style from './navigatorRoute.module.scss'
@@ -13,6 +13,14 @@ export default function NavigatorRoute({ children, path }: props) {
     const navigate = useNavigate()
     const id = useId()
     const navigatorData = useContext(NavigatorContext)
+    const elementRef = useRef<HTMLAnchorElement | null>(null)
+
+    useEffect(() => {
+        if (!navigatorData.childElements) return
+        if (!elementRef.current) return
+
+        navigatorData.childElements.current[id] = elementRef.current
+    }, [])
 
     if (process.env.NODE_ENV !== 'production') {
         if (!navigatorData.initialized) {
@@ -26,7 +34,15 @@ export default function NavigatorRoute({ children, path }: props) {
     }
 
     return (
-        <a href={path} role="button" tabIndex={0} onClick={onInteract} onKeyDown={onInteract} className={style.route}>
+        <a
+            href={path}
+            role="button"
+            tabIndex={0}
+            onClick={onInteract}
+            onKeyDown={onInteract}
+            className={style.route}
+            ref={elementRef}
+        >
             {children}
         </a>
     )

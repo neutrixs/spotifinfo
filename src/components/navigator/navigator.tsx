@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useEffect, useRef, useState } from 'react'
 import NavigatorRoute from './navigatorRoute'
 import style from './navigator.module.scss'
 
@@ -10,17 +10,20 @@ interface contextProps {
     initialized: boolean
     selectedID: string
     hoveredID: string
+    childElements: React.MutableRefObject<{ [key: string]: HTMLAnchorElement }> | null
 }
 
 export const NavigatorContext = createContext<contextProps>({
     initialized: false,
     selectedID: '',
     hoveredID: '',
+    childElements: null,
 })
 
 export default function Navigator({ children }: props) {
     const [selectedID, setSelectedID] = useState('')
     const [hoveredID, setHoveredID] = useState('')
+    const childElements = useRef<{ [key: string]: HTMLAnchorElement }>({})
 
     if (process.env.NODE_ENV !== 'production') {
         // i have no idea why it's not an array
@@ -36,7 +39,7 @@ export default function Navigator({ children }: props) {
     }
 
     return (
-        <NavigatorContext.Provider value={{ initialized: true, selectedID, hoveredID }}>
+        <NavigatorContext.Provider value={{ initialized: true, selectedID, hoveredID, childElements }}>
             <div className={style.navigator}>{children}</div>
         </NavigatorContext.Provider>
     )

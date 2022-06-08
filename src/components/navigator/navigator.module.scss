@@ -1,0 +1,12 @@
+.navigator {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    justify-content: flex-start;
+    overflow-x: scroll;
+
+    scrollbar-width: none; /* Firefox */
+    &::-webkit-scrollbar {
+        display: none; /* Safari and Chrome */
+    }
+}

@@ -3,7 +3,7 @@ import { ThemeContext, IsLoggedOutContext } from '../../pages/store'
 
 import NavbarRight from './navbarRight/navbarRight'
 import SpotifyLogin from './spotifyLogin/login'
-import Navigator from './navigator/navigator'
+import { Navigator, NavigatorRoute } from '../navigator'
 
 import style from './navbar.module.scss'
 
@@ -13,7 +13,11 @@ export default function Navbar() {
 
     return (
         <nav className={style.nav + ' ' + (!isDark ? style.light : '')}>
-            <Navigator />
+            <Navigator>
+                <NavigatorRoute path="/">Home</NavigatorRoute>
+                <NavigatorRoute path="/top_tracks">Top Tracks</NavigatorRoute>
+                <NavigatorRoute path="/account">Account</NavigatorRoute>
+            </Navigator>
             {isLoggedOut ? <SpotifyLogin /> : <NavbarRight />}
         </nav>
     )

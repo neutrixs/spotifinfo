@@ -71,12 +71,32 @@ export default function Navigator({ children }: props) {
         return [leftShadowActive ? leftShadow : '', rightShadowActive ? rightShadow : ''].filter(Boolean).join(',')
     }
 
+    function calculateHighlighterStyle(): React.CSSProperties {
+        const element = childElements.current[hoveredID || selectedID]
+
+        if (!element) {
+            return {
+                left: 0,
+                width: 0,
+            }
+        }
+
+        const left = element.offsetLeft + 'px'
+        const width = element.clientWidth
+
+        return {
+            left,
+            width,
+        }
+    }
+
     return (
         <NavigatorContext.Provider
             value={{ initialized: true, selectedID, hoveredID, childElements, setSelectedID, setHoveredID }}
         >
             <div className={style.navigator} style={{ boxShadow: getBoxShadowStyle() }} ref={navigatorElement}>
                 {children}
+                <div className={style.highlight} style={calculateHighlighterStyle()} />
             </div>
         </NavigatorContext.Provider>
     )

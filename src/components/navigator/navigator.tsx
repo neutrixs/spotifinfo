@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useRef, useState } from 'react'
 import NavigatorRoute from './navigatorRoute'
+import useDimension from '../../hooks/useDimension'
 import style from './navigator.module.scss'
 
 interface props {
@@ -25,9 +26,24 @@ export const NavigatorContext = createContext<contextProps>({
 })
 
 export default function Navigator({ children }: props) {
+    const { width } = useDimension()
     const [selectedID, setSelectedID] = useState('')
     const [hoveredID, setHoveredID] = useState('')
     const childElements = useRef<{ [key: string]: HTMLAnchorElement }>({})
+    const navigatorElement = useRef<HTMLDivElement | null>(null)
+
+    const [leftShadowActive, setLeftShadowActive] = useState(false)
+    const [rightShadowActive, setRightShadowActive] = useState(false)
+    const leftShadow = '0.8rem 0 0.4rem -0.4rem #00000060 inset'
+    const rightShadow = '-0.8rem 0 0.4rem -0.4rem #00000060 inset'
+
+    useEffect(() => {
+        navigatorElement.current?.addEventListener('scroll', navigatorElementOnScroll)
+    }, [])
+
+    useEffect(() => {
+        navigatorElementOnScroll()
+    }, [width])
 
     if (process.env.NODE_ENV !== 'production') {
         // i have no idea why it's not an array
@@ -42,11 +58,26 @@ export default function Navigator({ children }: props) {
         })
     }
 
+    function navigatorElementOnScroll() {
+        if (!navigatorElement.current) return
+
+        setLeftShadowActive(navigatorElement.current.scrollLeft > 0)
+        setRightShadowActive(
+            navigatorElement.current.scrollLeft + navigatorElement.current.clientWidth < navigatorElement.current.scrollWidth
+        )
+    }
+
+    function getBoxShadowStyle() {
+        return [leftShadowActive ? leftShadow : '', rightShadowActive ? rightShadow : ''].filter(Boolean).join(',')
+    }
+
     return (
         <NavigatorContext.Provider
             value={{ initialized: true, selectedID, hoveredID, childElements, setSelectedID, setHoveredID }}
         >
-            <div className={style.navigator}>{children}</div>
+            <div className={style.navigator} style={{ boxShadow: getBoxShadowStyle() }} ref={navigatorElement}>
+                {children}
+            </div>
         </NavigatorContext.Provider>
     )
 }

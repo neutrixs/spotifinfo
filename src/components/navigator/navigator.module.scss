@@ -1,0 +1,21 @@
+.navigator {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    justify-content: flex-start;
+    overflow-x: scroll;
+
+    scrollbar-width: none; /* Firefox */
+    &::-webkit-scrollbar {
+        display: none; /* Safari and Chrome */
+    }
+}
+
+.highlight {
+    position: absolute;
+    bottom: 0.25rem;
+    height: 0.2em;
+    background-color: hsla(210, 70%, 50%);
+    transition: 100ms ease-out;
+    z-index: -1;
+}

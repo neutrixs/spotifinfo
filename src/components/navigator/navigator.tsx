@@ -12,7 +12,7 @@ interface contextProps {
     hoveredID: string
 }
 
-const NavigatorContext = createContext<contextProps>({
+export const NavigatorContext = createContext<contextProps>({
     initialized: false,
     selectedID: '',
     hoveredID: '',

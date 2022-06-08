@@ -91,8 +91,8 @@ export default function Navigator({ children }: props) {
             }
         }
 
-        const left = element.offsetLeft + 'px'
-        const width = element.clientWidth
+        const left = `calc(${element.offsetLeft}px + 0.25rem)`
+        const width = `calc(${element.clientWidth}px - 0.5rem)`
 
         return {
             left,

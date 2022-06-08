@@ -10,6 +10,8 @@ interface contextProps {
     initialized: boolean
     selectedID: string
     hoveredID: string
+    setSelectedID: React.Dispatch<React.SetStateAction<string>>
+    setHoveredID: React.Dispatch<React.SetStateAction<string>>
     childElements: React.MutableRefObject<{ [key: string]: HTMLAnchorElement }> | null
 }
 
@@ -17,6 +19,8 @@ export const NavigatorContext = createContext<contextProps>({
     initialized: false,
     selectedID: '',
     hoveredID: '',
+    setSelectedID: () => {},
+    setHoveredID: () => {},
     childElements: null,
 })
 
@@ -39,7 +43,9 @@ export default function Navigator({ children }: props) {
     }
 
     return (
-        <NavigatorContext.Provider value={{ initialized: true, selectedID, hoveredID, childElements }}>
+        <NavigatorContext.Provider
+            value={{ initialized: true, selectedID, hoveredID, childElements, setSelectedID, setHoveredID }}
+        >
             <div className={style.navigator}>{children}</div>
         </NavigatorContext.Provider>
     )

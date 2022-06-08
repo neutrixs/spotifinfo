@@ -47,15 +47,15 @@ export default function Navigator({ children }: props) {
 
     if (process.env.NODE_ENV !== 'production') {
         // i have no idea why it's not an array
-        ;(children as React.ReactElement[]).forEach(child => {
-            if (child.type !== NavigatorRoute) {
-                throw (
-                    `<${typeof child.type == 'function' ? child.type.name : child.type}> ` +
-                    `is not a valid child of Navigator. ` +
-                    `Child of Navigator must be <${NavigatorRoute.name}>`
-                )
-            }
-        })
+        // ;(children as React.ReactElement[]).forEach(child => {
+        //     if (child.type !== NavigatorRoute) {
+        //         throw (
+        //             `<${typeof child.type == 'function' ? child.type.name : child.type}> ` +
+        //             `is not a valid child of Navigator. ` +
+        //             `Child of Navigator must be <${NavigatorRoute.name}>`
+        //         )
+        //     }
+        // })
     }
 
     function navigatorElementOnScroll() {

@@ -43,11 +43,13 @@ export default function NavigatorRoute({ children, path }: props) {
 
     function onClick(e: React.MouseEvent) {
         e.preventDefault()
+        elementRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' })
         navigate(path)
     }
 
     function onKeyDown(e: React.KeyboardEvent) {
         if (e.key !== 'Enter') return
+        elementRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' })
         navigate(path)
     }
 

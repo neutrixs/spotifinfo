@@ -41,21 +41,18 @@ export default function NavigatorRoute({ children, path }: props) {
         }
     }
 
-    function onInteract(e: React.MouseEvent<HTMLAnchorElement, MouseEvent> | React.KeyboardEvent<HTMLAnchorElement>) {
+    function onClick(e: React.MouseEvent) {
         e.preventDefault()
         navigate(path)
     }
 
+    function onKeyDown(e: React.KeyboardEvent) {
+        if (e.key !== 'Enter') return
+        navigate(path)
+    }
+
     return (
-        <a
-            href={path}
-            role="button"
-            tabIndex={0}
-            onClick={onInteract}
-            onKeyDown={onInteract}
-            className={style.route}
-            ref={elementRef}
-        >
+        <a href={path} onClick={onClick} onKeyDown={onKeyDown} className={style.route} ref={elementRef}>
             {children}
         </a>
     )

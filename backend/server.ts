@@ -60,10 +60,10 @@ app.get(/^\//, (req, res) => {
         case '/account/':
         case '/privacy':
         case '/privacy/':
-            res.render('meaningOfLife.html')
+            res.render('index.html')
             return
     }
-    res.status(404).render('meaningOfLife.html')
+    res.status(404).render('index.html')
 })
 
 const PORT = process.env.PORT || 80

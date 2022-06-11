@@ -115,7 +115,6 @@ const config = nameOrContentHash => ({
         }),
         new HtmlWebpackPlugin({
             template: './src/index.html',
-            filename: devMode ? 'index.html' : 'meaningOfLife.html',
             publicPath: '/',
             minify: {
                 collapseWhitespace: true,

@@ -21,7 +21,10 @@ class StateInstance {
             return false
         }
 
-        return currentState.scope == scope
+        const sortedCurrentScope = currentState.scope.split(' ').sort().join(' ')
+        const sortedScope = scope.split(' ').sort().join(' ')
+
+        return sortedCurrentScope == sortedScope
     }
 }
 

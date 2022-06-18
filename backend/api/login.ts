@@ -1,4 +1,5 @@
 import { Request, Response } from 'express'
+import stateInstance from '../instances/state'
 
 export default async function login(req: Request, res: Response) {
     const isLoggedOut = !req.cookies['state'] || !req.cookies['uname']
@@ -15,6 +16,8 @@ export default async function login(req: Request, res: Response) {
     query.append('redirect_uri', process.env.REDIRECT_URI || '')
     query.append('scope', process.env.API_SCOPE || '')
     query.append('show_dialog', showDialog.toString())
+
+    stateInstance.set(state, process.env.API_SCOPE || '')
 
     res.redirect('https://accounts.spotify.com/authorize?' + query.toString())
 }

@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { Request, Response } from 'express'
 import { readFileSync, writeFileSync } from 'fs'
+import stateInstance from '../instances/state'
 
 import { requestAccessToken } from '../types/spotifyAPITypes.js'
 import databaseTypes from '../types/databaseTypes.js'
@@ -10,8 +11,12 @@ const closeWindow = '<script>window.close();</script>'
 
 export default async function callback(req: Request, res: Response) {
     if (req.query['error']) return res.send(closeWindow)
-
     if (!req.query['code'] || !req.query['state']) return res.status(400).send(closeWindow)
+
+    if (!stateInstance.get(req.query.state as string)) {
+        res.status(400).write('mismatched state')
+        return res.end()
+    }
 
     const authorization = 'Basic ' + Buffer.from(process.env.CLIENT_ID + ':' + process.env.CLIENT_SECRET).toString('base64')
 
@@ -38,6 +43,11 @@ export default async function callback(req: Request, res: Response) {
     }
 
     const jsonResponse = response.data as requestAccessToken
+
+    if (!stateInstance.isMatch(req.query.state as string, jsonResponse.scope)) {
+        res.status(400).write('mismatched scope')
+        return res.end()
+    }
 
     writeToDB(req.query['state'] as string, jsonResponse.refresh_token, +new Date())
 

@@ -46,7 +46,7 @@ function useDark() {
 
 function Main() {
     const cookies = useCookie()
-    const isLoggedOut = !cookies.uname || !cookies.state
+    const isLoggedOut = !cookies.state
     const { isDark, toggleTheme } = useDark()
 
     useEffect(() => {

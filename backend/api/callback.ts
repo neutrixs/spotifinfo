@@ -51,26 +51,8 @@ export default async function callback(req: Request, res: Response) {
 
     writeToDB(req.query['state'] as string, jsonResponse.refresh_token, +new Date())
 
-    /**
-     * This username thing is actually no longer needed server side (i will prevent duplication later)
-     * This is just to support the web client which still needs it
-     */
-
-    const userInfoRequestRaw = await axios({
-        url: 'https://api.spotify.com/v1/me',
-        method: 'GET',
-        headers: {
-            Authorization: 'Bearer ' + jsonResponse.access_token,
-        },
-    })
-
-    const userInfo = (await userInfoRequestRaw.data) as spotifyCurrentUser
-
-    const username = userInfo.id
-
     const expires = new Date(99999999999999)
 
-    res.cookie('uname', username, { expires })
     res.cookie('state', req.query['state'], { expires })
     res.send(`<script>localStorage.setItem('token', '${jsonResponse.access_token}');window.close();</script>`)
 }

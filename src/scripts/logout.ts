@@ -8,7 +8,6 @@ export default function logout(self: boolean, e?: React.KeyboardEvent<HTMLParagr
     localStorage.removeItem('force')
 
     eraseCookie('state')
-    eraseCookie('uname')
 
     if (self) {
         localStorage.setItem('force', 'true')

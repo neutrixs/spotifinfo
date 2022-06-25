@@ -4,7 +4,7 @@ import stateInstance from '../instances/state'
 import databaseType from '../types/databaseTypes'
 
 export default async function login(req: Request, res: Response) {
-    const isLoggedOut = !req.cookies['state'] || !req.cookies['uname']
+    const isLoggedOut = !req.cookies['state']
 
     if (!isLoggedOut) return res.redirect('/')
 

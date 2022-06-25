@@ -24,10 +24,6 @@ By using our website, you hereby consent to our Privacy Policy and agree to its 
 
     When you choose to login to our service through Spotify, we will store few information about your Spotify account, including,
 
-    -   Your Spotify account ID
-
-        We store this to identify which Spotify account these data below belongs to
-
     -   Refresh token from Spotify
 
         This is necessary to grant you a new temporary token from Spotify, which is used for authentication to Spotify
@@ -35,12 +31,6 @@ By using our website, you hereby consent to our Privacy Policy and agree to its 
     -   State
 
         State is a unique ID, which allows us to serve you the correct account credential.
-
--   ### Other information
-
-    -   The timestamp of when these data were saved
-
-        We use this for analytics purposes. For example, it allows us to see how many people have logged in to our site in the current day, month, year, etc.
 
 ## How we use your information
 
@@ -143,4 +133,4 @@ spotifinfo.neutrix-web.xyz does not knowingly collect any Personal Identifiable 
 
 ---
 
-The latest revision of this privacy policy: 14th of November 2021
+The latest revision of this privacy policy: 25 June 2022

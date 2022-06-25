@@ -49,7 +49,7 @@ export default async function callback(req: Request, res: Response) {
         return res.end()
     }
 
-    writeToDB(req.query['state'] as string, jsonResponse.refresh_token, +new Date())
+    writeToDB(req.query['state'] as string, jsonResponse.refresh_token)
 
     const expires = new Date(99999999999999)
 
@@ -57,13 +57,12 @@ export default async function callback(req: Request, res: Response) {
     res.send(`<script>localStorage.setItem('token', '${jsonResponse.access_token}');window.close();</script>`)
 }
 
-function writeToDB(state: string, refresh_token: string, dateadded: number) {
+function writeToDB(state: string, refresh_token: string) {
     const rawDB = readFileSync('./db/data.json', { encoding: 'utf-8' }) // relative to project root
     const DB = JSON.parse(rawDB) as databaseTypes
 
     DB[state] = {
         refresh_token: refresh_token,
-        dateadded: dateadded,
     }
 
     writeFileSync('./db/data.json', JSON.stringify(DB))

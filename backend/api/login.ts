@@ -1,12 +1,14 @@
 import { Request, Response } from 'express'
+import { readFile } from 'fs/promises'
 import stateInstance from '../instances/state'
+import databaseType from '../types/databaseTypes'
 
 export default async function login(req: Request, res: Response) {
     const isLoggedOut = !req.cookies['state'] || !req.cookies['uname']
 
     if (!isLoggedOut) return res.redirect('/')
 
-    const state = generateState(16)
+    const state = await generateState(16)
     const showDialog = req.query.force === 'true' ? true : false
 
     const query = new URLSearchParams()
@@ -22,18 +24,28 @@ export default async function login(req: Request, res: Response) {
     res.redirect('https://accounts.spotify.com/authorize?' + query.toString())
 }
 
-function generateState(length: number) {
+async function generateState(length: number) {
     const possible = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-'
-    const possibleLettersLength = possible.length
+    let state = ''
 
-    let res = ''
+    do {
+        let temp = ''
 
-    for (let i = 0; i < length; i++) {
-        const randomIndex = Math.floor(Math.random() * possibleLettersLength)
-        const letter = possible[randomIndex]
+        for (let i = 0; i < length; i++) {
+            const randomIndex = Math.floor(Math.random() * possible.length)
+            temp += possible[randomIndex]
+        }
 
-        res += letter
-    }
+        state = temp
+    } while (await stateIsDuplicate(state))
 
-    return res
+    return state
+}
+
+// the chance of duplicate state to happen is 1 in 5227573613485916806405226496, but just in case 😅
+async function stateIsDuplicate(state: string) {
+    const rawDatabase = await readFile('./db/data.json', { encoding: 'utf-8' })
+    const database = JSON.parse(rawDatabase) as databaseType
+
+    return database[state] !== undefined
 }

@@ -56,7 +56,7 @@ spotifinfo.neutrix-web.xyz follows a standard procedure of using log files. Thes
 
 ---
 
-Like any other website, spotifinfo.neutrix-web.xyz uses 'cookies'. Our service rely on cookies to function properly. For example, we use a cookie called 'uname' and another cookie called 'state' that makes it possible for you to use our service. Blocking these cookies will prevent our service from working properly
+Like any other website, spotifinfo.neutrix-web.xyz uses 'cookies'. Our service rely on cookies to function properly. For example, we use a cookie called 'state' that makes it possible for you to use our service. Blocking these cookies will prevent our service from working properly
 
 ## Third Party Privacy Policies
 

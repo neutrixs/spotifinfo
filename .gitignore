@@ -85,3 +85,5 @@ dwebp.exe
 dist/
 TODO.txt
 env.sh
+PID.txt
+launch.sh

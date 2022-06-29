@@ -119,7 +119,7 @@ The right to object to processing – You have the right to object to our proces
 
 The right to data portability – You have the right to request that we transfer the data that we have collected to another organization, or directly to you, under certain conditions.
 
-If you make a request, we have one month to respond to you. If you would like to exercise any of these rights, please contact us [here](mailto:contact@spotifinfo.neutrix-web.xyz).
+If you make a request, we have one month to respond to you. If you would like to exercise any of these rights, please contact us [here](mailto:spotifinfo@neutrix-web.xyz).
 
 ## Children's Information
 
@@ -133,4 +133,4 @@ spotifinfo.neutrix-web.xyz does not knowingly collect any Personal Identifiable 
 
 ---
 
-The latest revision of this privacy policy: 25 June 2022
+The latest revision of this privacy policy: 29 June 2022

@@ -135,14 +135,16 @@ const config = nameOrContentHash => ({
         extensions: ['.tsx', '.ts', '.js'],
     },
     devServer: {
-        host: '192.168.1.50',
+        host: '0.0.0.0',
         port: process.env.WEBPACK_DEV_SERVER_PORT || 81,
         static: './public',
         hot: true,
         historyApiFallback: true,
-        allowedHosts: ['192.168.1.50', 'localhost'],
         proxy: {
-            '/api/*': 'http://localhost:' + process.env.PORT || '80',
+            '*': 'http://localhost:' + process.env.PORT || '80',
+        },
+        devMiddleware: {
+            writeToDisk: true,
         },
     },
     devtool: devMode ? 'source-map' : false,

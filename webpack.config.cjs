@@ -25,7 +25,7 @@ const config = nameOrContentHash => ({
     mode: devMode ? 'development' : 'production',
     entry: './src/main.tsx',
     output: {
-        filename: `assets/${nameOrContentHash}.js`,
+        filename: `static/${nameOrContentHash}.js`,
         path: path.resolve(__dirname, 'public'),
         clean: true,
     },
@@ -69,7 +69,7 @@ const config = nameOrContentHash => ({
                 test: /\.(png|jpe?g|gif|jp2|webp|otf)$/,
                 loader: 'file-loader',
                 options: {
-                    name: `assets/${nameOrContentHash}.[ext]`,
+                    name: `static/${nameOrContentHash}.[ext]`,
                     esModule: false,
                 },
             },
@@ -105,11 +105,11 @@ const config = nameOrContentHash => ({
             patterns: [
                 {
                     from: './src/favicon.ico',
-                    to: './favicon.ico',
+                    to: './static/favicon.ico',
                 },
                 {
                     from: './src/img/nojs.webp',
-                    to: './assets/nojs.webp',
+                    to: './static/nojs.webp',
                 },
             ],
         }),
@@ -128,7 +128,7 @@ const config = nameOrContentHash => ({
             },
         }),
         new MiniCssExtractPlugin({
-            filename: `assets/${nameOrContentHash}.css`,
+            filename: `static/${nameOrContentHash}.css`,
         }),
     ],
     resolve: {

@@ -1,4 +1,4 @@
-const dev = process.argv.includes('--devmode')
+const dev = process.env.NODE_ENV == 'development'
 import * as express from 'express'
 import { urlencoded } from 'express'
 import * as cookieParser from 'cookie-parser'

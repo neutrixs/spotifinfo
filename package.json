@@ -4,7 +4,7 @@
   "description": "",
   "main": "server_for_self.js",
   "scripts": {
-    "dev": "node ./dist/server.js --devmode",
+    "dev": "node ./dist/server.js",
     "build": "webpack build",
     "builddev": "webpack build --mode=development",
     "start": "webpack serve --mode=development",

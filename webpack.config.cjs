@@ -142,7 +142,7 @@ const config = nameOrContentHash => ({
         historyApiFallback: true,
         allowedHosts: ['192.168.1.50', 'localhost'],
         proxy: {
-            '/api/*': 'http://192.168.1.50:' + process.env.PORT || '80',
+            '/api/*': 'http://localhost:' + process.env.PORT || '80',
         },
     },
     devtool: devMode ? 'source-map' : false,

@@ -2,6 +2,7 @@ import React, { createContext, useEffect, useRef, useState } from 'react'
 import NavigatorRoute from './navigatorRoute'
 import useDimension from '../../hooks/useDimension'
 import style from './navigator.module.scss'
+import useForceRerender from '../../hooks/useForceRerender'
 
 interface props {
     children: React.ReactNode
@@ -26,6 +27,7 @@ export const NavigatorContext = createContext<contextProps>({
 })
 
 export default function Navigator({ children }: props) {
+    const rerender = useForceRerender()
     const { width } = useDimension()
     const [selectedID, setSelectedID] = useState('')
     const [hoveredID, setHoveredID] = useState('')
@@ -38,7 +40,18 @@ export default function Navigator({ children }: props) {
     const rightShadow = '-0.8rem 0 0.4rem -0.4rem #00000060 inset'
 
     useEffect(() => {
-        navigatorElement.current?.addEventListener('scroll', navigatorElementOnScroll)
+        if (!navigatorElement.current) return
+
+        navigatorElement.current.addEventListener('scroll', navigatorElementOnScroll)
+
+        function onResize() {
+            rerender()
+        }
+
+        const observer = new ResizeObserver(onResize)
+        observer.observe(navigatorElement.current)
+
+        return () => observer.disconnect()
     }, [])
 
     useEffect(() => {

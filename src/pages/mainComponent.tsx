@@ -1,6 +1,6 @@
 import React, { useState, lazy, Suspense, useEffect } from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import { ThemeContext, IsLoggedOutContext } from './store'
+import { ThemeContext } from './store'
 import useCookie from '../hooks/useCookie'
 import style from './base.module.scss'
 import Navbar from '../components/navbar/navbar'
@@ -102,9 +102,7 @@ function Main() {
     return (
         <BrowserRouter>
             <ThemeContext.Provider value={{ isDark, toggleTheme }}>
-                <IsLoggedOutContext.Provider value={isLoggedOut}>
-                    <Navbar />
-                </IsLoggedOutContext.Provider>
+                <Navbar />
                 <Routes>
                     <Route path="/" element={getMainPageRouting()} />
                     <Route path="/top_tracks" element={getTopTracksRouting()} />

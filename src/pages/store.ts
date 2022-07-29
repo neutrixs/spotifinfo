@@ -6,4 +6,3 @@ const themeHooks = {
 }
 
 export const ThemeContext = createContext(themeHooks)
-export const IsLoggedOutContext = createContext(true)

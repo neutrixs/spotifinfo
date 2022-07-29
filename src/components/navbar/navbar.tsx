@@ -1,15 +1,14 @@
 import React, { useContext } from 'react'
-import { ThemeContext, IsLoggedOutContext } from '../../pages/store'
-
+import { ThemeContext } from '../../pages/store'
+import { Navigator, NavigatorRoute } from '../navigator'
 import NavbarRight from './navbarRight/navbarRight'
 import SpotifyLogin from './spotifyLogin/login'
-import { Navigator, NavigatorRoute } from '../navigator'
-
+import useIsLoggedOut from '../../hooks/useIsLoggedOut'
 import style from './navbar.module.scss'
 
 export default function Navbar() {
     const { isDark } = useContext(ThemeContext)
-    const isLoggedOut = useContext(IsLoggedOutContext)
+    const isLoggedOut = useIsLoggedOut()
 
     const loggedOutNav = <NavigatorRoute path="/privacy">Privacy Policy</NavigatorRoute>
     const loggedInNav = (

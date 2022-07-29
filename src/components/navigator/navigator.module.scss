@@ -13,9 +13,10 @@
 
 .highlight {
     position: absolute;
-    bottom: 0.25rem;
-    height: 0.2em;
-    background-color: hsla(210, 70%, 50%);
+    top: 0.25rem;
+    height: calc(100% - 0.5rem);
+    border-radius: 0.5rem;
+    background-color: hsla(210, 70%, 50%, 75%);
     transition: 100ms ease-out;
     z-index: -1;
 }

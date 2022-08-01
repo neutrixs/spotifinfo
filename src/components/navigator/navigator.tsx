@@ -95,7 +95,7 @@ export default function Navigator({ children }: props) {
     }
 
     function calculateHighlighterStyle(): React.CSSProperties {
-        const element = childElements.current[hoveredID || selectedID]
+        const element = childElements.current[hoveredID && selectedID ? hoveredID : selectedID]
 
         if (!element) {
             return {

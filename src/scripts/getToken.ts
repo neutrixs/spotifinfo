@@ -40,6 +40,8 @@ export default async function getToken() {
         body: postParam.toString(),
     })
 
+    if (rawResponse.status != 200) return
+
     const dataResponse = (await rawResponse.json()) as response
 
     if (dataResponse.relogback) {

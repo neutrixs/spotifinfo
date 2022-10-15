@@ -40,7 +40,7 @@ export default async function getToken() {
         body: postParam.toString(),
     })
 
-    if (rawResponse.status != 200) return
+    if (rawResponse.status >= 500) return
 
     const dataResponse = (await rawResponse.json()) as response
 

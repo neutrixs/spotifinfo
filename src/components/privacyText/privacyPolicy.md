@@ -1,8 +1,8 @@
-At spotifinfo.neutrix-web.xyz, accessible from [https://spotifinfo.neutrix-web.xyz/](https://spotifinfo.neutrix-web.xyz/), one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by spotifinfo.neutrix-web.xyz and how we use it.
+At spotifinfo.neutrixs.my.id, accessible from [https://spotifinfo.neutrixs.my.id/](https://spotifinfo.neutrixs.my.id/), one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by spotifinfo.neutrixs.my.id and how we use it.
 
 If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us.
 
-This Privacy Policy applies only to our online activities and is valid for visitors to our website with regards to the information that they shared and/or collect in spotifinfo.neutrix-web.xyz. This policy is not applicable to any information collected offline or via channels other than this website.
+This Privacy Policy applies only to our online activities and is valid for visitors to our website with regards to the information that they shared and/or collect in spotifinfo.neutrixs.my.id. This policy is not applicable to any information collected offline or via channels other than this website.
 
 ## Consent
 
@@ -50,19 +50,19 @@ We use the information we collect in various ways, including to:
 
 ---
 
-spotifinfo.neutrix-web.xyz follows a standard procedure of using log files. These files log visitors when they visit websites. All hosting companies do this and a part of hosting services' analytics. The information collected by log files include internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date and time stamp, referring/exit pages, and possibly the number of clicks. These are not linked to any information that is personally identifiable. The purpose of the information is for analyzing trends, administering the site, tracking users' movement on the website, and gathering demographic information.
+spotifinfo.neutrixs.my.id follows a standard procedure of using log files. These files log visitors when they visit websites. All hosting companies do this and a part of hosting services' analytics. The information collected by log files include internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date and time stamp, referring/exit pages, and possibly the number of clicks. These are not linked to any information that is personally identifiable. The purpose of the information is for analyzing trends, administering the site, tracking users' movement on the website, and gathering demographic information.
 
 ## Cookies and Web Beacons
 
 ---
 
-Like any other website, spotifinfo.neutrix-web.xyz uses 'cookies'. Our service rely on cookies to function properly. For example, we use a cookie called 'state' that makes it possible for you to use our service. Blocking these cookies will prevent our service from working properly
+Like any other website, spotifinfo.neutrixs.my.id uses 'cookies'. Our service rely on cookies to function properly. For example, we use a cookie called 'state' that makes it possible for you to use our service. Blocking these cookies will prevent our service from working properly
 
 ## Third Party Privacy Policies
 
 ---
 
-spotifinfo.neutrix-web.xyz's Privacy Policy does not apply to other advertisers or websites. Thus, we are advising you to consult the respective Privacy Policies of these third-party ad servers for more detailed information. It may include their practices and instructions about how to opt-out of certain options.
+spotifinfo.neutrixs.my.id's Privacy Policy does not apply to other advertisers or websites. Thus, we are advising you to consult the respective Privacy Policies of these third-party ad servers for more detailed information. It may include their practices and instructions about how to opt-out of certain options.
 
 Third party services that we use, includes,
 
@@ -119,7 +119,7 @@ The right to object to processing – You have the right to object to our proces
 
 The right to data portability – You have the right to request that we transfer the data that we have collected to another organization, or directly to you, under certain conditions.
 
-If you make a request, we have one month to respond to you. If you would like to exercise any of these rights, please contact us [here](mailto:spotifinfo@neutrix-web.xyz).
+If you make a request, we have one month to respond to you. If you would like to exercise any of these rights, please contact us [here](mailto:spotifinfo@neutrixs.my.id).
 
 ## Children's Information
 
@@ -127,10 +127,10 @@ If you make a request, we have one month to respond to you. If you would like to
 
 Another part of our priority is adding protection for children while using the internet. We encourage parents and guardians to observe, participate in, and/or monitor and guide their online activity.
 
-spotifinfo.neutrix-web.xyz does not knowingly collect any Personal Identifiable Information from children under the age of 13. If you think that your child provided this kind of information on our website, we strongly encourage you to contact us immediately and we will do our best efforts to promptly remove such information from our records.
+spotifinfo.neutrixs.my.id does not knowingly collect any Personal Identifiable Information from children under the age of 13. If you think that your child provided this kind of information on our website, we strongly encourage you to contact us immediately and we will do our best efforts to promptly remove such information from our records.
 
 ## Privacy Policy Revision
 
 ---
 
-The latest revision of this privacy policy: 29 June 2022
+The latest revision of this privacy policy: 30 April 2023

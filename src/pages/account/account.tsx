@@ -47,7 +47,7 @@ export default function AccountPage() {
         setData(parsedData)
     }
 
-    const profilePicURL = data?.images[0]?.url
+    const profilePicURL = data?.images?.sort((a, b) => b.height - a.height)[0]?.url
     const dataElement = (
         <div className={style.content}>
             <p className={style.title}>Your Account</p>

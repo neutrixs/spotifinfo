@@ -27,3 +27,15 @@
 .info {
     font-size: 2em;
 }
+
+.image {
+    width: 30em;
+    max-width: calc(100% - 3em);
+}
+
+@media (max-width: 50em) {
+    .holder div {
+        padding: 0.5em;
+        padding-top: 1.5em;
+    }
+}

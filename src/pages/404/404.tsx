@@ -1,13 +1,13 @@
 import * as React from 'react'
 
 import style from './404.module.scss'
+import Logo from '../../img/NotFound.webp'
 
 export default function Page404() {
     return (
         <div className={style.holder}>
             <div>
-                <p className={style.text}>404</p>
-                <p className={style.notFound}>NOT FOUND</p>
+                <img src={Logo} className={style.image} />
                 <p className={style.info}>
                     THE REQUESTED RESOURCE {'\u00a0'}
                     {location.pathname.toUpperCase()}

@@ -4,6 +4,7 @@ import { typeSelector, rangeSelector } from '../topPage'
 import getToken from '../../../scripts/getToken'
 import Loading from '../../../components/loading/loading'
 import spotifyTopArtistsType from '../../../types/spotifyTopArtists'
+import defaultProfile from '../../../img/user.png'
 import style from '../topTrAndAr.module.scss'
 
 interface props {
@@ -64,7 +65,7 @@ export default function TopArtists({ selectedType, selectedRange, targetRange }:
                     <span>{i + 1}</span>
                 </div>
                 <a href={item.external_urls.spotify} className={style.artHolder}>
-                    <img src={item.images[1].url} alt={item.name} />
+                    <img src={item.images[1]?.url || defaultProfile} alt={item.name} />
                 </a>
                 <a href={item.external_urls.spotify} className={style.infoHolder}>
                     <p>{item.name}</p>
